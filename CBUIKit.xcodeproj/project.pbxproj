@@ -1,0 +1,432 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA177F5013BB13690075BDC7 /* CBNSMetadataQueryTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA177F4E13BB13690075BDC7 /* CBNSMetadataQueryTableViewDataSource.m */; };
+		AA177F5213BB1A9E0075BDC7 /* CBNSMetadataQueryTableViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AA177F4D13BB13690075BDC7 /* CBNSMetadataQueryTableViewDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA19FDD912FAECAF000306DB /* CBUIGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDBD12FAECAF000306DB /* CBUIGlobal.m */; };
+		AA19FDDA12FAECAF000306DB /* CBUIGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDBE12FAECAF000306DB /* CBUIGlobal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA19FDDB12FAECAF000306DB /* CBUIImagePagingScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDC012FAECAF000306DB /* CBUIImagePagingScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA19FDDC12FAECAF000306DB /* CBUIImagePagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDC112FAECAF000306DB /* CBUIImagePagingScrollView.m */; };
+		AA19FDDD12FAECAF000306DB /* CBUISlideshowImagesPagingScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDC212FAECAF000306DB /* CBUISlideshowImagesPagingScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA19FDDE12FAECAF000306DB /* CBUISlideshowImagesPagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDC312FAECAF000306DB /* CBUISlideshowImagesPagingScrollView.m */; };
+		AA19FDDF12FAECAF000306DB /* CBUIGridView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDC512FAECAF000306DB /* CBUIGridView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA19FDE012FAECAF000306DB /* CBUIGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDC612FAECAF000306DB /* CBUIGridView.m */; };
+		AA19FDE112FAECAF000306DB /* CBUIGridViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDC712FAECAF000306DB /* CBUIGridViewDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA19FDE212FAECAF000306DB /* CBUIGridViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDC812FAECAF000306DB /* CBUIGridViewDataSource.m */; };
+		AA19FDE312FAECAF000306DB /* CBUIGridViewFetchRequestDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDC912FAECAF000306DB /* CBUIGridViewFetchRequestDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA19FDE412FAECAF000306DB /* CBUIGridViewFetchRequestDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDCA12FAECAF000306DB /* CBUIGridViewFetchRequestDataSource.m */; };
+		AA19FDE512FAECAF000306DB /* CBUITableViewCellFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDCD12FAECAF000306DB /* CBUITableViewCellFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA19FDE612FAECAF000306DB /* CBUITableViewCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDCE12FAECAF000306DB /* CBUITableViewCellFactory.m */; };
+		AA19FDE712FAECAF000306DB /* CBUITableViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDCF12FAECAF000306DB /* CBUITableViewDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA19FDE812FAECAF000306DB /* CBUITableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDD012FAECAF000306DB /* CBUITableViewDataSource.m */; };
+		AA19FDE912FAECAF000306DB /* CBUIFetchResultsDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDD112FAECAF000306DB /* CBUIFetchResultsDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA19FDEA12FAECAF000306DB /* CBUIFetchResultsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDD212FAECAF000306DB /* CBUIFetchResultsDataSource.m */; };
+		AA19FDEB12FAECAF000306DB /* CBUITabView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDD312FAECAF000306DB /* CBUITabView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA19FDEC12FAECAF000306DB /* CBUITabView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDD412FAECAF000306DB /* CBUITabView.m */; };
+		AA19FDED12FAECAF000306DB /* CBUIPanelView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDD512FAECAF000306DB /* CBUIPanelView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA19FDEE12FAECAF000306DB /* CBUIPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDD612FAECAF000306DB /* CBUIPanelView.m */; };
+		AA19FDEF12FAECAF000306DB /* CBUIDisclosureTriangle.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDD712FAECAF000306DB /* CBUIDisclosureTriangle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA19FDF012FAECAF000306DB /* CBUIDisclosureTriangle.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDD812FAECAF000306DB /* CBUIDisclosureTriangle.m */; };
+		AA19FDF812FAED4B000306DB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA19FDF712FAED4B000306DB /* CoreData.framework */; };
+		AA7DC0A713BA0B350069CC3A /* CBUIAttributedLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7DC0A513BA0B350069CC3A /* CBUIAttributedLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA7DC0A813BA0B350069CC3A /* CBUIAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7DC0A613BA0B350069CC3A /* CBUIAttributedLabel.m */; };
+		AA7DC0AF13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7DC0AD13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA7DC0B013BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7DC0AE13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m */; };
+		AAB2EF7513B87DC3004A1C64 /* CBUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB2EF7213B8776A004A1C64 /* CBUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		AAE527F7132668550026317D /* CBUITableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE527F5132668550026317D /* CBUITableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAE527F8132668550026317D /* CBUITableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE527F6132668550026317D /* CBUITableViewController.m */; };
+		AAE528021326688E0026317D /* CBUIViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE528001326688E0026317D /* CBUIViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAE528031326688E0026317D /* CBUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE528011326688E0026317D /* CBUIViewController.m */; };
+		AAE52B8113279DAD0026317D /* UIDevice+Machine.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE52B7F13279DAD0026317D /* UIDevice+Machine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAE52B8213279DAD0026317D /* UIDevice+Machine.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE52B8013279DAD0026317D /* UIDevice+Machine.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AA177F4D13BB13690075BDC7 /* CBNSMetadataQueryTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBNSMetadataQueryTableViewDataSource.h; sourceTree = "<group>"; };
+		AA177F4E13BB13690075BDC7 /* CBNSMetadataQueryTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBNSMetadataQueryTableViewDataSource.m; sourceTree = "<group>"; };
+		AA19FDBD12FAECAF000306DB /* CBUIGlobal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIGlobal.m; sourceTree = "<group>"; };
+		AA19FDBE12FAECAF000306DB /* CBUIGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIGlobal.h; sourceTree = "<group>"; };
+		AA19FDC012FAECAF000306DB /* CBUIImagePagingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIImagePagingScrollView.h; sourceTree = "<group>"; };
+		AA19FDC112FAECAF000306DB /* CBUIImagePagingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIImagePagingScrollView.m; sourceTree = "<group>"; };
+		AA19FDC212FAECAF000306DB /* CBUISlideshowImagesPagingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUISlideshowImagesPagingScrollView.h; sourceTree = "<group>"; };
+		AA19FDC312FAECAF000306DB /* CBUISlideshowImagesPagingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUISlideshowImagesPagingScrollView.m; sourceTree = "<group>"; };
+		AA19FDC512FAECAF000306DB /* CBUIGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIGridView.h; sourceTree = "<group>"; };
+		AA19FDC612FAECAF000306DB /* CBUIGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIGridView.m; sourceTree = "<group>"; };
+		AA19FDC712FAECAF000306DB /* CBUIGridViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIGridViewDataSource.h; sourceTree = "<group>"; };
+		AA19FDC812FAECAF000306DB /* CBUIGridViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIGridViewDataSource.m; sourceTree = "<group>"; };
+		AA19FDC912FAECAF000306DB /* CBUIGridViewFetchRequestDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIGridViewFetchRequestDataSource.h; sourceTree = "<group>"; };
+		AA19FDCA12FAECAF000306DB /* CBUIGridViewFetchRequestDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIGridViewFetchRequestDataSource.m; sourceTree = "<group>"; };
+		AA19FDCD12FAECAF000306DB /* CBUITableViewCellFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUITableViewCellFactory.h; sourceTree = "<group>"; };
+		AA19FDCE12FAECAF000306DB /* CBUITableViewCellFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUITableViewCellFactory.m; sourceTree = "<group>"; };
+		AA19FDCF12FAECAF000306DB /* CBUITableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUITableViewDataSource.h; sourceTree = "<group>"; };
+		AA19FDD012FAECAF000306DB /* CBUITableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUITableViewDataSource.m; sourceTree = "<group>"; };
+		AA19FDD112FAECAF000306DB /* CBUIFetchResultsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIFetchResultsDataSource.h; sourceTree = "<group>"; };
+		AA19FDD212FAECAF000306DB /* CBUIFetchResultsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIFetchResultsDataSource.m; sourceTree = "<group>"; };
+		AA19FDD312FAECAF000306DB /* CBUITabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUITabView.h; sourceTree = "<group>"; };
+		AA19FDD412FAECAF000306DB /* CBUITabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUITabView.m; sourceTree = "<group>"; };
+		AA19FDD512FAECAF000306DB /* CBUIPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIPanelView.h; sourceTree = "<group>"; };
+		AA19FDD612FAECAF000306DB /* CBUIPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIPanelView.m; sourceTree = "<group>"; };
+		AA19FDD712FAECAF000306DB /* CBUIDisclosureTriangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIDisclosureTriangle.h; sourceTree = "<group>"; };
+		AA19FDD812FAECAF000306DB /* CBUIDisclosureTriangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIDisclosureTriangle.m; sourceTree = "<group>"; };
+		AA19FDF712FAED4B000306DB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		AA747D9E0F9514B9006C5449 /* CBUIKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIKit_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		AA7DC0A513BA0B350069CC3A /* CBUIAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIAttributedLabel.h; sourceTree = "<group>"; };
+		AA7DC0A613BA0B350069CC3A /* CBUIAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIAttributedLabel.m; sourceTree = "<group>"; };
+		AA7DC0AD13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBNSAttributedString+DokuWiki.h"; sourceTree = "<group>"; };
+		AA7DC0AE13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBNSAttributedString+DokuWiki.m"; sourceTree = "<group>"; };
+		AAB2EF7213B8776A004A1C64 /* CBUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUIKit.h; sourceTree = "<group>"; };
+		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AAE527F5132668550026317D /* CBUITableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUITableViewController.h; sourceTree = "<group>"; };
+		AAE527F6132668550026317D /* CBUITableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUITableViewController.m; sourceTree = "<group>"; };
+		AAE528001326688E0026317D /* CBUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIViewController.h; sourceTree = "<group>"; };
+		AAE528011326688E0026317D /* CBUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIViewController.m; sourceTree = "<group>"; };
+		AAE52B7F13279DAD0026317D /* UIDevice+Machine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Machine.h"; sourceTree = "<group>"; };
+		AAE52B8013279DAD0026317D /* UIDevice+Machine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Machine.m"; sourceTree = "<group>"; };
+		D2AAC07E0554694100DB518D /* libCBUIKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCBUIKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2AAC07C0554694100DB518D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
+				AA19FDF812FAED4B000306DB /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC07E0554694100DB518D /* libCBUIKit.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* CBUIKit */ = {
+			isa = PBXGroup;
+			children = (
+				08FB77AEFE84172EC02AAC07 /* Classes */,
+				32C88DFF0371C24200C91783 /* Other Sources */,
+				0867D69AFE84028FC02AAC07 /* Frameworks */,
+				034768DFFF38A50411DB9C8B /* Products */,
+			);
+			name = CBUIKit;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
+				AA19FDF712FAED4B000306DB /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		08FB77AEFE84172EC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				AAB2EF7213B8776A004A1C64 /* CBUIKit.h */,
+				AA19FDBE12FAECAF000306DB /* CBUIGlobal.h */,
+				AA19FDBD12FAECAF000306DB /* CBUIGlobal.m */,
+				AAE528001326688E0026317D /* CBUIViewController.h */,
+				AAE528011326688E0026317D /* CBUIViewController.m */,
+				AA19FDCB12FAECAF000306DB /* TableView */,
+				AA19FDC412FAECAF000306DB /* Grid View */,
+				AA19FDBF12FAECAF000306DB /* Image */,
+				AA7DC0A413BA0AF60069CC3A /* Label */,
+				AA19FDD312FAECAF000306DB /* CBUITabView.h */,
+				AA19FDD412FAECAF000306DB /* CBUITabView.m */,
+				AA19FDD512FAECAF000306DB /* CBUIPanelView.h */,
+				AA19FDD612FAECAF000306DB /* CBUIPanelView.m */,
+				AA19FDD712FAECAF000306DB /* CBUIDisclosureTriangle.h */,
+				AA19FDD812FAECAF000306DB /* CBUIDisclosureTriangle.m */,
+				AAE52B7E13279D9F0026317D /* System */,
+				AA7DC0AD13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h */,
+				AA7DC0AE13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		32C88DFF0371C24200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AA747D9E0F9514B9006C5449 /* CBUIKit_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		AA19FDBF12FAECAF000306DB /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				AA19FDC012FAECAF000306DB /* CBUIImagePagingScrollView.h */,
+				AA19FDC112FAECAF000306DB /* CBUIImagePagingScrollView.m */,
+				AA19FDC212FAECAF000306DB /* CBUISlideshowImagesPagingScrollView.h */,
+				AA19FDC312FAECAF000306DB /* CBUISlideshowImagesPagingScrollView.m */,
+			);
+			name = Image;
+			sourceTree = "<group>";
+		};
+		AA19FDC412FAECAF000306DB /* Grid View */ = {
+			isa = PBXGroup;
+			children = (
+				AA19FDC512FAECAF000306DB /* CBUIGridView.h */,
+				AA19FDC612FAECAF000306DB /* CBUIGridView.m */,
+				AA19FDC712FAECAF000306DB /* CBUIGridViewDataSource.h */,
+				AA19FDC812FAECAF000306DB /* CBUIGridViewDataSource.m */,
+				AA19FDC912FAECAF000306DB /* CBUIGridViewFetchRequestDataSource.h */,
+				AA19FDCA12FAECAF000306DB /* CBUIGridViewFetchRequestDataSource.m */,
+			);
+			name = "Grid View";
+			sourceTree = "<group>";
+		};
+		AA19FDCB12FAECAF000306DB /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				AAE527F5132668550026317D /* CBUITableViewController.h */,
+				AAE527F6132668550026317D /* CBUITableViewController.m */,
+				AAE527F0132667F10026317D /* DataSource */,
+				AA19FDCC12FAECAF000306DB /* Cells */,
+			);
+			name = TableView;
+			sourceTree = "<group>";
+		};
+		AA19FDCC12FAECAF000306DB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AA19FDCD12FAECAF000306DB /* CBUITableViewCellFactory.h */,
+				AA19FDCE12FAECAF000306DB /* CBUITableViewCellFactory.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		AA7DC0A413BA0AF60069CC3A /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				AA7DC0A513BA0B350069CC3A /* CBUIAttributedLabel.h */,
+				AA7DC0A613BA0B350069CC3A /* CBUIAttributedLabel.m */,
+			);
+			name = Label;
+			sourceTree = "<group>";
+		};
+		AAE527F0132667F10026317D /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				AA19FDCF12FAECAF000306DB /* CBUITableViewDataSource.h */,
+				AA19FDD012FAECAF000306DB /* CBUITableViewDataSource.m */,
+				AA19FDD112FAECAF000306DB /* CBUIFetchResultsDataSource.h */,
+				AA19FDD212FAECAF000306DB /* CBUIFetchResultsDataSource.m */,
+				AA177F4D13BB13690075BDC7 /* CBNSMetadataQueryTableViewDataSource.h */,
+				AA177F4E13BB13690075BDC7 /* CBNSMetadataQueryTableViewDataSource.m */,
+			);
+			name = DataSource;
+			sourceTree = "<group>";
+		};
+		AAE52B7E13279D9F0026317D /* System */ = {
+			isa = PBXGroup;
+			children = (
+				AAE52B7F13279DAD0026317D /* UIDevice+Machine.h */,
+				AAE52B8013279DAD0026317D /* UIDevice+Machine.m */,
+			);
+			name = System;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC07A0554694100DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAB2EF7513B87DC3004A1C64 /* CBUIKit.h in Headers */,
+				AA19FDDA12FAECAF000306DB /* CBUIGlobal.h in Headers */,
+				AA19FDDB12FAECAF000306DB /* CBUIImagePagingScrollView.h in Headers */,
+				AA19FDDD12FAECAF000306DB /* CBUISlideshowImagesPagingScrollView.h in Headers */,
+				AA19FDDF12FAECAF000306DB /* CBUIGridView.h in Headers */,
+				AA19FDE112FAECAF000306DB /* CBUIGridViewDataSource.h in Headers */,
+				AA19FDE312FAECAF000306DB /* CBUIGridViewFetchRequestDataSource.h in Headers */,
+				AA19FDE512FAECAF000306DB /* CBUITableViewCellFactory.h in Headers */,
+				AA19FDE712FAECAF000306DB /* CBUITableViewDataSource.h in Headers */,
+				AA19FDE912FAECAF000306DB /* CBUIFetchResultsDataSource.h in Headers */,
+				AAE527F7132668550026317D /* CBUITableViewController.h in Headers */,
+				AAE528021326688E0026317D /* CBUIViewController.h in Headers */,
+				AAE52B8113279DAD0026317D /* UIDevice+Machine.h in Headers */,
+				AA19FDEB12FAECAF000306DB /* CBUITabView.h in Headers */,
+				AA19FDED12FAECAF000306DB /* CBUIPanelView.h in Headers */,
+				AA19FDEF12FAECAF000306DB /* CBUIDisclosureTriangle.h in Headers */,
+				AA7DC0AF13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h in Headers */,
+				AA7DC0A713BA0B350069CC3A /* CBUIAttributedLabel.h in Headers */,
+				AA177F5213BB1A9E0075BDC7 /* CBNSMetadataQueryTableViewDataSource.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D2AAC07D0554694100DB518D /* CBUIKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "CBUIKit" */;
+			buildPhases = (
+				D2AAC07A0554694100DB518D /* Headers */,
+				D2AAC07B0554694100DB518D /* Sources */,
+				D2AAC07C0554694100DB518D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CBUIKit;
+			productName = CBUIKit;
+			productReference = D2AAC07E0554694100DB518D /* libCBUIKit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "CBUIKit" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 0867D691FE84028FC02AAC07 /* CBUIKit */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2AAC07D0554694100DB518D /* CBUIKit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2AAC07B0554694100DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA19FDD912FAECAF000306DB /* CBUIGlobal.m in Sources */,
+				AA19FDDC12FAECAF000306DB /* CBUIImagePagingScrollView.m in Sources */,
+				AA19FDDE12FAECAF000306DB /* CBUISlideshowImagesPagingScrollView.m in Sources */,
+				AA19FDE012FAECAF000306DB /* CBUIGridView.m in Sources */,
+				AA19FDE212FAECAF000306DB /* CBUIGridViewDataSource.m in Sources */,
+				AA19FDE412FAECAF000306DB /* CBUIGridViewFetchRequestDataSource.m in Sources */,
+				AA19FDE612FAECAF000306DB /* CBUITableViewCellFactory.m in Sources */,
+				AA19FDE812FAECAF000306DB /* CBUITableViewDataSource.m in Sources */,
+				AA19FDEA12FAECAF000306DB /* CBUIFetchResultsDataSource.m in Sources */,
+				AA19FDEC12FAECAF000306DB /* CBUITabView.m in Sources */,
+				AA19FDEE12FAECAF000306DB /* CBUIPanelView.m in Sources */,
+				AA19FDF012FAECAF000306DB /* CBUIDisclosureTriangle.m in Sources */,
+				AAE527F8132668550026317D /* CBUITableViewController.m in Sources */,
+				AAE528031326688E0026317D /* CBUIViewController.m in Sources */,
+				AAE52B8213279DAD0026317D /* UIDevice+Machine.m in Sources */,
+				AA7DC0A813BA0B350069CC3A /* CBUIAttributedLabel.m in Sources */,
+				AA7DC0B013BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m in Sources */,
+				AA177F5013BB13690075BDC7 /* CBNSMetadataQueryTableViewDataSource.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB921F08733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/CBUIKit.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CBUIKit_Prefix.pch;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				PRODUCT_NAME = CBUIKit;
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/CBUIKit;
+			};
+			name = Debug;
+		};
+		1DEB922008733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DSTROOT = /tmp/CBUIKit.dst;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CBUIKit_Prefix.pch;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				PRODUCT_NAME = CBUIKit;
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/CBUIKit;
+			};
+			name = Release;
+		};
+		1DEB922308733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1DEB922408733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "CBUIKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB921F08733DC00010E9CD /* Debug */,
+				1DEB922008733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "CBUIKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB922308733DC00010E9CD /* Debug */,
+				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}
