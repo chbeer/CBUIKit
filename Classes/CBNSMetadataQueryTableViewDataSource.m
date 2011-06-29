@@ -8,6 +8,10 @@
 
 #import "CBNSMetadataQueryTableViewDataSource.h"
 
+
+// NOTE: Work in progress!!!
+
+
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 50000  // available for iOS > 5.0
 
 @implementation CBNSMetadataQueryTableViewDataSource
@@ -67,7 +71,7 @@
 {
     [_query disableUpdates];
     
-    
+    NSLog(@"ii metadataQueryDidUpdateNotification:%@", notification);
     
     [_query enableUpdates];
 }

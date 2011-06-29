@@ -38,7 +38,7 @@
     
     CGPathRef path = CGPathCreateWithRect(self.bounds, NULL);
     
-    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString(text);
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)text);
     
     // Create the frame and draw it into the graphics context
     CTFrameRef frame = CTFramesetterCreateFrame(framesetter,

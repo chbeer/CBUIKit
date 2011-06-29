@@ -13,7 +13,10 @@
 #import "CBUIFetchResultsDataSource.h"
 #import "CBUIAttributedLabel.h"
 
-#import "CBUIAttributedString+DokuWiki.h"
+#import "CBNSAttributedString+DokuWiki.h"
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 50000  // available for iOS > 5.0
+
 #import "CBNSMetadataQueryTableViewDataSource.h"
+
+#endif

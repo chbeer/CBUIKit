@@ -264,9 +264,9 @@
 				AA19FDEB12FAECAF000306DB /* CBUITabView.h in Headers */,
 				AA19FDED12FAECAF000306DB /* CBUIPanelView.h in Headers */,
 				AA19FDEF12FAECAF000306DB /* CBUIDisclosureTriangle.h in Headers */,
-				AA7DC0AF13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h in Headers */,
 				AA7DC0A713BA0B350069CC3A /* CBUIAttributedLabel.h in Headers */,
 				AA177F5213BB1A9E0075BDC7 /* CBNSMetadataQueryTableViewDataSource.h in Headers */,
+				AA7DC0AF13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
