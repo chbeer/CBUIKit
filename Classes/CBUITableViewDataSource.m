@@ -17,7 +17,7 @@
 @synthesize defaultTableViewCellClass;
 
 - (id) initWithTableView:(UITableView *) aTableView  {
-    if (self = [super init]) {
+    if (self = [self init]) {
         [self setTableView: aTableView];
         
         defaultTableViewCellClass = [UITableViewCell class];

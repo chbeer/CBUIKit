@@ -25,6 +25,10 @@
     _query = [[NSMetadataQuery alloc] init];
     
     [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(metadataQueryDidFinishGatheringNotification:) 
+                                                 name:NSMetadataQueryDidFinishGatheringNotification
+                                               object:_query];
+    [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(metadataQueryDidUpdateNotification:) 
                                                  name:NSMetadataQueryDidUpdateNotification 
                                                object:_query];
@@ -67,6 +71,17 @@
 
 #pragma mark - Notifications
 
+- (void) metadataQueryDidFinishGatheringNotification:(NSNotification*)notification
+{
+    [_query disableUpdates];
+    
+    NSLog(@"ii metadataQueryDidFinishGatheringNotification:%@", notification);
+    
+    self.items = [[[_query results] mutableCopy] autorelease];
+    [_tableView reloadData];
+    
+    [_query enableUpdates];
+}
 - (void) metadataQueryDidUpdateNotification:(NSNotification*)notification
 {
     [_query disableUpdates];
