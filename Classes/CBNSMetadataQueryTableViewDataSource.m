@@ -26,11 +26,11 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(metadataQueryDidFinishGatheringNotification:) 
-                                                 name:NSMetadataQueryDidFinishGatheringNotification
+                                                 name:@"NSMetadataQueryDidFinishGatheringNotification"
                                                object:_query];
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(metadataQueryDidUpdateNotification:) 
-                                                 name:NSMetadataQueryDidUpdateNotification 
+                                                 name:@"NSMetadataQueryDidUpdateNotification"
                                                object:_query];
         
     return self;

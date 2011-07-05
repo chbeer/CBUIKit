@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA177F5013BB13690075BDC7 /* CBNSMetadataQueryTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA177F4E13BB13690075BDC7 /* CBNSMetadataQueryTableViewDataSource.m */; };
 		AA177F5213BB1A9E0075BDC7 /* CBNSMetadataQueryTableViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AA177F4D13BB13690075BDC7 /* CBNSMetadataQueryTableViewDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA19FDD912FAECAF000306DB /* CBUIGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDBD12FAECAF000306DB /* CBUIGlobal.m */; };
 		AA19FDDA12FAECAF000306DB /* CBUIGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDBE12FAECAF000306DB /* CBUIGlobal.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -340,7 +339,6 @@
 				AAE52B8213279DAD0026317D /* UIDevice+Machine.m in Sources */,
 				AA7DC0A813BA0B350069CC3A /* CBUIAttributedLabel.m in Sources */,
 				AA7DC0B013BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m in Sources */,
-				AA177F5013BB13690075BDC7 /* CBNSMetadataQueryTableViewDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,7 +359,8 @@
 				GCC_PREFIX_HEADER = CBUIKit_Prefix.pch;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				PRODUCT_NAME = CBUIKit;
-				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/CBUIKit;
+				PUBLIC_HEADERS_FOLDER_PATH = ../../public_headers/CBUIKit;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -376,7 +375,8 @@
 				GCC_PREFIX_HEADER = CBUIKit_Prefix.pch;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				PRODUCT_NAME = CBUIKit;
-				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/CBUIKit;
+				PUBLIC_HEADERS_FOLDER_PATH = ../../public_headers/CBUIKit;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
