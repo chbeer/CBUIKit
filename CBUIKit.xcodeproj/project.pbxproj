@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA177F5013BB13690075BDC7 /* CBNSMetadataQueryTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA177F4E13BB13690075BDC7 /* CBNSMetadataQueryTableViewDataSource.m */; };
-		AA177F5213BB1A9E0075BDC7 /* CBNSMetadataQueryTableViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AA177F4D13BB13690075BDC7 /* CBNSMetadataQueryTableViewDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA19FDD912FAECAF000306DB /* CBUIGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDBD12FAECAF000306DB /* CBUIGlobal.m */; };
 		AA19FDDA12FAECAF000306DB /* CBUIGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDBE12FAECAF000306DB /* CBUIGlobal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA19FDDB12FAECAF000306DB /* CBUIImagePagingScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDC012FAECAF000306DB /* CBUIImagePagingScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -46,11 +44,12 @@
 		AAE528031326688E0026317D /* CBUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE528011326688E0026317D /* CBUIViewController.m */; };
 		AAE52B8113279DAD0026317D /* UIDevice+Machine.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE52B7F13279DAD0026317D /* UIDevice+Machine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAE52B8213279DAD0026317D /* UIDevice+Machine.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE52B8013279DAD0026317D /* UIDevice+Machine.m */; };
+		AAE5532C13C351E90011DD4D /* CBUIActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE5532A13C351E90011DD4D /* CBUIActivityView.m */; };
+		AAED5FBC13C4511B005DD099 /* CBUIActionSheetController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAED5FBA13C4511B005DD099 /* CBUIActionSheetController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAED5FBD13C4511B005DD099 /* CBUIActionSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAED5FBB13C4511B005DD099 /* CBUIActionSheetController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AA177F4D13BB13690075BDC7 /* CBNSMetadataQueryTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBNSMetadataQueryTableViewDataSource.h; sourceTree = "<group>"; };
-		AA177F4E13BB13690075BDC7 /* CBNSMetadataQueryTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBNSMetadataQueryTableViewDataSource.m; sourceTree = "<group>"; };
 		AA19FDBD12FAECAF000306DB /* CBUIGlobal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIGlobal.m; sourceTree = "<group>"; };
 		AA19FDBE12FAECAF000306DB /* CBUIGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIGlobal.h; sourceTree = "<group>"; };
 		AA19FDC012FAECAF000306DB /* CBUIImagePagingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIImagePagingScrollView.h; sourceTree = "<group>"; };
@@ -89,6 +88,10 @@
 		AAE528011326688E0026317D /* CBUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIViewController.m; sourceTree = "<group>"; };
 		AAE52B7F13279DAD0026317D /* UIDevice+Machine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Machine.h"; sourceTree = "<group>"; };
 		AAE52B8013279DAD0026317D /* UIDevice+Machine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Machine.m"; sourceTree = "<group>"; };
+		AAE5532913C351E90011DD4D /* CBUIActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUIActivityView.h; sourceTree = "<group>"; };
+		AAE5532A13C351E90011DD4D /* CBUIActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIActivityView.m; sourceTree = "<group>"; };
+		AAED5FBA13C4511B005DD099 /* CBUIActionSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIActionSheetController.h; sourceTree = "<group>"; };
+		AAED5FBB13C4511B005DD099 /* CBUIActionSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIActionSheetController.m; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libCBUIKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCBUIKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -154,6 +157,10 @@
 				AAE52B7E13279D9F0026317D /* System */,
 				AA7DC0AD13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h */,
 				AA7DC0AE13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m */,
+				AAE5532913C351E90011DD4D /* CBUIActivityView.h */,
+				AAE5532A13C351E90011DD4D /* CBUIActivityView.m */,
+				AAED5FBA13C4511B005DD099 /* CBUIActionSheetController.h */,
+				AAED5FBB13C4511B005DD099 /* CBUIActionSheetController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -226,8 +233,6 @@
 				AA19FDD012FAECAF000306DB /* CBUITableViewDataSource.m */,
 				AA19FDD112FAECAF000306DB /* CBUIFetchResultsDataSource.h */,
 				AA19FDD212FAECAF000306DB /* CBUIFetchResultsDataSource.m */,
-				AA177F4D13BB13690075BDC7 /* CBNSMetadataQueryTableViewDataSource.h */,
-				AA177F4E13BB13690075BDC7 /* CBNSMetadataQueryTableViewDataSource.m */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -265,8 +270,8 @@
 				AA19FDED12FAECAF000306DB /* CBUIPanelView.h in Headers */,
 				AA19FDEF12FAECAF000306DB /* CBUIDisclosureTriangle.h in Headers */,
 				AA7DC0A713BA0B350069CC3A /* CBUIAttributedLabel.h in Headers */,
-				AA177F5213BB1A9E0075BDC7 /* CBNSMetadataQueryTableViewDataSource.h in Headers */,
 				AA7DC0AF13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h in Headers */,
+				AAED5FBC13C4511B005DD099 /* CBUIActionSheetController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,7 +342,8 @@
 				AAE52B8213279DAD0026317D /* UIDevice+Machine.m in Sources */,
 				AA7DC0A813BA0B350069CC3A /* CBUIAttributedLabel.m in Sources */,
 				AA7DC0B013BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m in Sources */,
-				AA177F5013BB13690075BDC7 /* CBNSMetadataQueryTableViewDataSource.m in Sources */,
+				AAE5532C13C351E90011DD4D /* CBUIActivityView.m in Sources */,
+				AAED5FBD13C4511B005DD099 /* CBUIActionSheetController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
