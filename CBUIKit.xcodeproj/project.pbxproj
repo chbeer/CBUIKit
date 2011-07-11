@@ -45,6 +45,8 @@
 		AAE52B8113279DAD0026317D /* UIDevice+Machine.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE52B7F13279DAD0026317D /* UIDevice+Machine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAE52B8213279DAD0026317D /* UIDevice+Machine.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE52B8013279DAD0026317D /* UIDevice+Machine.m */; };
 		AAE5532C13C351E90011DD4D /* CBUIActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE5532A13C351E90011DD4D /* CBUIActivityView.m */; };
+		AAE77FE913CAEDE8006D65BE /* UIGestureRecognizer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE77FE713CAEDE8006D65BE /* UIGestureRecognizer+Blocks.m */; };
+		AAE77FFE13CAF0E5006D65BE /* UIGestureRecognizer+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE77FE613CAEDE8006D65BE /* UIGestureRecognizer+Blocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAED5FBC13C4511B005DD099 /* CBUIActionSheetController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAED5FBA13C4511B005DD099 /* CBUIActionSheetController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAED5FBD13C4511B005DD099 /* CBUIActionSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAED5FBB13C4511B005DD099 /* CBUIActionSheetController.m */; };
 /* End PBXBuildFile section */
@@ -90,6 +92,8 @@
 		AAE52B8013279DAD0026317D /* UIDevice+Machine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Machine.m"; sourceTree = "<group>"; };
 		AAE5532913C351E90011DD4D /* CBUIActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUIActivityView.h; sourceTree = "<group>"; };
 		AAE5532A13C351E90011DD4D /* CBUIActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIActivityView.m; sourceTree = "<group>"; };
+		AAE77FE613CAEDE8006D65BE /* UIGestureRecognizer+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = "UIGestureRecognizer+Blocks.h"; sourceTree = "<group>"; };
+		AAE77FE713CAEDE8006D65BE /* UIGestureRecognizer+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+Blocks.m"; sourceTree = "<group>"; };
 		AAED5FBA13C4511B005DD099 /* CBUIActionSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIActionSheetController.h; sourceTree = "<group>"; };
 		AAED5FBB13C4511B005DD099 /* CBUIActionSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIActionSheetController.m; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libCBUIKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCBUIKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,6 +165,8 @@
 				AAE5532A13C351E90011DD4D /* CBUIActivityView.m */,
 				AAED5FBA13C4511B005DD099 /* CBUIActionSheetController.h */,
 				AAED5FBB13C4511B005DD099 /* CBUIActionSheetController.m */,
+				AAE77FE613CAEDE8006D65BE /* UIGestureRecognizer+Blocks.h */,
+				AAE77FE713CAEDE8006D65BE /* UIGestureRecognizer+Blocks.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -272,6 +278,7 @@
 				AA7DC0A713BA0B350069CC3A /* CBUIAttributedLabel.h in Headers */,
 				AA7DC0AF13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h in Headers */,
 				AAED5FBC13C4511B005DD099 /* CBUIActionSheetController.h in Headers */,
+				AAE77FFE13CAF0E5006D65BE /* UIGestureRecognizer+Blocks.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +351,7 @@
 				AA7DC0B013BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m in Sources */,
 				AAE5532C13C351E90011DD4D /* CBUIActivityView.m in Sources */,
 				AAED5FBD13C4511B005DD099 /* CBUIActionSheetController.m in Sources */,
+				AAE77FE913CAEDE8006D65BE /* UIGestureRecognizer+Blocks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

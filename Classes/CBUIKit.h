@@ -21,3 +21,5 @@
 #import "CBNSAttributedString+DokuWiki.h"
 
 #import "CBUIActionSheetController.h"
+
+#import "UIGestureRecognizer+Blocks.h"

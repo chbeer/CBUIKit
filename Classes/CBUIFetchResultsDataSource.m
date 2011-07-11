@@ -11,6 +11,7 @@
 @implementation CBUIFetchResultsDataSource
 
 @synthesize fetchedResultsController = _fetchedResultsController;
+@synthesize userDrivenChange = _userDrivenChange;
 
 - (id) initWithTableView:(UITableView*)tableView
             fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context 
@@ -72,18 +73,12 @@
 #pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	int count = [[_fetchedResultsController sections] count];
-	return count;//count > 0 ? count : 1;
+	return [[_fetchedResultsController sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	NSArray *sections = [_fetchedResultsController sections];
-	if (sections.count > 0) {
-		id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:section];
-		return [sectionInfo numberOfObjects];
-	} else {
-		return 0;
-	}
+	id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
 }
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -141,6 +136,10 @@
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
     
+    if (_userDrivenChange) {
+        return;
+    }
+    
     switch(type) {
             
         case NSFetchedResultsChangeInsert:
@@ -179,6 +178,13 @@
 - (id) objectAtIndexPath:(NSIndexPath*)indexPath {
     NSManagedObject *managedObject = [_fetchedResultsController objectAtIndexPath:indexPath];
 	return managedObject;
+}
+
+#pragma mark -
+
+- (NSIndexPath*) indexPathForObject:(id)object
+{
+    return [_fetchedResultsController indexPathForObject:object];
 }
 
 @end
