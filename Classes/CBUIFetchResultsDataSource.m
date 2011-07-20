@@ -108,7 +108,7 @@
 
 #pragma mark NSFetchedResultsControllerDelegate
 
-#if 0 // hack because of crappy NSFetchedResultsControllerDelegate
+#if 1 // hack because of crappy NSFetchedResultsControllerDelegate
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [_tableView reloadData];
