@@ -27,7 +27,7 @@
     return self.bounds.size.width < self.bounds.size.height;
 }
 
-- (void) setDataSource:(id<CBGridViewDataSource>)aDataSource {
+- (void) setDataSource:(id<CBUIGridViewDataSource>)aDataSource {
     dataSource = aDataSource;
 }
     
@@ -68,7 +68,7 @@
             cellFrame = [delegate gridView:self adjustCellFrame:cellFrame];
         }
         
-        UIView<CBGridViewCell> *view = [dataSource gridView:self cellForItemAtIndex:index];
+        UIView<CBUIGridViewCell> *view = [dataSource gridView:self cellForItemAtIndex:index];
         view.frame = cellFrame;
         
         UITapGestureRecognizer *cellTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self 
@@ -101,7 +101,7 @@
 }
 
 - (void) selectViewWithTag:(int)tag {
-    UIView<CBGridViewCell> *selectedView = nil;
+    UIView<CBUIGridViewCell> *selectedView = nil;
     if (selectedViewTag != 0) {
         selectedView = [scrollView viewWithTag:selectedViewTag];
         [selectedView setSelected:NO animated:NO];
@@ -131,7 +131,7 @@
 
 
 
-@implementation CBGridViewCell
+@implementation CBUIGridViewCell
 
 - (void) setObject:(id)object {
 }

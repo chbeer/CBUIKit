@@ -9,12 +9,12 @@
 
 @class CBUIGridView;
 
-@protocol CBGridViewCell <NSObject>
+@protocol CBUIGridViewCell <NSObject>
 - (void) setObject:(id)object;
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated;
 @end
 
-@interface CBGridViewCell : UIView <CBGridViewCell> {
+@interface CBUIGridViewCell : UIView <CBUIGridViewCell> {
     IBOutlet UIView *backgroundView;
     IBOutlet UIView *selectedBackgroundView;
 }
@@ -22,18 +22,18 @@
 
 
 
-@protocol CBGridViewDataSource <NSObject>
+@protocol CBUIGridViewDataSource <NSObject>
 
 @required
 
 - (NSUInteger) numberOfItemsInGridView:(CBUIGridView *)gridView;
 - (id) gridView:(CBUIGridView*)gridView objectAtIndex:(NSUInteger)index;
-- (UIView<CBGridViewCell>*)gridView:(CBUIGridView*)aGridView cellForItemAtIndex:(NSUInteger)index;
+- (UIView<CBUIGridViewCell>*)gridView:(CBUIGridView*)aGridView cellForItemAtIndex:(NSUInteger)index;
 
 @end
 
 
-@protocol CBGridViewDelegate <NSObject>
+@protocol CBUIGridViewDelegate <NSObject>
 
 @required
 
@@ -50,8 +50,8 @@
 
 
 @interface CBUIGridView : UIView <UIScrollViewDelegate> {
-    id<CBGridViewDataSource> dataSource;
-    id<CBGridViewDelegate> delegate;
+    id<CBUIGridViewDataSource> dataSource;
+    id<CBUIGridViewDelegate> delegate;
     
     UIScrollView *scrollView;
     
@@ -59,8 +59,8 @@
     int selectedViewTag;
 }
 
-@property (nonatomic, assign) id<CBGridViewDataSource> dataSource;
-@property (nonatomic, assign) id<CBGridViewDelegate> delegate;
+@property (nonatomic, assign) IBOutlet id<CBUIGridViewDataSource> dataSource;
+@property (nonatomic, assign) IBOutlet id<CBUIGridViewDelegate> delegate;
 
 @property (nonatomic, assign) CGFloat spacing;
 

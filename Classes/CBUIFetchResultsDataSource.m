@@ -11,6 +11,8 @@
 @implementation CBUIFetchResultsDataSource
 
 @synthesize fetchedResultsController = _fetchedResultsController;
+@synthesize userDrivenChange = _userDrivenChange;
+@synthesize loading = _loading;
 
 - (id) initWithTableView:(UITableView*)tableView
             fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context 
@@ -27,8 +29,10 @@
     _fetchedResultsController.delegate = self;
     
     NSError *error;
+    self.loading = YES;
     if (![_fetchedResultsController performFetch:&error]) {
         NSLog(@"!! fetchedResultsControlloer performFetch failed: %@", error);
+        self.loading = NO;
         return nil;
     }
 
@@ -72,18 +76,12 @@
 #pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	int count = [[_fetchedResultsController sections] count];
-	return count;//count > 0 ? count : 1;
+	return [[_fetchedResultsController sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	NSArray *sections = [_fetchedResultsController sections];
-	if (sections.count > 0) {
-		id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:section];
-		return [sectionInfo numberOfObjects];
-	} else {
-		return 0;
-	}
+	id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
 }
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -111,6 +109,7 @@
 #if 1 // hack because of crappy NSFetchedResultsControllerDelegate
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    self.loading = NO;
     [_tableView reloadData];
 }
 
@@ -141,6 +140,10 @@
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
     
+    if (_userDrivenChange) {
+        return;
+    }
+    
     switch(type) {
             
         case NSFetchedResultsChangeInsert:
@@ -159,6 +162,7 @@
             break;
             
         case NSFetchedResultsChangeMove:
+            
             [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                               withRowAnimation:UITableViewRowAnimationFade];
             [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
@@ -169,6 +173,7 @@
 
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    self.loading = NO;
     [_tableView endUpdates];
 }
 #endif
@@ -178,6 +183,13 @@
 - (id) objectAtIndexPath:(NSIndexPath*)indexPath {
     NSManagedObject *managedObject = [_fetchedResultsController objectAtIndexPath:indexPath];
 	return managedObject;
+}
+
+#pragma mark -
+
+- (NSIndexPath*) indexPathForObject:(id)object
+{
+    return [_fetchedResultsController indexPathForObject:object];
 }
 
 @end
