@@ -68,12 +68,18 @@
     if (!actionSheet) {
         actionSheet = [[UIActionSheet alloc] initWithTitle:title 
                                                   delegate:self
-                                         cancelButtonTitle:cancelButton.title 
+                                         cancelButtonTitle:nil
                                     destructiveButtonTitle:destructiveButton.title 
                                          otherButtonTitles:nil];
         for (CBUIActionSheetControllerButton *button in buttons) {
             [actionSheet addButtonWithTitle:button.title];
         }
+        
+        if (cancelButton.title) {
+            [actionSheet addButtonWithTitle:cancelButton.title];
+            actionSheet.cancelButtonIndex = buttons.count;
+        }
+        if (destructiveButton) actionSheet.cancelButtonIndex++;
     } 
     return actionSheet;
 }
@@ -104,11 +110,11 @@
 - (void)actionSheet:(UIActionSheet *)inActionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == inActionSheet.cancelButtonIndex) {
-        if (cancelButton) {
+        if (cancelButton.action) {
             [target performSelector:cancelButton.action withObject:self];
         }
     } else if (buttonIndex == inActionSheet.destructiveButtonIndex) {
-        if (destructiveButton) {
+        if (destructiveButton.action) {
             [target performSelector:destructiveButton.action withObject:self];
         }
     } else {
