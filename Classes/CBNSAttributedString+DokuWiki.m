@@ -53,8 +53,10 @@ typedef struct {
     }
     
     NSString *temp = nil;
-    while ([scanner scanUpToCharactersFromSet:dokuWikiBasicSyntaxCharacterSet
-                                   intoString:&temp]) {
+    while (![scanner isAtEnd]) {
+        
+        [scanner scanUpToCharactersFromSet:dokuWikiBasicSyntaxCharacterSet
+                                intoString:&temp];
         
         if (temp) {
             [result appendAttributedString:[self attributedStringWithString:temp 

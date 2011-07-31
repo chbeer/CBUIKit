@@ -12,6 +12,7 @@
 
 @synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize userDrivenChange = _userDrivenChange;
+@synthesize loading = _loading;
 
 - (id) initWithTableView:(UITableView*)tableView
             fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context 
@@ -28,8 +29,10 @@
     _fetchedResultsController.delegate = self;
     
     NSError *error;
+    self.loading = YES;
     if (![_fetchedResultsController performFetch:&error]) {
         NSLog(@"!! fetchedResultsControlloer performFetch failed: %@", error);
+        self.loading = NO;
         return nil;
     }
 
@@ -106,6 +109,7 @@
 #if 1 // hack because of crappy NSFetchedResultsControllerDelegate
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    self.loading = NO;
     [_tableView reloadData];
 }
 
@@ -169,6 +173,7 @@
 
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    self.loading = NO;
     [_tableView endUpdates];
 }
 #endif

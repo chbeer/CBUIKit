@@ -16,12 +16,16 @@
 	NSFetchedResultsController  *_fetchedResultsController;
     
     BOOL                        _userDrivenChange;
+    
+    BOOL                        _loading;
 
 }
 
 @property (readonly) NSFetchedResultsController *fetchedResultsController;
 
 @property (nonatomic, assign, getter=isUserDrivenChange) BOOL userDrivenChange;
+
+@property (nonatomic, assign, getter=isLoading) BOOL loading;
 
 - (id) initWithTableView:(UITableView*)tableView
             fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context 
