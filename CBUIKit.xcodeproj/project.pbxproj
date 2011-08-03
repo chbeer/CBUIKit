@@ -381,7 +381,8 @@
 				GCC_PREFIX_HEADER = CBUIKit_Prefix.pch;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				PRODUCT_NAME = CBUIKit;
-				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/CBUIKit;
+				PUBLIC_HEADERS_FOLDER_PATH = ../../public_headers/CBUIKit;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -396,7 +397,8 @@
 				GCC_PREFIX_HEADER = CBUIKit_Prefix.pch;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				PRODUCT_NAME = CBUIKit;
-				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/CBUIKit;
+				PUBLIC_HEADERS_FOLDER_PATH = ../../public_headers/CBUIKit;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
