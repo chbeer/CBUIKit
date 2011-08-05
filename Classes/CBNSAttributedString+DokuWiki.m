@@ -122,6 +122,9 @@ typedef struct {
     NSMutableDictionary *attr = [NSMutableDictionary dictionary];
     [attr setObject:(id)font 
              forKey:(id)kCTFontAttributeName];
+    
+    CFRelease(font);
+    
     if (attributes.underline) {
 		[attr setObject:[NSNumber numberWithInteger:kCTUnderlineStyleSingle] 
                  forKey:(id)kCTUnderlineStyleAttributeName];
