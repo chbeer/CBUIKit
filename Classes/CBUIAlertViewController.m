@@ -66,10 +66,15 @@
         alertView = [[UIAlertView alloc] initWithTitle:title 
                                                message:message 
                                               delegate:self
-                                     cancelButtonTitle:cancelButton.title 
+                                     cancelButtonTitle:nil
                                      otherButtonTitles:nil];
         for (CBUIAlertViewControllerButton *button in buttons) {
             [alertView addButtonWithTitle:button.title];
+        }
+        
+        if (cancelButton.title) {
+            [alertView addButtonWithTitle:cancelButton.title];
+            alertView.cancelButtonIndex = buttons.count;
         }
     } 
     return alertView;
@@ -86,12 +91,14 @@
 - (void)alertView:(UIAlertView *)inAlertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == inAlertView.cancelButtonIndex) {
-        if (cancelButton) {
+        if (cancelButton.action) {
             [target performSelector:cancelButton.action withObject:self];
         }
     } else {
         CBUIAlertViewControllerButton *button = [buttons objectAtIndex:buttonIndex];
-        [target performSelector:button.action withObject:self];
+        if (button.action) {
+            [target performSelector:button.action withObject:self];
+        }
     }
 
     [self autorelease];
