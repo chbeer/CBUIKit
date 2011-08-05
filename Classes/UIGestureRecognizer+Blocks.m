@@ -7,6 +7,7 @@
 //
 
 #import "UIGestureRecognizer+Blocks.h"
+#import <objc/runtime.h>
 
 static const char *BlockHandlerKey = "CBUIKitBlockHandlerKey";
 
