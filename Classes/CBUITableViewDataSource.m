@@ -14,13 +14,15 @@
 
 @synthesize tableView = _tableView;
 @synthesize delegate = _delegate;
-@synthesize defaultTableViewCellClass;
+
+@synthesize tableViewCell = _tableViewCell;
+@synthesize defaultTableViewCellClass = _defaultTableViewCellClass;
 
 - (id) initWithTableView:(UITableView *) aTableView  {
     if (self = [self init]) {
         [self setTableView: aTableView];
         
-        defaultTableViewCellClass = [UITableViewCell class];
+        _defaultTableViewCellClass = [UITableViewCell class];
         
     }
     return self;
@@ -32,11 +34,14 @@
     [super dealloc];
 }
 
-- (Class) tableView:(UITableView *)tableView cellClassForObject:(id)object {
+- (Class) tableView:(UITableView *)tableView cellClassForObject:(id)object atIndexPath:(NSIndexPath*)indexPath {
+    if ([tableView.delegate respondsToSelector:@selector(tableView:cellClassForObject:atIndexPath:)]) {
+        return [(id<CBUITableViewDataSourceDelegate>)tableView.delegate tableView:tableView cellClassForObject:object atIndexPath:indexPath];
+    }
     if ([tableView.delegate respondsToSelector:@selector(tableView:cellClassForObject:)]) {
         return [(id<CBUITableViewDataSourceDelegate>)tableView.delegate tableView:tableView cellClassForObject:object];
     }
-	return defaultTableViewCellClass;
+	return _defaultTableViewCellClass;
 }
 
 - (id) objectAtIndexPath:(NSIndexPath*)indexPath {
@@ -59,7 +64,7 @@
 	
 	id item = [self objectAtIndexPath:indexPath];
 	
-    Class class = [self tableView:tableView cellClassForObject:item];
+    Class class = [self tableView:tableView cellClassForObject:item atIndexPath:indexPath];
     NSString *identifier = NSStringFromClass(class);
     
     UITableViewCell<CBUITableViewCell> *newCell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -76,7 +81,7 @@
                                           owner:self 
                                         options:nil];
             
-            newCell = tableViewCell;
+            newCell = _tableViewCell;
             
         } else {
         

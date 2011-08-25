@@ -14,6 +14,7 @@
 
 - (void) dataSourceDidFinishLoading:(CBUITableViewDataSource*)dataSource;
 @optional
+- (Class) tableView:(UITableView*)tableView cellClassForObject:(id)object atIndexPath:(NSIndexPath*)indexPath;
 - (Class) tableView:(UITableView*)tableView cellClassForObject:(id)object;
 
 @end
@@ -42,15 +43,13 @@
 	UITableView *_tableView;
 	
     id<CBUITableViewDataSourceDelegate> _delegate;
-    
-    Class defaultTableViewCellClass;
-    IBOutlet UITableViewCell *tableViewCell;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 
 @property (nonatomic, assign) id<CBUITableViewDataSourceDelegate> delegate;
 
+@property (nonatomic, retain) IBOutlet UITableViewCell<CBUITableViewCell> *tableViewCell;
 @property (assign) Class defaultTableViewCellClass;
 
 - (id) initWithTableView: (UITableView *) aTableView;
