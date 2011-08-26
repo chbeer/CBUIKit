@@ -34,14 +34,17 @@
     [super dealloc];
 }
 
+- (Class) tableView:(UITableView *)tableView cellClassForObject:(id)object {
+    if ([tableView.delegate respondsToSelector:@selector(tableView:cellClassForObject:)]) {
+        return [(id<CBUITableViewDataSourceDelegate>)tableView.delegate tableView:tableView cellClassForObject:object];
+    }
+	return nil;
+}
 - (Class) tableView:(UITableView *)tableView cellClassForObject:(id)object atIndexPath:(NSIndexPath*)indexPath {
     if ([tableView.delegate respondsToSelector:@selector(tableView:cellClassForObject:atIndexPath:)]) {
         return [(id<CBUITableViewDataSourceDelegate>)tableView.delegate tableView:tableView cellClassForObject:object atIndexPath:indexPath];
     }
-    if ([tableView.delegate respondsToSelector:@selector(tableView:cellClassForObject:)]) {
-        return [(id<CBUITableViewDataSourceDelegate>)tableView.delegate tableView:tableView cellClassForObject:object];
-    }
-	return _defaultTableViewCellClass;
+	return nil;
 }
 
 - (id) objectAtIndexPath:(NSIndexPath*)indexPath {
@@ -65,6 +68,12 @@
 	id item = [self objectAtIndexPath:indexPath];
 	
     Class class = [self tableView:tableView cellClassForObject:item atIndexPath:indexPath];
+    if (!class) {
+        class = [self tableView:tableView cellClassForObject:item];
+    }    
+    if (!class) {
+        class = _defaultTableViewCellClass;
+    }
     NSString *identifier = NSStringFromClass(class);
     
     UITableViewCell<CBUITableViewCell> *newCell = [tableView dequeueReusableCellWithIdentifier:identifier];
