@@ -46,6 +46,21 @@
     [super dealloc];
 }
 
+#pragma mark Convenience Methods
+
++ (id) alertWithTitle:(NSString*)title message:(NSString*)message
+{
+    id instance = [[self alloc] initWithTitle:title message:message 
+                                       target:nil];
+    [instance show];
+    [instance autorelease];
+    return instance;
+}
++ (id) alertWithMessage:(NSString*)message
+{
+    return [self alertWithTitle:nil message:message];
+}
+
 #pragma mark add buttons
 
 - (void) setCancelButtonTitle:(NSString*)inTitle action:(SEL)action

@@ -26,6 +26,9 @@
 
 @property (nonatomic, assign) UIAlertViewStyle alertViewStyle;
 
++ (id) alertWithTitle:(NSString*)title message:(NSString*)message;
++ (id) alertWithMessage:(NSString*)message;
+
 - (id) initWithTitle:(NSString*)inTitle message:(NSString*)inMessage target:(id)inTarget;
 
 - (void) setCancelButtonTitle:(NSString*)title action:(SEL)action;
