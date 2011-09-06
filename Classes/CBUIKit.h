@@ -20,6 +20,8 @@
 
 #import "CBNSAttributedString+DokuWiki.h"
 
+#import "CBUIActivityView.h"
+
 #import "CBUIActionSheetController.h"
 #import "CBUIAlertViewController.h"
 

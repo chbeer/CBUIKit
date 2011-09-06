@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA0F870D14161E7B0005A176 /* CBUIActivityView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE5532913C351E90011DD4D /* CBUIActivityView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA19FDD912FAECAF000306DB /* CBUIGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDBD12FAECAF000306DB /* CBUIGlobal.m */; };
 		AA19FDDA12FAECAF000306DB /* CBUIGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDBE12FAECAF000306DB /* CBUIGlobal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA19FDDB12FAECAF000306DB /* CBUIImagePagingScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDC012FAECAF000306DB /* CBUIImagePagingScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -286,6 +287,7 @@
 				AAED5FBC13C4511B005DD099 /* CBUIActionSheetController.h in Headers */,
 				AAE77FFE13CAF0E5006D65BE /* UIGestureRecognizer+Blocks.h in Headers */,
 				AA95A73313E9BEF9003B77C4 /* CBUIAlertViewController.h in Headers */,
+				AA0F870D14161E7B0005A176 /* CBUIActivityView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,8 +316,11 @@
 /* Begin PBXProject section */
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "CBUIKit" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -374,7 +379,6 @@
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = /tmp/CBUIKit.dst;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -411,7 +415,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -424,7 +427,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};
 			name = Release;
