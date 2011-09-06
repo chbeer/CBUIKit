@@ -100,7 +100,11 @@
         }
     }
         
-	[newCell setObject:item];
+    if ([newCell respondsToSelector:@selector(setObject:inTableView:)]) {
+        [newCell setObject:item inTableView:tableView];
+    } else {
+        [newCell setObject:item];
+    }
 	
 	return newCell;
 }
