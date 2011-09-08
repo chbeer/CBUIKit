@@ -9,6 +9,8 @@
 #import "CBUIActivityView.h"
 #import <QuartzCore/QuartzCore.h>
 
+#import "CBUIGlobal.h"
+
 @interface CBUIActivityView ()
 
 // these are mutualy exclusive. last set wins.
@@ -37,8 +39,8 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
 - (id)init
 {
     UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-    CGFloat width = 180;
-    CGFloat height = 180;
+    CGFloat width  = CBIsIPad() ? 180 : 160;
+    CGFloat height = CBIsIPad() ? 180 : 160;
     CGRect frame = CGRectIntegral(CGRectMake(keyWindow.bounds.size.width/2 - width/2,
                                              keyWindow.bounds.size.height/2 - height/2,
                                              width, height));
@@ -100,6 +102,8 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
         messageLabel.shadowColor = [UIColor darkGrayColor];
         messageLabel.shadowOffset = CGSizeMake(1,1);
         messageLabel.adjustsFontSizeToFitWidth = YES;
+        messageLabel.lineBreakMode = UILineBreakModeWordWrap;
+        messageLabel.numberOfLines = 2;
         [self addSubview:messageLabel];
         self.messageLabel = messageLabel;
         [messageLabel release];
