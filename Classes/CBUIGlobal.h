@@ -10,13 +10,13 @@
 
 // loglevel: 0 = debug, 1 = info, 2  = warning, 3 = error
 
-/*#ifdef LOGLEVEL >= 0
+#if LOGLEVEL >= 0
 #define DLog(...) NSLog(__VA_ARGS__)
 #else
 #define DLog(...)     /* */
-//#endif
+#endif
 
-#ifdef LOGLEVEL >= 1
+#if LOGLEVEL >= 1
 #define ILog(...) NSLog(__VA_ARGS__)
 #else
 #define ILog(...)     /* */
