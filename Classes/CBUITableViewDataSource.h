@@ -20,7 +20,7 @@
 @end
 
 
-@protocol CBUITableViewDataSource <UITableViewDataSource>
+@protocol CBUITableViewDataSource <UITableViewDataSource,NSObject>
 
 - (id) objectAtIndexPath:(NSIndexPath*)indexPath;
 

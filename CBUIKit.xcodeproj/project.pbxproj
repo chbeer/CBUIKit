@@ -39,6 +39,8 @@
 		AA7DC0B013BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7DC0AE13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m */; };
 		AA95A73313E9BEF9003B77C4 /* CBUIAlertViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA95A73113E9BEF9003B77C4 /* CBUIAlertViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA95A73413E9BEF9003B77C4 /* CBUIAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA95A73213E9BEF9003B77C4 /* CBUIAlertViewController.m */; };
+		AAA0E77414223523000476B6 /* CBUICircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA0E77214223523000476B6 /* CBUICircularProgressView.m */; };
+		AAA0E776142239F8000476B6 /* CBUICircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAA0E77114223523000476B6 /* CBUICircularProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB2EF7513B87DC3004A1C64 /* CBUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB2EF7213B8776A004A1C64 /* CBUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		AAE527F7132668550026317D /* CBUITableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE527F5132668550026317D /* CBUITableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -87,6 +89,8 @@
 		AA7DC0AE13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBNSAttributedString+DokuWiki.m"; sourceTree = "<group>"; };
 		AA95A73113E9BEF9003B77C4 /* CBUIAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIAlertViewController.h; sourceTree = "<group>"; };
 		AA95A73213E9BEF9003B77C4 /* CBUIAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIAlertViewController.m; sourceTree = "<group>"; };
+		AAA0E77114223523000476B6 /* CBUICircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUICircularProgressView.h; sourceTree = "<group>"; };
+		AAA0E77214223523000476B6 /* CBUICircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUICircularProgressView.m; sourceTree = "<group>"; };
 		AAB2EF7213B8776A004A1C64 /* CBUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUIKit.h; sourceTree = "<group>"; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AAE527F5132668550026317D /* CBUITableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUITableViewController.h; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 				AA95A73213E9BEF9003B77C4 /* CBUIAlertViewController.m */,
 				AAE77FE613CAEDE8006D65BE /* UIGestureRecognizer+Blocks.h */,
 				AAE77FE713CAEDE8006D65BE /* UIGestureRecognizer+Blocks.m */,
+				AAA0E77114223523000476B6 /* CBUICircularProgressView.h */,
+				AAA0E77214223523000476B6 /* CBUICircularProgressView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -288,6 +294,7 @@
 				AAE77FFE13CAF0E5006D65BE /* UIGestureRecognizer+Blocks.h in Headers */,
 				AA95A73313E9BEF9003B77C4 /* CBUIAlertViewController.h in Headers */,
 				AA0F870D14161E7B0005A176 /* CBUIActivityView.h in Headers */,
+				AAA0E776142239F8000476B6 /* CBUICircularProgressView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +372,7 @@
 				AAED5FBD13C4511B005DD099 /* CBUIActionSheetController.m in Sources */,
 				AAE77FE913CAEDE8006D65BE /* UIGestureRecognizer+Blocks.m in Sources */,
 				AA95A73413E9BEF9003B77C4 /* CBUIAlertViewController.m in Sources */,
+				AAA0E77414223523000476B6 /* CBUICircularProgressView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

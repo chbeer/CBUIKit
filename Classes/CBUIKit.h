@@ -21,6 +21,7 @@
 #import "CBNSAttributedString+DokuWiki.h"
 
 #import "CBUIActivityView.h"
+#import "CBUICircularProgressView.h"
 
 #import "CBUIActionSheetController.h"
 #import "CBUIAlertViewController.h"
