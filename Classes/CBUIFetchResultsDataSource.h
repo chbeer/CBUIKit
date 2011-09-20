@@ -43,6 +43,8 @@
 
 - (NSIndexPath*) indexPathForObject:(id)object;
 
+- (BOOL) performFetch:(NSError**)error;
+
 @end
 
 

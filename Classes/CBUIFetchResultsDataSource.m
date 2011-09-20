@@ -27,15 +27,9 @@
                                  sectionNameKeyPath:sectionNameKeyPath
                                  cacheName:cacheName];
     _fetchedResultsController.delegate = self;
-    
-    NSError *error;
-    self.loading = YES;
-    if (![_fetchedResultsController performFetch:&error]) {
-        NSLog(@"!! fetchedResultsControlloer performFetch failed: %@", error);
-        self.loading = NO;
-        return nil;
-    }
 
+    self.loading = NO;
+    
 	return self;
 }
 - (id) initWithTableView:(UITableView*)tableView
@@ -71,6 +65,16 @@
     [_fetchedResultsController dealloc], _fetchedResultsController = nil;
     
     [super dealloc];
+}
+
+- (BOOL) performFetch:(NSError**)error
+{
+    self.loading = YES;
+    if (![_fetchedResultsController performFetch:error]) {
+        self.loading = NO;
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark UITableViewDataSource
