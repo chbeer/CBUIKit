@@ -70,11 +70,9 @@
 - (BOOL) performFetch:(NSError**)error
 {
     self.loading = YES;
-    if (![_fetchedResultsController performFetch:error]) {
-        self.loading = NO;
-        return NO;
-    }
-    return YES;
+    BOOL result = [_fetchedResultsController performFetch:error];
+    self.loading = NO;
+    return result;
 }
 
 #pragma mark UITableViewDataSource
