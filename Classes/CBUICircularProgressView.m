@@ -23,23 +23,30 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    CGFloat radius = MIN(self.bounds.size.width, self.bounds.size.height) / 2;
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGFloat radius = round(MIN(self.bounds.size.width - 2, self.bounds.size.height - 2) / 2);
     
     CGFloat endAngle = -M_PI_2 + (self.progress * 2 * M_PI);
     
+    CGPoint center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+
+    
+    [self.backgroundColor setFill];
+    UIBezierPath *circlePath = [UIBezierPath bezierPathWithArcCenter:center radius:radius 
+                                                          startAngle:0.0 endAngle:2 * M_PI clockwise:YES];
+    [circlePath closePath];
+    [circlePath fill];
+    
+    
     [[UIColor blueColor] set];
     UIBezierPath *path = [UIBezierPath bezierPath];
-    [path moveToPoint:self.center];
-    [path addLineToPoint:CGPointMake(self.center.x, 0)];
-    [path addArcWithCenter:self.center radius:radius 
+    [path moveToPoint:center];
+    [path addLineToPoint:CGPointMake(center.x, 0)];
+    [path addArcWithCenter:center radius:radius 
                 startAngle:-M_PI_2 endAngle:endAngle clockwise:YES];
     [path closePath];
     [path fill];
     
-    path = [UIBezierPath bezierPathWithArcCenter:self.center radius:radius 
-                                      startAngle:0.0 endAngle:2 * M_PI clockwise:YES];
-    [path stroke];
+    [circlePath stroke];
 }
 
 #pragma mark -
