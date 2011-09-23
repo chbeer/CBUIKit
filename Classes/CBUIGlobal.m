@@ -7,6 +7,7 @@
 //
 
 #import "CBUIGlobal.h"
+#include <math.h>
 
 BOOL CBIsIPad() {
     return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
@@ -106,3 +107,5 @@ void HideNetworkIndicator()
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     }
 }
+
+inline double CBUIRadians (double degrees) {return degrees * M_PI/180;}

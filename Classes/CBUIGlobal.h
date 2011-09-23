@@ -16,6 +16,8 @@
 #define ILog(...)     /* */
 #endif
 
+extern inline double CBUIRadians (double degrees);
+
 
 BOOL CBIsIPad();
 
