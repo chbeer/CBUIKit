@@ -34,6 +34,10 @@
 
 - (void) setObject:(id)object;
 
+@optional
+
+- (void) setObject:(id)object inTableView:(UITableView*)tableView;
+
 @end
 
 
