@@ -10,6 +10,8 @@
 
 @class CBUIActionSheetControllerButton;
 
+typedef void(^CBUIActionSheetHandler)();
+
 @interface CBUIActionSheetController : NSObject <UIActionSheetDelegate> {
     
     UIActionSheet                       *actionSheet;
@@ -20,17 +22,26 @@
     
     CBUIActionSheetControllerButton     *cancelButton;
     CBUIActionSheetControllerButton     *destructiveButton;
+    
     NSMutableArray                      *buttons;
     
 }
 
 @property (nonatomic, assign) UIActionSheetStyle actionSheetStyle;
 
-- (id) initWithTitle:(NSString*)inTitle target:(id)inTarget;
++ (id) actionSheetControllerWithTitle:(NSString*)title buttonsWithHandlerAndTitle:(id)firstHandler, ...;
++ (id) actionSheetControllerWithTitle:(NSString*)title;
 
-- (void) setCancelButtonTitle:(NSString*)title action:(SEL)action;
-- (void) setDestructiveButtonTitle:(NSString*)title action:(SEL)action;
-- (void) addButtonWithTitle:(NSString*)title action:(SEL)action;
+- (id) applyCancelButtonTitle:(NSString*)title handler:(CBUIActionSheetHandler)handler;
+- (id) applyDestructiveButtonTitle:(NSString*)title handler:(CBUIActionSheetHandler)handler;
+- (id) applyButtonWithTitle:(NSString*)title handler:(CBUIActionSheetHandler)handler;
+
+- (id) initWithTitle:(NSString*)inTitle;
+- (id) initWithTitle:(NSString*)inTitle buttonsWithHandlerAndTitle:(id)firstHandler, ...;
+
+- (void) setCancelButtonTitle:(NSString*)title handler:(CBUIActionSheetHandler)handler;
+- (void) setDestructiveButtonTitle:(NSString*)title handler:(CBUIActionSheetHandler)handler;
+- (void) addButtonWithTitle:(NSString*)title handler:(CBUIActionSheetHandler)handler;
 
 - (void)showFromToolbar:(UIToolbar *)view;
 - (void)showFromTabBar:(UITabBar *)view;
