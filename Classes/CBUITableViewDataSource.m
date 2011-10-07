@@ -202,6 +202,7 @@
 	if (_sections) {
 		return [[_items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	} else {
+        if (indexPath.row >= _items.count) return nil;
 		return [_items objectAtIndex:indexPath.row];
 	}
 }
