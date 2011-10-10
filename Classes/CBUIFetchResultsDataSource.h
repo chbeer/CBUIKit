@@ -11,21 +11,11 @@
 
 #import "CBUITableViewDataSource.h"
 
-@interface CBUIFetchResultsDataSource : CBUITableViewDataSource <NSFetchedResultsControllerDelegate> {
-
-	NSFetchedResultsController  *_fetchedResultsController;
-    
-    BOOL                        _userDrivenChange;
-    
-    BOOL                        _loading;
-
-}
+@interface CBUIFetchResultsDataSource : CBUITableViewDataSource <NSFetchedResultsControllerDelegate> 
 
 @property (readonly) NSFetchedResultsController *fetchedResultsController;
-
-@property (nonatomic, assign, getter=isUserDrivenChange) BOOL userDrivenChange;
-
 @property (nonatomic, assign, getter=isLoading) BOOL loading;
+@property (nonatomic, retain) NSIndexPath *ignoreForUpdateIndexPath;
 
 - (id) initWithTableView:(UITableView*)tableView
             fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context 

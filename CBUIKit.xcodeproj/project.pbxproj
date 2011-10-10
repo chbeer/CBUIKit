@@ -33,6 +33,8 @@
 		AA19FDEF12FAECAF000306DB /* CBUIDisclosureTriangle.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDD712FAECAF000306DB /* CBUIDisclosureTriangle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA19FDF012FAECAF000306DB /* CBUIDisclosureTriangle.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDD812FAECAF000306DB /* CBUIDisclosureTriangle.m */; };
 		AA19FDF812FAED4B000306DB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA19FDF712FAED4B000306DB /* CoreData.framework */; };
+		AA7A215D1442F481000FD1A1 /* SafeFetchedResultsController.h in Sources */ = {isa = PBXBuildFile; fileRef = AA7A215B1442F481000FD1A1 /* SafeFetchedResultsController.h */; };
+		AA7A215E1442F481000FD1A1 /* SafeFetchedResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7A215C1442F481000FD1A1 /* SafeFetchedResultsController.m */; };
 		AA7DC0A713BA0B350069CC3A /* CBUIAttributedLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7DC0A513BA0B350069CC3A /* CBUIAttributedLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA7DC0A813BA0B350069CC3A /* CBUIAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7DC0A613BA0B350069CC3A /* CBUIAttributedLabel.m */; };
 		AA7DC0AF13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7DC0AD13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -83,6 +85,8 @@
 		AA19FDD812FAECAF000306DB /* CBUIDisclosureTriangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIDisclosureTriangle.m; sourceTree = "<group>"; };
 		AA19FDF712FAED4B000306DB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		AA747D9E0F9514B9006C5449 /* CBUIKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIKit_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		AA7A215B1442F481000FD1A1 /* SafeFetchedResultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = SafeFetchedResultsController.h; sourceTree = "<group>"; };
+		AA7A215C1442F481000FD1A1 /* SafeFetchedResultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeFetchedResultsController.m; sourceTree = "<group>"; };
 		AA7DC0A513BA0B350069CC3A /* CBUIAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIAttributedLabel.h; sourceTree = "<group>"; };
 		AA7DC0A613BA0B350069CC3A /* CBUIAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIAttributedLabel.m; sourceTree = "<group>"; };
 		AA7DC0AD13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBNSAttributedString+DokuWiki.h"; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 				AA19FDBD12FAECAF000306DB /* CBUIGlobal.m */,
 				AAE528001326688E0026317D /* CBUIViewController.h */,
 				AAE528011326688E0026317D /* CBUIViewController.m */,
+				AA7A21601442F487000FD1A1 /* Fixes */,
 				AA19FDCB12FAECAF000306DB /* TableView */,
 				AA19FDC412FAECAF000306DB /* Grid View */,
 				AA19FDBF12FAECAF000306DB /* Image */,
@@ -234,6 +239,15 @@
 				AA19FDCE12FAECAF000306DB /* CBUITableViewCellFactory.m */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		AA7A21601442F487000FD1A1 /* Fixes */ = {
+			isa = PBXGroup;
+			children = (
+				AA7A215B1442F481000FD1A1 /* SafeFetchedResultsController.h */,
+				AA7A215C1442F481000FD1A1 /* SafeFetchedResultsController.m */,
+			);
+			name = Fixes;
 			sourceTree = "<group>";
 		};
 		AA7DC0A413BA0AF60069CC3A /* Label */ = {
@@ -373,6 +387,8 @@
 				AAE77FE913CAEDE8006D65BE /* UIGestureRecognizer+Blocks.m in Sources */,
 				AA95A73413E9BEF9003B77C4 /* CBUIAlertViewController.m in Sources */,
 				AAA0E77414223523000476B6 /* CBUICircularProgressView.m in Sources */,
+				AA7A215D1442F481000FD1A1 /* SafeFetchedResultsController.h in Sources */,
+				AA7A215E1442F481000FD1A1 /* SafeFetchedResultsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
