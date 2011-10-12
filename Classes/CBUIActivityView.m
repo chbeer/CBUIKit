@@ -52,6 +52,14 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
                                              selector:@selector(deviceOrientationDidChange:)
                                                  name:UIDeviceOrientationDidChangeNotification
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShowNotification:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHideNotification:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
     
     self.opaque = NO;
     self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
@@ -295,6 +303,40 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
 - (void) deviceOrientationDidChange:(NSNotification*)note
 {
     [self rotateToDeviceOrientation:YES];
+}
+
+#pragma mark - Keyboard
+
+- (void) keyboardDidShowNotification:(NSNotification*)note
+{
+    NSDictionary* info = [note userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    CGSize windowSize = keyWindow.bounds.size;
+    windowSize.height -= kbSize.height;
+    
+    CGFloat width  = self.frame.size.width;
+    CGFloat height = self.frame.size.height;
+    
+    CGRect frame = CGRectIntegral(CGRectMake(windowSize.width / 2  - width / 2,
+                                             windowSize.height / 2 - height / 2,
+                                             width, height));
+    self.frame = frame;
+
+}
+- (void) keyboardWillHideNotification:(NSNotification*)note
+{
+    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    CGSize windowSize = keyWindow.bounds.size;
+    
+    CGFloat width  = self.frame.size.width;
+    CGFloat height = self.frame.size.height;
+    
+    CGRect frame = CGRectIntegral(CGRectMake(windowSize.width / 2  - width / 2,
+                                             windowSize.height / 2 - height / 2,
+                                             width, height));
+    self.frame = frame;
 }
 
 @end
