@@ -33,7 +33,6 @@
 		AA19FDEF12FAECAF000306DB /* CBUIDisclosureTriangle.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDD712FAECAF000306DB /* CBUIDisclosureTriangle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA19FDF012FAECAF000306DB /* CBUIDisclosureTriangle.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDD812FAECAF000306DB /* CBUIDisclosureTriangle.m */; };
 		AA19FDF812FAED4B000306DB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA19FDF712FAED4B000306DB /* CoreData.framework */; };
-		AA7A215D1442F481000FD1A1 /* SafeFetchedResultsController.h in Sources */ = {isa = PBXBuildFile; fileRef = AA7A215B1442F481000FD1A1 /* SafeFetchedResultsController.h */; };
 		AA7A215E1442F481000FD1A1 /* SafeFetchedResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7A215C1442F481000FD1A1 /* SafeFetchedResultsController.m */; };
 		AA7DC0A713BA0B350069CC3A /* CBUIAttributedLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7DC0A513BA0B350069CC3A /* CBUIAttributedLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA7DC0A813BA0B350069CC3A /* CBUIAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7DC0A613BA0B350069CC3A /* CBUIAttributedLabel.m */; };
@@ -387,7 +386,6 @@
 				AAE77FE913CAEDE8006D65BE /* UIGestureRecognizer+Blocks.m in Sources */,
 				AA95A73413E9BEF9003B77C4 /* CBUIAlertViewController.m in Sources */,
 				AAA0E77414223523000476B6 /* CBUICircularProgressView.m in Sources */,
-				AA7A215D1442F481000FD1A1 /* SafeFetchedResultsController.h in Sources */,
 				AA7A215E1442F481000FD1A1 /* SafeFetchedResultsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,9 +405,8 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CBUIKit_Prefix.pch;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				PRODUCT_NAME = CBUIKit;
-				PUBLIC_HEADERS_FOLDER_PATH = ../../public_headers/CBUIKit;
+				PUBLIC_HEADERS_FOLDER_PATH = "../../public_headers/$(PRODUCT_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -423,9 +420,8 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CBUIKit_Prefix.pch;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				PRODUCT_NAME = CBUIKit;
-				PUBLIC_HEADERS_FOLDER_PATH = ../../public_headers/CBUIKit;
+				PUBLIC_HEADERS_FOLDER_PATH = "../../public_headers/$(PRODUCT_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

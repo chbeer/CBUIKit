@@ -1,7 +1,5 @@
 #import "SafeFetchedResultsController.h"
 
-#define DEBUG NO
-
 // The NSFetchedResultsController class has one major flaw.
 // It will incorrectly flag moved objects as simple updates in the face or inserts or deletions.
 // 
@@ -165,10 +163,9 @@
 		[dictionary setObject:indexSet forKey:sectionNumber];
 	}
 	
-	if (DEBUG)
-	{
-		NSLog(@"Adding index(%lu) to section(%@)", indexPath.row, sectionNumber);
-	}
+#ifdef DEBUG
+		NSLog(@"Adding index(%d) to section(%@)", indexPath.row, sectionNumber);
+#endif
 	
 	[indexSet addIndex:indexPath.row];
 }
@@ -274,10 +271,9 @@
 		
 		for (SafeObjectChange *objectChange in updatedObjects)
 		{
-			if (DEBUG)
-			{
+#ifdef DEBUG
 				NSLog(@"Processing %@", objectChange);
-			}
+#endif
 			
 			if (objectChange.newIndexPath == nil)
 			{
@@ -314,14 +310,13 @@
 				// If the update might actually be a move,
 				// then alter the objectChange to reflect the possibility.
 				
-				if (DEBUG)
-				{
+#ifdef DEBUG
 					NSLog(@"numInsertedSections: %lu", numInsertedSections);
 					NSLog(@"numDeletedSections: %lu", numDeletedSections);
 					
 					NSLog(@"numInsertedObjects: %lu", numInsertedObjects);
 					NSLog(@"numDeletedObjects: %lu", numDeletedObjects);
-				}
+#endif
 				
 				numChangedSections = numInsertedSections + numDeletedSections;
 				numChangedObjects = numInsertedObjects + numDeletedObjects;
@@ -433,8 +428,7 @@
 
 - (void)processChanges
 {
-	if (DEBUG)
-	{
+#ifdef DEBUG
 		NSLog(@"SafeFetchedResultsController: processChanges");
 		
 		for (SafeSectionChange *sectionChange in insertedSections)
@@ -462,7 +456,7 @@
 		{
 			NSLog(@"%@", objectChange);
 		}
-	}
+#endif
 	
 	if ([self hasUnsafeChanges])
 	{
