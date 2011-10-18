@@ -79,8 +79,11 @@
 - (BOOL) performFetch:(NSError**)error
 {
     self.loading = YES;
-    BOOL result = [_fetchedResultsController performFetch:error];
-    self.loading = NO;
+    __block BOOL result = NO;
+    [_fetchedResultsController.managedObjectContext performBlockAndWait:^{
+        result = [_fetchedResultsController performFetch:error];
+        self.loading = NO;
+    }];
     return result;
 }
 
