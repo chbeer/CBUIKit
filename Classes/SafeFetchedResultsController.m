@@ -311,11 +311,11 @@
 				// then alter the objectChange to reflect the possibility.
 				
 #ifdef DEBUG
-					NSLog(@"numInsertedSections: %lu", numInsertedSections);
-					NSLog(@"numDeletedSections: %lu", numDeletedSections);
+					NSLog(@"numInsertedSections: %u", numInsertedSections);
+					NSLog(@"numDeletedSections: %u", numDeletedSections);
 					
-					NSLog(@"numInsertedObjects: %lu", numInsertedObjects);
-					NSLog(@"numDeletedObjects: %lu", numDeletedObjects);
+					NSLog(@"numInsertedObjects: %u", numInsertedObjects);
+					NSLog(@"numDeletedObjects: %u", numDeletedObjects);
 #endif
 				
 				numChangedSections = numInsertedSections + numDeletedSections;
