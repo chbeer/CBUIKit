@@ -27,3 +27,6 @@
 #import "CBUIAlertViewController.h"
 
 #import "UIGestureRecognizer+Blocks.h"
+
+
+#import "NSObject+CBBinding.h"
