@@ -52,8 +52,8 @@
 {
     id instance = [[self alloc] initWithTitle:title message:message 
                                        target:nil];
+    [instance addButtonWithTitle:NSLocalizedString(@"OK", @"")];
     [instance show];
-    [instance autorelease];
     return instance;
 }
 + (id) alertWithMessage:(NSString*)message
