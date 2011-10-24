@@ -8,16 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class CBUITableViewDataSource;
-
-@protocol CBUITableViewDataSourceDelegate
-
-- (void) dataSourceDidFinishLoading:(CBUITableViewDataSource*)dataSource;
-@optional
-- (Class) tableView:(UITableView*)tableView cellClassForObject:(id)object atIndexPath:(NSIndexPath*)indexPath;
-- (Class) tableView:(UITableView*)tableView cellClassForObject:(id)object;
-
-@end
+@class CBUITableViewDataSource, CBUITableViewCell;
 
 
 @protocol CBUITableViewDataSource <UITableViewDataSource,NSObject>
@@ -41,6 +32,17 @@
 @end
 
 
+@protocol CBUITableViewDataSourceDelegate <NSObject>
+
+@optional
+- (void) dataSourceDidFinishLoading:(CBUITableViewDataSource*)dataSource;
+
+- (Class) tableView:(UITableView*)tableView cellClassForObject:(id)object atIndexPath:(NSIndexPath*)indexPath;
+- (Class) tableView:(UITableView*)tableView cellClassForObject:(id)object;
+
+- (void) dataSource:(CBUITableViewDataSource*)dataSource didCreateCell:(UITableViewCell<CBUITableViewCell>*)cell forTableView:(UITableView*)tableView;
+
+@end
 
 
 @interface CBUITableViewDataSource : NSObject <CBUITableViewDataSource,UITableViewDataSource> {
