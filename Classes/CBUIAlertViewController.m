@@ -52,7 +52,7 @@
 {
     id instance = [[self alloc] initWithTitle:title message:message 
                                        target:nil];
-    [instance addButtonWithTitle:NSLocalizedString(@"OK", @"")];
+    [instance addButtonWithTitle:NSLocalizedString(@"OK", @"") action:nil];
     [instance show];
     return instance;
 }
