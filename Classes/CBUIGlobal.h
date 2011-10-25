@@ -43,3 +43,7 @@ CGPathRef CreateRoundedRectPath(CGRect rect, CGFloat radius);
 
 void ShowNetworkIndicator();
 void HideNetworkIndicator();
+
+
+BOOL CBUIMinimumVersion(float version);
+

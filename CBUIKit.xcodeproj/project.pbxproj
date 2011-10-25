@@ -33,6 +33,7 @@
 		AA19FDEF12FAECAF000306DB /* CBUIDisclosureTriangle.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDD712FAECAF000306DB /* CBUIDisclosureTriangle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA19FDF012FAECAF000306DB /* CBUIDisclosureTriangle.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDD812FAECAF000306DB /* CBUIDisclosureTriangle.m */; };
 		AA19FDF812FAED4B000306DB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA19FDF712FAED4B000306DB /* CoreData.framework */; };
+		AA78537F1456A92800598FEF /* SafeFetchedResultsController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7A215B1442F481000FD1A1 /* SafeFetchedResultsController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA7A215E1442F481000FD1A1 /* SafeFetchedResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7A215C1442F481000FD1A1 /* SafeFetchedResultsController.m */; };
 		AA7DC0A713BA0B350069CC3A /* CBUIAttributedLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7DC0A513BA0B350069CC3A /* CBUIAttributedLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA7DC0A813BA0B350069CC3A /* CBUIAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7DC0A613BA0B350069CC3A /* CBUIAttributedLabel.m */; };
@@ -313,6 +314,7 @@
 				AAED5FBC13C4511B005DD099 /* CBUIActionSheetController.h in Headers */,
 				AAE77FFE13CAF0E5006D65BE /* UIGestureRecognizer+Blocks.h in Headers */,
 				AA95A73313E9BEF9003B77C4 /* CBUIAlertViewController.h in Headers */,
+				AA78537F1456A92800598FEF /* SafeFetchedResultsController.h in Headers */,
 				AA0F870D14161E7B0005A176 /* CBUIActivityView.h in Headers */,
 				AAA0E776142239F8000476B6 /* CBUICircularProgressView.h in Headers */,
 			);

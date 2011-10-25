@@ -109,3 +109,10 @@ void HideNetworkIndicator()
 }
 
 inline double CBUIRadians (double degrees) {return degrees * M_PI/180;}
+
+
+BOOL CBUIMinimumVersion(float version)
+{
+    float iOSVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+    return (iOSVersion >= version);
+}

@@ -163,9 +163,7 @@
 		[dictionary setObject:indexSet forKey:sectionNumber];
 	}
 	
-#ifdef DEBUG
-		NSLog(@"Adding index(%d) to section(%@)", indexPath.row, sectionNumber);
-#endif
+    DLog(@"Adding index(%d) to section(%@)", indexPath.row, sectionNumber);
 	
 	[indexSet addIndex:indexPath.row];
 }
@@ -271,9 +269,7 @@
 		
 		for (SafeObjectChange *objectChange in updatedObjects)
 		{
-#ifdef DEBUG
-				NSLog(@"Processing %@", objectChange);
-#endif
+            DLog(@"Processing %@", objectChange);
 			
 			if (objectChange.newIndexPath == nil)
 			{
@@ -310,14 +306,13 @@
 				// If the update might actually be a move,
 				// then alter the objectChange to reflect the possibility.
 				
-#ifdef DEBUG
-					NSLog(@"numInsertedSections: %u", numInsertedSections);
-					NSLog(@"numDeletedSections: %u", numDeletedSections);
+
+                DLog(@"numInsertedSections: %u", numInsertedSections);
+				DLog(@"numDeletedSections: %u", numDeletedSections);
 					
-					NSLog(@"numInsertedObjects: %u", numInsertedObjects);
-					NSLog(@"numDeletedObjects: %u", numDeletedObjects);
-#endif
-				
+				DLog(@"numInsertedObjects: %u", numInsertedObjects);
+				DLog(@"numDeletedObjects: %u", numDeletedObjects);
+			
 				numChangedSections = numInsertedSections + numDeletedSections;
 				numChangedObjects = numInsertedObjects + numDeletedObjects;
 				
@@ -429,32 +424,32 @@
 - (void)processChanges
 {
 #ifdef DEBUG
-		NSLog(@"SafeFetchedResultsController: processChanges");
+		DLog(@"SafeFetchedResultsController: processChanges");
 		
 		for (SafeSectionChange *sectionChange in insertedSections)
 		{
-			NSLog(@"%@", sectionChange);
+			DLog(@"%@", sectionChange);
 		}
 		for (SafeSectionChange *sectionChange in deletedSections)
 		{
-			NSLog(@"%@", sectionChange);
+			DLog(@"%@", sectionChange);
 		}
 		
 		for (SafeObjectChange *objectChange in insertedObjects)
 		{
-			NSLog(@"%@", objectChange);
+			DLog(@"%@", objectChange);
 		}
 		for (SafeObjectChange *objectChange in deletedObjects)
 		{
-			NSLog(@"%@", objectChange);
+			DLog(@"%@", objectChange);
 		}
 		for (SafeObjectChange *objectChange in updatedObjects)
 		{
-			NSLog(@"%@", objectChange);
+			DLog(@"%@", objectChange);
 		}
 		for (SafeObjectChange *objectChange in movedObjects)
 		{
-			NSLog(@"%@", objectChange);
+			DLog(@"%@", objectChange);
 		}
 #endif
 	

@@ -8,9 +8,8 @@
 
 #import "CBUIFetchResultsDataSource.h"
 
-#import "SafeFetchedResultsController.h"
+#import "CBUIGlobal.h"
 
-#define CRAPPYFETCHRESULTSCONTROLLERHACK 0
 #define DEBUG
 
 #define StringFromIndexPath(indexPath) [NSString stringWithFormat:@"[%lu, %lu]", indexPath.section, indexPath.row]
@@ -29,11 +28,19 @@
 	self = [super initWithTableView:tableView];
     if (!self) return nil;
     
-    _fetchedResultsController = [[SafeFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                                                      managedObjectContext:context
-                                                                        sectionNameKeyPath:sectionNameKeyPath
-                                                                                 cacheName:cacheName];
-    self.fetchedResultsController.delegate = self;
+    if (CBUIMinimumVersion(4.0)) {
+        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                        managedObjectContext:context
+                                                                          sectionNameKeyPath:sectionNameKeyPath
+                                                                                   cacheName:cacheName];
+        self.fetchedResultsController.delegate = self;    
+    } else {
+        _fetchedResultsController = [[SafeFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                          managedObjectContext:context
+                                                                            sectionNameKeyPath:sectionNameKeyPath
+                                                                                     cacheName:cacheName];
+        [(SafeFetchedResultsController*)self.fetchedResultsController setSafeDelegate:self];
+    }
 
     self.loading = NO;
     
@@ -119,15 +126,6 @@
 }
 
 #pragma mark NSFetchedResultsControllerDelegate
-
-#if CRAPPYFETCHRESULTSCONTROLLERHACK // hack because of crappy NSFetchedResultsControllerDelegate
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    self.loading = NO;
-    [_tableView reloadData];
-}
-
-#else
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
@@ -236,7 +234,6 @@
 	
 	[self.tableView reloadData];
 }
-#endif
 
 #pragma mark CBUITableViewDataSource
 
@@ -250,6 +247,50 @@
 - (NSIndexPath*) indexPathForObject:(id)object
 {
     return [self.fetchedResultsController indexPathForObject:object];
+}
+
+#pragma mark -
+
+// ONLY WORKS WITH ONE SECTION!!
+- (BOOL) performFetchAndUpdateTableView:(NSError **)error
+{
+    NSArray *objectsBefore = [self.fetchedResultsController.fetchedObjects retain];
+    
+    BOOL result = [self.fetchedResultsController performFetch:error];
+    if (result) {
+        
+        NSArray *objectsAfter = self.fetchedResultsController.fetchedObjects;
+        
+        NSMutableArray *insertedObjects = [[objectsAfter mutableCopy] autorelease];
+        [insertedObjects removeObjectsInArray:objectsBefore];
+        
+        NSMutableArray *removedObjects = [[objectsBefore mutableCopy] autorelease];
+        [removedObjects removeObjectsInArray:objectsAfter];
+        
+        NSMutableArray *insertedIndexPaths = [NSMutableArray arrayWithCapacity:insertedObjects.count];
+        [insertedObjects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [insertedIndexPaths addObject:[NSIndexPath indexPathForRow:[objectsAfter indexOfObject:obj] inSection:0]];
+        }];
+        
+        NSMutableArray *removedIndexPaths = [NSMutableArray arrayWithCapacity:removedObjects.count];
+        [removedObjects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [removedIndexPaths addObject:[NSIndexPath indexPathForRow:[objectsBefore indexOfObject:obj] inSection:0]];
+        }];
+        
+        if (insertedIndexPaths.count > 0 || removedIndexPaths.count > 0) {
+            [_tableView beginUpdates];
+            
+            [_tableView insertRowsAtIndexPaths:insertedIndexPaths 
+                              withRowAnimation:UITableViewRowAnimationFade];
+            [_tableView deleteRowsAtIndexPaths:removedIndexPaths 
+                              withRowAnimation:UITableViewRowAnimationFade];
+            
+            [_tableView endUpdates];
+        }
+    }
+    
+    [objectsBefore release];
+    return result;
 }
 
 @end
