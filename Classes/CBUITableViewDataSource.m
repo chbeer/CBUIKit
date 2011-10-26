@@ -106,8 +106,8 @@
         [newCell setObject:item];
     }
     
-    if ([_delegate respondsToSelector:@selector(dataSource:didCreateCell:forTableView:)]) {
-        [_delegate dataSource:self didCreateCell:newCell forTableView:tableView];
+    if ([_delegate respondsToSelector:@selector(dataSource:didCreateCell:forTableView:atIndexPath:)]) {
+        [_delegate dataSource:self didCreateCell:newCell forTableView:tableView atIndexPath:indexPath];
     }
 	
 	return newCell;

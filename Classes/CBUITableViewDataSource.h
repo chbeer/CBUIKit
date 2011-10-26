@@ -40,7 +40,7 @@
 - (Class) tableView:(UITableView*)tableView cellClassForObject:(id)object atIndexPath:(NSIndexPath*)indexPath;
 - (Class) tableView:(UITableView*)tableView cellClassForObject:(id)object;
 
-- (void) dataSource:(CBUITableViewDataSource*)dataSource didCreateCell:(UITableViewCell<CBUITableViewCell>*)cell forTableView:(UITableView*)tableView;
+- (void) dataSource:(CBUITableViewDataSource*)dataSource didCreateCell:(UITableViewCell<CBUITableViewCell>*)cell forTableView:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath;
 
 @end
 
