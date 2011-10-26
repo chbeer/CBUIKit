@@ -132,6 +132,7 @@ static char     * const CBBINDING_OBSERVER          = "__CBBINDING_OBSERVER";
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     id newValue = [change objectForKey:NSKeyValueChangeNewKey];
+    if ([newValue isKindOfClass:[NSNull class]]) newValue = nil;
     
     id obj;
     NSString *path;
