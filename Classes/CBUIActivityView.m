@@ -309,11 +309,24 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
 
 - (void) keyboardDidShowNotification:(NSNotification*)note
 {
-    NSDictionary* info = [note userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
     UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+
+    NSDictionary* info = [note userInfo];
+    
+    CGRect kbRect = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    CGSize kbSize = kbRect.size;
+    
     CGSize windowSize = keyWindow.bounds.size;
+    if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+        CGFloat t = kbSize.width;
+        kbSize.width = kbSize.height;
+        kbSize.height = t;
+        
+        t = windowSize.width;
+        windowSize.width = windowSize.height;
+        windowSize.height = t;
+    }
+    
     windowSize.height -= kbSize.height;
     
     CGFloat width  = self.frame.size.width;
@@ -322,7 +335,9 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
     CGRect frame = CGRectIntegral(CGRectMake(windowSize.width / 2  - width / 2,
                                              windowSize.height / 2 - height / 2,
                                              width, height));
-    self.frame = frame;
+    [UIView animateWithDuration:0.1 animations:^{
+        self.frame = frame;
+    }];
 
 }
 - (void) keyboardWillHideNotification:(NSNotification*)note
@@ -336,7 +351,10 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
     CGRect frame = CGRectIntegral(CGRectMake(windowSize.width / 2  - width / 2,
                                              windowSize.height / 2 - height / 2,
                                              width, height));
-    self.frame = frame;
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        self.frame = frame;
+    }];
 }
 
 @end
