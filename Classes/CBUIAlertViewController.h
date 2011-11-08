@@ -9,14 +9,14 @@
 
 @class CBUIAlertViewControllerButton;
 
+typedef void(^CBUIAlertViewHandler)(UIAlertView *alertView, NSUInteger buttonIndex);
+
 @interface CBUIAlertViewController : NSObject <UIAlertViewDelegate> {
     
     UIAlertView                         *alertView;
     
     NSString                            *title;
     NSString                            *message;
-    
-    id                                  target;
     
     CBUIAlertViewControllerButton       *cancelButton;
     CBUIAlertViewControllerButton       *destructiveButton;
@@ -29,10 +29,11 @@
 + (id) alertWithTitle:(NSString*)title message:(NSString*)message;
 + (id) alertWithMessage:(NSString*)message;
 
-- (id) initWithTitle:(NSString*)inTitle message:(NSString*)inMessage target:(id)inTarget;
+- (id) initWithTitle:(NSString*)inTitle message:(NSString*)inMessage;
+- (id) initWithTitle:(NSString*)inTitle message:(NSString*)inMessage buttonsWithHandlerAndTitle:(id)firstHandler, ...;
 
-- (void) setCancelButtonTitle:(NSString*)title action:(SEL)action;
-- (void) addButtonWithTitle:(NSString*)title action:(SEL)action;
+- (void) setCancelButtonTitle:(NSString*)title handler:(CBUIAlertViewHandler)handler;
+- (void) addButtonWithTitle:(NSString*)title handler:(CBUIAlertViewHandler)handler;
 
 - (void) show;
 

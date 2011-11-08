@@ -9,9 +9,9 @@
 #import "CBUIAlertViewController.h"
 
 @interface CBUIAlertViewControllerButton : NSObject
-@property (nonatomic, assign) SEL action;
+@property (nonatomic, copy) CBUIAlertViewHandler handler;
 @property (nonatomic, copy) NSString *title;
-+ (id) buttonWithTitle:(NSString*)title action:(SEL)action;
++ (id) buttonWithTitle:(NSString*)title handler:(CBUIAlertViewHandler)handler;
 @end
 
 
@@ -19,7 +19,7 @@
 
 @synthesize alertViewStyle;
 
-- (id) initWithTitle:(NSString*)inTitle message:(NSString*)inMessage target:(id)inTarget 
+- (id) initWithTitle:(NSString*)inTitle message:(NSString*)inMessage
 {
     self = [super init];
     if (!self) return nil;
@@ -27,9 +27,30 @@
     title   = [inTitle copy];
     message = [inMessage copy];
     
-    target  = inTarget;
-    
     buttons = [[NSMutableArray alloc] init];
+    
+    return self;
+}
+- (id) initWithTitle:(NSString*)inTitle message:(NSString*)inMessage buttonsWithHandlerAndTitle:(id)firstHandler, ...
+{
+    self = [self initWithTitle:inTitle message:inMessage];
+    if (!self) return nil;
+
+    if (firstHandler) {
+        va_list args;
+        va_start(args, firstHandler);
+        id obj;
+        CBUIAlertViewHandler handler = firstHandler;
+        while ((obj = va_arg(args, NSObject *))) {
+            if (handler) {
+                [buttons addObject:[CBUIAlertViewControllerButton buttonWithTitle:obj handler:handler]];
+                handler = nil;
+            } else {
+                handler = obj;
+            }
+        }
+        va_end(args);
+    }
     
     return self;
 }
@@ -50,9 +71,8 @@
 
 + (id) alertWithTitle:(NSString*)title message:(NSString*)message
 {
-    id instance = [[self alloc] initWithTitle:title message:message 
-                                       target:nil];
-    [instance addButtonWithTitle:NSLocalizedString(@"OK", @"") action:nil];
+    id instance = [[self alloc] initWithTitle:title message:message];
+    [instance addButtonWithTitle:NSLocalizedString(@"OK", @"") handler:nil];
     [instance show];
     return instance;
 }
@@ -63,14 +83,14 @@
 
 #pragma mark add buttons
 
-- (void) setCancelButtonTitle:(NSString*)inTitle action:(SEL)action
+- (void) setCancelButtonTitle:(NSString*)inTitle handler:(CBUIAlertViewHandler)handler
 {
     [cancelButton release];
-    cancelButton = [[CBUIAlertViewControllerButton buttonWithTitle:inTitle action:action] retain];
+    cancelButton = [[CBUIAlertViewControllerButton buttonWithTitle:inTitle handler:handler] retain];
 }
-- (void) addButtonWithTitle:(NSString*)inTitle action:(SEL)action
+- (void) addButtonWithTitle:(NSString*)inTitle handler:(CBUIAlertViewHandler)handler
 {
-    [buttons addObject:[CBUIAlertViewControllerButton buttonWithTitle:inTitle action:action]];
+    [buttons addObject:[CBUIAlertViewControllerButton buttonWithTitle:inTitle handler:handler]];
 }
 
 #pragma mark Show
@@ -106,13 +126,13 @@
 - (void)alertView:(UIAlertView *)inAlertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == inAlertView.cancelButtonIndex) {
-        if (cancelButton.action) {
-            [target performSelector:cancelButton.action withObject:self];
+        if (cancelButton.handler) {
+            cancelButton.handler(inAlertView, buttonIndex);
         }
     } else {
         CBUIAlertViewControllerButton *button = [buttons objectAtIndex:buttonIndex];
-        if (button.action) {
-            [target performSelector:button.action withObject:self];
+        if (button.handler) {
+            button.handler(inAlertView, buttonIndex);
         }
     }
 
@@ -123,16 +143,17 @@
 
 
 @implementation CBUIAlertViewControllerButton
-@synthesize action, title;
-+ (id) buttonWithTitle:(NSString*)title action:(SEL)action
+@synthesize title = _title, handler = _handler;
++ (id) buttonWithTitle:(NSString*)title handler:(CBUIAlertViewHandler)handler
 {
     CBUIAlertViewControllerButton *button = [[CBUIAlertViewControllerButton alloc] init];
     button.title = title;
-    button.action = action;
+    button.handler = handler;
     return [button autorelease];
 }
 - (void)dealloc {
-    [title release], title = nil;
+    [_title release], _title = nil;
+    [_handler release], _handler = nil;
     [super dealloc];
 }
 @end
