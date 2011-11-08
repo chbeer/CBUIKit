@@ -18,8 +18,6 @@ typedef void(^CBUIActionSheetHandler)();
     
     NSString                            *title;
     
-    id                                  target;
-    
     CBUIActionSheetControllerButton     *cancelButton;
     CBUIActionSheetControllerButton     *destructiveButton;
     
@@ -29,7 +27,7 @@ typedef void(^CBUIActionSheetHandler)();
 
 @property (nonatomic, assign) UIActionSheetStyle actionSheetStyle;
 
-+ (id) actionSheetControllerWithTitle:(NSString*)title buttonsWithHandlerAndTitle:(id)firstHandler, ...;
++ (id) actionSheetControllerWithTitle:(NSString*)title buttonsWithHandlerAndTitle:(CBUIActionSheetHandler)firstHandler, ...;
 + (id) actionSheetControllerWithTitle:(NSString*)title;
 
 - (id) applyCancelButtonTitle:(NSString*)title handler:(CBUIActionSheetHandler)handler;

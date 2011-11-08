@@ -31,7 +31,7 @@
     return self;
 }
 
-- (id) initWithTitle:(NSString*)inTitle buttonsWithHandlerAndTitle:(id)firstHandler, ...
+- (id) initWithTitle:(NSString*)inTitle buttonsWithHandlerAndTitle:(CBUIActionSheetHandler)firstHandler, ...
 {
     self = [self initWithTitle:inTitle];
     if (!self) return nil;
