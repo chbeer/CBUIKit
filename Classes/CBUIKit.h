@@ -9,6 +9,7 @@
 #import "CBUIGlobal.h"
 
 #import "CBUIViewController.h"
+#import "CBUITableViewController.h"
 
 #import "CBUIGridView.h"
 #import "CBUIGridViewDataSource.h"
@@ -28,5 +29,6 @@
 
 #import "UIGestureRecognizer+Blocks.h"
 
-
 #import "NSObject+CBBinding.h"
+
+#import "CBUIVerticalLayoutView.h"

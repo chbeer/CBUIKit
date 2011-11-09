@@ -43,6 +43,9 @@
 		AA7DC0A813BA0B350069CC3A /* CBUIAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7DC0A613BA0B350069CC3A /* CBUIAttributedLabel.m */; };
 		AA7DC0AF13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7DC0AD13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA7DC0B013BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7DC0AE13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m */; };
+		AA8B7AB7146A638B009940AE /* CBUIVerticalLayoutView.h in Sources */ = {isa = PBXBuildFile; fileRef = AA8B7AB5146A638B009940AE /* CBUIVerticalLayoutView.h */; };
+		AA8B7AB8146A638B009940AE /* CBUIVerticalLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8B7AB6146A638B009940AE /* CBUIVerticalLayoutView.m */; };
+		AA8B7AB9146A7561009940AE /* CBUIVerticalLayoutView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8B7AB5146A638B009940AE /* CBUIVerticalLayoutView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA943C9A145020A900912E34 /* NSObject+CBBinding.h in Headers */ = {isa = PBXBuildFile; fileRef = AA943C98145020A900912E34 /* NSObject+CBBinding.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA943C9B145020A900912E34 /* NSObject+CBBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = AA943C99145020A900912E34 /* NSObject+CBBinding.m */; };
 		AA95A73313E9BEF9003B77C4 /* CBUIAlertViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA95A73113E9BEF9003B77C4 /* CBUIAlertViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -101,6 +104,8 @@
 		AA7DC0A613BA0B350069CC3A /* CBUIAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIAttributedLabel.m; sourceTree = "<group>"; };
 		AA7DC0AD13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBNSAttributedString+DokuWiki.h"; sourceTree = "<group>"; };
 		AA7DC0AE13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBNSAttributedString+DokuWiki.m"; sourceTree = "<group>"; };
+		AA8B7AB5146A638B009940AE /* CBUIVerticalLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUIVerticalLayoutView.h; sourceTree = "<group>"; };
+		AA8B7AB6146A638B009940AE /* CBUIVerticalLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIVerticalLayoutView.m; sourceTree = "<group>"; };
 		AA943C98145020A900912E34 /* NSObject+CBBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CBBinding.h"; sourceTree = "<group>"; };
 		AA943C99145020A900912E34 /* NSObject+CBBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CBBinding.m"; sourceTree = "<group>"; };
 		AA95A73113E9BEF9003B77C4 /* CBUIAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIAlertViewController.h; sourceTree = "<group>"; };
@@ -199,10 +204,7 @@
 				AAA0E77214223523000476B6 /* CBUICircularProgressView.m */,
 				AA943C98145020A900912E34 /* NSObject+CBBinding.h */,
 				AA943C99145020A900912E34 /* NSObject+CBBinding.m */,
-				AA1FDD331469D24D006D2B2B /* CBUISpringLayoutView.h */,
-				AA1FDD341469D24D006D2B2B /* CBUISpringLayoutView.m */,
-				AA1FDD381469D27F006D2B2B /* CBUISpring.h */,
-				AA1FDD391469D27F006D2B2B /* CBUISpring.m */,
+				AA8B7AB4146A6349009940AE /* Layout */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -277,6 +279,19 @@
 			name = Label;
 			sourceTree = "<group>";
 		};
+		AA8B7AB4146A6349009940AE /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				AA1FDD331469D24D006D2B2B /* CBUISpringLayoutView.h */,
+				AA1FDD341469D24D006D2B2B /* CBUISpringLayoutView.m */,
+				AA1FDD381469D27F006D2B2B /* CBUISpring.h */,
+				AA1FDD391469D27F006D2B2B /* CBUISpring.m */,
+				AA8B7AB5146A638B009940AE /* CBUIVerticalLayoutView.h */,
+				AA8B7AB6146A638B009940AE /* CBUIVerticalLayoutView.m */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
 		AAE527F0132667F10026317D /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +342,7 @@
 				AAE77FFE13CAF0E5006D65BE /* UIGestureRecognizer+Blocks.h in Headers */,
 				AA95A73313E9BEF9003B77C4 /* CBUIAlertViewController.h in Headers */,
 				AA78537F1456A92800598FEF /* SafeFetchedResultsController.h in Headers */,
+				AA8B7AB9146A7561009940AE /* CBUIVerticalLayoutView.h in Headers */,
 				AA0F870D14161E7B0005A176 /* CBUIActivityView.h in Headers */,
 				AAA0E776142239F8000476B6 /* CBUICircularProgressView.h in Headers */,
 				AA1FDD351469D24D006D2B2B /* CBUISpringLayoutView.h in Headers */,
@@ -413,6 +429,8 @@
 				AA943C9B145020A900912E34 /* NSObject+CBBinding.m in Sources */,
 				AA1FDD361469D24D006D2B2B /* CBUISpringLayoutView.m in Sources */,
 				AA1FDD3B1469D280006D2B2B /* CBUISpring.m in Sources */,
+				AA8B7AB7146A638B009940AE /* CBUIVerticalLayoutView.h in Sources */,
+				AA8B7AB8146A638B009940AE /* CBUIVerticalLayoutView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
