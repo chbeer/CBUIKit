@@ -33,6 +33,10 @@
 		AA19FDEF12FAECAF000306DB /* CBUIDisclosureTriangle.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDD712FAECAF000306DB /* CBUIDisclosureTriangle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA19FDF012FAECAF000306DB /* CBUIDisclosureTriangle.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDD812FAECAF000306DB /* CBUIDisclosureTriangle.m */; };
 		AA19FDF812FAED4B000306DB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA19FDF712FAED4B000306DB /* CoreData.framework */; };
+		AA1FDD351469D24D006D2B2B /* CBUISpringLayoutView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA1FDD331469D24D006D2B2B /* CBUISpringLayoutView.h */; };
+		AA1FDD361469D24D006D2B2B /* CBUISpringLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1FDD341469D24D006D2B2B /* CBUISpringLayoutView.m */; };
+		AA1FDD3A1469D280006D2B2B /* CBUISpring.h in Headers */ = {isa = PBXBuildFile; fileRef = AA1FDD381469D27F006D2B2B /* CBUISpring.h */; };
+		AA1FDD3B1469D280006D2B2B /* CBUISpring.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1FDD391469D27F006D2B2B /* CBUISpring.m */; };
 		AA78537F1456A92800598FEF /* SafeFetchedResultsController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7A215B1442F481000FD1A1 /* SafeFetchedResultsController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA7A215E1442F481000FD1A1 /* SafeFetchedResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7A215C1442F481000FD1A1 /* SafeFetchedResultsController.m */; };
 		AA7DC0A713BA0B350069CC3A /* CBUIAttributedLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7DC0A513BA0B350069CC3A /* CBUIAttributedLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -86,6 +90,10 @@
 		AA19FDD712FAECAF000306DB /* CBUIDisclosureTriangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIDisclosureTriangle.h; sourceTree = "<group>"; };
 		AA19FDD812FAECAF000306DB /* CBUIDisclosureTriangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIDisclosureTriangle.m; sourceTree = "<group>"; };
 		AA19FDF712FAED4B000306DB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		AA1FDD331469D24D006D2B2B /* CBUISpringLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUISpringLayoutView.h; sourceTree = "<group>"; };
+		AA1FDD341469D24D006D2B2B /* CBUISpringLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUISpringLayoutView.m; sourceTree = "<group>"; };
+		AA1FDD381469D27F006D2B2B /* CBUISpring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUISpring.h; sourceTree = "<group>"; };
+		AA1FDD391469D27F006D2B2B /* CBUISpring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUISpring.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* CBUIKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIKit_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AA7A215B1442F481000FD1A1 /* SafeFetchedResultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = SafeFetchedResultsController.h; sourceTree = "<group>"; };
 		AA7A215C1442F481000FD1A1 /* SafeFetchedResultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeFetchedResultsController.m; sourceTree = "<group>"; };
@@ -191,6 +199,10 @@
 				AAA0E77214223523000476B6 /* CBUICircularProgressView.m */,
 				AA943C98145020A900912E34 /* NSObject+CBBinding.h */,
 				AA943C99145020A900912E34 /* NSObject+CBBinding.m */,
+				AA1FDD331469D24D006D2B2B /* CBUISpringLayoutView.h */,
+				AA1FDD341469D24D006D2B2B /* CBUISpringLayoutView.m */,
+				AA1FDD381469D27F006D2B2B /* CBUISpring.h */,
+				AA1FDD391469D27F006D2B2B /* CBUISpring.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -317,6 +329,8 @@
 				AA78537F1456A92800598FEF /* SafeFetchedResultsController.h in Headers */,
 				AA0F870D14161E7B0005A176 /* CBUIActivityView.h in Headers */,
 				AAA0E776142239F8000476B6 /* CBUICircularProgressView.h in Headers */,
+				AA1FDD351469D24D006D2B2B /* CBUISpringLayoutView.h in Headers */,
+				AA1FDD3A1469D280006D2B2B /* CBUISpring.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +411,8 @@
 				AAA0E77414223523000476B6 /* CBUICircularProgressView.m in Sources */,
 				AA7A215E1442F481000FD1A1 /* SafeFetchedResultsController.m in Sources */,
 				AA943C9B145020A900912E34 /* NSObject+CBBinding.m in Sources */,
+				AA1FDD361469D24D006D2B2B /* CBUISpringLayoutView.m in Sources */,
+				AA1FDD3B1469D280006D2B2B /* CBUISpring.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
