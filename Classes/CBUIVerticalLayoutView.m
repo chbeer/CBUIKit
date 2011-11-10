@@ -35,7 +35,7 @@
 
 - (void)layoutSubviews
 {
-    __block CGFloat widthSum = 0.0;
+    __block CGFloat heightSum = 0.0;
 
     CGFloat contentWidth = self.bounds.size.width - self.insets.left - self.insets.right;
     CGFloat contentHeight = self.bounds.size.height - self.insets.top - self.insets.bottom;
@@ -46,29 +46,29 @@
         
         if (view.hidden || view.alpha == 0.0) return;
         
-        widthSum += view.bounds.size.width;
+        heightSum += view.bounds.size.height;
         
-        if (view.autoresizingMask & UIViewAutoresizingFlexibleWidth) {
+        if (view.autoresizingMask & UIViewAutoresizingFlexibleHeight) {
             [flexibleViews addObject:view];
         }
     }];
     
-    if (widthSum != contentWidth && flexibleViews.count > 0) {
-        CGFloat delta = contentWidth - widthSum;
+    if (heightSum != contentHeight && flexibleViews.count > 0) {
+        CGFloat delta = contentHeight - heightSum;
         delta = delta / flexibleViews.count;
         
         [flexibleViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             UIView *view = obj;
             
             CGRect bounds = view.bounds;
-            bounds.size.width += delta;
+            bounds.size.height += delta;
             view.bounds = bounds;
         }];
     }
     
     // // Position views // // 
     
-    __block CGFloat x = self.insets.left;
+    __block CGFloat y = self.insets.top;
     
     [self.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         UIView *view = obj;
@@ -76,14 +76,14 @@
         if (view.hidden || view.alpha == 0.0) return;
         
         CGRect frame = view.bounds;
-        frame.origin.x = x;
-        frame.origin.y = self.insets.top;
-        if (view.autoresizingMask & UIViewAutoresizingFlexibleHeight) {
-            frame.size.height = contentHeight;
+        frame.origin.x = self.insets.left;
+        frame.origin.y = y;
+        if (view.autoresizingMask & UIViewAutoresizingFlexibleWidth) {
+            frame.size.width = contentWidth;
         }
-        view.frame = frame;
+        view.frame = CGRectIntegral(frame);
         
-        x += view.bounds.size.width;
+        y += view.bounds.size.height;
     }];
 }
 

@@ -32,3 +32,4 @@
 #import "NSObject+CBBinding.h"
 
 #import "CBUIVerticalLayoutView.h"
+#import "CBUIHorizontalLayoutView.h"

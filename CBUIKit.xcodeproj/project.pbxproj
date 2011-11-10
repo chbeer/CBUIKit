@@ -43,6 +43,9 @@
 		AA7DC0A813BA0B350069CC3A /* CBUIAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7DC0A613BA0B350069CC3A /* CBUIAttributedLabel.m */; };
 		AA7DC0AF13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7DC0AD13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA7DC0B013BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7DC0AE13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m */; };
+		AA846A00146BC47B0038F3D5 /* CBUIHorizontalLayoutView.h in Sources */ = {isa = PBXBuildFile; fileRef = AA8469FE146BC47B0038F3D5 /* CBUIHorizontalLayoutView.h */; };
+		AA846A01146BC47B0038F3D5 /* CBUIHorizontalLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8469FF146BC47B0038F3D5 /* CBUIHorizontalLayoutView.m */; };
+		AA846A03146BC9650038F3D5 /* CBUIHorizontalLayoutView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8469FE146BC47B0038F3D5 /* CBUIHorizontalLayoutView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8B7AB7146A638B009940AE /* CBUIVerticalLayoutView.h in Sources */ = {isa = PBXBuildFile; fileRef = AA8B7AB5146A638B009940AE /* CBUIVerticalLayoutView.h */; };
 		AA8B7AB8146A638B009940AE /* CBUIVerticalLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8B7AB6146A638B009940AE /* CBUIVerticalLayoutView.m */; };
 		AA8B7AB9146A7561009940AE /* CBUIVerticalLayoutView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8B7AB5146A638B009940AE /* CBUIVerticalLayoutView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -104,6 +107,8 @@
 		AA7DC0A613BA0B350069CC3A /* CBUIAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIAttributedLabel.m; sourceTree = "<group>"; };
 		AA7DC0AD13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBNSAttributedString+DokuWiki.h"; sourceTree = "<group>"; };
 		AA7DC0AE13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBNSAttributedString+DokuWiki.m"; sourceTree = "<group>"; };
+		AA8469FE146BC47B0038F3D5 /* CBUIHorizontalLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUIHorizontalLayoutView.h; sourceTree = "<group>"; };
+		AA8469FF146BC47B0038F3D5 /* CBUIHorizontalLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIHorizontalLayoutView.m; sourceTree = "<group>"; };
 		AA8B7AB5146A638B009940AE /* CBUIVerticalLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUIVerticalLayoutView.h; sourceTree = "<group>"; };
 		AA8B7AB6146A638B009940AE /* CBUIVerticalLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIVerticalLayoutView.m; sourceTree = "<group>"; };
 		AA943C98145020A900912E34 /* NSObject+CBBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CBBinding.h"; sourceTree = "<group>"; };
@@ -286,6 +291,8 @@
 				AA1FDD341469D24D006D2B2B /* CBUISpringLayoutView.m */,
 				AA1FDD381469D27F006D2B2B /* CBUISpring.h */,
 				AA1FDD391469D27F006D2B2B /* CBUISpring.m */,
+				AA8469FE146BC47B0038F3D5 /* CBUIHorizontalLayoutView.h */,
+				AA8469FF146BC47B0038F3D5 /* CBUIHorizontalLayoutView.m */,
 				AA8B7AB5146A638B009940AE /* CBUIVerticalLayoutView.h */,
 				AA8B7AB6146A638B009940AE /* CBUIVerticalLayoutView.m */,
 			);
@@ -343,6 +350,7 @@
 				AA95A73313E9BEF9003B77C4 /* CBUIAlertViewController.h in Headers */,
 				AA78537F1456A92800598FEF /* SafeFetchedResultsController.h in Headers */,
 				AA8B7AB9146A7561009940AE /* CBUIVerticalLayoutView.h in Headers */,
+				AA846A03146BC9650038F3D5 /* CBUIHorizontalLayoutView.h in Headers */,
 				AA0F870D14161E7B0005A176 /* CBUIActivityView.h in Headers */,
 				AAA0E776142239F8000476B6 /* CBUICircularProgressView.h in Headers */,
 				AA1FDD351469D24D006D2B2B /* CBUISpringLayoutView.h in Headers */,
@@ -431,6 +439,8 @@
 				AA1FDD3B1469D280006D2B2B /* CBUISpring.m in Sources */,
 				AA8B7AB7146A638B009940AE /* CBUIVerticalLayoutView.h in Sources */,
 				AA8B7AB8146A638B009940AE /* CBUIVerticalLayoutView.m in Sources */,
+				AA846A00146BC47B0038F3D5 /* CBUIHorizontalLayoutView.h in Sources */,
+				AA846A01146BC47B0038F3D5 /* CBUIHorizontalLayoutView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
