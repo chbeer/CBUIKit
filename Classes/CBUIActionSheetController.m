@@ -55,7 +55,7 @@
     return self;
 }
 
-+ (id) actionSheetControllerWithTitle:(NSString*)title buttonsWithHandlerAndTitle:(id)firstHandler, ...
++ (id) actionSheetControllerWithTitle:(NSString*)title buttonsWithHandlerAndTitle:(CBUIActionSheetHandler)firstHandler, ...
 {
     CBUIActionSheetController *ctrl = [[self alloc] initWithTitle:title];
     
