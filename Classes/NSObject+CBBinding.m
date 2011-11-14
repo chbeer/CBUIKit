@@ -50,7 +50,7 @@ static char     * const CBBINDING_OBSERVER          = "__CBBINDING_OBSERVER";
     CBBindingManager *observer = objc_getAssociatedObject(self, CBBINDING_OBSERVER);
     if (!observer) return;
     
-    [self removeObserver:observer forKeyPath:binding];
+    [observer cb_unbind:binding];
 }
 
 @end
@@ -100,11 +100,6 @@ static char     * const CBBINDING_OBSERVER          = "__CBBINDING_OBSERVER";
 
 - (void)cb_unbind:(NSString *)bindingKeyPath;
 {
-    CBBinding *binding = [self.bindings objectForKey:bindingKeyPath];
-    
-    [binding.observable removeObserver:binding];
-    [binding.observer removeObserver:binding];
-    
     [self.bindings removeObjectForKey:bindingKeyPath];
 }
 
@@ -120,8 +115,8 @@ static char     * const CBBINDING_OBSERVER          = "__CBBINDING_OBSERVER";
 @synthesize options = _options;
 
 - (void)dealloc {
-    [_observer removeObserver:self];
-    [_observable removeObserver:self];
+    [_observer removeObserver:self forKeyPath:_boundKeyPath];
+    [_observable removeObserver:self forKeyPath:_observedKeyPath];
     
     [_observedKeyPath release], _observedKeyPath = nil;
     [_boundKeyPath release], _boundKeyPath = nil;
