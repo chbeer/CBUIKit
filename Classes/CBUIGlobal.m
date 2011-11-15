@@ -19,6 +19,12 @@ UIBarButtonItem *CBUIBarButtonSetStyle(UIBarButtonItem *itm, UIBarButtonItemStyl
     itm.style = style;
     return itm;
 }
+UIBarButtonItem *CBUIBarButtonSetTintColor(UIBarButtonItem *itm, UIColor *tintColor)
+{
+    itm.tintColor = tintColor;
+    return itm;
+}
+
 
 UIBarButtonItem *CBUIBarFlexibleSpace() {
 	return [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace

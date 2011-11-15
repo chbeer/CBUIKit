@@ -21,7 +21,7 @@ extern inline double CBUIRadians (double degrees);
 
 BOOL CBIsIPad();
 
-
+UIBarButtonItem *CBUIBarButtonSetTintColor(UIBarButtonItem *itm, UIColor *tintColor);
 UIBarButtonItem *CBUIBarButtonSetStyle(UIBarButtonItem *itm, UIBarButtonItemStyle style);
 UIBarButtonItem *CBUIBarFlexibleSpace();
 UIBarButtonItem *CBUIBarButtonFixedSpace(CGFloat width);
