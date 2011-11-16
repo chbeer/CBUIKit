@@ -84,6 +84,8 @@
         view.frame = CGRectIntegral(frame);
         
         x += view.bounds.size.width;
+        
+        [view layoutSubviews];
     }];
 }
 

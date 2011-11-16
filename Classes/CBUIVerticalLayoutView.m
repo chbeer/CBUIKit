@@ -75,15 +75,17 @@
         
         if (view.hidden || view.alpha == 0.0) return;
         
-        CGRect frame = view.bounds;
-        frame.origin.x = self.insets.left;
+        CGRect frame = view.frame;
         frame.origin.y = y;
         if (view.autoresizingMask & UIViewAutoresizingFlexibleWidth) {
+            frame.origin.x = self.insets.left;
             frame.size.width = contentWidth;
         }
         view.frame = CGRectIntegral(frame);
         
         y += view.bounds.size.height;
+        
+        [view layoutSubviews];
     }];
 }
 
