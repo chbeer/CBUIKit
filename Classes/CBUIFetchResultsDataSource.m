@@ -10,7 +10,7 @@
 
 #import "CBUIGlobal.h"
 
-#define DEBUG
+//#define DEBUG
 
 #define StringFromIndexPath(indexPath) [NSString stringWithFormat:@"[%lu, %lu]", indexPath.section, indexPath.row]
 
@@ -88,6 +88,7 @@
     self.loading = YES;
     BOOL result = [_fetchedResultsController performFetch:error];
     self.loading = NO;
+    [self.tableView reloadData];
     return result;
 }
 
