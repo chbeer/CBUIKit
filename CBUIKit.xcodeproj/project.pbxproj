@@ -62,6 +62,9 @@
 		AAE52B8113279DAD0026317D /* UIDevice+Machine.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE52B7F13279DAD0026317D /* UIDevice+Machine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAE52B8213279DAD0026317D /* UIDevice+Machine.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE52B8013279DAD0026317D /* UIDevice+Machine.m */; };
 		AAE5532C13C351E90011DD4D /* CBUIActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE5532A13C351E90011DD4D /* CBUIActivityView.m */; };
+		AAE7414014757AC400E71161 /* UIView+CBUIKit.h in Sources */ = {isa = PBXBuildFile; fileRef = AAE7413E14757AC400E71161 /* UIView+CBUIKit.h */; };
+		AAE7414114757AC400E71161 /* UIView+CBUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE7413F14757AC400E71161 /* UIView+CBUIKit.m */; };
+		AAE7414214757B3600E71161 /* UIView+CBUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE7413E14757AC400E71161 /* UIView+CBUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAE77FE913CAEDE8006D65BE /* UIGestureRecognizer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE77FE713CAEDE8006D65BE /* UIGestureRecognizer+Blocks.m */; };
 		AAE77FFE13CAF0E5006D65BE /* UIGestureRecognizer+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE77FE613CAEDE8006D65BE /* UIGestureRecognizer+Blocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAED5FBC13C4511B005DD099 /* CBUIActionSheetController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAED5FBA13C4511B005DD099 /* CBUIActionSheetController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -125,6 +128,8 @@
 		AAE52B8013279DAD0026317D /* UIDevice+Machine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Machine.m"; sourceTree = "<group>"; };
 		AAE5532913C351E90011DD4D /* CBUIActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUIActivityView.h; sourceTree = "<group>"; };
 		AAE5532A13C351E90011DD4D /* CBUIActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIActivityView.m; sourceTree = "<group>"; };
+		AAE7413E14757AC400E71161 /* UIView+CBUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = "UIView+CBUIKit.h"; sourceTree = "<group>"; };
+		AAE7413F14757AC400E71161 /* UIView+CBUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CBUIKit.m"; sourceTree = "<group>"; };
 		AAE77FE613CAEDE8006D65BE /* UIGestureRecognizer+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = "UIGestureRecognizer+Blocks.h"; sourceTree = "<group>"; };
 		AAE77FE713CAEDE8006D65BE /* UIGestureRecognizer+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+Blocks.m"; sourceTree = "<group>"; };
 		AAED5FBA13C4511B005DD099 /* CBUIActionSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIActionSheetController.h; sourceTree = "<group>"; };
@@ -176,6 +181,7 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				AAE7413C14757AAB00E71161 /* Extensions */,
 				AAB2EF7213B8776A004A1C64 /* CBUIKit.h */,
 				AA19FDBE12FAECAF000306DB /* CBUIGlobal.h */,
 				AA19FDBD12FAECAF000306DB /* CBUIGlobal.m */,
@@ -317,6 +323,15 @@
 			name = System;
 			sourceTree = "<group>";
 		};
+		AAE7413C14757AAB00E71161 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AAE7413E14757AC400E71161 /* UIView+CBUIKit.h */,
+				AAE7413F14757AC400E71161 /* UIView+CBUIKit.m */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -351,6 +366,7 @@
 				AA846A03146BC9650038F3D5 /* CBUIHorizontalLayoutView.h in Headers */,
 				AA0F870D14161E7B0005A176 /* CBUIActivityView.h in Headers */,
 				AAA0E776142239F8000476B6 /* CBUICircularProgressView.h in Headers */,
+				AAE7414214757B3600E71161 /* UIView+CBUIKit.h in Headers */,
 				AA1FDD351469D24D006D2B2B /* CBUISpringLayoutView.h in Headers */,
 				AA1FDD3A1469D280006D2B2B /* CBUISpring.h in Headers */,
 			);
@@ -437,6 +453,8 @@
 				AA1FDD3B1469D280006D2B2B /* CBUISpring.m in Sources */,
 				AA8B7AB8146A638B009940AE /* CBUIVerticalLayoutView.m in Sources */,
 				AA846A01146BC47B0038F3D5 /* CBUIHorizontalLayoutView.m in Sources */,
+				AAE7414014757AC400E71161 /* UIView+CBUIKit.h in Sources */,
+				AAE7414114757AC400E71161 /* UIView+CBUIKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

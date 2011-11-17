@@ -11,6 +11,7 @@
 @interface CBUIVerticalLayoutView : UIView
 
 @property (nonatomic, assign) UIEdgeInsets insets;
+@property (nonatomic, assign) CGFloat spacing;
 
 - (void) setInsetsString:(NSString*)insetsString;
 

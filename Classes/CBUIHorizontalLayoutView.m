@@ -11,12 +11,14 @@
 @implementation CBUIHorizontalLayoutView
 
 @synthesize insets = _insets;
+@synthesize spacing = _spacing;
 
 - (id)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     if (!self) return nil;
     
     self.insets = UIEdgeInsetsZero;
+    self.spacing= 0.0;
     self.autoresizesSubviews = YES;
     
     return self;
@@ -28,6 +30,7 @@
     if (!self) return nil;
     
     self.insets = UIEdgeInsetsZero;
+    self.spacing= 0.0;
     self.autoresizesSubviews = YES;
     
     return self;
@@ -83,7 +86,7 @@
         }
         view.frame = CGRectIntegral(frame);
         
-        x += view.bounds.size.width;
+        x += view.bounds.size.width + self.spacing;
         
         [view layoutSubviews];
     }];

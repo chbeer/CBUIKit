@@ -8,6 +8,8 @@
 
 #import "CBUIGlobal.h"
 
+#import "UIView+CBUIKit.h"
+
 #import "CBUIViewController.h"
 #import "CBUITableViewController.h"
 
