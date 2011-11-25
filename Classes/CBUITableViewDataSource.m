@@ -64,13 +64,13 @@
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 50000  // available for iOS > 5.0
 - (NSString*) tableView:(UITableView *)tableView reuseIdentifierForCellForObject:(id)object {
-    if ([tableView.delegate respondsToSelector:@selector(tableView:cellClassForObject:)]) {
+    if ([tableView.delegate respondsToSelector:@selector(tableView:reuseIdentifierForCellForObject:)]) {
         return [(id<CBUITableViewDataSourceDelegate>)tableView.delegate tableView:tableView reuseIdentifierForCellForObject:object];
     }
 	return nil;
 }
 - (NSString*) tableView:(UITableView *)tableView reuseIdentifierForCellForObject:(id)object atIndexPath:(NSIndexPath*)indexPath {
-    if ([tableView.delegate respondsToSelector:@selector(tableView:cellClassForObject:atIndexPath:)]) {
+    if ([tableView.delegate respondsToSelector:@selector(tableView:reuseIdentifierForCellForObject:atIndexPath:)]) {
         return [(id<CBUITableViewDataSourceDelegate>)tableView.delegate tableView:tableView reuseIdentifierForCellForObject:object atIndexPath:indexPath];
     }
 	return nil;
