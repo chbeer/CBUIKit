@@ -19,6 +19,7 @@
 
 #import "CBUITableViewDataSource.h"
 #import "CBUIFetchResultsDataSource.h"
+#import "CBUIFetchResultsReorderDataSource.h"
 #import "CBUIAttributedLabel.h"
 
 #import "CBNSAttributedString+DokuWiki.h"

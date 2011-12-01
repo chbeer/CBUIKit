@@ -38,6 +38,8 @@
 		AA1FDD3A1469D280006D2B2B /* CBUISpring.h in Headers */ = {isa = PBXBuildFile; fileRef = AA1FDD381469D27F006D2B2B /* CBUISpring.h */; };
 		AA1FDD3B1469D280006D2B2B /* CBUISpring.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1FDD391469D27F006D2B2B /* CBUISpring.m */; };
 		AA78537F1456A92800598FEF /* SafeFetchedResultsController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7A215B1442F481000FD1A1 /* SafeFetchedResultsController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA7944671487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7944651487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA7944681487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7944661487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.m */; };
 		AA7A215E1442F481000FD1A1 /* SafeFetchedResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7A215C1442F481000FD1A1 /* SafeFetchedResultsController.m */; };
 		AA7DC0A713BA0B350069CC3A /* CBUIAttributedLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7DC0A513BA0B350069CC3A /* CBUIAttributedLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA7DC0A813BA0B350069CC3A /* CBUIAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7DC0A613BA0B350069CC3A /* CBUIAttributedLabel.m */; };
@@ -102,6 +104,8 @@
 		AA1FDD381469D27F006D2B2B /* CBUISpring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUISpring.h; sourceTree = "<group>"; };
 		AA1FDD391469D27F006D2B2B /* CBUISpring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUISpring.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* CBUIKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIKit_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		AA7944651487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIFetchResultsReorderDataSource.h; sourceTree = "<group>"; };
+		AA7944661487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIFetchResultsReorderDataSource.m; sourceTree = "<group>"; };
 		AA7A215B1442F481000FD1A1 /* SafeFetchedResultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = SafeFetchedResultsController.h; sourceTree = "<group>"; };
 		AA7A215C1442F481000FD1A1 /* SafeFetchedResultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeFetchedResultsController.m; sourceTree = "<group>"; };
 		AA7DC0A513BA0B350069CC3A /* CBUIAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIAttributedLabel.h; sourceTree = "<group>"; };
@@ -310,6 +314,8 @@
 				AA19FDD012FAECAF000306DB /* CBUITableViewDataSource.m */,
 				AA19FDD112FAECAF000306DB /* CBUIFetchResultsDataSource.h */,
 				AA19FDD212FAECAF000306DB /* CBUIFetchResultsDataSource.m */,
+				AA7944651487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.h */,
+				AA7944661487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.m */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -355,6 +361,7 @@
 				AAE52B8113279DAD0026317D /* UIDevice+Machine.h in Headers */,
 				AA19FDEB12FAECAF000306DB /* CBUITabView.h in Headers */,
 				AA19FDED12FAECAF000306DB /* CBUIPanelView.h in Headers */,
+				AA7944671487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.h in Headers */,
 				AA19FDEF12FAECAF000306DB /* CBUIDisclosureTriangle.h in Headers */,
 				AA7DC0A713BA0B350069CC3A /* CBUIAttributedLabel.h in Headers */,
 				AA7DC0AF13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h in Headers */,
@@ -455,6 +462,7 @@
 				AA846A01146BC47B0038F3D5 /* CBUIHorizontalLayoutView.m in Sources */,
 				AAE7414014757AC400E71161 /* UIView+CBUIKit.h in Sources */,
 				AAE7414114757AC400E71161 /* UIView+CBUIKit.m in Sources */,
+				AA7944681487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
