@@ -10,24 +10,41 @@
 
 #import <objc/runtime.h>
 
+
+@interface CBUITableViewDataSource ()
+
+@property (nonatomic, assign) BOOL loading;
+@property (nonatomic, assign) BOOL empty;
+
+@end
+
+
 @implementation CBUITableViewDataSource
 
 @synthesize tableView = _tableView;
 @synthesize delegate = _delegate;
-@synthesize defaultTableViewCellClass;
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 50000  // available for iOS > 5.0
+@synthesize defaultTableViewCellReuseIdentifier = _defaultTableViewCellReuseIdentifier;
+#endif
+
+@synthesize tableViewCell = _tableViewCell;
+@synthesize defaultTableViewCellClass = _defaultTableViewCellClass;
+
+@synthesize loading = _loading;
+@synthesize empty   = _empty;
 
 - (id) initWithTableView:(UITableView *) aTableView  {
     if (self = [self init]) {
         [self setTableView: aTableView];
-        
-        defaultTableViewCellClass = [UITableViewCell class];
-        
     }
     return self;
 }
 
 - (void) dealloc {
     [_tableView release], _tableView = nil;
+    
+    [_defaultTableViewCellReuseIdentifier release], _defaultTableViewCellReuseIdentifier = nil;
 	
     [super dealloc];
 }
@@ -36,8 +53,29 @@
     if ([tableView.delegate respondsToSelector:@selector(tableView:cellClassForObject:)]) {
         return [(id<CBUITableViewDataSourceDelegate>)tableView.delegate tableView:tableView cellClassForObject:object];
     }
-	return defaultTableViewCellClass;
+	return nil;
 }
+- (Class) tableView:(UITableView *)tableView cellClassForObject:(id)object atIndexPath:(NSIndexPath*)indexPath {
+    if ([tableView.delegate respondsToSelector:@selector(tableView:cellClassForObject:atIndexPath:)]) {
+        return [(id<CBUITableViewDataSourceDelegate>)tableView.delegate tableView:tableView cellClassForObject:object atIndexPath:indexPath];
+    }
+	return nil;
+}
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 50000  // available for iOS > 5.0
+- (NSString*) tableView:(UITableView *)tableView reuseIdentifierForCellForObject:(id)object {
+    if ([tableView.delegate respondsToSelector:@selector(tableView:reuseIdentifierForCellForObject:)]) {
+        return [(id<CBUITableViewDataSourceDelegate>)tableView.delegate tableView:tableView reuseIdentifierForCellForObject:object];
+    }
+	return nil;
+}
+- (NSString*) tableView:(UITableView *)tableView reuseIdentifierForCellForObject:(id)object atIndexPath:(NSIndexPath*)indexPath {
+    if ([tableView.delegate respondsToSelector:@selector(tableView:reuseIdentifierForCellForObject:atIndexPath:)]) {
+        return [(id<CBUITableViewDataSourceDelegate>)tableView.delegate tableView:tableView reuseIdentifierForCellForObject:object atIndexPath:indexPath];
+    }
+	return nil;
+}
+#endif
 
 - (id) objectAtIndexPath:(NSIndexPath*)indexPath {
 	return nil;
@@ -59,8 +97,33 @@
 	
 	id item = [self objectAtIndexPath:indexPath];
 	
-    Class class = [self tableView:tableView cellClassForObject:item];
-    NSString *identifier = NSStringFromClass(class);
+    Class class = [self tableView:tableView cellClassForObject:item atIndexPath:indexPath];
+    if (!class) {
+        class = [self tableView:tableView cellClassForObject:item];
+    }    
+    if (!class) {
+        class = _defaultTableViewCellClass;
+    }
+    
+    NSString *identifier = nil;
+    if (class) {
+        identifier = NSStringFromClass(class);
+    } 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 50000  // available for iOS > 5.0
+    else {
+        identifier = [self tableView:tableView reuseIdentifierForCellForObject:item atIndexPath:indexPath];
+        if (!identifier) {
+            identifier = [self tableView:tableView reuseIdentifierForCellForObject:item];
+        }    
+        if (!identifier) {
+            identifier = self.defaultTableViewCellReuseIdentifier;
+        }
+        
+        if (!identifier) {
+            return nil;
+        }
+    }
+#endif
     
     UITableViewCell<CBUITableViewCell> *newCell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!newCell) {
@@ -76,7 +139,7 @@
                                           owner:self 
                                         options:nil];
             
-            newCell = tableViewCell;
+            newCell = _tableViewCell;
             
         } else {
         
@@ -86,13 +149,23 @@
         }
     }
         
-	[newCell setObject:item];
+    if ([newCell respondsToSelector:@selector(setObject:inTableView:)]) {
+        [newCell setObject:item inTableView:tableView];
+    } else if ([newCell respondsToSelector:@selector(setObject:)]) {
+        [newCell setObject:item];
+    }
+    
+    if ([_delegate respondsToSelector:@selector(dataSource:didCreateCell:forTableView:atIndexPath:)]) {
+        [_delegate dataSource:self didCreateCell:newCell forTableView:tableView atIndexPath:indexPath];
+    }
 	
 	return newCell;
 }
 
 - (void) didFinishLoading {
-    [_delegate dataSourceDidFinishLoading:self];
+    if ([_delegate respondsToSelector:@selector(dataSourceDidFinishLoading:)]) {
+        [_delegate dataSourceDidFinishLoading:self];
+    }
 }
 
 @end
@@ -184,6 +257,7 @@
 	if (_sections) {
 		return [[_items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	} else {
+        if (indexPath.row >= _items.count) return nil;
 		return [_items objectAtIndex:indexPath.row];
 	}
 }

@@ -11,21 +11,13 @@
 
 #import "CBUITableViewDataSource.h"
 
-@interface CBUIFetchResultsDataSource : CBUITableViewDataSource <NSFetchedResultsControllerDelegate> {
+#import "SafeFetchedResultsController.h"
 
-	NSFetchedResultsController  *_fetchedResultsController;
-    
-    BOOL                        _userDrivenChange;
-    
-    BOOL                        _loading;
-
-}
+@interface CBUIFetchResultsDataSource : CBUITableViewDataSource <SafeFetchedResultsControllerDelegate> 
 
 @property (readonly) NSFetchedResultsController *fetchedResultsController;
-
-@property (nonatomic, assign, getter=isUserDrivenChange) BOOL userDrivenChange;
-
 @property (nonatomic, assign, getter=isLoading) BOOL loading;
+@property (nonatomic, retain) NSIndexPath *ignoreForUpdateIndexPath;
 
 - (id) initWithTableView:(UITableView*)tableView
             fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context 
@@ -42,6 +34,10 @@
                                    managedObjectContext:(NSManagedObjectContext*)context cacheName:(NSString*)cacheName;
 
 - (NSIndexPath*) indexPathForObject:(id)object;
+
+- (BOOL) performFetch:(NSError**)error;
+// ONLY WORKS WITH ONE SECTION!!
+- (BOOL) performFetchAndUpdateTableView:(NSError **)error;
 
 @end
 

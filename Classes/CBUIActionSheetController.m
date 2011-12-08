@@ -9,9 +9,9 @@
 #import "CBUIActionSheetController.h"
 
 @interface CBUIActionSheetControllerButton : NSObject
-@property (nonatomic, assign) SEL action;
+@property (nonatomic, copy) CBUIActionSheetHandler handler;
 @property (nonatomic, copy) NSString *title;
-+ (id) buttonWithTitle:(NSString*)title action:(SEL)action;
++ (id) buttonWithTitle:(NSString*)title handler:(CBUIActionSheetHandler)handler;
 @end
 
 
@@ -19,17 +19,68 @@
 
 @synthesize actionSheetStyle;
 
-- (id) initWithTitle:(NSString*)inTitle target:(id)inTarget 
+- (id) initWithTitle:(NSString*)inTitle
 {
     self = [super init];
     if (!self) return nil;
 
     title   = [inTitle copy];
-    target  = inTarget;
     
     buttons = [[NSMutableArray alloc] init];
     
     return self;
+}
+
+- (id) initWithTitle:(NSString*)inTitle buttonsWithHandlerAndTitle:(CBUIActionSheetHandler)firstHandler, ...
+{
+    self = [self initWithTitle:inTitle];
+    if (!self) return nil;
+
+    if (firstHandler) {
+        va_list args;
+        va_start(args, firstHandler);
+        id obj;
+        CBUIActionSheetHandler handler = firstHandler;
+        while ((obj = va_arg(args, NSObject *))) {
+            if (handler) {
+                [buttons addObject:[CBUIActionSheetControllerButton buttonWithTitle:obj handler:handler]];
+                handler = nil;
+            } else {
+                handler = obj;
+            }
+        }
+        va_end(args);
+    }
+    
+    return self;
+}
+
++ (id) actionSheetControllerWithTitle:(NSString*)title buttonsWithHandlerAndTitle:(CBUIActionSheetHandler)firstHandler, ...
+{
+    CBUIActionSheetController *ctrl = [[self alloc] initWithTitle:title];
+    
+    if (firstHandler) {
+        va_list args;
+        va_start(args, firstHandler);
+        id obj;
+        CBUIActionSheetHandler handler = firstHandler;
+        while ((obj = va_arg(args, NSObject *))) {
+            if (handler) {
+                [ctrl addButtonWithTitle:obj handler:handler];
+                handler = nil;
+            } else {
+                handler = obj;
+            }
+        }
+        va_end(args);
+    }
+    
+    return ctrl; // intentionally no autorelease -> didDismissWithButton
+}
++ (id) actionSheetControllerWithTitle:(NSString*)title
+{
+    CBUIActionSheetController *ctrl = [[self alloc] initWithTitle:title];
+    return ctrl; // intentionally no autorelease -> didDismissWithButton
 }
 
 - (void)dealloc {
@@ -46,19 +97,35 @@
 
 #pragma mark add buttons
 
-- (void) setCancelButtonTitle:(NSString*)inTitle action:(SEL)action
+- (void) setCancelButtonTitle:(NSString*)inTitle handler:(CBUIActionSheetHandler)handler
 {
     [cancelButton release];
-    cancelButton = [[CBUIActionSheetControllerButton buttonWithTitle:inTitle action:action] retain];
+    cancelButton = [[CBUIActionSheetControllerButton buttonWithTitle:inTitle handler:handler] retain];
 }
-- (void) setDestructiveButtonTitle:(NSString*)inTitle action:(SEL)action
+- (void) setDestructiveButtonTitle:(NSString*)inTitle handler:(CBUIActionSheetHandler)handler
 {
     [destructiveButton release];
-    destructiveButton = [[CBUIActionSheetControllerButton buttonWithTitle:inTitle action:action] retain];
+    destructiveButton = [[CBUIActionSheetControllerButton buttonWithTitle:inTitle handler:handler] retain];
 }
-- (void) addButtonWithTitle:(NSString*)inTitle action:(SEL)action
+- (void) addButtonWithTitle:(NSString*)inTitle handler:(CBUIActionSheetHandler)handler
 {
-    [buttons addObject:[CBUIActionSheetControllerButton buttonWithTitle:inTitle action:action]];
+    [buttons addObject:[CBUIActionSheetControllerButton buttonWithTitle:inTitle handler:handler]];
+}
+
+- (id) applyCancelButtonTitle:(NSString*)inTitle handler:(CBUIActionSheetHandler)handler;
+{
+    [self setCancelButtonTitle:inTitle handler:handler];
+    return self;
+}
+- (id) applyDestructiveButtonTitle:(NSString*)inTitle handler:(CBUIActionSheetHandler)handler;
+{
+    [self setDestructiveButtonTitle:inTitle handler:handler];
+    return self;
+}
+- (id) applyButtonWithTitle:(NSString*)inTitle handler:(CBUIActionSheetHandler)handler;
+{
+    [self addButtonWithTitle:inTitle handler:handler];
+    return self;
 }
 
 #pragma mark Show
@@ -68,12 +135,18 @@
     if (!actionSheet) {
         actionSheet = [[UIActionSheet alloc] initWithTitle:title 
                                                   delegate:self
-                                         cancelButtonTitle:cancelButton.title 
+                                         cancelButtonTitle:nil
                                     destructiveButtonTitle:destructiveButton.title 
                                          otherButtonTitles:nil];
         for (CBUIActionSheetControllerButton *button in buttons) {
             [actionSheet addButtonWithTitle:button.title];
         }
+        
+        if (cancelButton.title) {
+            NSInteger cancelIndex = [actionSheet addButtonWithTitle:cancelButton.title];
+            actionSheet.cancelButtonIndex = cancelIndex;
+        }
+//        if (destructiveButton && cancelButton) actionSheet.cancelButtonIndex++;
     } 
     return actionSheet;
 }
@@ -104,16 +177,18 @@
 - (void)actionSheet:(UIActionSheet *)inActionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == inActionSheet.cancelButtonIndex) {
-        if (cancelButton) {
-            [target performSelector:cancelButton.action withObject:self];
+        if (cancelButton.handler) {
+            cancelButton.handler();
         }
     } else if (buttonIndex == inActionSheet.destructiveButtonIndex) {
-        if (destructiveButton) {
-            [target performSelector:destructiveButton.action withObject:self];
+        if (destructiveButton.handler) {
+            destructiveButton.handler();
         }
     } else {
         CBUIActionSheetControllerButton *button = [buttons objectAtIndex:buttonIndex];
-        [target performSelector:button.action withObject:self];
+        if (button.handler) {
+            button.handler();
+        }
     }
 }
 
@@ -126,16 +201,17 @@
 
 
 @implementation CBUIActionSheetControllerButton
-@synthesize action, title;
-+ (id) buttonWithTitle:(NSString*)title action:(SEL)action
+@synthesize title = _title, handler = _handler;
++ (id) buttonWithTitle:(NSString*)title handler:(CBUIActionSheetHandler)handler
 {
     CBUIActionSheetControllerButton *button = [[CBUIActionSheetControllerButton alloc] init];
     button.title = title;
-    button.action = action;
+    button.handler = handler;
     return [button autorelease];
 }
 - (void)dealloc {
-    [title release], title = nil;
+    [_title release], _title = nil;
+    [_handler release], _handler = nil;
     [super dealloc];
 }
 @end

@@ -101,7 +101,7 @@
 }
 
 - (void) selectViewWithTag:(int)tag {
-    UIView<CBUIGridViewCell> *selectedView = nil;
+    id selectedView = nil;
     if (selectedViewTag != 0) {
         selectedView = [scrollView viewWithTag:selectedViewTag];
         [selectedView setSelected:NO animated:NO];

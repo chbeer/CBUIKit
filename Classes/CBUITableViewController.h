@@ -19,8 +19,8 @@
 	UITableView *_tableView;
 }
 
-@property (nonatomic, retain) UITableView *tableView;
-@property (nonatomic, retain) id<CBUITableViewDataSource> dataSource; ;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) IBOutlet id<CBUITableViewDataSource> dataSource; ;
 
 - (id) initWithStyle:(UITableViewStyle)style;
 

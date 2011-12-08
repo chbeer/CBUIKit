@@ -7,6 +7,7 @@
 //
 
 #import "CBUIGlobal.h"
+#include <math.h>
 
 BOOL CBIsIPad() {
     return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
@@ -18,6 +19,12 @@ UIBarButtonItem *CBUIBarButtonSetStyle(UIBarButtonItem *itm, UIBarButtonItemStyl
     itm.style = style;
     return itm;
 }
+UIBarButtonItem *CBUIBarButtonSetTintColor(UIBarButtonItem *itm, UIColor *tintColor)
+{
+    itm.tintColor = tintColor;
+    return itm;
+}
+
 
 UIBarButtonItem *CBUIBarFlexibleSpace() {
 	return [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
@@ -105,4 +112,13 @@ void HideNetworkIndicator()
     if (networkIndicatorCounter <= 0) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     }
+}
+
+inline double CBUIRadians (double degrees) {return degrees * M_PI/180;}
+
+
+BOOL CBUIMinimumVersion(float version)
+{
+    float iOSVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+    return (iOSVersion >= version);
 }

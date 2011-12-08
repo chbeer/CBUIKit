@@ -10,22 +10,18 @@
 
 // loglevel: 0 = debug, 1 = info, 2  = warning, 3 = error
 
-/*#ifdef LOGLEVEL >= 0
-#define DLog(...) NSLog(__VA_ARGS__)
-#else
-#define DLog(...)     /* */
-//#endif
-
-#ifdef LOGLEVEL >= 1
+#if LOGLEVEL >= 1
 #define ILog(...) NSLog(__VA_ARGS__)
 #else
 #define ILog(...)     /* */
 #endif
 
+extern inline double CBUIRadians (double degrees);
+
 
 BOOL CBIsIPad();
 
-
+UIBarButtonItem *CBUIBarButtonSetTintColor(UIBarButtonItem *itm, UIColor *tintColor);
 UIBarButtonItem *CBUIBarButtonSetStyle(UIBarButtonItem *itm, UIBarButtonItemStyle style);
 UIBarButtonItem *CBUIBarFlexibleSpace();
 UIBarButtonItem *CBUIBarButtonFixedSpace(CGFloat width);
@@ -47,3 +43,7 @@ CGPathRef CreateRoundedRectPath(CGRect rect, CGFloat radius);
 
 void ShowNetworkIndicator();
 void HideNetworkIndicator();
+
+
+BOOL CBUIMinimumVersion(float version);
+

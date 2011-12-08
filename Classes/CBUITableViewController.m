@@ -25,23 +25,22 @@
 }
 
 - (void) loadView {
-	UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
-	
-	_tableView = [[UITableView alloc] initWithFrame:view.bounds style:_style];
-	_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	_tableView.dataSource = self;
-	_tableView.delegate = self;
-    if (_tableView.style == UITableViewStylePlain) {
-        _tableView.opaque = YES;
-    } else {
-        _tableView.backgroundColor = [UIColor clearColor];
-        _tableView.opaque = NO;
-    }
-	_tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-	[view addSubview:_tableView];
+    [super loadView];
     
-	self.view = view;
-	[view release];
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:_style];
+        _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+        if (_tableView.style == UITableViewStylePlain) {
+            _tableView.opaque = YES;
+        } else {
+            _tableView.backgroundColor = [UIColor clearColor];
+            _tableView.opaque = NO;
+        }
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        [self.view addSubview:_tableView];
+    }    
 }
 
 - (void) dealloc {
@@ -49,12 +48,6 @@
     [_tableView release]; _tableView = nil;
     
     [super dealloc];
-}
-
-- (void) viewDidLoad {
-	[super viewDidLoad];
-	
-	_tableView.frame = self.view.bounds;
 }
 
 - (void) viewWillAppear:(BOOL)animated {

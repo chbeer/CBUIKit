@@ -8,18 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class CBUITableViewDataSource;
+@class CBUITableViewDataSource, CBUITableViewCell;
 
-@protocol CBUITableViewDataSourceDelegate
-
-- (void) dataSourceDidFinishLoading:(CBUITableViewDataSource*)dataSource;
-@optional
-- (Class) tableView:(UITableView*)tableView cellClassForObject:(id)object;
-
-@end
+@protocol CBUITableViewCell;
+@protocol CBUITableViewDataSourceDelegate;
 
 
-@protocol CBUITableViewDataSource <UITableViewDataSource>
+@protocol CBUITableViewDataSource <UITableViewDataSource,NSObject>
 
 - (id) objectAtIndexPath:(NSIndexPath*)indexPath;
 
@@ -29,29 +24,28 @@
 
 @end
 
-@protocol CBUITableViewCell <NSObject>
-
-- (void) setObject:(id)object;
-
-@end
-
-
 
 
 @interface CBUITableViewDataSource : NSObject <CBUITableViewDataSource,UITableViewDataSource> {
 	UITableView *_tableView;
 	
     id<CBUITableViewDataSourceDelegate> _delegate;
-    
-    Class defaultTableViewCellClass;
-    IBOutlet UITableViewCell *tableViewCell;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 
 @property (nonatomic, assign) id<CBUITableViewDataSourceDelegate> delegate;
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 50000  // available for iOS > 5.0
+@property (nonatomic, copy) NSString *defaultTableViewCellReuseIdentifier; // can be used after IOS 5 for Automatic Cell Loading see WWDC '11 Session 125
+#endif
+
+@property (nonatomic, retain) IBOutlet UITableViewCell<CBUITableViewCell> *tableViewCell;
 @property (assign) Class defaultTableViewCellClass;
+
+@property (nonatomic, readonly) BOOL            loading;
+@property (nonatomic, readonly) BOOL            empty;
+
 
 - (id) initWithTableView: (UITableView *) aTableView;
 
@@ -70,5 +64,35 @@
 
 - (NSIndexPath*) indexPathForObject:(id)object;
 - (void) removeObjectAtIndexPath:(NSIndexPath*)indexPath;
+
+@end
+
+
+
+//// ////
+
+@protocol CBUITableViewCell <NSObject>
+
+- (void) setObject:(id)object;
+
+@optional
+
+- (void) setObject:(id)object inTableView:(UITableView*)tableView;
+
+@end
+
+
+@protocol CBUITableViewDataSourceDelegate <NSObject>
+
+@optional
+- (void) dataSourceDidFinishLoading:(CBUITableViewDataSource*)dataSource;
+
+- (Class) tableView:(UITableView*)tableView cellClassForObject:(id)object atIndexPath:(NSIndexPath*)indexPath;
+- (Class) tableView:(UITableView*)tableView cellClassForObject:(id)object;
+
+- (NSString*) tableView:(UITableView*)tableView reuseIdentifierForCellForObject:(id)object atIndexPath:(NSIndexPath*)indexPath;
+- (NSString*) tableView:(UITableView*)tableView reuseIdentifierForCellForObject:(id)object;
+
+- (void) dataSource:(CBUITableViewDataSource*)dataSource didCreateCell:(UITableViewCell<CBUITableViewCell>*)cell forTableView:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath;
 
 @end
