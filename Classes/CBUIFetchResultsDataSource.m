@@ -115,11 +115,6 @@
         NSManagedObject *managedObject = (NSManagedObject*)object;
         
         [managedObject.managedObjectContext deleteObject:managedObject];
-        
-        NSError *error = nil;
-        if (![managedObject.managedObjectContext save:&error]) {
-            NSLog(@"Was unable to delete object: %@", error);
-        }
     }
 }
 
