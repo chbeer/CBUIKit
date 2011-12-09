@@ -64,7 +64,6 @@
 		AAE52B8113279DAD0026317D /* UIDevice+Machine.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE52B7F13279DAD0026317D /* UIDevice+Machine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAE52B8213279DAD0026317D /* UIDevice+Machine.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE52B8013279DAD0026317D /* UIDevice+Machine.m */; };
 		AAE5532C13C351E90011DD4D /* CBUIActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE5532A13C351E90011DD4D /* CBUIActivityView.m */; };
-		AAE7414014757AC400E71161 /* UIView+CBUIKit.h in Sources */ = {isa = PBXBuildFile; fileRef = AAE7413E14757AC400E71161 /* UIView+CBUIKit.h */; };
 		AAE7414114757AC400E71161 /* UIView+CBUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE7413F14757AC400E71161 /* UIView+CBUIKit.m */; };
 		AAE7414214757B3600E71161 /* UIView+CBUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE7413E14757AC400E71161 /* UIView+CBUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAE77FE913CAEDE8006D65BE /* UIGestureRecognizer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE77FE713CAEDE8006D65BE /* UIGestureRecognizer+Blocks.m */; };
@@ -460,7 +459,6 @@
 				AA1FDD3B1469D280006D2B2B /* CBUISpring.m in Sources */,
 				AA8B7AB8146A638B009940AE /* CBUIVerticalLayoutView.m in Sources */,
 				AA846A01146BC47B0038F3D5 /* CBUIHorizontalLayoutView.m in Sources */,
-				AAE7414014757AC400E71161 /* UIView+CBUIKit.h in Sources */,
 				AAE7414114757AC400E71161 /* UIView+CBUIKit.m in Sources */,
 				AA7944681487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.m in Sources */,
 			);
