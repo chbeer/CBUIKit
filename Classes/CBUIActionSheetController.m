@@ -185,6 +185,10 @@
             destructiveButton.handler();
         }
     } else {
+        NSInteger index = buttonIndex;
+        if (inActionSheet.destructiveButtonIndex != NSNotFound) {
+            index--;
+        }
         CBUIActionSheetControllerButton *button = [buttons objectAtIndex:buttonIndex];
         if (button.handler) {
             button.handler();
