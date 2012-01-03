@@ -189,7 +189,7 @@
         if (inActionSheet.destructiveButtonIndex != NSNotFound) {
             index--;
         }
-        CBUIActionSheetControllerButton *button = [buttons objectAtIndex:buttonIndex];
+        CBUIActionSheetControllerButton *button = [buttons objectAtIndex:index];
         if (button.handler) {
             button.handler();
         }
