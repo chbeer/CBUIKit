@@ -19,7 +19,7 @@
     
     self.insets = UIEdgeInsetsZero;
     self.spacing = 0.0;
-    self.autoresizesSubviews = YES;
+    self.autoresizesSubviews = NO;
     
     return self;
 }
@@ -31,7 +31,7 @@
     
     self.insets = UIEdgeInsetsZero;
     self.spacing = 0.0;
-    self.autoresizesSubviews = YES;
+    self.autoresizesSubviews = NO;
     
     return self;
 }
@@ -88,7 +88,7 @@
         
         y += view.bounds.size.height + self.spacing;
         
-        [view layoutSubviews];
+        [view setNeedsLayout];
     }];
 }
 
