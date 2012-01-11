@@ -210,6 +210,8 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
 {
     [self hidePreviousCenterView];
     
+    self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     [spinner sizeToFit];
     spinner.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
