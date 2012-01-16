@@ -4,9 +4,15 @@
 
 #ifdef __OBJC__
 
-#define DEBUG
+// loglevel: 0 = debug, 1 = info, 2  = warning, 3 = error
 
-#ifdef DEBUG
+#if CBUI_LOGLEVEL >= 1
+#define ILog(...) NSLog(__VA_ARGS__)
+#else
+#define ILog(...)     /* */
+#endif
+
+#if CBUI_LOGLEVEL >= 0
     #define DLog(...) NSLog(@"%s(%x) %@", __PRETTY_FUNCTION__, (NSUInteger)self, [NSString stringWithFormat:__VA_ARGS__])
     #define ALog(...) [[NSAssertionHandler currentHandler] handleFailureInFunction:[NSString stringWithCString:__PRETTY_FUNCTION__ encoding:NSUTF8StringEncoding] file:[NSString stringWithCString:__FILE__ encoding:NSUTF8StringEncoding] lineNumber:__LINE__ description:__VA_ARGS__]
 #else

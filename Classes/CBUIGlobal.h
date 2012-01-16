@@ -8,14 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-// loglevel: 0 = debug, 1 = info, 2  = warning, 3 = error
-
-#if LOGLEVEL >= 1
-#define ILog(...) NSLog(__VA_ARGS__)
-#else
-#define ILog(...)     /* */
-#endif
-
 extern inline double CBUIRadians (double degrees);
 
 
