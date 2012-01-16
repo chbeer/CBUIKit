@@ -37,6 +37,9 @@
 		AA1FDD361469D24D006D2B2B /* CBUISpringLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1FDD341469D24D006D2B2B /* CBUISpringLayoutView.m */; };
 		AA1FDD3A1469D280006D2B2B /* CBUISpring.h in Headers */ = {isa = PBXBuildFile; fileRef = AA1FDD381469D27F006D2B2B /* CBUISpring.h */; };
 		AA1FDD3B1469D280006D2B2B /* CBUISpring.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1FDD391469D27F006D2B2B /* CBUISpring.m */; };
+		AA54982A14C4168200219135 /* CBUITableViewCells.h in Sources */ = {isa = PBXBuildFile; fileRef = AA54982814C4168200219135 /* CBUITableViewCells.h */; };
+		AA54982B14C4168200219135 /* CBUITableViewCells.m in Sources */ = {isa = PBXBuildFile; fileRef = AA54982914C4168200219135 /* CBUITableViewCells.m */; };
+		AA54982D14C4184B00219135 /* CBUITableViewCells.h in Headers */ = {isa = PBXBuildFile; fileRef = AA54982814C4168200219135 /* CBUITableViewCells.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA78537F1456A92800598FEF /* SafeFetchedResultsController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7A215B1442F481000FD1A1 /* SafeFetchedResultsController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA7944671487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7944651487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA7944681487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7944661487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.m */; };
@@ -102,6 +105,8 @@
 		AA1FDD341469D24D006D2B2B /* CBUISpringLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUISpringLayoutView.m; sourceTree = "<group>"; };
 		AA1FDD381469D27F006D2B2B /* CBUISpring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUISpring.h; sourceTree = "<group>"; };
 		AA1FDD391469D27F006D2B2B /* CBUISpring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUISpring.m; sourceTree = "<group>"; };
+		AA54982814C4168200219135 /* CBUITableViewCells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUITableViewCells.h; sourceTree = "<group>"; };
+		AA54982914C4168200219135 /* CBUITableViewCells.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUITableViewCells.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* CBUIKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIKit_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AA7944651487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIFetchResultsReorderDataSource.h; sourceTree = "<group>"; };
 		AA7944661487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIFetchResultsReorderDataSource.m; sourceTree = "<group>"; };
@@ -269,6 +274,8 @@
 			children = (
 				AA19FDCD12FAECAF000306DB /* CBUITableViewCellFactory.h */,
 				AA19FDCE12FAECAF000306DB /* CBUITableViewCellFactory.m */,
+				AA54982814C4168200219135 /* CBUITableViewCells.h */,
+				AA54982914C4168200219135 /* CBUITableViewCells.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -373,6 +380,7 @@
 				AA0F870D14161E7B0005A176 /* CBUIActivityView.h in Headers */,
 				AAA0E776142239F8000476B6 /* CBUICircularProgressView.h in Headers */,
 				AAE7414214757B3600E71161 /* UIView+CBUIKit.h in Headers */,
+				AA54982D14C4184B00219135 /* CBUITableViewCells.h in Headers */,
 				AA1FDD351469D24D006D2B2B /* CBUISpringLayoutView.h in Headers */,
 				AA1FDD3A1469D280006D2B2B /* CBUISpring.h in Headers */,
 			);
@@ -461,6 +469,8 @@
 				AA846A01146BC47B0038F3D5 /* CBUIHorizontalLayoutView.m in Sources */,
 				AAE7414114757AC400E71161 /* UIView+CBUIKit.m in Sources */,
 				AA7944681487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.m in Sources */,
+				AA54982A14C4168200219135 /* CBUITableViewCells.h in Sources */,
+				AA54982B14C4168200219135 /* CBUITableViewCells.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

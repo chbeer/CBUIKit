@@ -18,6 +18,7 @@
 #import "CBUIGridViewFetchRequestDataSource.h"
 
 #import "CBUITableViewDataSource.h"
+#import "CBUITableViewCells.h"
 #import "CBUIFetchResultsDataSource.h"
 #import "CBUIFetchResultsReorderDataSource.h"
 #import "CBUIAttributedLabel.h"
