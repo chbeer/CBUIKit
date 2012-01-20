@@ -75,7 +75,7 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     self.centerView = nil;
     self.messageLabel = nil;
