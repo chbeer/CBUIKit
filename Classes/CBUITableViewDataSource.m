@@ -196,6 +196,16 @@
 
 #pragma mark Accessors
 
+- (void)setItems:(NSMutableArray *)items
+{
+    if (_items != items) {
+        [_items release];
+        _items = [items retain];
+        
+        self.empty = self.items.count == 0;
+        [self.tableView reloadData];
+    }
+}
 - (void) addItemsObject:(id)object inSectionAtIndex:(NSUInteger)sectionIndex
 {
     NSIndexPath *path = nil;
@@ -219,7 +229,8 @@
         [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:path] 
                           withRowAnimation:anim];
     }
-        
+     
+    self.empty = NO;
 }
 - (void) removeItemsObject:(id)object inSectionAtIndex:(NSUInteger)sectionIndex
 {
@@ -249,6 +260,8 @@
         [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path] 
                           withRowAnimation:anim];
     }
+    
+    self.empty = self.items.count == 0;
 }
 
 #pragma mark CBUITableViewDataSource
@@ -297,6 +310,8 @@
 		[_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
 						  withRowAnimation:UITableViewRowAnimationFade];
 	}
+    
+    self.empty = self.items.count == 0;
 }
 
 #pragma mark UITableViewDataSource
@@ -315,6 +330,13 @@
 	} else {
 		return _items.count;
 	}
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([tableView.delegate respondsToSelector:@selector(tableView:commitEditingStyle:forRowAtIndexPath:)]) {
+        [(id)tableView.delegate tableView:tableView commitEditingStyle:editingStyle forRowAtIndexPath:indexPath];
+    }
 }
 
 @end
