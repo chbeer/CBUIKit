@@ -75,12 +75,12 @@
         va_end(args);
     }
     
-    return ctrl; // intentionally no autorelease -> didDismissWithButton
+    return [ctrl autorelease];
 }
 + (id) actionSheetControllerWithTitle:(NSString*)title
 {
     CBUIActionSheetController *ctrl = [[self alloc] initWithTitle:title];
-    return ctrl; // intentionally no autorelease -> didDismissWithButton
+    return [ctrl autorelease];
 }
 
 - (void)dealloc {
@@ -154,22 +154,27 @@
 - (void)showFromToolbar:(UIToolbar *)view;
 {
     [[self actionSheet] showFromToolbar:view];
+    [self retain];
 }
 - (void)showFromTabBar:(UITabBar *)view;
 {
     [[self actionSheet] showFromTabBar:view];
+    [self retain];
 }
 - (void)showFromBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated;
 {
     [[self actionSheet] showFromBarButtonItem:item animated:animated];
+    [self retain];
 }
 - (void)showFromRect:(CGRect)rect inView:(UIView *)view animated:(BOOL)animated;
 {
     [[self actionSheet] showFromRect:rect inView:view animated:animated];
+    [self retain];
 }
 - (void)showInView:(UIView *)view;
 {
     [[self actionSheet] showInView:view];
+    [self retain];
 }
 
 #pragma mark UIActionSheetDelegate

@@ -25,7 +25,7 @@ UIBarButtonItem *CBUIBarButtonCustomItem(UIView *view);
 #pragma mark -
 #pragma mark Internationalization
 
-NSString *I18N(NSString *key);
+NSString *I18N(NSString *key, NSString *comment);
 NSString *I18N1(NSString *key, id param1);
 NSString *I18N2(NSString *key, id param1, id param2);
 

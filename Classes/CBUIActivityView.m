@@ -162,7 +162,8 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
 
 - (void) hide:(BOOL)animated
 {
-    [UIView animateWithDuration:0.3
+    [UIView animateWithDuration:0.3 delay:0.0 
+                        options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationCurveEaseIn 
                      animations:^{
                          self.alpha = 0.0;
                          self.layer.transform = ApplyInterfaceRotationToCATransform3D(CATransform3DMakeScale(0.1, 0.1, 1.0));

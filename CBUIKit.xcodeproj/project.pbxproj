@@ -37,7 +37,6 @@
 		AA1FDD361469D24D006D2B2B /* CBUISpringLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1FDD341469D24D006D2B2B /* CBUISpringLayoutView.m */; };
 		AA1FDD3A1469D280006D2B2B /* CBUISpring.h in Headers */ = {isa = PBXBuildFile; fileRef = AA1FDD381469D27F006D2B2B /* CBUISpring.h */; };
 		AA1FDD3B1469D280006D2B2B /* CBUISpring.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1FDD391469D27F006D2B2B /* CBUISpring.m */; };
-		AA54982A14C4168200219135 /* CBUITableViewCells.h in Sources */ = {isa = PBXBuildFile; fileRef = AA54982814C4168200219135 /* CBUITableViewCells.h */; };
 		AA54982B14C4168200219135 /* CBUITableViewCells.m in Sources */ = {isa = PBXBuildFile; fileRef = AA54982914C4168200219135 /* CBUITableViewCells.m */; };
 		AA54982D14C4184B00219135 /* CBUITableViewCells.h in Headers */ = {isa = PBXBuildFile; fileRef = AA54982814C4168200219135 /* CBUITableViewCells.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA78537F1456A92800598FEF /* SafeFetchedResultsController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7A215B1442F481000FD1A1 /* SafeFetchedResultsController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -76,8 +75,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AA19FDBD12FAECAF000306DB /* CBUIGlobal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIGlobal.m; sourceTree = "<group>"; };
-		AA19FDBE12FAECAF000306DB /* CBUIGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIGlobal.h; sourceTree = "<group>"; };
+		AA19FDBD12FAECAF000306DB /* CBUIGlobal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CBUIGlobal.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		AA19FDBE12FAECAF000306DB /* CBUIGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CBUIGlobal.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		AA19FDC012FAECAF000306DB /* CBUIImagePagingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIImagePagingScrollView.h; sourceTree = "<group>"; };
 		AA19FDC112FAECAF000306DB /* CBUIImagePagingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIImagePagingScrollView.m; sourceTree = "<group>"; };
 		AA19FDC212FAECAF000306DB /* CBUISlideshowImagesPagingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUISlideshowImagesPagingScrollView.h; sourceTree = "<group>"; };
@@ -123,7 +122,7 @@
 		AA943C98145020A900912E34 /* NSObject+CBBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CBBinding.h"; sourceTree = "<group>"; };
 		AA943C99145020A900912E34 /* NSObject+CBBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CBBinding.m"; sourceTree = "<group>"; };
 		AA95A73113E9BEF9003B77C4 /* CBUIAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIAlertViewController.h; sourceTree = "<group>"; };
-		AA95A73213E9BEF9003B77C4 /* CBUIAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIAlertViewController.m; sourceTree = "<group>"; };
+		AA95A73213E9BEF9003B77C4 /* CBUIAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CBUIAlertViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAA0E77114223523000476B6 /* CBUICircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUICircularProgressView.h; sourceTree = "<group>"; };
 		AAA0E77214223523000476B6 /* CBUICircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUICircularProgressView.m; sourceTree = "<group>"; };
 		AAB2EF7213B8776A004A1C64 /* CBUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUIKit.h; sourceTree = "<group>"; };
@@ -469,7 +468,6 @@
 				AA846A01146BC47B0038F3D5 /* CBUIHorizontalLayoutView.m in Sources */,
 				AAE7414114757AC400E71161 /* UIView+CBUIKit.m in Sources */,
 				AA7944681487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.m in Sources */,
-				AA54982A14C4168200219135 /* CBUITableViewCells.h in Sources */,
 				AA54982B14C4168200219135 /* CBUITableViewCells.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -489,6 +487,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CBUIKit_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				PRODUCT_NAME = CBUIKit;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(PRODUCT_NAME)";
 				SKIP_INSTALL = YES;
@@ -504,6 +503,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CBUIKit_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				PRODUCT_NAME = CBUIKit;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(PRODUCT_NAME)";
 				SKIP_INSTALL = YES;
