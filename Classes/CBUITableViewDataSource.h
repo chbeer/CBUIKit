@@ -43,8 +43,8 @@
 @property (nonatomic, retain) IBOutlet UITableViewCell<CBUITableViewCell> *tableViewCell;
 @property (assign) Class defaultTableViewCellClass;
 
-@property (nonatomic, readonly) BOOL            loading;
-@property (nonatomic, readonly) BOOL            empty;
+@property (nonatomic, readonly, getter=isLoading)   BOOL            loading;
+@property (nonatomic, readonly, getter=isEmpty)     BOOL            empty;
 
 
 - (id) initWithTableView: (UITableView *) aTableView;
@@ -73,10 +73,10 @@
 
 @protocol CBUITableViewCell <NSObject>
 
-- (void) setObject:(id)object;
-
 @optional
 
+// Must implement at least one of those!
+- (void) setObject:(id)object;
 - (void) setObject:(id)object inTableView:(UITableView*)tableView;
 
 @end

@@ -118,6 +118,7 @@
 - (void)show
 {
     [[self alertView] show];
+    [self retain];
 }
 
 
@@ -136,7 +137,7 @@
         }
     }
 
-    [self autorelease];
+    [self release];
 }
 
 @end
