@@ -12,12 +12,18 @@
 
 //#define DEBUG
 
+@interface CBUITableViewDataSource ()
+
+@property (nonatomic, assign) BOOL loading;
+@property (nonatomic, assign) BOOL empty;
+
+@end
+
 #define StringFromIndexPath(indexPath) [NSString stringWithFormat:@"[%lu, %lu]", indexPath.section, indexPath.row]
 
 @implementation CBUIFetchResultsDataSource
 
 @synthesize fetchedResultsController = _fetchedResultsController;
-@synthesize loading = _loading;
 @synthesize ignoreForUpdateIndexPath = _ignoreForUpdateIndexPath;
 
 - (id) initWithTableView:(UITableView*)tableView
@@ -43,6 +49,7 @@
     }
 
     self.loading = NO;
+    self.empty = YES;
     
 	return self;
 }
@@ -89,6 +96,9 @@
     BOOL result = [_fetchedResultsController performFetch:error];
     self.loading = NO;
     [self.tableView reloadData];
+    
+    self.empty = _fetchedResultsController.fetchedObjects.count == 0;
+    
     return result;
 }
 
@@ -218,12 +228,16 @@
 {
 	DLog(@"controllerDidChangeContent");
 	
+    self.empty = _fetchedResultsController.fetchedObjects.count == 0;
+    
 	[self.tableView endUpdates];
 }
 
 - (void)controllerDidMakeUnsafeChanges:(NSFetchedResultsController *)controller
 {
 	DLog(@"controllerDidMakeUnsafeChanges");
+    
+    self.empty = _fetchedResultsController.fetchedObjects.count == 0;
 	
 	[self.tableView reloadData];
 }
@@ -248,6 +262,8 @@
 - (BOOL) performFetchAndUpdateTableView:(NSError **)error
 {
     NSArray *objectsBefore = [self.fetchedResultsController.fetchedObjects retain];
+    
+    self.loading = YES;
     
     BOOL result = [self.fetchedResultsController performFetch:error];
     if (result) {
@@ -281,6 +297,8 @@
             [_tableView endUpdates];
         }
     }
+    
+    self.loading = NO;
     
     [objectsBefore release];
     return result;

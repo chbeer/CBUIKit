@@ -16,7 +16,6 @@
 @interface CBUIFetchResultsDataSource : CBUITableViewDataSource <SafeFetchedResultsControllerDelegate> 
 
 @property (readonly) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic, assign, getter = isLoading) BOOL loading;
 @property (nonatomic, retain) NSIndexPath *ignoreForUpdateIndexPath;
 
 - (id) initWithTableView:(UITableView*)tableView
