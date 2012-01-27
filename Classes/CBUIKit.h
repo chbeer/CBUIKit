@@ -21,7 +21,9 @@
 #import "CBUITableViewCells.h"
 #import "CBUIFetchResultsDataSource.h"
 #import "CBUIFetchResultsReorderDataSource.h"
+
 #import "CBUIAttributedLabel.h"
+#import "CBUIVerticalAlignedLabel.h"
 
 #import "CBNSAttributedString+DokuWiki.h"
 

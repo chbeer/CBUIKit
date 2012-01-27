@@ -51,6 +51,8 @@
 		AA846A03146BC9650038F3D5 /* CBUIHorizontalLayoutView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8469FE146BC47B0038F3D5 /* CBUIHorizontalLayoutView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8B7AB8146A638B009940AE /* CBUIVerticalLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8B7AB6146A638B009940AE /* CBUIVerticalLayoutView.m */; };
 		AA8B7AB9146A7561009940AE /* CBUIVerticalLayoutView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8B7AB5146A638B009940AE /* CBUIVerticalLayoutView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA8E1B1514D2BA1800BC52CC /* CBUIVerticalAlignedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8E1B1314D2BA1800BC52CC /* CBUIVerticalAlignedLabel.m */; };
+		AA8E1B1714D2BAE500BC52CC /* CBUIVerticalAlignedLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8E1B1214D2BA1800BC52CC /* CBUIVerticalAlignedLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA943C9A145020A900912E34 /* NSObject+CBBinding.h in Headers */ = {isa = PBXBuildFile; fileRef = AA943C98145020A900912E34 /* NSObject+CBBinding.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA943C9B145020A900912E34 /* NSObject+CBBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = AA943C99145020A900912E34 /* NSObject+CBBinding.m */; };
 		AA95A73313E9BEF9003B77C4 /* CBUIAlertViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA95A73113E9BEF9003B77C4 /* CBUIAlertViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -119,6 +121,8 @@
 		AA8469FF146BC47B0038F3D5 /* CBUIHorizontalLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIHorizontalLayoutView.m; sourceTree = "<group>"; };
 		AA8B7AB5146A638B009940AE /* CBUIVerticalLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUIVerticalLayoutView.h; sourceTree = "<group>"; };
 		AA8B7AB6146A638B009940AE /* CBUIVerticalLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIVerticalLayoutView.m; sourceTree = "<group>"; };
+		AA8E1B1214D2BA1800BC52CC /* CBUIVerticalAlignedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUIVerticalAlignedLabel.h; sourceTree = "<group>"; };
+		AA8E1B1314D2BA1800BC52CC /* CBUIVerticalAlignedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIVerticalAlignedLabel.m; sourceTree = "<group>"; };
 		AA943C98145020A900912E34 /* NSObject+CBBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CBBinding.h"; sourceTree = "<group>"; };
 		AA943C99145020A900912E34 /* NSObject+CBBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CBBinding.m"; sourceTree = "<group>"; };
 		AA95A73113E9BEF9003B77C4 /* CBUIAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIAlertViewController.h; sourceTree = "<group>"; };
@@ -293,6 +297,8 @@
 			children = (
 				AA7DC0A513BA0B350069CC3A /* CBUIAttributedLabel.h */,
 				AA7DC0A613BA0B350069CC3A /* CBUIAttributedLabel.m */,
+				AA8E1B1214D2BA1800BC52CC /* CBUIVerticalAlignedLabel.h */,
+				AA8E1B1314D2BA1800BC52CC /* CBUIVerticalAlignedLabel.m */,
 			);
 			name = Label;
 			sourceTree = "<group>";
@@ -369,6 +375,7 @@
 				AA7944671487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.h in Headers */,
 				AA19FDEF12FAECAF000306DB /* CBUIDisclosureTriangle.h in Headers */,
 				AA7DC0A713BA0B350069CC3A /* CBUIAttributedLabel.h in Headers */,
+				AA8E1B1714D2BAE500BC52CC /* CBUIVerticalAlignedLabel.h in Headers */,
 				AA7DC0AF13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h in Headers */,
 				AAED5FBC13C4511B005DD099 /* CBUIActionSheetController.h in Headers */,
 				AAE77FFE13CAF0E5006D65BE /* UIGestureRecognizer+Blocks.h in Headers */,
@@ -469,6 +476,7 @@
 				AAE7414114757AC400E71161 /* UIView+CBUIKit.m in Sources */,
 				AA7944681487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.m in Sources */,
 				AA54982B14C4168200219135 /* CBUITableViewCells.m in Sources */,
+				AA8E1B1514D2BA1800BC52CC /* CBUIVerticalAlignedLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
