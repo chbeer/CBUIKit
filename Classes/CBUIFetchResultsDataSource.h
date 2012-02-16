@@ -13,6 +13,15 @@
 
 #import "SafeFetchedResultsController.h"
 
+@class CBUIFetchResultsDataSource;
+
+@protocol CBUIFetchResultsDataSourceDelegate <NSObject>
+
+- (void) fetchResultsDataSourceDidUpdateContent:(CBUIFetchResultsDataSource*)ds;
+
+@end
+
+
 @interface CBUIFetchResultsDataSource : CBUITableViewDataSource <SafeFetchedResultsControllerDelegate> 
 
 @property (readonly) NSFetchedResultsController *fetchedResultsController;

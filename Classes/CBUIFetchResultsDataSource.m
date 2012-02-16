@@ -231,6 +231,10 @@
     self.empty = _fetchedResultsController.fetchedObjects.count == 0;
     
 	[self.tableView endUpdates];
+    
+    if ([self.delegate respondsToSelector:@selector(fetchResultsDataSourceDidUpdateContent:)]) {
+        [(id<CBUIFetchResultsDataSourceDelegate>)self.delegate fetchResultsDataSourceDidUpdateContent:self];
+    }
 }
 
 - (void)controllerDidMakeUnsafeChanges:(NSFetchedResultsController *)controller
