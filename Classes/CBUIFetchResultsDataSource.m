@@ -17,6 +17,8 @@
 @property (nonatomic, assign) BOOL loading;
 @property (nonatomic, assign) BOOL empty;
 
+@property (nonatomic, retain) NSArray *preservedSelection;
+
 @end
 
 #define StringFromIndexPath(indexPath) [NSString stringWithFormat:@"[%lu, %lu]", indexPath.section, indexPath.row]
@@ -26,6 +28,10 @@
 @synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize ignoreForUpdateIndexPath = _ignoreForUpdateIndexPath;
 
+@synthesize preserveSelectionOnUpdate = _preserveSelectionOnUpdate;
+@synthesize preservedSelection        = _preservedSelection;
+
+
 - (id) initWithTableView:(UITableView*)tableView
             fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context 
       sectionNameKeyPath:(NSString*)sectionNameKeyPath
@@ -33,6 +39,8 @@
 {
 	self = [super initWithTableView:tableView];
     if (!self) return nil;
+    
+    _preserveSelectionOnUpdate = NO;
     
     if (CBUIMinimumVersion(4.0)) {
         _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
@@ -133,6 +141,10 @@
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
 	DLog(@"controllerWillChangeContent");
+    
+    if (self.preserveSelectionOnUpdate) {
+        self.preservedSelection = [self.tableView indexPathsForSelectedRows];
+    }
 	
 	[self.tableView beginUpdates];
 }
@@ -235,6 +247,12 @@
     if ([self.delegate respondsToSelector:@selector(fetchResultsDataSourceDidUpdateContent:)]) {
         [(id<CBUIFetchResultsDataSourceDelegate>)self.delegate fetchResultsDataSourceDidUpdateContent:self];
     }
+    
+    if (self.preserveSelectionOnUpdate && self.preservedSelection) {
+        [self.preservedSelection enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [self.tableView selectRowAtIndexPath:obj animated:NO scrollPosition:UITableViewScrollPositionNone];
+        }];
+    }
 }
 
 - (void)controllerDidMakeUnsafeChanges:(NSFetchedResultsController *)controller
@@ -244,6 +262,12 @@
     self.empty = _fetchedResultsController.fetchedObjects.count == 0;
 	
 	[self.tableView reloadData];
+    
+    if (self.preserveSelectionOnUpdate && self.preservedSelection) {
+        [self.preservedSelection enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [self.tableView selectRowAtIndexPath:obj animated:NO scrollPosition:UITableViewScrollPositionNone];
+        }];
+    }
 }
 
 #pragma mark CBUITableViewDataSource

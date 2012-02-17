@@ -27,6 +27,8 @@
 @property (readonly) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) NSIndexPath *ignoreForUpdateIndexPath;
 
+@property (nonatomic, assign) BOOL preserveSelectionOnUpdate;
+
 - (id) initWithTableView:(UITableView*)tableView
             fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context 
       sectionNameKeyPath:(NSString*)sectionNameKeyPath
