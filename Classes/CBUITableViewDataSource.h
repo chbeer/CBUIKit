@@ -51,6 +51,8 @@
 
 - (void) didFinishLoading;
 
+- (NSArray*) selectedObjects;
+
 @end
 
 

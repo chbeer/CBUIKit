@@ -168,6 +168,17 @@
     }
 }
 
+#pragma mark - Helper
+
+- (NSArray*) selectedObjects
+{
+    NSMutableArray *items = [NSMutableArray array];
+    [[self.tableView indexPathsForSelectedRows] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [items addObject:[self objectAtIndexPath:obj]];
+    }];
+    return items;
+}
+
 @end
 
 
