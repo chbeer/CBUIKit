@@ -122,3 +122,24 @@ BOOL CBUIMinimumVersion(float version)
     float iOSVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
     return (iOSVersion >= version);
 }
+
+
+CGPoint CBCGPointDelta(CGPoint point, CGFloat deltaX, CGFloat deltaY)
+{
+    CGPoint result = point;
+    result.x += deltaX;
+    result.y += deltaY;
+    return result;
+}
+CGPoint CBCGPointSetX(CGPoint point, CGFloat x)
+{
+    CGPoint result = point;
+    result.x = x;
+    return result;
+}
+CGPoint CBCGPointSetY(CGPoint point, CGFloat y)
+{
+    CGPoint result = point;
+    result.y = y;
+    return result;
+}

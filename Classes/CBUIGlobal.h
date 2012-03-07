@@ -39,3 +39,6 @@ void HideNetworkIndicator();
 
 BOOL CBUIMinimumVersion(float version);
 
+CGPoint CBCGPointDelta(CGPoint point, CGFloat deltaX, CGFloat deltaY);
+CGPoint CBCGPointSetX(CGPoint point, CGFloat x);
+CGPoint CBCGPointSetY(CGPoint point, CGFloat y);
