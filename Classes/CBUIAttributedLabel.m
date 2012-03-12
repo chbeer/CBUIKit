@@ -22,6 +22,8 @@
 
 - (void)drawRect:(CGRect)rect
 {
+    if (!text) return;
+    
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetTextMatrix(context, CGAffineTransformIdentity);
     
@@ -39,14 +41,18 @@
     CGPathRef path = CGPathCreateWithRect(self.bounds, NULL);
     
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)text);
+    if (!framesetter) return;
     
     // Create the frame and draw it into the graphics context
     CTFrameRef frame = CTFramesetterCreateFrame(framesetter,
                                                 CFRangeMake(0, 0), path, NULL);
-    CFRelease(framesetter);
+    
+    if (framesetter) CFRelease(framesetter);
+    
     CTFrameDraw(frame, context);
-    CFRelease(path);
-    CFRelease(frame);
+    
+    if (path) CFRelease(path);
+    if (frame) CFRelease(frame);
 }
 
 #pragma mark - Acccessors
