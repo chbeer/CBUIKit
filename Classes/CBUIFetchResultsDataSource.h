@@ -29,6 +29,8 @@
 
 @property (nonatomic, assign) BOOL preserveSelectionOnUpdate;
 
+@property (nonatomic, assign) BOOL allowsDeletion;
+
 - (id) initWithTableView:(UITableView*)tableView
             fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context 
       sectionNameKeyPath:(NSString*)sectionNameKeyPath

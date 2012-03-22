@@ -31,6 +31,7 @@
 @synthesize preserveSelectionOnUpdate = _preserveSelectionOnUpdate;
 @synthesize preservedSelection        = _preservedSelection;
 
+@synthesize allowsDeletion            = _allowsDeletion;
 
 - (id) initWithTableView:(UITableView*)tableView
             fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context 
@@ -41,6 +42,7 @@
     if (!self) return nil;
     
     _preserveSelectionOnUpdate = NO;
+    _allowsDeletion = YES;
     
     if (CBUIMinimumVersion(4.0)) {
         _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
@@ -129,7 +131,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     id object = [self objectAtIndexPath:indexPath];
     
-    if ([object isKindOfClass:[NSManagedObject class]]) {
+    if (editingStyle == UITableViewCellEditingStyleDelete && self.allowsDeletion && [object isKindOfClass:[NSManagedObject class]]) {
         NSManagedObject *managedObject = (NSManagedObject*)object;
         
         [managedObject.managedObjectContext deleteObject:managedObject];
