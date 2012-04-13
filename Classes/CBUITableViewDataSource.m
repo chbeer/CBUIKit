@@ -197,6 +197,17 @@
     return self;
 }
 
+- (id)initWithTableView:(UITableView *)aTableView items:(NSArray*)items
+{
+    self = [super initWithTableView:aTableView];
+    if (!self) return nil;
+    
+    _items = [items mutableCopy];
+    self.empty = self.items.count == 0;
+
+    return self;
+}
+
 - (void) dealloc {
     [_tableView release], _tableView = nil;
     [_sections release], _sections = nil;
@@ -207,11 +218,11 @@
 
 #pragma mark Accessors
 
-- (void)setItems:(NSMutableArray *)items
+- (void)setItems:(NSArray *)items
 {
     if (_items != items) {
         [_items release];
-        _items = [items retain];
+        _items = [items mutableCopy];
         
         self.empty = self.items.count == 0;
         [self.tableView reloadData];

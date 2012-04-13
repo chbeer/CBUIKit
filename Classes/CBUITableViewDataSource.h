@@ -66,6 +66,8 @@
 @property (nonatomic, retain) NSMutableArray *sections;
 @property (nonatomic, retain) NSMutableArray *items;
 
+- (id)initWithTableView:(UITableView *)aTableView items:(NSArray*)items;
+
 - (NSIndexPath*) indexPathForObject:(id)object;
 - (void) removeObjectAtIndexPath:(NSIndexPath*)indexPath;
 
