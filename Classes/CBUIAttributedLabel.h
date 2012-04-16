@@ -7,11 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreText/CoreText.h>
 
-@interface CBUIAttributedLabel : UIView {
-    NSAttributedString *text;
+#import "CBUIVerticalAlignedLabel.h"
+
+
+@interface CBUIAttributedLabel : UILabel {
+    CTFramesetterRef _framesetter;
 }
 
-@property (nonatomic, copy) NSAttributedString *text;
+@property (nonatomic, copy) NSAttributedString *attributedText;
+
+@property (nonatomic, assign) VerticalAlignment verticalAlignment;
 
 @end
