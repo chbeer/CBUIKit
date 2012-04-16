@@ -55,10 +55,10 @@ typedef struct {
     NSString *temp = nil;
     while (![scanner isAtEnd]) {
         
-        [scanner scanUpToCharactersFromSet:dokuWikiBasicSyntaxCharacterSet
-                                intoString:&temp];
+        BOOL readCharacters = [scanner scanUpToCharactersFromSet:dokuWikiBasicSyntaxCharacterSet
+                                             intoString:&temp];
         
-        if (temp) {
+        if (readCharacters) {
             [result appendAttributedString:[self attributedStringWithString:temp 
                                                                  attributes:attributes]];
         }
@@ -72,6 +72,13 @@ typedef struct {
             attributes.underline = !attributes.underline;
         } else if ([scanner scanString:@"''" intoString:NULL]) {
             attributes.monospace = !attributes.monospace;
+        } else {
+            NSString *character = nil;
+            if ([scanner scanCharactersFromSet:dokuWikiBasicSyntaxCharacterSet 
+                                    intoString:&character]) {
+                [result appendAttributedString:[self attributedStringWithString:character
+                                                                     attributes:attributes]];
+            }
         }
         
     }
