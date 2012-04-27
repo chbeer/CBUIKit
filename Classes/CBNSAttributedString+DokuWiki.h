@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreText/CoreText.h>
+
 
 @interface NSAttributedString (DokuWiki)
 
@@ -15,5 +17,6 @@
 
 // convenience methods
 + (NSAttributedString *)attributedStringWithDokuWikiString:(NSString *)string options:(NSDictionary *)options;
+
 
 @end

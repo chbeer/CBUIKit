@@ -103,4 +103,16 @@
     }
 }
 
+- (CGSize)sizeThatFits:(CGSize)size
+{
+    if (!self.attributedText) {
+        return [super sizeThatFits:size];
+    } else {
+        CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)self.attributedText); 
+        CGSize suggestedSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), NULL, CGSizeMake(size.width, size.height), NULL);
+        CFRelease(framesetter);
+        return suggestedSize;
+    }
+}
+
 @end

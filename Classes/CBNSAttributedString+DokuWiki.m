@@ -7,7 +7,6 @@
 //
 
 #import "CBNSAttributedString+DokuWiki.h"
-#import <CoreText/CoreText.h>
 
 // NOTE: this only supports the basic text formatting described here: http://www.dokuwiki.org/syntax
 //
@@ -21,6 +20,7 @@ typedef struct {
     NSString *fontFamily;
     CGFloat fontSize;
 } CBNSAttributedStringAttributes;
+
 
 @interface NSAttributedString (DokuWiki_Private) 
 - (NSAttributedString*) attributedStringWithString:(NSString*)temp attributes:(CBNSAttributedStringAttributes)attributes;
@@ -100,7 +100,7 @@ typedef struct {
 
 #pragma mark - Helper
 
-- (NSAttributedString*) attributedStringWithString:(NSString*)temp attributes:(CBNSAttributedStringAttributes)attributes
++ (CTFontRef) createCTFontRefWithAttributes:(CBNSAttributedStringAttributes)attributes
 {
     CTFontSymbolicTraits traits = 0;
     if (attributes.bold)
@@ -125,6 +125,13 @@ typedef struct {
     CTFontDescriptorRef descriptor = CTFontDescriptorCreateWithAttributes((CFDictionaryRef)fontAttr);
     CTFontRef font = CTFontCreateWithFontDescriptor(descriptor, attributes.fontSize, NULL);
     CFRelease(descriptor);
+    
+    return font;
+}
+
+- (NSAttributedString*) attributedStringWithString:(NSString*)temp attributes:(CBNSAttributedStringAttributes)attributes
+{
+    CTFontRef font = [[self class] createCTFontRefWithAttributes:attributes];
     
     NSMutableDictionary *attr = [NSMutableDictionary dictionary];
     [attr setObject:(id)font 
