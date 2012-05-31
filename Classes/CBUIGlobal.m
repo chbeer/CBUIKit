@@ -143,3 +143,7 @@ CGPoint CBCGPointSetY(CGPoint point, CGFloat y)
     result.y = y;
     return result;
 }
+
+CGPoint CBCGRectGetCenter(CGRect rect) {
+    return CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
+}
