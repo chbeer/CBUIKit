@@ -129,7 +129,7 @@ static char     * const CBBINDING_OBSERVER          = "__CBBINDING_OBSERVER";
     id newValue = [change objectForKey:NSKeyValueChangeNewKey];
     if ([newValue isKindOfClass:[NSNull class]]) newValue = nil;
     
-    id obj;
+    id obj = nil;
     NSString *path;
     if (object == self.observer) {
         obj = self.observable;
