@@ -96,6 +96,8 @@
             [self setText:(NSString*)inText];
         } else {
             _attributedText = [inText copy];
+            
+            if (_framesetter) CFRelease(_framesetter);
             _framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)_attributedText);
         }
         
