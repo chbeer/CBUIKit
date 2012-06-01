@@ -72,10 +72,10 @@
     // Set the usual "flipped" Core Text draw matrix
 	CGContextTranslateCTM(context, 0, ([self bounds]).size.height );
 	CGContextScaleCTM(context, 1.0, -1.0);
+
+    if (!_framesetter) return;
     
     CGPathRef path = CGPathCreateWithRect(actualRect, NULL);
-    
-    if (!_framesetter) return;
     
     // Create the frame and draw it into the graphics context
     CTFrameRef frame = CTFramesetterCreateFrame(_framesetter, CFRangeMake(0, 0), path, NULL);
