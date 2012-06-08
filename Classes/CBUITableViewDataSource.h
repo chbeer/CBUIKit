@@ -34,7 +34,7 @@
     id<CBUITableViewDataSourceDelegate> _delegate;
 }
 
-@property (nonatomic, assign) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 
 @property (nonatomic, assign) id<CBUITableViewDataSourceDelegate> delegate;
 
