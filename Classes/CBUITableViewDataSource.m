@@ -42,8 +42,7 @@
 }
 
 - (void) dealloc {
-    [_tableView release], _tableView = nil;
-    
+    _tableView = nil;
     [_defaultTableViewCellReuseIdentifier release], _defaultTableViewCellReuseIdentifier = nil;
 	
     [super dealloc];

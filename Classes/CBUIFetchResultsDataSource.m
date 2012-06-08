@@ -94,6 +94,7 @@
 }
 
 - (void) dealloc {
+    _fetchedResultsController.delegate = nil;
     [_fetchedResultsController dealloc], _fetchedResultsController = nil;
     [_ignoreForUpdateIndexPath release], _ignoreForUpdateIndexPath = nil;
     
