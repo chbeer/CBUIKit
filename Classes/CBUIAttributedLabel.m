@@ -38,7 +38,17 @@
         
         CGSize size = CTFramesetterSuggestFrameSizeWithConstraints(_framesetter, range, nil, bounds.size, &fitRange);
         
-        textRect.origin = bounds.origin;
+        CGPoint origin = bounds.origin;
+        switch (self.textAlignment) {
+            case UITextAlignmentCenter:
+                origin.x = (self.bounds.size.width - size.width) / 2;
+                break;
+            case UITextAlignmentRight:
+                origin.x = self.bounds.size.width - size.width;
+                break;
+        }
+        
+        textRect.origin = origin;
         textRect.size = size;
     }
     switch (self.verticalAlignment) {
