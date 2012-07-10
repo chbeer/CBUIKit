@@ -21,6 +21,7 @@
 #import "CBUITableViewCells.h"
 #import "CBUIFetchResultsDataSource.h"
 #import "CBUIFetchResultsReorderDataSource.h"
+#import "CBUIManyFetchResultsDataSource.h"
 
 #import "CBUIAttributedLabel.h"
 #import "CBUIVerticalAlignedLabel.h"

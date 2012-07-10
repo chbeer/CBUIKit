@@ -39,6 +39,8 @@
 		AA1FDD3B1469D280006D2B2B /* CBUISpring.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1FDD391469D27F006D2B2B /* CBUISpring.m */; };
 		AA54982B14C4168200219135 /* CBUITableViewCells.m in Sources */ = {isa = PBXBuildFile; fileRef = AA54982914C4168200219135 /* CBUITableViewCells.m */; };
 		AA54982D14C4184B00219135 /* CBUITableViewCells.h in Headers */ = {isa = PBXBuildFile; fileRef = AA54982814C4168200219135 /* CBUITableViewCells.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA63DEE415AC0DE500D43CC0 /* CBUIManyFetchResultsDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AA63DEE215AC0DE500D43CC0 /* CBUIManyFetchResultsDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA63DEE515AC0DE500D43CC0 /* CBUIManyFetchResultsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA63DEE315AC0DE500D43CC0 /* CBUIManyFetchResultsDataSource.m */; };
 		AA78537F1456A92800598FEF /* SafeFetchedResultsController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7A215B1442F481000FD1A1 /* SafeFetchedResultsController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA7944671487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7944651487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA7944681487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7944661487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.m */; };
@@ -108,6 +110,8 @@
 		AA1FDD391469D27F006D2B2B /* CBUISpring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUISpring.m; sourceTree = "<group>"; };
 		AA54982814C4168200219135 /* CBUITableViewCells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUITableViewCells.h; sourceTree = "<group>"; };
 		AA54982914C4168200219135 /* CBUITableViewCells.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUITableViewCells.m; sourceTree = "<group>"; };
+		AA63DEE215AC0DE500D43CC0 /* CBUIManyFetchResultsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIManyFetchResultsDataSource.h; sourceTree = "<group>"; };
+		AA63DEE315AC0DE500D43CC0 /* CBUIManyFetchResultsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIManyFetchResultsDataSource.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* CBUIKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIKit_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AA7944651487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIFetchResultsReorderDataSource.h; sourceTree = "<group>"; };
 		AA7944661487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIFetchResultsReorderDataSource.m; sourceTree = "<group>"; };
@@ -327,6 +331,8 @@
 				AA19FDD212FAECAF000306DB /* CBUIFetchResultsDataSource.m */,
 				AA7944651487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.h */,
 				AA7944661487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.m */,
+				AA63DEE215AC0DE500D43CC0 /* CBUIManyFetchResultsDataSource.h */,
+				AA63DEE315AC0DE500D43CC0 /* CBUIManyFetchResultsDataSource.m */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -387,6 +393,7 @@
 				AAA0E776142239F8000476B6 /* CBUICircularProgressView.h in Headers */,
 				AAE7414214757B3600E71161 /* UIView+CBUIKit.h in Headers */,
 				AA54982D14C4184B00219135 /* CBUITableViewCells.h in Headers */,
+				AA63DEE415AC0DE500D43CC0 /* CBUIManyFetchResultsDataSource.h in Headers */,
 				AA1FDD351469D24D006D2B2B /* CBUISpringLayoutView.h in Headers */,
 				AA1FDD3A1469D280006D2B2B /* CBUISpring.h in Headers */,
 			);
@@ -477,6 +484,7 @@
 				AA7944681487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.m in Sources */,
 				AA54982B14C4168200219135 /* CBUITableViewCells.m in Sources */,
 				AA8E1B1514D2BA1800BC52CC /* CBUIVerticalAlignedLabel.m in Sources */,
+				AA63DEE515AC0DE500D43CC0 /* CBUIManyFetchResultsDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
