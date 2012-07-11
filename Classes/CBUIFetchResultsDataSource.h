@@ -17,6 +17,8 @@
 
 @protocol CBUIFetchResultsDataSourceDelegate <NSObject>
 
+@optional
+
 - (void) fetchResultsDataSourceDidUpdateContent:(CBUIFetchResultsDataSource*)ds;
 
 @end
