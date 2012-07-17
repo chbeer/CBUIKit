@@ -86,7 +86,7 @@
 #pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return self.sections.count;
+	return self.empty ? 0 : self.sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIdx {
