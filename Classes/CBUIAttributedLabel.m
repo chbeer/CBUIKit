@@ -41,10 +41,10 @@
         CGPoint origin = bounds.origin;
         switch (self.textAlignment) {
             case UITextAlignmentCenter:
-                origin.x = (self.bounds.size.width - size.width) / 2;
+                origin.x = ceilf((self.bounds.size.width - size.width) / 2);
                 break;
             case UITextAlignmentRight:
-                origin.x = self.bounds.size.width - size.width;
+                origin.x = ceilf(self.bounds.size.width - size.width);
                 break;
         }
         
@@ -61,7 +61,7 @@
         case VerticalAlignmentMiddle:
             // Fall through.
         default:
-            textRect.origin.y = bounds.origin.y + (bounds.size.height - textRect.size.height) / 2.0;
+            textRect.origin.y = ceilf(bounds.origin.y + (bounds.size.height - textRect.size.height) / 2.0);
     }
     return textRect;
 }
