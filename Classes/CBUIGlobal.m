@@ -147,3 +147,24 @@ CGPoint CBCGPointSetY(CGPoint point, CGFloat y)
 CGPoint CBCGRectGetCenter(CGRect rect) {
     return CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
 }
+
+CGRect CBCGRectFitAspect(CGRect rect, CGSize size)
+{
+    if (rect.size.width <= size.width && rect.size.height <= size.height) return rect;
+    rect.size = CBCGSizeFitAspect(rect.size, size);
+    return rect;
+}
+CGSize CBCGSizeFitAspect(CGSize size, CGSize fit)
+{
+    if (size.width <= fit.width && size.height <= fit.height) return size;
+    CGFloat ar = size.width / size.height;
+    CGFloat newAR = fit.width / fit.height;
+    if (ar > newAR) {
+        size.width = fit.width;
+        size.height = fit.width / ar;
+    } else {
+        size.height = fit.height;
+        size.width = fit.height * ar;
+    }
+    return size;
+}

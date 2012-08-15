@@ -44,3 +44,6 @@ CGPoint CBCGPointSetX(CGPoint point, CGFloat x);
 CGPoint CBCGPointSetY(CGPoint point, CGFloat y);
 
 CGPoint CBCGRectGetCenter(CGRect rect);
+
+CGRect CBCGRectFitAspect(CGRect rect, CGSize bounds);
+CGSize CBCGSizeFitAspect(CGSize size, CGSize fit);
