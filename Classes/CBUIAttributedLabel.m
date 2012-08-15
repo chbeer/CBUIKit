@@ -15,6 +15,24 @@
 
 @synthesize verticalAlignment = _verticalAlignment;
 
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (!self) return nil;
+    
+    self.verticalAlignment = VerticalAlignmentMiddle;
+    
+    return self;
+}
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (!self) return nil;
+    
+    self.verticalAlignment = VerticalAlignmentMiddle;
+    
+    return self;
+}
+
 - (void)dealloc {
     self.attributedText = nil;
     if (_framesetter) CFRelease(_framesetter);
@@ -53,15 +71,15 @@
     }
     switch (self.verticalAlignment) {
         case VerticalAlignmentTop:
-            textRect.origin.y = bounds.origin.y + bounds.size.height - textRect.size.height;
+            textRect.origin.y = 0;
             break;
         case VerticalAlignmentBottom:
-            textRect.origin.y = bounds.origin.y;
+            textRect.origin.y = bounds.size.height - textRect.size.height;
             break;
         case VerticalAlignmentMiddle:
             // Fall through.
         default:
-            textRect.origin.y = ceilf(bounds.origin.y + (bounds.size.height - textRect.size.height) / 2.0);
+            textRect.origin.y = ceilf((bounds.size.height - textRect.size.height) / 2.0);
     }
     return textRect;
 }

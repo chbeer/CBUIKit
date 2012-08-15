@@ -22,6 +22,15 @@
     
     return self;
 }
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (!self) return nil;
+    
+    self.verticalAlignment = VerticalAlignmentMiddle;
+    
+    return self;
+}
 
 - (void)setVerticalAlignment:(VerticalAlignment)verticalAlignment {
     _verticalAlignment = verticalAlignment;
