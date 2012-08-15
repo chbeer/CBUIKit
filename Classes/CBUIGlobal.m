@@ -144,6 +144,38 @@ CGPoint CBCGPointSetY(CGPoint point, CGFloat y)
     return result;
 }
 
+CGRect CBCGRectOriginDelta(CGRect rect, CGFloat deltaX, CGFloat deltaY)
+{
+    rect.origin.x += deltaX;
+    rect.origin.y += deltaY;
+    return rect;
+}
+CGRect CBCGRectSizeDelta(CGRect rect, CGFloat deltaW, CGFloat deltaH)
+{
+    rect.size.width += deltaW;
+    rect.size.height += deltaH;
+    return rect;
+}
+CGRect CBCGRectOriginSetX(CGRect rect, CGFloat x)
+{
+    rect.origin.x = x;
+    return rect;
+}
+CGRect CBCGRectOriginSetY(CGRect rect, CGFloat y)
+{
+    rect.origin.y = y;
+    return rect;
+}
+CGRect CBCGRectOriginSetWidth(CGRect rect, CGFloat w)
+{
+    rect.size.width = w;
+    return rect;
+}
+CGRect CBCGRectOriginSetHeight(CGRect rect, CGFloat h)
+{
+    rect.size.height = h;
+    return rect;
+}
 CGPoint CBCGRectGetCenter(CGRect rect) {
     return CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
 }
