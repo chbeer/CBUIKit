@@ -15,11 +15,13 @@
 
 @class CBUIFetchResultsDataSource;
 
-@protocol CBUIFetchResultsDataSourceDelegate <NSObject>
+@protocol CBUIFetchResultsDataSourceDelegate <CBUITableViewDataSourceDelegate>
 
 @optional
 
 - (void) fetchResultsDataSourceDidUpdateContent:(CBUIFetchResultsDataSource*)ds;
+
+- (BOOL) dataSource:(CBUIFetchResultsDataSource*)ds shouldDeleteObjectAtIndexPath:(NSIndexPath*)indexPath;
 
 @end
 

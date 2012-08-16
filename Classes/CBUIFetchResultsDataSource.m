@@ -130,12 +130,20 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    id object = [self objectAtIndexPath:indexPath];
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete && self.allowsDeletion && [object isKindOfClass:[NSManagedObject class]]) {
-        NSManagedObject *managedObject = (NSManagedObject*)object;
+    if (editingStyle == UITableViewCellEditingStyleDelete && self.allowsDeletion) {
+        BOOL delete = YES;
+        if ([self.delegate respondsToSelector:@selector(dataSource:shouldDeleteObjectAtIndexPath:)]) {
+            delete = [(id<CBUIFetchResultsDataSourceDelegate>)self.delegate dataSource:self shouldDeleteObjectAtIndexPath:indexPath];
+        }
         
-        [managedObject.managedObjectContext deleteObject:managedObject];
+        if (delete) {
+            id object = [self objectAtIndexPath:indexPath];
+            if ([object isKindOfClass:[NSManagedObject class]]) {
+                NSManagedObject *managedObject = (NSManagedObject*)object;
+        
+                [managedObject.managedObjectContext deleteObject:managedObject];
+            }
+        }
     }
 }
 
