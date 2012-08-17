@@ -66,6 +66,8 @@
 @property (nonatomic, retain) NSMutableArray *sections;
 @property (nonatomic, retain) NSMutableArray *items;
 
+@property (nonatomic, assign, getter = isEditable) BOOL editable;
+
 - (id)initWithTableView:(UITableView *)aTableView items:(NSArray*)items;
 
 - (NSIndexPath*) indexPathForObject:(id)object;

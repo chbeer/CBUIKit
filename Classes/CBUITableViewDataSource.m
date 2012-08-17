@@ -186,12 +186,15 @@
 @synthesize sections = _sections;
 @synthesize items = _items;
 
+@synthesize editable = _editable;
+
 - (id)initWithTableView:(UITableView *)aTableView
 {
     self = [super initWithTableView:aTableView];
     if (!self) return nil;
     
     _items = [[NSMutableArray alloc] init];
+    self.editable = YES;
     
     return self;
 }
@@ -203,6 +206,8 @@
     
     _items = [items mutableCopy];
     self.empty = self.items.count == 0;
+    
+    self.editable = YES;
 
     return self;
 }
@@ -351,6 +356,11 @@
 	} else {
 		return _items.count;
 	}
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return self.editable;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
