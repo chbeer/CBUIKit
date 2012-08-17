@@ -43,13 +43,17 @@ CGPoint CBCGPointDelta(CGPoint point, CGFloat deltaX, CGFloat deltaY);
 CGPoint CBCGPointSetX(CGPoint point, CGFloat x);
 CGPoint CBCGPointSetY(CGPoint point, CGFloat y);
 
+
 CGRect CBCGRectOriginDelta(CGRect rect, CGFloat deltaX, CGFloat deltaY);
 CGRect CBCGRectSizeDelta(CGRect rect, CGFloat deltaW, CGFloat deltaH);
-CGRect CBCGRectOriginSetX(CGRect rect, CGFloat x);
-CGRect CBCGRectOriginSetY(CGRect rect, CGFloat y);
-CGRect CBCGRectOriginSetWidth(CGRect rect, CGFloat w);
-CGRect CBCGRectOriginSetHeight(CGRect rect, CGFloat h);
+CGRect CBCGRectSetX(CGRect rect, CGFloat x);
+CGRect CBCGRectSetY(CGRect rect, CGFloat y);
+CGRect CBCGRectSetWidth(CGRect rect, CGFloat w);
+CGRect CBCGRectSetHeight(CGRect rect, CGFloat h);
 CGPoint CBCGRectGetCenter(CGRect rect);
+
+typedef CGRect(^CBCGRectModifyBlock)(CGRect rect);
+CGRect CBCGRectModify(CGRect rect, CBCGRectModifyBlock modifyBlock);
 
 CGRect CBCGRectFitAspect(CGRect rect, CGSize bounds);
 CGSize CBCGSizeFitAspect(CGSize size, CGSize fit);

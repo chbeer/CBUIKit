@@ -156,28 +156,33 @@ CGRect CBCGRectSizeDelta(CGRect rect, CGFloat deltaW, CGFloat deltaH)
     rect.size.height += deltaH;
     return rect;
 }
-CGRect CBCGRectOriginSetX(CGRect rect, CGFloat x)
+CGRect CBCGRectSetX(CGRect rect, CGFloat x)
 {
     rect.origin.x = x;
     return rect;
 }
-CGRect CBCGRectOriginSetY(CGRect rect, CGFloat y)
+CGRect CBCGRectSetY(CGRect rect, CGFloat y)
 {
     rect.origin.y = y;
     return rect;
 }
-CGRect CBCGRectOriginSetWidth(CGRect rect, CGFloat w)
+CGRect CBCGRectSetWidth(CGRect rect, CGFloat w)
 {
     rect.size.width = w;
     return rect;
 }
-CGRect CBCGRectOriginSetHeight(CGRect rect, CGFloat h)
+CGRect CBCGRectSetHeight(CGRect rect, CGFloat h)
 {
     rect.size.height = h;
     return rect;
 }
 CGPoint CBCGRectGetCenter(CGRect rect) {
     return CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
+}
+
+CGRect CBCGRectModify(CGRect rect, CBCGRectModifyBlock modifyBlock)
+{
+    return modifyBlock(rect);
 }
 
 CGRect CBCGRectFitAspect(CGRect rect, CGSize size)

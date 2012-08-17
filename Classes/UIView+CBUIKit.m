@@ -20,4 +20,13 @@
     }
 }
 
+- (void) cbModifyFrame:(CBCGRectModifyBlock) modifyBlock
+{
+    self.frame = modifyBlock(self.frame);
+}
+- (void) cbModifyBounds:(CBCGRectModifyBlock) modifyBlock
+{
+    self.bounds = modifyBlock(self.bounds);
+}
+
 @end
