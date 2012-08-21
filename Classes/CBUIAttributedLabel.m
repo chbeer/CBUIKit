@@ -64,6 +64,8 @@
             case UITextAlignmentRight:
                 origin.x = ceilf(self.bounds.size.width - size.width);
                 break;
+            default:
+                break;
         }
         
         textRect.origin = origin;
@@ -102,6 +104,8 @@
 	CGContextScaleCTM(context, 1.0, -1.0);
 
     if (!_framesetter) return;
+    
+    actualRect.origin.y = self.bounds.size.height - actualRect.size.height;
     
     CGPathRef path = CGPathCreateWithRect(actualRect, NULL);
     
