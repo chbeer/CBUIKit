@@ -20,4 +20,7 @@
 
 @property (nonatomic, assign) VerticalAlignment verticalAlignment;
 
+
++ (CGSize) sizeOfAttributedString:(NSAttributedString*)attributedText thatFits:(CGSize)size;
+
 @end

@@ -147,4 +147,12 @@
     }
 }
 
++ (CGSize) sizeOfAttributedString:(NSAttributedString*)attributedText thatFits:(CGSize)size
+{
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attributedText);
+    CGSize suggestedSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), NULL, CGSizeMake(size.width, size.height), NULL);
+    CFRelease(framesetter);
+    return suggestedSize;
+}
+
 @end
