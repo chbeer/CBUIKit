@@ -11,6 +11,9 @@
 
 #import "CBUIVerticalAlignedLabel.h"
 
+extern NSString * const kCBCTHighlightedForegroundColorAttributeName;
+extern NSString * const kCBCTDefaultForegroundColorAttributeName;
+
 
 @interface CBUIAttributedLabel : UILabel {
     CTFramesetterRef _framesetter;

@@ -8,8 +8,14 @@
 
 #import "CBUIAttributedLabel.h"
 
+NSString * const kCBCTHighlightedForegroundColorAttributeName = @"CBCTHighlightedForegroundColorAttributeName";
+NSString * const kCBCTDefaultForegroundColorAttributeName = @"CBCTDefaultForegroundColorAttributeName";
+
 
 @implementation CBUIAttributedLabel
+{
+    NSMutableAttributedString *_attributedText;
+}
 
 @synthesize attributedText = _attributedText;
 
@@ -43,6 +49,38 @@
 
 - (void)setVerticalAlignment:(VerticalAlignment)verticalAlignment {
     _verticalAlignment = verticalAlignment;
+    [self setNeedsDisplay];
+}
+
+- (void)setHighlighted:(BOOL)highlighted
+{
+    [super setHighlighted:highlighted];
+    
+    if (_attributedText) {
+        UIColor *currentColor = highlighted ? [self textColor] : [self highlightedTextColor];
+        UIColor *targetColor = highlighted ? [self highlightedTextColor] : [self textColor];
+        
+        [_attributedText enumerateAttributesInRange:NSMakeRange(0, _attributedText.length) options:0
+                                         usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
+                                             UIColor *textColor = [attrs objectForKey:(id)kCTForegroundColorAttributeName];
+                                             
+                                             UIColor *myTargetColor = nil;
+                                             
+                                             if (!textColor || [currentColor isEqual:textColor]) {
+                                                 myTargetColor = targetColor;
+                                             } else {
+                                                 myTargetColor = [attrs objectForKey:highlighted ? kCBCTHighlightedForegroundColorAttributeName : kCBCTDefaultForegroundColorAttributeName];
+                                             }
+                                             
+                                             if (myTargetColor) {
+                                                 [_attributedText addAttribute:(id)kCTForegroundColorAttributeName value:myTargetColor range:range];
+                                             }
+                                         }];
+        
+        if (_framesetter) CFRelease(_framesetter);
+        _framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)_attributedText);
+    }
+    
     [self setNeedsDisplay];
 }
 
@@ -111,7 +149,7 @@
     
     // Create the frame and draw it into the graphics context
     CTFrameRef frame = CTFramesetterCreateFrame(_framesetter, CFRangeMake(0, 0), path, NULL);
-    
+        
     CTFrameDraw(frame, context);
     
     if (path) CFRelease(path);
@@ -127,7 +165,7 @@
         if ([inText isKindOfClass:[NSString class]]) {
             [self setText:(NSString*)inText];
         } else {
-            _attributedText = [inText copy];
+            _attributedText = [inText mutableCopy];
             
             if (_framesetter) CFRelease(_framesetter);
             _framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)_attributedText);
