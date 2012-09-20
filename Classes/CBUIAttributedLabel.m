@@ -126,10 +126,10 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
     }
     switch (self.verticalAlignment) {
         case VerticalAlignmentTop:
-            textRect.origin.y = 0;
+            textRect.origin.y = bounds.size.height - textRect.size.height;
             break;
         case VerticalAlignmentBottom:
-            textRect.origin.y = bounds.size.height - textRect.size.height;
+            textRect.origin.y = 0;
             break;
         case VerticalAlignmentMiddle:
             // Fall through.
