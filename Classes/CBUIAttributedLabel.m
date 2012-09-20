@@ -161,8 +161,6 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
 
     if (!_framesetter) return;
     
-    actualRect.origin.y = self.bounds.size.height - actualRect.size.height;
-    
     CGPathRef path = CGPathCreateWithRect(actualRect, NULL);
     
     // Create the frame and draw it into the graphics context
@@ -196,7 +194,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                 if ([attachment isKindOfClass:[CBUITextAttachment class]]) {
                     CBUITextAttachment *textAttachment = attachment;
                     if (textAttachment.drawCallback) {
-                        textAttachment.drawCallback(context, frame);
+                        textAttachment.drawCallback(context, frame, line, run);
                     }
                 }
             }
