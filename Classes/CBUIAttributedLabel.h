@@ -11,6 +11,22 @@
 
 #import "CBUIVerticalAlignedLabel.h"
 
+@class CBUIAttributedLabel;
+@class CBUIAttributedLabelLink;
+
+
+extern NSString * const kCBCTHighlightedForegroundColorAttributeName;
+extern NSString * const kCBCTDefaultForegroundColorAttributeName;
+
+extern NSString * const kCBUILinkAttribute;
+
+
+@protocol CBUIAttributedLabelDelegate <NSObject>
+
+- (void) attributedLabel:(CBUIAttributedLabel*)label didTapOnLink:(CBUIAttributedLabelLink*)link;
+
+@end
+
 
 @interface CBUIAttributedLabel : UILabel {
     CTFramesetterRef _framesetter;
@@ -19,5 +35,20 @@
 @property (nonatomic, copy) NSAttributedString *attributedText;
 
 @property (nonatomic, assign) VerticalAlignment verticalAlignment;
+
+@property (nonatomic, assign) id <CBUIAttributedLabelDelegate> delegate;
+
+
++ (CGSize) sizeOfAttributedString:(NSAttributedString*)attributedText thatFits:(CGSize)size;
+
+@end
+
+
+@interface CBUIAttributedLabelLink : NSObject
+
+@property (nonatomic, assign) NSRange range;
+@property (nonatomic, assign) CGRect  frame;
+
+@property (nonatomic, copy) NSString *link;
 
 @end

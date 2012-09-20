@@ -26,8 +26,6 @@
 #import "CBUIAttributedLabel.h"
 #import "CBUIVerticalAlignedLabel.h"
 
-#import "CBNSAttributedString+DokuWiki.h"
-
 #import "CBUIActivityView.h"
 #import "CBUICircularProgressView.h"
 

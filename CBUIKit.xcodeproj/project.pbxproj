@@ -47,8 +47,6 @@
 		AA7A215E1442F481000FD1A1 /* SafeFetchedResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7A215C1442F481000FD1A1 /* SafeFetchedResultsController.m */; };
 		AA7DC0A713BA0B350069CC3A /* CBUIAttributedLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7DC0A513BA0B350069CC3A /* CBUIAttributedLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA7DC0A813BA0B350069CC3A /* CBUIAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7DC0A613BA0B350069CC3A /* CBUIAttributedLabel.m */; };
-		AA7DC0AF13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7DC0AD13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA7DC0B013BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7DC0AE13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m */; };
 		AA846A01146BC47B0038F3D5 /* CBUIHorizontalLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8469FF146BC47B0038F3D5 /* CBUIHorizontalLayoutView.m */; };
 		AA846A03146BC9650038F3D5 /* CBUIHorizontalLayoutView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8469FE146BC47B0038F3D5 /* CBUIHorizontalLayoutView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8B7AB8146A638B009940AE /* CBUIVerticalLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8B7AB6146A638B009940AE /* CBUIVerticalLayoutView.m */; };
@@ -63,6 +61,8 @@
 		AAA0E776142239F8000476B6 /* CBUICircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAA0E77114223523000476B6 /* CBUICircularProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB2EF7513B87DC3004A1C64 /* CBUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB2EF7213B8776A004A1C64 /* CBUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		AAD235D715FE18360094B09B /* CBUITextAttachment.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD235D515FE18360094B09B /* CBUITextAttachment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAD235D815FE18360094B09B /* CBUITextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD235D615FE18360094B09B /* CBUITextAttachment.m */; };
 		AAE527F7132668550026317D /* CBUITableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE527F5132668550026317D /* CBUITableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAE527F8132668550026317D /* CBUITableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE527F6132668550026317D /* CBUITableViewController.m */; };
 		AAE528021326688E0026317D /* CBUIViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE528001326688E0026317D /* CBUIViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -119,8 +119,6 @@
 		AA7A215C1442F481000FD1A1 /* SafeFetchedResultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeFetchedResultsController.m; sourceTree = "<group>"; };
 		AA7DC0A513BA0B350069CC3A /* CBUIAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIAttributedLabel.h; sourceTree = "<group>"; };
 		AA7DC0A613BA0B350069CC3A /* CBUIAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIAttributedLabel.m; sourceTree = "<group>"; };
-		AA7DC0AD13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBNSAttributedString+DokuWiki.h"; sourceTree = "<group>"; };
-		AA7DC0AE13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBNSAttributedString+DokuWiki.m"; sourceTree = "<group>"; };
 		AA8469FE146BC47B0038F3D5 /* CBUIHorizontalLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUIHorizontalLayoutView.h; sourceTree = "<group>"; };
 		AA8469FF146BC47B0038F3D5 /* CBUIHorizontalLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIHorizontalLayoutView.m; sourceTree = "<group>"; };
 		AA8B7AB5146A638B009940AE /* CBUIVerticalLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUIVerticalLayoutView.h; sourceTree = "<group>"; };
@@ -135,6 +133,8 @@
 		AAA0E77214223523000476B6 /* CBUICircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUICircularProgressView.m; sourceTree = "<group>"; };
 		AAB2EF7213B8776A004A1C64 /* CBUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUIKit.h; sourceTree = "<group>"; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AAD235D515FE18360094B09B /* CBUITextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUITextAttachment.h; sourceTree = "<group>"; };
+		AAD235D615FE18360094B09B /* CBUITextAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUITextAttachment.m; sourceTree = "<group>"; };
 		AAE527F5132668550026317D /* CBUITableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUITableViewController.h; sourceTree = "<group>"; };
 		AAE527F6132668550026317D /* CBUITableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUITableViewController.m; sourceTree = "<group>"; };
 		AAE528001326688E0026317D /* CBUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIViewController.h; sourceTree = "<group>"; };
@@ -214,8 +214,6 @@
 				AA19FDD712FAECAF000306DB /* CBUIDisclosureTriangle.h */,
 				AA19FDD812FAECAF000306DB /* CBUIDisclosureTriangle.m */,
 				AAE52B7E13279D9F0026317D /* System */,
-				AA7DC0AD13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h */,
-				AA7DC0AE13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m */,
 				AAE5532913C351E90011DD4D /* CBUIActivityView.h */,
 				AAE5532A13C351E90011DD4D /* CBUIActivityView.m */,
 				AAED5FBA13C4511B005DD099 /* CBUIActionSheetController.h */,
@@ -301,6 +299,8 @@
 			children = (
 				AA7DC0A513BA0B350069CC3A /* CBUIAttributedLabel.h */,
 				AA7DC0A613BA0B350069CC3A /* CBUIAttributedLabel.m */,
+				AAD235D515FE18360094B09B /* CBUITextAttachment.h */,
+				AAD235D615FE18360094B09B /* CBUITextAttachment.m */,
 				AA8E1B1214D2BA1800BC52CC /* CBUIVerticalAlignedLabel.h */,
 				AA8E1B1314D2BA1800BC52CC /* CBUIVerticalAlignedLabel.m */,
 			);
@@ -381,8 +381,8 @@
 				AA7944671487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.h in Headers */,
 				AA19FDEF12FAECAF000306DB /* CBUIDisclosureTriangle.h in Headers */,
 				AA7DC0A713BA0B350069CC3A /* CBUIAttributedLabel.h in Headers */,
+				AAD235D715FE18360094B09B /* CBUITextAttachment.h in Headers */,
 				AA8E1B1714D2BAE500BC52CC /* CBUIVerticalAlignedLabel.h in Headers */,
-				AA7DC0AF13BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.h in Headers */,
 				AAED5FBC13C4511B005DD099 /* CBUIActionSheetController.h in Headers */,
 				AAE77FFE13CAF0E5006D65BE /* UIGestureRecognizer+Blocks.h in Headers */,
 				AA95A73313E9BEF9003B77C4 /* CBUIAlertViewController.h in Headers */,
@@ -468,7 +468,6 @@
 				AAE528031326688E0026317D /* CBUIViewController.m in Sources */,
 				AAE52B8213279DAD0026317D /* UIDevice+Machine.m in Sources */,
 				AA7DC0A813BA0B350069CC3A /* CBUIAttributedLabel.m in Sources */,
-				AA7DC0B013BA1C0A0069CC3A /* CBNSAttributedString+DokuWiki.m in Sources */,
 				AAE5532C13C351E90011DD4D /* CBUIActivityView.m in Sources */,
 				AAED5FBD13C4511B005DD099 /* CBUIActionSheetController.m in Sources */,
 				AAE77FE913CAEDE8006D65BE /* UIGestureRecognizer+Blocks.m in Sources */,
@@ -485,6 +484,7 @@
 				AA54982B14C4168200219135 /* CBUITableViewCells.m in Sources */,
 				AA8E1B1514D2BA1800BC52CC /* CBUIVerticalAlignedLabel.m in Sources */,
 				AA63DEE515AC0DE500D43CC0 /* CBUIManyFetchResultsDataSource.m in Sources */,
+				AAD235D815FE18360094B09B /* CBUITextAttachment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

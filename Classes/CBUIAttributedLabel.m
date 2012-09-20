@@ -8,12 +8,28 @@
 
 #import "CBUIAttributedLabel.h"
 
+#import "CBUITextAttachment.h"
+
+
+NSString * const kCBCTHighlightedForegroundColorAttributeName = @"CBCTHighlightedForegroundColorAttributeName";
+NSString * const kCBCTDefaultForegroundColorAttributeName = @"CBCTDefaultForegroundColorAttributeName";
+
+NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
+
 
 @implementation CBUIAttributedLabel
+{
+    NSMutableAttributedString   *_attributedText;
+    
+    NSArray                     *_links;
+}
 
 @synthesize attributedText = _attributedText;
 
 @synthesize verticalAlignment = _verticalAlignment;
+
+@synthesize delegate = _delegate;
+
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -35,7 +51,11 @@
 
 - (void)dealloc {
     self.attributedText = nil;
+    
+    if (_links) [_links release];
+    
     if (_framesetter) CFRelease(_framesetter);
+    
     [super dealloc];
 }
 
@@ -43,6 +63,38 @@
 
 - (void)setVerticalAlignment:(VerticalAlignment)verticalAlignment {
     _verticalAlignment = verticalAlignment;
+    [self setNeedsDisplay];
+}
+
+- (void)setHighlighted:(BOOL)highlighted
+{
+    [super setHighlighted:highlighted];
+    
+    if (_attributedText) {
+        UIColor *currentColor = highlighted ? [self textColor] : [self highlightedTextColor];
+        UIColor *targetColor = highlighted ? [self highlightedTextColor] : [self textColor];
+        
+        [_attributedText enumerateAttributesInRange:NSMakeRange(0, _attributedText.length) options:0
+                                         usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
+                                             UIColor *textColor = [attrs objectForKey:(id)kCTForegroundColorAttributeName];
+                                             
+                                             UIColor *myTargetColor = nil;
+                                             
+                                             if (!textColor || [currentColor isEqual:textColor]) {
+                                                 myTargetColor = targetColor;
+                                             } else {
+                                                 myTargetColor = [attrs objectForKey:highlighted ? kCBCTHighlightedForegroundColorAttributeName : kCBCTDefaultForegroundColorAttributeName];
+                                             }
+                                             
+                                             if (myTargetColor) {
+                                                 [_attributedText addAttribute:(id)kCTForegroundColorAttributeName value:myTargetColor range:range];
+                                             }
+                                         }];
+        
+        if (_framesetter) CFRelease(_framesetter);
+        _framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)_attributedText);
+    }
+    
     [self setNeedsDisplay];
 }
 
@@ -55,6 +107,7 @@
         CFRange fitRange;
         
         CGSize size = CTFramesetterSuggestFrameSizeWithConstraints(_framesetter, range, nil, bounds.size, &fitRange);
+        size.width = bounds.size.width;
         
         CGPoint origin = bounds.origin;
         switch (self.textAlignment) {
@@ -97,6 +150,9 @@
     }
     
     CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSaveGState(context);
+    
     CGContextSetTextMatrix(context, CGAffineTransformIdentity);
     
     // Set the usual "flipped" Core Text draw matrix
@@ -111,11 +167,86 @@
     
     // Create the frame and draw it into the graphics context
     CTFrameRef frame = CTFramesetterCreateFrame(_framesetter, CFRangeMake(0, 0), path, NULL);
+ 
+    NSArray *linesInFrame = (NSArray*)CTFrameGetLines(frame);
+
+    if (_links) [_links release];
+    NSMutableArray *links = [[NSMutableArray alloc] init];
+    
+    [linesInFrame enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        CTLineRef line = (CTLineRef)obj;
+        
+        CGPoint lineOrigin;
+        CTFrameGetLineOrigins(frame, CFRangeMake(idx, 1), &lineOrigin);
+        
+        [(NSArray*)CTLineGetGlyphRuns(line) enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            CTRunRef run = (CTRunRef)obj;
+            
+            NSDictionary *runAttributes = (NSDictionary*)CTRunGetAttributes(run);
+            
+            id attachment = [runAttributes objectForKey:@"NSAttachmentAttributeName"];
+            if (attachment) {
+                CGFloat ascent, descent, leading;
+                CGFloat width = (CGFloat)CTRunGetTypographicBounds(run, CFRangeMake(0, 0), &ascent, &descent, &leading);
+                CGFloat offsetInLine = CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(run).location, NULL);
+                CGRect frame = CGRectMake(offsetInLine + lineOrigin.x,
+                                          lineOrigin.y - (descent + leading),
+                                          width, ascent + descent + leading);
+                
+                if ([attachment isKindOfClass:[CBUITextAttachment class]]) {
+                    CBUITextAttachment *textAttachment = attachment;
+                    if (textAttachment.drawCallback) {
+                        textAttachment.drawCallback(context, frame);
+                    }
+                }
+            }
+            
+            id linkURL = [runAttributes objectForKey:kCBUILinkAttribute];
+            if (linkURL) {
+                CFRange cfRange = CTRunGetStringRange(run);
+                NSRange runRange = NSMakeRange(cfRange.location, cfRange.length);
+                CGRect runBounds;
+                
+                CGFloat ascent, descent, leading;
+                runBounds.size.width = CTRunGetTypographicBounds(run, CFRangeMake(0, 0), &ascent, &descent, &leading);
+                runBounds.size.height = ascent + descent;
+                
+                CGFloat xOffset = CTLineGetOffsetForStringIndex(line, runRange.location, NULL);
+                runBounds.origin.x = lineOrigin.x + xOffset;
+                runBounds.origin.y = actualRect.size.height - lineOrigin.y + runBounds.size.height;
+                
+                runBounds = CGRectInset(runBounds, -10, -10);
+                
+                CBUIAttributedLabelLink *link = [[CBUIAttributedLabelLink alloc] init];
+                link.range = runRange;
+                link.frame = runBounds;
+                link.link = linkURL;
+                
+                [links addObject:link];
+            }
+        }];
+    }];
+
+    
+    _links = links;
+    
     
     CTFrameDraw(frame, context);
+
     
     if (path) CFRelease(path);
     if (frame) CFRelease(frame);
+
+    CGContextRestoreGState(context);
+
+//#ifdef DEBUG_LINKS
+    [_links enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        CBUIAttributedLabelLink *link = obj;
+        
+        CGContextSetRGBStrokeColor(context, 1.0f, 0, 0, 1.0f);
+        CGContextStrokeRect(context, link.frame);
+    }];
+//#endif
 }
 
 #pragma mark - Acccessors
@@ -127,7 +258,7 @@
         if ([inText isKindOfClass:[NSString class]]) {
             [self setText:(NSString*)inText];
         } else {
-            _attributedText = [inText copy];
+            _attributedText = [inText mutableCopy];
             
             if (_framesetter) CFRelease(_framesetter);
             _framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)_attributedText);
@@ -146,5 +277,60 @@
         return suggestedSize;
     }
 }
+
++ (CGSize) sizeOfAttributedString:(NSAttributedString*)attributedText thatFits:(CGSize)size
+{
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attributedText);
+    CGSize suggestedSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), NULL, CGSizeMake(size.width, size.height), NULL);
+    CFRelease(framesetter);
+    return suggestedSize;
+}
+
+#pragma mark - Touch Handling
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    __block BOOL handled = NO;
+    
+    if (touches.count == 1) {
+        UITouch *touch = [touches anyObject];
+
+        if ([self.delegate respondsToSelector:@selector(attributedLabel:didTapOnLink:)]) {
+            CGPoint location = [touch locationInView:self];
+              
+            [_links enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                CBUIAttributedLabelLink *link = obj;
+                if (CGRectContainsPoint(link.frame, location)) {
+                    [self.delegate attributedLabel:self didTapOnLink:link];
+                    handled = YES;
+                }
+            }];
+        }
+        
+    }
+
+    if (!handled) {
+        [super touchesEnded:touches withEvent:event];
+    }
+}
+
+@end
+
+
+@implementation CBUIAttributedLabelLink
+
+@synthesize range = _range;
+@synthesize frame = _frame;
+
+@synthesize link = _link;
 
 @end
