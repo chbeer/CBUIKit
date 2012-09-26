@@ -108,7 +108,6 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
         CFRange fitRange;
         
         CGSize size = CTFramesetterSuggestFrameSizeWithConstraints(_framesetter, range, nil, bounds.size, &fitRange);
-        size.width = bounds.size.width;
         
         CGPoint origin = bounds.origin;
         switch (self.textAlignment) {
