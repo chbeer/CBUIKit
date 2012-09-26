@@ -24,6 +24,8 @@
 #import "CBUIManyFetchResultsDataSource.h"
 
 #import "CBUIAttributedLabel.h"
+#import "CBUITextAttachment.h"
+
 #import "CBUIVerticalAlignedLabel.h"
 
 #import "CBUIActivityView.h"

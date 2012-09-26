@@ -8,13 +8,48 @@
 
 #import "CBUITextAttachment.h"
 
+void CBUITextAttachmentRunDelegateDealloc(void *context);
+CGFloat CBUITextAttachmentRunDelegateGetAscent(void *context);
+CGFloat CBUITextAttachmentRunDelegateGetDescent(void *context);
+CGFloat CBUITextAttachmentRunDelegateGetWidth(void *context);
+
+
+@interface CBUITextAttachment ()
+
+@property (nonatomic, readwrite, copy) CBUITextAttachmentGetFloatValueCallback getAscentCallback;
+@property (nonatomic, readwrite, copy) CBUITextAttachmentGetFloatValueCallback getDescentCallback;
+@property (nonatomic, readwrite, copy) CBUITextAttachmentGetFloatValueCallback getWidthCallback;
+
+@property (nonatomic, readwrite, retain) UIView                                *view;
+@property (nonatomic, readwrite, copy)   CBUITextAttachmentDrawCallback        drawCallback;
+
+@end
 
 @implementation CBUITextAttachment
+
+- (id) initWithView:(UIView*)view;
+{
+    self = [super init];
+    if (!self) return nil;
+    
+    self.getAscentCallback = ^{
+        return view.bounds.size.height;
+    };
+    self.getDescentCallback = ^{
+        return 0.0f;
+    };
+    self.getWidthCallback = ^{
+        return view.bounds.size.width;
+    };
+    self.view = view;
+    
+    return self;
+}
 
 - (id) initWithGetAscent:(CBUITextAttachmentGetFloatValueCallback)getAscentCallback
               getDescent:(CBUITextAttachmentGetFloatValueCallback)getDescentCallback
                 getWidth:(CBUITextAttachmentGetFloatValueCallback)getWidthCallback
-                    draw:(CBUITextAttachmentDrawCallback)draw;
+            drawCallback:(CBUITextAttachmentDrawCallback)draw;
 {
     self = [super init];
     if (!self) return nil;
@@ -26,22 +61,34 @@
     
     return self;
 }
-
 - (id) initWithAscent:(CGFloat)ascent
               descent:(CGFloat)descent
                 width:(CGFloat)width
-                 draw:(CBUITextAttachmentDrawCallback)draw;
+         drawCallback:(CBUITextAttachmentDrawCallback)draw;
 {
     return [self initWithGetAscent:^CGFloat{
-                            return ascent;
-                        }
+        return ascent;
+    }
                         getDescent:^CGFloat{
                             return descent;
                         }
                           getWidth:^CGFloat{
                               return width;
                           }
-                              draw:draw];
+                      drawCallback:draw];
+}
+
+#pragma mark -
+
+- (CTRunDelegateRef) createCTRunDelegate
+{
+    CTRunDelegateCallbacks callbacks;
+	callbacks.version = kCTRunDelegateCurrentVersion;
+    callbacks.dealloc = CBUITextAttachmentRunDelegateDealloc;
+    callbacks.getAscent = CBUITextAttachmentRunDelegateGetAscent;
+    callbacks.getDescent = CBUITextAttachmentRunDelegateGetDescent;
+    callbacks.getWidth = CBUITextAttachmentRunDelegateGetWidth;
+	return CTRunDelegateCreate(&callbacks, (void *)self);
 }
 
 @end
@@ -88,16 +135,4 @@ CGFloat CBUITextAttachmentRunDelegateGetWidth(void *context)
     
     }
     return 0;
-}
-
-CTRunDelegateCallbacks CBUITextAttachmentRunDelegateCreate(CBUITextAttachment *attachment)
-{
-    CTRunDelegateCallbacks callbacks;
-	callbacks.version = kCTRunDelegateCurrentVersion;
-    callbacks.dealloc = CBUITextAttachmentRunDelegateDealloc;
-    callbacks.getAscent = CBUITextAttachmentRunDelegateGetAscent;
-    callbacks.getDescent = CBUITextAttachmentRunDelegateGetDescent;
-    callbacks.getWidth = CBUITextAttachmentRunDelegateGetWidth;
-    
-    return callbacks;
 }

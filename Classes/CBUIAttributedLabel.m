@@ -22,6 +22,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
     NSMutableAttributedString   *_attributedText;
     
     NSArray                     *_links;
+    NSMutableArray              *_attachmentViews;
 }
 
 @synthesize attributedText = _attributedText;
@@ -167,6 +168,12 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
     CTFrameRef frame = CTFramesetterCreateFrame(_framesetter, CFRangeMake(0, 0), path, NULL);
  
     NSArray *linesInFrame = (NSArray*)CTFrameGetLines(frame);
+    
+    for (UIView *view in _attachmentViews) {
+        [view removeFromSuperview];
+    }
+    [_attachmentViews release];
+    _attachmentViews = [NSMutableArray array];
 
     if (_links) [_links release];
     NSMutableArray *links = [[NSMutableArray alloc] init];
@@ -195,6 +202,11 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                     CBUITextAttachment *textAttachment = attachment;
                     if (textAttachment.drawCallback) {
                         textAttachment.drawCallback(context, frame, line, run);
+                    } if (textAttachment.view) {
+                        UIView *view = textAttachment.view;
+                        view.frame = frame;
+                        [_attachmentViews addObject:view];
+                        [self addSubview:view];
                     }
                 }
             }
@@ -257,6 +269,13 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
             [self setText:(NSString*)inText];
         } else {
             _attributedText = [inText mutableCopy];
+            
+            [_attributedText enumerateAttribute:@"NSAttachmentAttributeName" inRange:NSMakeRange(0, _attributedText.length)
+                                        options:0 usingBlock:^(id value, NSRange range, BOOL *stop) {
+                                            CBUITextAttachment *attachment = value;
+                                            [_attributedText addAttribute:(id)kCTRunDelegateAttributeName
+                                                                    value:(id)[attachment createCTRunDelegate] range:range];
+                                        }];
             
             if (_framesetter) CFRelease(_framesetter);
             _framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)_attributedText);

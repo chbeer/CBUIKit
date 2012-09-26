@@ -15,18 +15,24 @@ typedef CGFloat(^CBUITextAttachmentDrawCallback)(CGContextRef ctx, CGRect frame,
 
 @interface CBUITextAttachment : NSObject
 
-@property (nonatomic, copy) CBUITextAttachmentGetFloatValueCallback getAscentCallback;
-@property (nonatomic, copy) CBUITextAttachmentGetFloatValueCallback getDescentCallback;
-@property (nonatomic, copy) CBUITextAttachmentGetFloatValueCallback getWidthCallback;
-@property (nonatomic, copy) CBUITextAttachmentDrawCallback          drawCallback;
+@property (nonatomic, readonly, copy) CBUITextAttachmentGetFloatValueCallback getAscentCallback;
+@property (nonatomic, readonly, copy) CBUITextAttachmentGetFloatValueCallback getDescentCallback;
+@property (nonatomic, readonly, copy) CBUITextAttachmentGetFloatValueCallback getWidthCallback;
+
+@property (nonatomic, readonly, retain) UIView                                *view;
+@property (nonatomic, readonly, copy)   CBUITextAttachmentDrawCallback        drawCallback;
+
+- (id) initWithView:(UIView*)view;
 
 - (id) initWithGetAscent:(CBUITextAttachmentGetFloatValueCallback)getAscentCallback
               getDescent:(CBUITextAttachmentGetFloatValueCallback)getDescentCallback
                 getWidth:(CBUITextAttachmentGetFloatValueCallback)getWidthCallback
-                    draw:(CBUITextAttachmentDrawCallback)draw;
+            drawCallback:(CBUITextAttachmentDrawCallback)draw;
 - (id) initWithAscent:(CGFloat)ascent
               descent:(CGFloat)descent
                 width:(CGFloat)width
-                 draw:(CBUITextAttachmentDrawCallback)draw;
+         drawCallback:(CBUITextAttachmentDrawCallback)draw;
+
+- (CTRunDelegateRef) createCTRunDelegate;
 
 @end
