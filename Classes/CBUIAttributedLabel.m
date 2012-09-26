@@ -198,6 +198,14 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                                           self.bounds.size.height - lineOrigin.y - ascent,
                                           width, ascent + descent);
                 
+                switch (self.textAlignment) {
+                    case UITextAlignmentCenter:
+                        frame.origin.x -= width / 2;
+                        break;
+                    default:
+                        break;
+                }
+                
                 if ([attachment isKindOfClass:[CBUITextAttachment class]]) {
                     CBUITextAttachment *textAttachment = attachment;
                     if (textAttachment.drawCallback) {
