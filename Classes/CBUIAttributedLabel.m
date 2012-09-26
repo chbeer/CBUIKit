@@ -195,8 +195,8 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                 CGFloat width = (CGFloat)CTRunGetTypographicBounds(run, CFRangeMake(0, 0), &ascent, &descent, &leading);
                 CGFloat offsetInLine = CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(run).location, NULL);
                 CGRect frame = CGRectMake(offsetInLine + lineOrigin.x,
-                                          lineOrigin.y - (descent + leading),
-                                          width, ascent + descent + leading);
+                                          self.bounds.size.height - lineOrigin.y - ascent,
+                                          width, ascent + descent);
                 
                 if ([attachment isKindOfClass:[CBUITextAttachment class]]) {
                     CBUITextAttachment *textAttachment = attachment;
@@ -207,6 +207,9 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                         view.frame = frame;
                         [_attachmentViews addObject:view];
                         [self addSubview:view];
+                        
+                        CGContextSetRGBStrokeColor(context, 1.0, 0.0, 0.0, 1.0);
+                        CGContextStrokeRect(context, frame);
                     }
                 }
             }
@@ -272,6 +275,8 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
             
             [_attributedText enumerateAttribute:@"NSAttachmentAttributeName" inRange:NSMakeRange(0, _attributedText.length)
                                         options:0 usingBlock:^(id value, NSRange range, BOOL *stop) {
+                                            if (!value) return;
+                                            
                                             CBUITextAttachment *attachment = value;
                                             [_attributedText addAttribute:(id)kCTRunDelegateAttributeName
                                                                     value:(id)[attachment createCTRunDelegate] range:range];
