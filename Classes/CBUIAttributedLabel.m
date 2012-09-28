@@ -172,7 +172,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
         [view removeFromSuperview];
     }
     [_attachmentViews release];
-    _attachmentViews = [NSMutableArray array];
+    _attachmentViews = [[NSMutableArray alloc] initWithCapacity:10];
 
     if (_links) [_links release];
     NSMutableArray *links = [[NSMutableArray alloc] init];
