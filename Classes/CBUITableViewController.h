@@ -14,16 +14,10 @@
 
 @interface CBUITableViewController : CBUIViewController <UITableViewDataSource,UITableViewDelegate> {
 	UITableViewStyle _style;
-    
-    id<CBUITableViewDataSource> _dataSource; 
-	UITableView *_tableView;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) IBOutlet id<CBUITableViewDataSource> dataSource; ;
 
 - (id) initWithStyle:(UITableViewStyle)style;
-
-- (BOOL) isTableEmpty;
 
 @end

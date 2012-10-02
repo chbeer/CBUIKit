@@ -13,7 +13,6 @@
 @implementation CBUITableViewController
 
 @synthesize tableView = _tableView;
-@synthesize dataSource = _dataSource;
 
 - (id) initWithStyle:(UITableViewStyle)style {
     self = [super init];
@@ -44,7 +43,6 @@
 }
 
 - (void) dealloc {
-    [_dataSource release], _dataSource = nil;
     [_tableView release]; _tableView = nil;
     
     [super dealloc];
@@ -62,14 +60,6 @@
 - (void) setEditing:(BOOL)editing animated:(BOOL)animated {
 	[super setEditing:editing animated:animated];
 	[_tableView setEditing:editing animated:animated];
-}
-
-- (BOOL) isTableEmpty {
-/*    if ([_dataSource respondsToSelector:@selector(isTableEmpty)]) {
-        return [_dataSource isTableEmpty];
-    }
-  */  
-    return ([_dataSource numberOfSectionsInTableView:_tableView] == 0);
 }
 
 #pragma mark UITableViewDataSource
