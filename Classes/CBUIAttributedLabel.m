@@ -37,6 +37,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
     if (!self) return nil;
     
     self.verticalAlignment = VerticalAlignmentMiddle;
+    _attachmentViews = nil;
     
     return self;
 }
@@ -46,6 +47,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
     if (!self) return nil;
     
     self.verticalAlignment = VerticalAlignmentMiddle;
+    _attachmentViews = nil;
     
     return self;
 }
@@ -56,6 +58,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
     if (_links) [_links release];
     
     if (_framesetter) CFRelease(_framesetter);
+    [_attachmentViews release]; _attachmentViews = nil;
     
     [super dealloc];
 }
@@ -171,8 +174,8 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
     for (UIView *view in _attachmentViews) {
         [view removeFromSuperview];
     }
-    [_attachmentViews release];
-    _attachmentViews = [NSMutableArray array];
+    [_attachmentViews release]; _attachmentViews = nil;
+    _attachmentViews = [[NSMutableArray alloc] init];
 
     if (_links) [_links release];
     NSMutableArray *links = [[NSMutableArray alloc] init];
