@@ -14,12 +14,6 @@
 		AA19FDDC12FAECAF000306DB /* CBUIImagePagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDC112FAECAF000306DB /* CBUIImagePagingScrollView.m */; };
 		AA19FDDD12FAECAF000306DB /* CBUISlideshowImagesPagingScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDC212FAECAF000306DB /* CBUISlideshowImagesPagingScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA19FDDE12FAECAF000306DB /* CBUISlideshowImagesPagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDC312FAECAF000306DB /* CBUISlideshowImagesPagingScrollView.m */; };
-		AA19FDDF12FAECAF000306DB /* CBUIGridView.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDC512FAECAF000306DB /* CBUIGridView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA19FDE012FAECAF000306DB /* CBUIGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDC612FAECAF000306DB /* CBUIGridView.m */; };
-		AA19FDE112FAECAF000306DB /* CBUIGridViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDC712FAECAF000306DB /* CBUIGridViewDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA19FDE212FAECAF000306DB /* CBUIGridViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDC812FAECAF000306DB /* CBUIGridViewDataSource.m */; };
-		AA19FDE312FAECAF000306DB /* CBUIGridViewFetchRequestDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDC912FAECAF000306DB /* CBUIGridViewFetchRequestDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA19FDE412FAECAF000306DB /* CBUIGridViewFetchRequestDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDCA12FAECAF000306DB /* CBUIGridViewFetchRequestDataSource.m */; };
 		AA19FDE512FAECAF000306DB /* CBUITableViewCellFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDCD12FAECAF000306DB /* CBUITableViewCellFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA19FDE612FAECAF000306DB /* CBUITableViewCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = AA19FDCE12FAECAF000306DB /* CBUITableViewCellFactory.m */; };
 		AA19FDE712FAECAF000306DB /* CBUITableViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDCF12FAECAF000306DB /* CBUITableViewDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -60,6 +54,13 @@
 		AAA0E77414223523000476B6 /* CBUICircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA0E77214223523000476B6 /* CBUICircularProgressView.m */; };
 		AAA0E776142239F8000476B6 /* CBUICircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAA0E77114223523000476B6 /* CBUICircularProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB2EF7513B87DC3004A1C64 /* CBUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB2EF7213B8776A004A1C64 /* CBUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAC398011619652D003C53EF /* CBUICustomAnimationModalSegue.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC397FF1619652D003C53EF /* CBUICustomAnimationModalSegue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAC398021619652D003C53EF /* CBUICustomAnimationModalSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC398001619652D003C53EF /* CBUICustomAnimationModalSegue.m */; };
+		AAC398041619657A003C53EF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC398031619657A003C53EF /* QuartzCore.framework */; };
+		AAC3E8AD161EA2E30055D313 /* CBUICollectionViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC3E8AB161EA2E30055D313 /* CBUICollectionViewDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAC3E8AE161EA2E30055D313 /* CBUICollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC3E8AC161EA2E30055D313 /* CBUICollectionViewDataSource.m */; };
+		AAC3E8B1161EA5390055D313 /* CBUIFetchedResultsCollectionViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC3E8AF161EA5390055D313 /* CBUIFetchedResultsCollectionViewDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAC3E8B2161EA5390055D313 /* CBUIFetchedResultsCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC3E8B0161EA5390055D313 /* CBUIFetchedResultsCollectionViewDataSource.m */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		AAD235D715FE18360094B09B /* CBUITextAttachment.h in Headers */ = {isa = PBXBuildFile; fileRef = AAD235D515FE18360094B09B /* CBUITextAttachment.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAD235D815FE18360094B09B /* CBUITextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD235D615FE18360094B09B /* CBUITextAttachment.m */; };
@@ -85,12 +86,6 @@
 		AA19FDC112FAECAF000306DB /* CBUIImagePagingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIImagePagingScrollView.m; sourceTree = "<group>"; };
 		AA19FDC212FAECAF000306DB /* CBUISlideshowImagesPagingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUISlideshowImagesPagingScrollView.h; sourceTree = "<group>"; };
 		AA19FDC312FAECAF000306DB /* CBUISlideshowImagesPagingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUISlideshowImagesPagingScrollView.m; sourceTree = "<group>"; };
-		AA19FDC512FAECAF000306DB /* CBUIGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIGridView.h; sourceTree = "<group>"; };
-		AA19FDC612FAECAF000306DB /* CBUIGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIGridView.m; sourceTree = "<group>"; };
-		AA19FDC712FAECAF000306DB /* CBUIGridViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIGridViewDataSource.h; sourceTree = "<group>"; };
-		AA19FDC812FAECAF000306DB /* CBUIGridViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIGridViewDataSource.m; sourceTree = "<group>"; };
-		AA19FDC912FAECAF000306DB /* CBUIGridViewFetchRequestDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIGridViewFetchRequestDataSource.h; sourceTree = "<group>"; };
-		AA19FDCA12FAECAF000306DB /* CBUIGridViewFetchRequestDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIGridViewFetchRequestDataSource.m; sourceTree = "<group>"; };
 		AA19FDCD12FAECAF000306DB /* CBUITableViewCellFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUITableViewCellFactory.h; sourceTree = "<group>"; };
 		AA19FDCE12FAECAF000306DB /* CBUITableViewCellFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUITableViewCellFactory.m; sourceTree = "<group>"; };
 		AA19FDCF12FAECAF000306DB /* CBUITableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUITableViewDataSource.h; sourceTree = "<group>"; };
@@ -132,6 +127,13 @@
 		AAA0E77114223523000476B6 /* CBUICircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUICircularProgressView.h; sourceTree = "<group>"; };
 		AAA0E77214223523000476B6 /* CBUICircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUICircularProgressView.m; sourceTree = "<group>"; };
 		AAB2EF7213B8776A004A1C64 /* CBUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUIKit.h; sourceTree = "<group>"; };
+		AAC397FF1619652D003C53EF /* CBUICustomAnimationModalSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUICustomAnimationModalSegue.h; sourceTree = "<group>"; };
+		AAC398001619652D003C53EF /* CBUICustomAnimationModalSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUICustomAnimationModalSegue.m; sourceTree = "<group>"; };
+		AAC398031619657A003C53EF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AAC3E8AB161EA2E30055D313 /* CBUICollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUICollectionViewDataSource.h; sourceTree = "<group>"; };
+		AAC3E8AC161EA2E30055D313 /* CBUICollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUICollectionViewDataSource.m; sourceTree = "<group>"; };
+		AAC3E8AF161EA5390055D313 /* CBUIFetchedResultsCollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIFetchedResultsCollectionViewDataSource.h; sourceTree = "<group>"; };
+		AAC3E8B0161EA5390055D313 /* CBUIFetchedResultsCollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIFetchedResultsCollectionViewDataSource.m; sourceTree = "<group>"; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AAD235D515FE18360094B09B /* CBUITextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUITextAttachment.h; sourceTree = "<group>"; };
 		AAD235D615FE18360094B09B /* CBUITextAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUITextAttachment.m; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAC398041619657A003C53EF /* QuartzCore.framework in Frameworks */,
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 				AA19FDF812FAED4B000306DB /* CoreData.framework in Frameworks */,
 			);
@@ -187,6 +190,7 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAC398031619657A003C53EF /* QuartzCore.framework */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 				AA19FDF712FAED4B000306DB /* CoreData.framework */,
 			);
@@ -204,7 +208,7 @@
 				AAE528011326688E0026317D /* CBUIViewController.m */,
 				AA7A21601442F487000FD1A1 /* Fixes */,
 				AA19FDCB12FAECAF000306DB /* TableView */,
-				AA19FDC412FAECAF000306DB /* Grid View */,
+				AA19FDC412FAECAF000306DB /* Collection View */,
 				AA19FDBF12FAECAF000306DB /* Image */,
 				AA7DC0A413BA0AF60069CC3A /* Label */,
 				AA19FDD312FAECAF000306DB /* CBUITabView.h */,
@@ -227,6 +231,7 @@
 				AA943C98145020A900912E34 /* NSObject+CBBinding.h */,
 				AA943C99145020A900912E34 /* NSObject+CBBinding.m */,
 				AA8B7AB4146A6349009940AE /* Layout */,
+				AAC397FD16196512003C53EF /* Storyboard */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -250,17 +255,15 @@
 			name = Image;
 			sourceTree = "<group>";
 		};
-		AA19FDC412FAECAF000306DB /* Grid View */ = {
+		AA19FDC412FAECAF000306DB /* Collection View */ = {
 			isa = PBXGroup;
 			children = (
-				AA19FDC512FAECAF000306DB /* CBUIGridView.h */,
-				AA19FDC612FAECAF000306DB /* CBUIGridView.m */,
-				AA19FDC712FAECAF000306DB /* CBUIGridViewDataSource.h */,
-				AA19FDC812FAECAF000306DB /* CBUIGridViewDataSource.m */,
-				AA19FDC912FAECAF000306DB /* CBUIGridViewFetchRequestDataSource.h */,
-				AA19FDCA12FAECAF000306DB /* CBUIGridViewFetchRequestDataSource.m */,
+				AAC3E8AB161EA2E30055D313 /* CBUICollectionViewDataSource.h */,
+				AAC3E8AC161EA2E30055D313 /* CBUICollectionViewDataSource.m */,
+				AAC3E8AF161EA5390055D313 /* CBUIFetchedResultsCollectionViewDataSource.h */,
+				AAC3E8B0161EA5390055D313 /* CBUIFetchedResultsCollectionViewDataSource.m */,
 			);
-			name = "Grid View";
+			name = "Collection View";
 			sourceTree = "<group>";
 		};
 		AA19FDCB12FAECAF000306DB /* TableView */ = {
@@ -322,6 +325,15 @@
 			name = Layout;
 			sourceTree = "<group>";
 		};
+		AAC397FD16196512003C53EF /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				AAC397FF1619652D003C53EF /* CBUICustomAnimationModalSegue.h */,
+				AAC398001619652D003C53EF /* CBUICustomAnimationModalSegue.m */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
 		AAE527F0132667F10026317D /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,9 +379,6 @@
 				AA943C9A145020A900912E34 /* NSObject+CBBinding.h in Headers */,
 				AA19FDDB12FAECAF000306DB /* CBUIImagePagingScrollView.h in Headers */,
 				AA19FDDD12FAECAF000306DB /* CBUISlideshowImagesPagingScrollView.h in Headers */,
-				AA19FDDF12FAECAF000306DB /* CBUIGridView.h in Headers */,
-				AA19FDE112FAECAF000306DB /* CBUIGridViewDataSource.h in Headers */,
-				AA19FDE312FAECAF000306DB /* CBUIGridViewFetchRequestDataSource.h in Headers */,
 				AA19FDE512FAECAF000306DB /* CBUITableViewCellFactory.h in Headers */,
 				AA19FDE712FAECAF000306DB /* CBUITableViewDataSource.h in Headers */,
 				AA19FDE912FAECAF000306DB /* CBUIFetchResultsDataSource.h in Headers */,
@@ -396,6 +405,9 @@
 				AA63DEE415AC0DE500D43CC0 /* CBUIManyFetchResultsDataSource.h in Headers */,
 				AA1FDD351469D24D006D2B2B /* CBUISpringLayoutView.h in Headers */,
 				AA1FDD3A1469D280006D2B2B /* CBUISpring.h in Headers */,
+				AAC398011619652D003C53EF /* CBUICustomAnimationModalSegue.h in Headers */,
+				AAC3E8AD161EA2E30055D313 /* CBUICollectionViewDataSource.h in Headers */,
+				AAC3E8B1161EA5390055D313 /* CBUIFetchedResultsCollectionViewDataSource.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,9 +467,6 @@
 				AA19FDD912FAECAF000306DB /* CBUIGlobal.m in Sources */,
 				AA19FDDC12FAECAF000306DB /* CBUIImagePagingScrollView.m in Sources */,
 				AA19FDDE12FAECAF000306DB /* CBUISlideshowImagesPagingScrollView.m in Sources */,
-				AA19FDE012FAECAF000306DB /* CBUIGridView.m in Sources */,
-				AA19FDE212FAECAF000306DB /* CBUIGridViewDataSource.m in Sources */,
-				AA19FDE412FAECAF000306DB /* CBUIGridViewFetchRequestDataSource.m in Sources */,
 				AA19FDE612FAECAF000306DB /* CBUITableViewCellFactory.m in Sources */,
 				AA19FDE812FAECAF000306DB /* CBUITableViewDataSource.m in Sources */,
 				AA19FDEA12FAECAF000306DB /* CBUIFetchResultsDataSource.m in Sources */,
@@ -485,6 +494,9 @@
 				AA8E1B1514D2BA1800BC52CC /* CBUIVerticalAlignedLabel.m in Sources */,
 				AA63DEE515AC0DE500D43CC0 /* CBUIManyFetchResultsDataSource.m in Sources */,
 				AAD235D815FE18360094B09B /* CBUITextAttachment.m in Sources */,
+				AAC398021619652D003C53EF /* CBUICustomAnimationModalSegue.m in Sources */,
+				AAC3E8AE161EA2E30055D313 /* CBUICollectionViewDataSource.m in Sources */,
+				AAC3E8B2161EA5390055D313 /* CBUIFetchedResultsCollectionViewDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
