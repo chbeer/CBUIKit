@@ -1,0 +1,160 @@
+//
+//  IVPushFromLeftModalSegue.m
+//  iVocabulary
+//
+//  Created by Christian Beer on 29.09.12.
+//
+//
+
+#import "CBUICustomAnimationModalSegue.h"
+
+#import <QuartzCore/QuartzCore.h>
+#import <objc/runtime.h>
+
+static const char * kCBCustomModalPresentationSegueDismissAnimationBlock = "kCBCustomModalPresentationSegueDismissAnimationBlock";
+typedef void(^CBCustomModalPresentationSegueDismissAnimationBlock)(void);
+
+
+@interface CBUICustomAnimationModalSegue ()
+
+@property (nonatomic, retain) NSString *transitionType;
+@property (nonatomic, retain) NSString *transitionSubtype;
+
+@property (nonatomic, retain) NSString *dismissTransitionType;
+@property (nonatomic, retain) NSString *dismissTransitionSubtype;
+
+@end
+
+
+@interface UIViewController (CBUICustomAnimationModalSegue)
+
+- (void)ivDismissViewControllerPushedFromRightAnimated:(BOOL)flag completion:(void (^)(void))completion;
+
+@end
+
+
+@implementation CBUICustomAnimationModalSegue
+
+@synthesize transitionType = _transitionType;
+
+
+- (void) perform
+{
+    UIViewController *src = (UIViewController *) self.sourceViewController;
+    UIViewController *dst = (UIViewController *) self.destinationViewController;
+
+    [CATransaction begin];
+    
+    CATransition *transition = [CATransition animation];
+    transition.type = self.transitionType;
+    transition.subtype = self.transitionSubtype;
+    transition.duration = 0.25f;
+    transition.fillMode = kCAFillModeForwards;
+    transition.removedOnCompletion = YES;
+    
+    [[UIApplication sharedApplication].keyWindow.layer addAnimation:transition forKey:@"transition"];
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+    [CATransaction setCompletionBlock: ^ {
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+    }];
+    
+    __weak CBUICustomAnimationModalSegue *myself = self;
+    CBCustomModalPresentationSegueDismissAnimationBlock dismissAnimationBlock = ^{
+        if (!myself) return;
+        
+        [CATransaction begin];
+        
+        CATransition *transition = [CATransition animation];
+        transition.type = myself.dismissTransitionType;
+        transition.subtype = myself.dismissTransitionSubtype;
+        transition.duration = 0.25f;
+        transition.fillMode = kCAFillModeForwards;
+        transition.removedOnCompletion = YES;
+        
+        [[UIApplication sharedApplication].keyWindow.layer addAnimation:transition forKey:@"transition"];
+        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+        [CATransaction setCompletionBlock: ^ {
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        }];
+    };
+    
+    UIViewController *ctrl = dst;
+    if ([ctrl isKindOfClass:[UINavigationController class]]) ctrl = ((UINavigationController*)dst).topViewController;
+    objc_setAssociatedObject(ctrl, kCBCustomModalPresentationSegueDismissAnimationBlock, dismissAnimationBlock, OBJC_ASSOCIATION_COPY);
+    
+    [src presentViewController:dst animated:NO completion:NULL];
+    
+    [CATransaction commit];
+    
+    static BOOL _didSwizzle = NO;
+    if (!_didSwizzle) {
+        Method origMethod = class_getInstanceMethod([UIViewController class], @selector(dismissViewControllerAnimated:completion:));
+        Method overrideMethod = class_getInstanceMethod([UIViewController class], @selector(ivDismissViewControllerPushedFromRightAnimated:completion:));
+        method_exchangeImplementations(origMethod, overrideMethod);
+        _didSwizzle = YES;
+    }
+}
+
+@end
+
+
+@implementation CBUIPushFromRightModalSegue
+
+- (id)initWithIdentifier:(NSString *)identifier source:(UIViewController *)source destination:(UIViewController *)destination
+{
+    self = [super initWithIdentifier:identifier source:source destination:destination];
+    if (!self) return nil;
+    
+    self.transitionType = kCATransitionPush;
+    self.transitionSubtype = kCATransitionFromRight;
+    
+    self.dismissTransitionType = kCATransitionPush;
+    self.dismissTransitionSubtype = kCATransitionFromLeft;
+    
+    return self;
+}
+
+@end
+
+@implementation CBUIPushFromLeftModalSegue
+
+- (id)initWithIdentifier:(NSString *)identifier source:(UIViewController *)source destination:(UIViewController *)destination
+{
+    self = [super initWithIdentifier:identifier source:source destination:destination];
+    if (!self) return nil;
+    
+    self.transitionType = kCATransitionPush;
+    self.transitionSubtype = kCATransitionFromLeft;
+    
+    self.dismissTransitionType = kCATransitionPush;
+    self.dismissTransitionSubtype = kCATransitionFromRight;
+    
+    return self;
+}
+
+@end
+
+
+@implementation UIViewController (CBUICustomAnimationModalSegue)
+
+- (void)ivDismissViewControllerPushedFromRightAnimated:(BOOL)flag completion:(void (^)(void))completion
+{
+    UIViewController *ctrl = self;
+    if (self.presentingViewController) ctrl = self.presentingViewController;
+    
+    CBCustomModalPresentationSegueDismissAnimationBlock customAnimationBlock = objc_getAssociatedObject(self, kCBCustomModalPresentationSegueDismissAnimationBlock);
+    
+    if (customAnimationBlock) {
+        customAnimationBlock();
+        flag = NO;
+    }
+    
+    // call super dismiss view controller; remember: we swizzled the methods
+    [ctrl ivDismissViewControllerPushedFromRightAnimated:flag completion:completion];
+    
+    if (customAnimationBlock) {
+        [CATransaction commit];
+    }
+}
+
+@end

@@ -54,6 +54,8 @@
 		AAA0E77414223523000476B6 /* CBUICircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA0E77214223523000476B6 /* CBUICircularProgressView.m */; };
 		AAA0E776142239F8000476B6 /* CBUICircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAA0E77114223523000476B6 /* CBUICircularProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAB2EF7513B87DC3004A1C64 /* CBUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB2EF7213B8776A004A1C64 /* CBUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAC398011619652D003C53EF /* CBUICustomAnimationModalSegue.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC397FF1619652D003C53EF /* CBUICustomAnimationModalSegue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAC398021619652D003C53EF /* CBUICustomAnimationModalSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC398001619652D003C53EF /* CBUICustomAnimationModalSegue.m */; };
 		AAC398041619657A003C53EF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC398031619657A003C53EF /* QuartzCore.framework */; };
 		AAC3E8AD161EA2E30055D313 /* CBUICollectionViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC3E8AB161EA2E30055D313 /* CBUICollectionViewDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAC3E8AE161EA2E30055D313 /* CBUICollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC3E8AC161EA2E30055D313 /* CBUICollectionViewDataSource.m */; };
@@ -125,6 +127,8 @@
 		AAA0E77114223523000476B6 /* CBUICircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUICircularProgressView.h; sourceTree = "<group>"; };
 		AAA0E77214223523000476B6 /* CBUICircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUICircularProgressView.m; sourceTree = "<group>"; };
 		AAB2EF7213B8776A004A1C64 /* CBUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUIKit.h; sourceTree = "<group>"; };
+		AAC397FF1619652D003C53EF /* CBUICustomAnimationModalSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUICustomAnimationModalSegue.h; sourceTree = "<group>"; };
+		AAC398001619652D003C53EF /* CBUICustomAnimationModalSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUICustomAnimationModalSegue.m; sourceTree = "<group>"; };
 		AAC398031619657A003C53EF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AAC3E8AB161EA2E30055D313 /* CBUICollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUICollectionViewDataSource.h; sourceTree = "<group>"; };
 		AAC3E8AC161EA2E30055D313 /* CBUICollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUICollectionViewDataSource.m; sourceTree = "<group>"; };
@@ -227,6 +231,7 @@
 				AA943C98145020A900912E34 /* NSObject+CBBinding.h */,
 				AA943C99145020A900912E34 /* NSObject+CBBinding.m */,
 				AA8B7AB4146A6349009940AE /* Layout */,
+				AAC397FD16196512003C53EF /* Storyboard */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -320,6 +325,15 @@
 			name = Layout;
 			sourceTree = "<group>";
 		};
+		AAC397FD16196512003C53EF /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				AAC397FF1619652D003C53EF /* CBUICustomAnimationModalSegue.h */,
+				AAC398001619652D003C53EF /* CBUICustomAnimationModalSegue.m */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
 		AAE527F0132667F10026317D /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +405,7 @@
 				AA63DEE415AC0DE500D43CC0 /* CBUIManyFetchResultsDataSource.h in Headers */,
 				AA1FDD351469D24D006D2B2B /* CBUISpringLayoutView.h in Headers */,
 				AA1FDD3A1469D280006D2B2B /* CBUISpring.h in Headers */,
+				AAC398011619652D003C53EF /* CBUICustomAnimationModalSegue.h in Headers */,
 				AAC3E8AD161EA2E30055D313 /* CBUICollectionViewDataSource.h in Headers */,
 				AAC3E8B1161EA5390055D313 /* CBUIFetchedResultsCollectionViewDataSource.h in Headers */,
 			);
@@ -479,6 +494,7 @@
 				AA8E1B1514D2BA1800BC52CC /* CBUIVerticalAlignedLabel.m in Sources */,
 				AA63DEE515AC0DE500D43CC0 /* CBUIManyFetchResultsDataSource.m in Sources */,
 				AAD235D815FE18360094B09B /* CBUITextAttachment.m in Sources */,
+				AAC398021619652D003C53EF /* CBUICustomAnimationModalSegue.m in Sources */,
 				AAC3E8AE161EA2E30055D313 /* CBUICollectionViewDataSource.m in Sources */,
 				AAC3E8B2161EA5390055D313 /* CBUIFetchedResultsCollectionViewDataSource.m in Sources */,
 			);
