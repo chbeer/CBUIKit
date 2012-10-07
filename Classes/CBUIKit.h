@@ -40,3 +40,8 @@
 
 #import "CBUIVerticalLayoutView.h"
 #import "CBUIHorizontalLayoutView.h"
+
+#import "CBUICustomAnimationModalSegue.h"
+
+#import "CBUICollectionViewDataSource.h"
+#import "CBUIFetchedResultsCollectionViewDataSource.h"
