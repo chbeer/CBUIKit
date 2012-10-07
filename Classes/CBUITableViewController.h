@@ -12,18 +12,12 @@
 
 #import "CBUITableViewDataSource.h"
 
-@interface CBUITableViewController : CBUIViewController <UITableViewDataSource,UITableViewDelegate> {
-	UITableViewStyle _style;
-    
-    id<CBUITableViewDataSource> _dataSource; 
-	UITableView *_tableView;
-}
+@interface CBUITableViewController : CBUIViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) IBOutlet id<CBUITableViewDataSource> dataSource; ;
+
+@property (nonatomic, assign) BOOL clearsSelectionOnViewWillAppear;
 
 - (id) initWithStyle:(UITableViewStyle)style;
-
-- (BOOL) isTableEmpty;
 
 @end
