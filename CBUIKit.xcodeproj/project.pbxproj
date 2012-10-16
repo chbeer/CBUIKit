@@ -53,6 +53,8 @@
 		AA95A73413E9BEF9003B77C4 /* CBUIAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA95A73213E9BEF9003B77C4 /* CBUIAlertViewController.m */; };
 		AAA0E77414223523000476B6 /* CBUICircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA0E77214223523000476B6 /* CBUICircularProgressView.m */; };
 		AAA0E776142239F8000476B6 /* CBUICircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAA0E77114223523000476B6 /* CBUICircularProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAF07A61622985B00E00684 /* CBUIRoundedCornerView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAAF07A41622985B00E00684 /* CBUIRoundedCornerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AAAF07A71622985B00E00684 /* CBUIRoundedCornerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAF07A51622985B00E00684 /* CBUIRoundedCornerView.m */; };
 		AAB2EF7513B87DC3004A1C64 /* CBUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB2EF7213B8776A004A1C64 /* CBUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAC398011619652D003C53EF /* CBUICustomAnimationModalSegue.h in Headers */ = {isa = PBXBuildFile; fileRef = AAC397FF1619652D003C53EF /* CBUICustomAnimationModalSegue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAC398021619652D003C53EF /* CBUICustomAnimationModalSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC398001619652D003C53EF /* CBUICustomAnimationModalSegue.m */; };
@@ -126,6 +128,8 @@
 		AA95A73213E9BEF9003B77C4 /* CBUIAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CBUIAlertViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAA0E77114223523000476B6 /* CBUICircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUICircularProgressView.h; sourceTree = "<group>"; };
 		AAA0E77214223523000476B6 /* CBUICircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUICircularProgressView.m; sourceTree = "<group>"; };
+		AAAF07A41622985B00E00684 /* CBUIRoundedCornerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIRoundedCornerView.h; sourceTree = "<group>"; };
+		AAAF07A51622985B00E00684 /* CBUIRoundedCornerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIRoundedCornerView.m; sourceTree = "<group>"; };
 		AAB2EF7213B8776A004A1C64 /* CBUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUIKit.h; sourceTree = "<group>"; };
 		AAC397FF1619652D003C53EF /* CBUICustomAnimationModalSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUICustomAnimationModalSegue.h; sourceTree = "<group>"; };
 		AAC398001619652D003C53EF /* CBUICustomAnimationModalSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUICustomAnimationModalSegue.m; sourceTree = "<group>"; };
@@ -232,6 +236,8 @@
 				AA943C99145020A900912E34 /* NSObject+CBBinding.m */,
 				AA8B7AB4146A6349009940AE /* Layout */,
 				AAC397FD16196512003C53EF /* Storyboard */,
+				AAAF07A41622985B00E00684 /* CBUIRoundedCornerView.h */,
+				AAAF07A51622985B00E00684 /* CBUIRoundedCornerView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -408,6 +414,7 @@
 				AAC398011619652D003C53EF /* CBUICustomAnimationModalSegue.h in Headers */,
 				AAC3E8AD161EA2E30055D313 /* CBUICollectionViewDataSource.h in Headers */,
 				AAC3E8B1161EA5390055D313 /* CBUIFetchedResultsCollectionViewDataSource.h in Headers */,
+				AAAF07A61622985B00E00684 /* CBUIRoundedCornerView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,6 +504,7 @@
 				AAC398021619652D003C53EF /* CBUICustomAnimationModalSegue.m in Sources */,
 				AAC3E8AE161EA2E30055D313 /* CBUICollectionViewDataSource.m in Sources */,
 				AAC3E8B2161EA5390055D313 /* CBUIFetchedResultsCollectionViewDataSource.m in Sources */,
+				AAAF07A71622985B00E00684 /* CBUIRoundedCornerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
