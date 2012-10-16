@@ -45,3 +45,5 @@
 
 #import "CBUICollectionViewDataSource.h"
 #import "CBUIFetchedResultsCollectionViewDataSource.h"
+
+#import "CBUIRoundedCornerView.h"
