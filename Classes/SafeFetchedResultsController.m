@@ -585,7 +585,7 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"<SafeSectionChange changeType(%@) index(%lu)>",
+	return [NSString stringWithFormat:@"<SafeSectionChange changeType(%@) index(%u)>",
 			[self changeTypeString], sectionIndex];
 }
 
@@ -641,7 +641,7 @@
 {
 	if (ip == nil) return @"nil";
 	
-	return [NSString stringWithFormat:@"[%lu,%lu]", ip.section, ip.row];
+	return [NSString stringWithFormat:@"[%u,%u]", ip.section, ip.row];
 }
 
 - (NSString *)description
