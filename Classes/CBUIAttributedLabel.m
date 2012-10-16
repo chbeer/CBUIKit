@@ -236,7 +236,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                 
                 CGFloat xOffset = CTLineGetOffsetForStringIndex(line, runRange.location, NULL);
                 runBounds.origin.x = lineOrigin.x + xOffset;
-                runBounds.origin.y = actualRect.size.height - lineOrigin.y + runBounds.size.height;
+                runBounds.origin.y = actualRect.size.height - lineOrigin.y - ascent;
                 
                 runBounds = CGRectInset(runBounds, -10, -10);
                 
@@ -262,14 +262,14 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
 
     CGContextRestoreGState(context);
 
-//#ifdef DEBUG_LINKS
+#ifdef DEBUG_LINKS
     [_links enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         CBUIAttributedLabelLink *link = obj;
         
         CGContextSetRGBStrokeColor(context, 1.0f, 0, 0, 1.0f);
         CGContextStrokeRect(context, link.frame);
     }];
-//#endif
+#endif
 }
 
 #pragma mark - Acccessors
@@ -321,14 +321,30 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
 #pragma mark - Touch Handling
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{}
-
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{}
-
+{
+    __block BOOL handled = NO;
+    
+    if (touches.count == 1) {
+        UITouch *touch = [touches anyObject];
+        
+        if ([self.delegate respondsToSelector:@selector(attributedLabel:didTapOnLink:)]) {
+            CGPoint location = [touch locationInView:self];
+            
+            [_links enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                CBUIAttributedLabelLink *link = obj;
+                if (CGRectContainsPoint(link.frame, location)) {
+                    handled = YES;
+                    *stop = YES;
+                }
+            }];
+        }
+        
+    }
+    
+    if (!handled) {
+        [super touchesBegan:touches withEvent:event];
+    }
+}
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     __block BOOL handled = NO;
@@ -344,6 +360,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                 if (CGRectContainsPoint(link.frame, location)) {
                     [self.delegate attributedLabel:self didTapOnLink:link];
                     handled = YES;
+                    *stop = YES;
                 }
             }];
         }
