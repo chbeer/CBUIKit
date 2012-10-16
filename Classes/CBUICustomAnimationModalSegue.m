@@ -58,15 +58,17 @@ typedef void(^CBCustomModalPresentationSegueDismissAnimationBlock)(void);
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     }];
     
-    __weak CBUICustomAnimationModalSegue *myself = self;
+    __unsafe_unretained __block CBUICustomAnimationModalSegue *myself = self;
+    NSString *transitionType = self.dismissTransitionType;
+    NSString *transitionSubType = self.dismissTransitionSubtype;
     CBCustomModalPresentationSegueDismissAnimationBlock dismissAnimationBlock = ^{
         if (!myself) return;
         
         [CATransaction begin];
         
         CATransition *transition = [CATransition animation];
-        transition.type = myself.dismissTransitionType;
-        transition.subtype = myself.dismissTransitionSubtype;
+        transition.type = transitionType;
+        transition.subtype = transitionSubType;
         transition.duration = 0.25f;
         transition.fillMode = kCAFillModeForwards;
         transition.removedOnCompletion = YES;
