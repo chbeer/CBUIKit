@@ -38,9 +38,6 @@
     CGContextFillPath(ctx);
 }
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 - (void) setFrame:(CGRect)frame {
     CGFloat edgeLength = MIN(frame.size.width, frame.size.height);

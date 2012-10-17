@@ -29,7 +29,7 @@
 @interface CBUIFetchResultsDataSource : CBUITableViewDataSource <SafeFetchedResultsControllerDelegate> 
 
 @property (readonly) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic, retain) NSIndexPath *ignoreForUpdateIndexPath;
+@property (nonatomic, strong) NSIndexPath *ignoreForUpdateIndexPath;
 
 @property (nonatomic, assign) BOOL preserveSelectionOnUpdate;
 

@@ -13,10 +13,6 @@
 #import "CBUIViewController.h"
 #import "CBUITableViewController.h"
 
-#import "CBUIGridView.h"
-#import "CBUIGridViewDataSource.h"
-#import "CBUIGridViewFetchRequestDataSource.h"
-
 #import "CBUITableViewDataSource.h"
 #import "CBUITableViewCells.h"
 #import "CBUIFetchResultsDataSource.h"

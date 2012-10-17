@@ -34,7 +34,7 @@
 @property (nonatomic, strong)   UICollectionView                            *collectionView;
 
 @property (nonatomic, copy)     NSString                                    *cellReuseIdentifier;
-@property (nonatomic, assign)   id<CBUICollectionViewDataSourceDelegate>    delegate;
+@property (nonatomic, weak)   id<CBUICollectionViewDataSourceDelegate>    delegate;
 
 @property (nonatomic, assign)   BOOL    empty;
 @property (nonatomic, assign)   BOOL    loading;

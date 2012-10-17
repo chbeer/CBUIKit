@@ -27,39 +27,39 @@ UIBarButtonItem *CBUIBarButtonSetTintColor(UIBarButtonItem *itm, UIColor *tintCo
 
 
 UIBarButtonItem *CBUIBarFlexibleSpace() {
-	return [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-														  target:nil action:nil] autorelease];
+	return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+														  target:nil action:nil];
 }
 UIBarButtonItem *CBUIBarButtonFixedSpace(CGFloat width) {
 	UIBarButtonItem *fs = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
                                                                         target:nil action:nil];
 	fs.width = width;
-	return [fs autorelease];
+	return fs;
 }
 
 UIBarButtonItem *CBUIBarButtonSystemItem(UIBarButtonSystemItem type, id target, SEL action) {
 	UIBarButtonItem *itm = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:type
 																		 target:target 
 																		 action:action];
-	return [itm autorelease];
+	return itm;
 }
 UIBarButtonItem *CBUIBarButtonTextItem(NSString *title, id target, SEL action) {
 	UIBarButtonItem *itm = [[UIBarButtonItem alloc] initWithTitle:title
 															style:UIBarButtonItemStyleBordered
 														   target:target
 														   action:action];
-	return [itm autorelease];
+	return itm;
 }
 UIBarButtonItem *CBUIBarButtonImageItem(NSString *img, id target, SEL action) {
 	UIBarButtonItem *itm = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:img] 
 															style:UIBarButtonItemStylePlain
 														   target:target
 														   action:action];
-	return [itm autorelease];
+	return itm;
 }
 UIBarButtonItem *CBUIBarButtonCustomItem(UIView *view) {
 	UIBarButtonItem *itm = [[UIBarButtonItem alloc] initWithCustomView:view];
-	return [itm autorelease];
+	return itm;
 }
 
 #pragma mark -

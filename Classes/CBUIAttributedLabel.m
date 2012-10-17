@@ -53,14 +53,11 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
 }
 
 - (void)dealloc {
-    self.attributedText = nil;
     
-    if (_links) [_links release];
     
     if (_framesetter) CFRelease(_framesetter);
-    [_attachmentViews release]; _attachmentViews = nil;
+     _attachmentViews = nil;
     
-    [super dealloc];
 }
 
 #pragma mark UILabel
@@ -96,7 +93,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                                          }];
         
         if (_framesetter) CFRelease(_framesetter);
-        _framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)_attributedText);
+        _framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_attributedText);
     }
     
     [self setNeedsDisplay];
@@ -169,27 +166,26 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
     // Create the frame and draw it into the graphics context
     CTFrameRef frame = CTFramesetterCreateFrame(_framesetter, CFRangeMake(0, 0), path, NULL);
  
-    NSArray *linesInFrame = (NSArray*)CTFrameGetLines(frame);
+    NSArray *linesInFrame = (__bridge NSArray*)CTFrameGetLines(frame);
     
     for (UIView *view in _attachmentViews) {
         [view removeFromSuperview];
     }
-    [_attachmentViews release]; _attachmentViews = nil;
+     _attachmentViews = nil;
     _attachmentViews = [[NSMutableArray alloc] initWithCapacity:10];
 
-    if (_links) [_links release];
     NSMutableArray *links = [[NSMutableArray alloc] init];
     
     [linesInFrame enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        CTLineRef line = (CTLineRef)obj;
+        CTLineRef line = (__bridge CTLineRef)obj;
         
         CGPoint lineOrigin;
         CTFrameGetLineOrigins(frame, CFRangeMake(idx, 1), &lineOrigin);
         
-        [(NSArray*)CTLineGetGlyphRuns(line) enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            CTRunRef run = (CTRunRef)obj;
+        [(__bridge NSArray*)CTLineGetGlyphRuns(line) enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            CTRunRef run = (__bridge CTRunRef)obj;
             
-            NSDictionary *runAttributes = (NSDictionary*)CTRunGetAttributes(run);
+            NSDictionary *runAttributes = (__bridge NSDictionary*)CTRunGetAttributes(run);
             
             id attachment = [runAttributes objectForKey:@"NSAttachmentAttributeName"];
             if (attachment) {
@@ -276,7 +272,6 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
 
 - (void) setAttributedText:(NSAttributedString*)inText {
     if (inText != _attributedText) {
-        [_attributedText release];
         
         if ([inText isKindOfClass:[NSString class]]) {
             [self setText:(NSString*)inText];
@@ -293,7 +288,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                                         }];
             
             if (_framesetter) CFRelease(_framesetter);
-            _framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)_attributedText);
+            _framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_attributedText);
         }
         
         [self setNeedsDisplay];
@@ -312,7 +307,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
 
 + (CGSize) sizeOfAttributedString:(NSAttributedString*)attributedText thatFits:(CGSize)size
 {
-    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attributedText);
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)attributedText);
     CGSize suggestedSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), NULL, CGSizeMake(size.width, size.height), NULL);
     CFRelease(framesetter);
     return suggestedSize;

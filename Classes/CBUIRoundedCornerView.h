@@ -11,6 +11,6 @@
 @interface CBUIRoundedCornerView : UIView
 
 @property (nonatomic, assign) CGFloat cornerRadius;
-@property (nonatomic, retain) UIColor *borderColor;
+@property (nonatomic, strong) UIColor *borderColor;
 
 @end

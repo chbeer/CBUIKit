@@ -20,9 +20,8 @@
     [[NSBundle mainBundle] loadNibNamed:nibName
                                   owner:factory 
                                 options:nil];
-    UITableViewCell *cell = [[factory cell] retain];
-    [factory release];
-    return [cell autorelease];
+    UITableViewCell *cell = [factory cell];
+    return cell;
 }
 
 - (UITableViewCell*)cell {

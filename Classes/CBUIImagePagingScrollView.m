@@ -57,7 +57,6 @@
         imageView.clipsToBounds = YES;
         _imageViews[index] = imageView;
         [self addSubview:imageView];
-        [imageView release];
     }
     
     _currentPage = -1;
@@ -75,9 +74,8 @@
                                                     name:UIApplicationDidReceiveMemoryWarningNotification
                                                   object:nil];
     
-    [_imageCache release], _imageCache = nil;
+    _imageCache = nil;
     
-    [super dealloc];
 }
 
 - (void) arrangePageViews {

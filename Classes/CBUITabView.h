@@ -34,14 +34,14 @@ typedef enum {
     NSArray *tabTitles;
     int currentTabIndex;
 
-    id<CBUITabViewDelegate> delegate;
+    id<CBUITabViewDelegate> __weak delegate;
     id<CBUITabViewStyle> style;
 }
 
 @property (nonatomic, copy) NSArray *tabTitles;
 @property (nonatomic, assign) int currentTabIndex;
-@property (nonatomic, assign) id<CBUITabViewDelegate> delegate;
-@property (nonatomic, retain) id<CBUITabViewStyle> style;
+@property (nonatomic, weak) id<CBUITabViewDelegate> delegate;
+@property (nonatomic, strong) id<CBUITabViewStyle> style;
 
 - (id) initWithFrame:(CGRect)frame;
 - (id) initWithFrame:(CGRect)frame titles:(NSArray*)titles;

@@ -35,7 +35,7 @@
     NSMutableDictionary *_imageCache;
 }
 
-@property (nonatomic, retain) id<CBUIImagePagingScrollViewDataSource> dataSource;
+@property (nonatomic, strong) id<CBUIImagePagingScrollViewDataSource> dataSource;
 
 - (void) arrangePageViews;
 

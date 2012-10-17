@@ -19,8 +19,8 @@
 
 @property (nonatomic, assign) NSFetchedResultsChangeType changeType;
 @property (nonatomic, assign) BOOL          section;
-@property (nonatomic, retain) NSIndexPath   *indexPath;
-@property (nonatomic, retain) NSIndexPath   *newIndexPath;
+@property (nonatomic, strong) NSIndexPath   *indexPath;
+@property (nonatomic, strong) NSIndexPath   *theNewIndexPath;
 @property (nonatomic, assign) NSUInteger    sectionIndex;
 
 + (CBUIFetchedResultsCollectionViewUpdate*) updateItemAtIndexPath:(NSIndexPath *)indexPath
@@ -88,7 +88,7 @@
                                                                                sectionNameKeyPath:sectionNameKeyPath
                                                                                         cacheName:cacheName];
 	
-	return [ds autorelease];
+	return ds;
     
 }
 
@@ -106,9 +106,8 @@
 
 - (void) dealloc {
     _fetchedResultsController.delegate = nil;
-    [_fetchedResultsController dealloc], _fetchedResultsController = nil;
+    _fetchedResultsController = nil;
     
-    [super dealloc];
 }
 
 - (BOOL) performFetch:(NSError**)error
@@ -175,7 +174,7 @@
         }];
     } completion:NULL];
     
-    [_updates release]; _updates = nil;
+     _updates = nil;
 }
 
 - (void)controllerDidMakeUnsafeChanges:(NSFetchedResultsController *)controller
@@ -214,8 +213,8 @@
     CBUIFetchedResultsCollectionViewUpdate *update = [CBUIFetchedResultsCollectionViewUpdate new];
     update.indexPath = indexPath;
     update.changeType = type;
-    update.newIndexPath = newIndexPath;
-    return [update autorelease];
+    update.theNewIndexPath = newIndexPath;
+    return update;
 }
 + (CBUIFetchedResultsCollectionViewUpdate*) updateSectionAtIndex:(NSUInteger)sectionIndex
                                                 forChangeType:(NSFetchedResultsChangeType)type
@@ -224,7 +223,7 @@
     update.section = YES;
     update.sectionIndex = sectionIndex;
     update.changeType = type;
-    return [update autorelease];
+    return update;
 }
 
 - (void) performUpdateOnCollectionView:(UICollectionView*)collectionView;
@@ -232,22 +231,22 @@
     if (!self.section) {
         switch(self.changeType) {
             case NSFetchedResultsChangeInsert:
-                [collectionView insertItemsAtIndexPaths:[NSArray arrayWithObject:self.newIndexPath]];
+                [collectionView insertItemsAtIndexPaths:[NSArray arrayWithObject:self.theNewIndexPath]];
                 break;
             case NSFetchedResultsChangeDelete:
                 [collectionView deleteItemsAtIndexPaths:[NSArray arrayWithObject:self.indexPath]];
                 break;
             case NSFetchedResultsChangeUpdate:
-                if (self.newIndexPath == nil || [self.newIndexPath isEqual:self.indexPath]) {
+                if (self.theNewIndexPath == nil || [self.theNewIndexPath isEqual:self.indexPath]) {
                     [collectionView reloadItemsAtIndexPaths:[NSArray arrayWithObject:self.indexPath]];
                 } else {
                     [collectionView moveItemAtIndexPath:self.indexPath
-                                            toIndexPath:self.newIndexPath];
+                                            toIndexPath:self.theNewIndexPath];
                 }
                 break;
             case NSFetchedResultsChangeMove:
                 [collectionView moveItemAtIndexPath:self.indexPath
-                                        toIndexPath:self.newIndexPath];
+                                        toIndexPath:self.theNewIndexPath];
                 break;
         }
         

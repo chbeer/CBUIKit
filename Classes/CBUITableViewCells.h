@@ -10,13 +10,13 @@
 
 @interface CBUITableViewDefaultCell : UITableViewCell <CBUITableViewCell>
 
-@property (nonatomic, retain) NSString *textLabelKeyPath;
+@property (nonatomic, strong) NSString *textLabelKeyPath;
 
 @end
 
 @interface CBUITableViewSubtitleCell : UITableViewCell <CBUITableViewCell>
 
-@property (nonatomic, retain) NSString *textLabelKeyPath;
-@property (nonatomic, retain) NSString *detailTextLabelKeyPath;
+@property (nonatomic, strong) NSString *textLabelKeyPath;
+@property (nonatomic, strong) NSString *detailTextLabelKeyPath;
 
 @end

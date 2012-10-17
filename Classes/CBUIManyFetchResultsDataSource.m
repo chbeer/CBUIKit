@@ -53,9 +53,8 @@
         section.fetchedResultsController.delegate = nil;
         section.fetchedResultsController = nil;
     }];
-    [_ignoreForUpdateIndexPath release], _ignoreForUpdateIndexPath = nil;
+    _ignoreForUpdateIndexPath = nil;
     
-    [super dealloc];
 }
 
 - (BOOL) performFetch:(NSError**)error

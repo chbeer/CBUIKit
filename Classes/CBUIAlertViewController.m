@@ -56,15 +56,14 @@
 }
 
 - (void)dealloc {
-    [alertView release], alertView = nil;
+    alertView = nil;
     
-    [title release], title = nil;
-    [cancelButton release], cancelButton = nil;
-    [destructiveButton release], destructiveButton = nil;
+    title = nil;
+    cancelButton = nil;
+    destructiveButton = nil;
     
-    [buttons release], buttons = nil;
+    buttons = nil;
     
-    [super dealloc];
 }
 
 #pragma mark Convenience Methods
@@ -74,7 +73,7 @@
     id instance = [[self alloc] initWithTitle:title message:message];
     [instance addButtonWithTitle:NSLocalizedString(@"OK", @"") handler:nil];
     [instance show];
-    return [instance autorelease];
+    return instance;
 }
 + (id) alertWithMessage:(NSString*)message
 {
@@ -85,8 +84,7 @@
 
 - (void) setCancelButtonTitle:(NSString*)inTitle handler:(CBUIAlertViewHandler)handler
 {
-    [cancelButton release];
-    cancelButton = [[CBUIAlertViewControllerButton buttonWithTitle:inTitle handler:handler] retain];
+    cancelButton = [CBUIAlertViewControllerButton buttonWithTitle:inTitle handler:handler];
 }
 - (void) addButtonWithTitle:(NSString*)inTitle handler:(CBUIAlertViewHandler)handler
 {
@@ -118,7 +116,6 @@
 - (void)show
 {
     [[self alertView] show];
-    [self retain];
 }
 
 
@@ -137,7 +134,6 @@
         }
     }
 
-    [self release];
 }
 
 @end
@@ -150,11 +146,10 @@
     CBUIAlertViewControllerButton *button = [[CBUIAlertViewControllerButton alloc] init];
     button.title = title;
     button.handler = handler;
-    return [button autorelease];
+    return button;
 }
 - (void)dealloc {
-    [_title release], _title = nil;
-    [_handler release], _handler = nil;
-    [super dealloc];
+    _title = nil;
+    _handler = nil;
 }
 @end

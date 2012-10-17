@@ -49,11 +49,6 @@
     }    
 }
 
-- (void) dealloc {
-    [_tableView release]; _tableView = nil;
-    
-    [super dealloc];
-}
 
 - (void) viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];

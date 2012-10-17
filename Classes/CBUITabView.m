@@ -23,7 +23,6 @@
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self 
                                                                                            action:@selector(didTapInView:)];
     [self addGestureRecognizer:tapGestureRecognizer];
-    [tapGestureRecognizer release];
 }
 
 - (id)initWithFrame:(CGRect)frame {
@@ -136,12 +135,11 @@
 
 
 - (void)dealloc {
-    [tabTitles release], tabTitles = nil;
+    tabTitles = nil;
     if (style != self) {
-        [style release], style = nil;
+        style = nil;
     }
     
-    [super dealloc];
 }
 
 #pragma mark UIGestureRecognizer
@@ -165,7 +163,6 @@
 }
 - (void) setTabTitles: (NSArray *) aTabTitles {
     if (tabTitles != aTabTitles) {
-        [tabTitles release];
         tabTitles = [aTabTitles copy];
         
         [self setNeedsDisplay];
@@ -186,12 +183,11 @@
 }
 
 - (id<CBUITabViewStyle>) style {
-    return [[style retain] autorelease]; 
+    return style; 
 }
 - (void) setStyle: (id<CBUITabViewStyle>) aStyle {
     if (style != aStyle) {
-        [style release];
-        style = [aStyle retain];
+        style = aStyle;
         
         [self setNeedsDisplay];
     }

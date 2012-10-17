@@ -36,13 +36,10 @@
     imageView.frame = self.bounds;
 }
 
-- (void) dealloc {
-    [super dealloc];
-}
 
 - (void) reloadData {
     
-    [imagesCache release]; imagesCache = nil;
+     imagesCache = nil;
     imageIndex = 0;
     
     [super reloadData];    
@@ -77,7 +74,7 @@
 
 - (void) flushCache {
     [super flushCache];
-    [imagesCache release], imagesCache = nil;
+    imagesCache = nil;
 }
 
 #pragma mark -
@@ -87,7 +84,7 @@
 }
 - (IBAction) stop:(id)sender {
     animate = NO;
-    [imagesCache release], imagesCache = nil;
+    imagesCache = nil;
     imageView.alpha = 0.0;
 }
 - (IBAction) start:(id)sender {

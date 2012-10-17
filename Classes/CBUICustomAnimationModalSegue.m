@@ -17,11 +17,11 @@ typedef void(^CBCustomModalPresentationSegueDismissAnimationBlock)(void);
 
 @interface CBUICustomAnimationModalSegue ()
 
-@property (nonatomic, retain) NSString *transitionType;
-@property (nonatomic, retain) NSString *transitionSubtype;
+@property (nonatomic, strong) NSString *transitionType;
+@property (nonatomic, strong) NSString *transitionSubtype;
 
-@property (nonatomic, retain) NSString *dismissTransitionType;
-@property (nonatomic, retain) NSString *dismissTransitionSubtype;
+@property (nonatomic, strong) NSString *dismissTransitionType;
+@property (nonatomic, strong) NSString *dismissTransitionSubtype;
 
 @end
 
