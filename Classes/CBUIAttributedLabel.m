@@ -185,16 +185,18 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
         CGFloat ascent, descent, leading;
         CGFloat lineWidth = (CGFloat)CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
         
-        CGRect lineFrame = CGRectMake(lineOrigin.x, lineOrigin.y, lineWidth, ascent + descent);
+#if 1
+        CGRect lineFrame = CGRectMake(actualRect.origin.x + lineOrigin.x,
+                                      actualRect.origin.y + lineOrigin.y,
+                                      lineWidth, ascent + descent);
         
-#if 0
         // draw line bounds
         CGContextSetRGBStrokeColor(context, 0, 0, 1.0f, 1.0f);
         CGContextStrokeRect(context, lineFrame);
         
         // draw baseline
-        CGContextMoveToPoint(context, lineOrigin.x - 5.0f, lineOrigin.y);
-        CGContextAddLineToPoint(context, lineOrigin.x + lineFrame.size.width + 5.0f, lineOrigin.y);
+        CGContextMoveToPoint(context, lineFrame.origin.x - 5.0f, lineFrame.origin.y);
+        CGContextAddLineToPoint(context, lineFrame.origin.x + lineFrame.size.width + 5.0f, lineFrame.origin.y);
         CGContextStrokePath(context);
 #endif
         
@@ -208,8 +210,8 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                 CGFloat ascent, descent, leading;
                 CGFloat width = (CGFloat)CTRunGetTypographicBounds(run, CFRangeMake(0, 0), &ascent, &descent, &leading);
                 CGFloat offsetInLine = CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(run).location, NULL);
-                CGRect frame = CGRectMake(offsetInLine + lineOrigin.x,
-                                          actualRect.size.height - lineOrigin.y - ascent,
+                CGRect frame = CGRectMake(actualRect.origin.x + offsetInLine + lineOrigin.x,
+                                          actualRect.origin.y + actualRect.size.height - lineOrigin.y - ascent - descent,
                                           width, ascent + descent);
                 
                 switch (self.textAlignment) {
