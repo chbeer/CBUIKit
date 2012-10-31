@@ -181,6 +181,22 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
         
         CGPoint lineOrigin;
         CTFrameGetLineOrigins(frame, CFRangeMake(idx, 1), &lineOrigin);
+
+        CGFloat ascent, descent, leading;
+        CGFloat lineWidth = (CGFloat)CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
+        
+        CGRect lineFrame = CGRectMake(lineOrigin.x, lineOrigin.y, lineWidth, ascent + descent);
+        
+#if 0
+        // draw line bounds
+        CGContextSetRGBStrokeColor(context, 0, 0, 1.0f, 1.0f);
+        CGContextStrokeRect(context, lineFrame);
+        
+        // draw baseline
+        CGContextMoveToPoint(context, lineOrigin.x - 5.0f, lineOrigin.y);
+        CGContextAddLineToPoint(context, lineOrigin.x + lineFrame.size.width + 5.0f, lineOrigin.y);
+        CGContextStrokePath(context);
+#endif
         
         [(__bridge NSArray*)CTLineGetGlyphRuns(line) enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             CTRunRef run = (__bridge CTRunRef)obj;
@@ -193,7 +209,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                 CGFloat width = (CGFloat)CTRunGetTypographicBounds(run, CFRangeMake(0, 0), &ascent, &descent, &leading);
                 CGFloat offsetInLine = CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(run).location, NULL);
                 CGRect frame = CGRectMake(offsetInLine + lineOrigin.x,
-                                          self.bounds.size.height - lineOrigin.y - ascent,
+                                          actualRect.size.height - lineOrigin.y - ascent,
                                           width, ascent + descent);
                 
                 switch (self.textAlignment) {
@@ -209,13 +225,15 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                     if (textAttachment.drawCallback) {
                         textAttachment.drawCallback(context, frame, line, run);
                     } if (textAttachment.view) {
+                        
+                        CGContextSetRGBStrokeColor(context, 1.0, 0.0, 0.0, 1.0);
+                        CGContextStrokeRect(context, frame);
+
                         UIView *view = textAttachment.view;
                         view.frame = frame;
                         [_attachmentViews addObject:view];
                         [self addSubview:view];
                         
-                        CGContextSetRGBStrokeColor(context, 1.0, 0.0, 0.0, 1.0);
-                        CGContextStrokeRect(context, frame);
                     }
                 }
             }
@@ -290,6 +308,8 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
             if (_framesetter) CFRelease(_framesetter);
             _framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_attributedText);
         }
+        
+        self.text = [_attributedText string];
         
         [self setNeedsDisplay];
     }
