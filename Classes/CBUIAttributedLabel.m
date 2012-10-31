@@ -11,6 +11,9 @@
 #import "CBUITextAttachment.h"
 
 
+#define DEBUG_OUTLINES 1
+
+
 NSString * const kCBCTHighlightedForegroundColorAttributeName = @"CBCTHighlightedForegroundColorAttributeName";
 NSString * const kCBCTDefaultForegroundColorAttributeName = @"CBCTDefaultForegroundColorAttributeName";
 
@@ -153,6 +156,13 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
     
     CGContextSaveGState(context);
     
+    
+#if DEBUG_OUTLINES
+    CGContextSetRGBStrokeColor(context, 1.0, 0, 1.0f, 1.0f);
+    CGContextStrokeRect(context, actualRect);
+#endif
+    
+    
     CGContextSetTextMatrix(context, CGAffineTransformIdentity);
     
     // Set the usual "flipped" Core Text draw matrix
@@ -176,16 +186,17 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
 
     NSMutableArray *links = [[NSMutableArray alloc] init];
     
-    [linesInFrame enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        CTLineRef line = (__bridge CTLineRef)obj;
+    int lineIdx = 0;
+    for (id lineObj in linesInFrame) {
+        CTLineRef line = (__bridge CTLineRef)lineObj;
         
         CGPoint lineOrigin;
-        CTFrameGetLineOrigins(frame, CFRangeMake(idx, 1), &lineOrigin);
+        CTFrameGetLineOrigins(frame, CFRangeMake(lineIdx, 1), &lineOrigin);
 
         CGFloat ascent, descent, leading;
         CGFloat lineWidth = (CGFloat)CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
         
-#if 1
+#if DEBUG_OUTLINES
         CGRect lineFrame = CGRectMake(actualRect.origin.x + lineOrigin.x,
                                       actualRect.origin.y + lineOrigin.y,
                                       lineWidth, ascent + descent);
@@ -199,9 +210,9 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
         CGContextAddLineToPoint(context, lineFrame.origin.x + lineFrame.size.width + 5.0f, lineFrame.origin.y);
         CGContextStrokePath(context);
 #endif
-        
-        [(__bridge NSArray*)CTLineGetGlyphRuns(line) enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            CTRunRef run = (__bridge CTRunRef)obj;
+      
+        for (id runObj in (__bridge NSArray*)CTLineGetGlyphRuns(line)) {
+            CTRunRef run = (__bridge CTRunRef)(runObj);
             
             NSDictionary *runAttributes = (__bridge NSDictionary*)CTRunGetAttributes(run);
             
@@ -228,8 +239,10 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                         textAttachment.drawCallback(context, frame, line, run);
                     } if (textAttachment.view) {
                         
+#if DEBUG_OUTLINES
                         CGContextSetRGBStrokeColor(context, 1.0, 0.0, 0.0, 1.0);
                         CGContextStrokeRect(context, frame);
+#endif
 
                         UIView *view = textAttachment.view;
                         view.frame = frame;
@@ -263,8 +276,10 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                 
                 [links addObject:link];
             }
-        }];
-    }];
+        }
+        
+        lineIdx++;
+    }
 
     
     _links = links;
