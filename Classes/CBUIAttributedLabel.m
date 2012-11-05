@@ -111,8 +111,9 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
         CFRange fitRange;
         
         CGSize size = CTFramesetterSuggestFrameSizeWithConstraints(_framesetter, range, nil, bounds.size, &fitRange);
+        size.width = textRect.size.width;
         
-        CGPoint origin = bounds.origin;
+/*        CGPoint origin = bounds.origin;
         switch (self.textAlignment) {
             case UITextAlignmentCenter:
                 origin.x = ceilf((self.bounds.size.width - size.width) / 2);
@@ -124,7 +125,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                 break;
         }
         
-        textRect.origin = origin;
+        textRect.origin = origin;*/
         textRect.size = size;
     }
     switch (self.verticalAlignment) {
