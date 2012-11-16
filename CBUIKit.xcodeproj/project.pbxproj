@@ -51,6 +51,8 @@
 		AA943C9B145020A900912E34 /* NSObject+CBBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = AA943C99145020A900912E34 /* NSObject+CBBinding.m */; };
 		AA95A73313E9BEF9003B77C4 /* CBUIAlertViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA95A73113E9BEF9003B77C4 /* CBUIAlertViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA95A73413E9BEF9003B77C4 /* CBUIAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA95A73213E9BEF9003B77C4 /* CBUIAlertViewController.m */; };
+		AA9C915F164CE0A600F75427 /* NSAttributedString+UIKit+CoreText.h in Headers */ = {isa = PBXBuildFile; fileRef = AA9C915D164CE0A600F75427 /* NSAttributedString+UIKit+CoreText.h */; };
+		AA9C9160164CE0A600F75427 /* NSAttributedString+UIKit+CoreText.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9C915E164CE0A600F75427 /* NSAttributedString+UIKit+CoreText.m */; };
 		AAA0E77414223523000476B6 /* CBUICircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA0E77214223523000476B6 /* CBUICircularProgressView.m */; };
 		AAA0E776142239F8000476B6 /* CBUICircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAA0E77114223523000476B6 /* CBUICircularProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAAF07A61622985B00E00684 /* CBUIRoundedCornerView.h in Headers */ = {isa = PBXBuildFile; fileRef = AAAF07A41622985B00E00684 /* CBUIRoundedCornerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -126,6 +128,8 @@
 		AA943C99145020A900912E34 /* NSObject+CBBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CBBinding.m"; sourceTree = "<group>"; };
 		AA95A73113E9BEF9003B77C4 /* CBUIAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIAlertViewController.h; sourceTree = "<group>"; };
 		AA95A73213E9BEF9003B77C4 /* CBUIAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CBUIAlertViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		AA9C915D164CE0A600F75427 /* NSAttributedString+UIKit+CoreText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+UIKit+CoreText.h"; sourceTree = "<group>"; };
+		AA9C915E164CE0A600F75427 /* NSAttributedString+UIKit+CoreText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+UIKit+CoreText.m"; sourceTree = "<group>"; };
 		AAA0E77114223523000476B6 /* CBUICircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = CBUICircularProgressView.h; sourceTree = "<group>"; };
 		AAA0E77214223523000476B6 /* CBUICircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUICircularProgressView.m; sourceTree = "<group>"; };
 		AAAF07A41622985B00E00684 /* CBUIRoundedCornerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIRoundedCornerView.h; sourceTree = "<group>"; };
@@ -215,6 +219,7 @@
 				AA19FDC412FAECAF000306DB /* Collection View */,
 				AA19FDBF12FAECAF000306DB /* Image */,
 				AA7DC0A413BA0AF60069CC3A /* Label */,
+				AA9C9158164B89F900F75427 /* NSAttributedString-UIKit */,
 				AA19FDD312FAECAF000306DB /* CBUITabView.h */,
 				AA19FDD412FAECAF000306DB /* CBUITabView.m */,
 				AA19FDD512FAECAF000306DB /* CBUIPanelView.h */,
@@ -331,6 +336,15 @@
 			name = Layout;
 			sourceTree = "<group>";
 		};
+		AA9C9158164B89F900F75427 /* NSAttributedString-UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				AA9C915D164CE0A600F75427 /* NSAttributedString+UIKit+CoreText.h */,
+				AA9C915E164CE0A600F75427 /* NSAttributedString+UIKit+CoreText.m */,
+			);
+			name = "NSAttributedString-UIKit";
+			sourceTree = "<group>";
+		};
 		AAC397FD16196512003C53EF /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,6 +429,7 @@
 				AAC3E8AD161EA2E30055D313 /* CBUICollectionViewDataSource.h in Headers */,
 				AAC3E8B1161EA5390055D313 /* CBUIFetchedResultsCollectionViewDataSource.h in Headers */,
 				AAAF07A61622985B00E00684 /* CBUIRoundedCornerView.h in Headers */,
+				AA9C915F164CE0A600F75427 /* NSAttributedString+UIKit+CoreText.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +520,7 @@
 				AAC3E8AE161EA2E30055D313 /* CBUICollectionViewDataSource.m in Sources */,
 				AAC3E8B2161EA5390055D313 /* CBUIFetchedResultsCollectionViewDataSource.m in Sources */,
 				AAAF07A71622985B00E00684 /* CBUIRoundedCornerView.m in Sources */,
+				AA9C9160164CE0A600F75427 /* NSAttributedString+UIKit+CoreText.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
