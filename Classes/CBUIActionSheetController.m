@@ -8,6 +8,11 @@
 
 #import "CBUIActionSheetController.h"
 
+#import "objc/runtime.h"
+
+static char * const kCBUIActionSheetController = "kCBUIActionSheetController";
+
+
 @interface CBUIActionSheetControllerButton : NSObject
 @property (nonatomic, copy) CBUIActionSheetHandler handler;
 @property (nonatomic, copy) NSString *title;
@@ -145,6 +150,9 @@
         }
 //        if (destructiveButton && cancelButton) actionSheet.cancelButtonIndex++;
     } 
+    
+    objc_setAssociatedObject(actionSheet, kCBUIActionSheetController, self, OBJC_ASSOCIATION_RETAIN);
+
     return actionSheet;
 }
 
@@ -191,6 +199,10 @@
             button.handler();
         }
     }
+}
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    objc_setAssociatedObject(actionSheet, kCBUIActionSheetController, nil, OBJC_ASSOCIATION_RETAIN);
 }
 
 @end
