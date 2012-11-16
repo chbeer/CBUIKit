@@ -9,9 +9,9 @@
 #import "CBUIAttributedLabel.h"
 
 #import "CBUITextAttachment.h"
+#import "CBUIGlobal.h"
 
-
-#define DEBUG_OUTLINES 1
+#define DEBUG_OUTLINES 0
 
 
 NSString * const kCBCTHighlightedForegroundColorAttributeName = @"CBCTHighlightedForegroundColorAttributeName";
@@ -225,13 +225,14 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                                           actualRect.origin.y + actualRect.size.height - lineOrigin.y - ascent - descent,
                                           width, ascent + descent);
                 
-                switch (self.textAlignment) {
+                
+                /*switch (self.textAlignment) {
                     case UITextAlignmentCenter:
                         frame.origin.x -= width / 2;
                         break;
                     default:
                         break;
-                }
+                }*/
                 
                 if ([attachment isKindOfClass:[CBUITextAttachment class]]) {
                     CBUITextAttachment *textAttachment = attachment;
@@ -241,7 +242,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                         
 #if DEBUG_OUTLINES
                         CGContextSetRGBStrokeColor(context, 1.0, 0.0, 0.0, 1.0);
-                        CGContextStrokeRect(context, frame);
+                        CGContextStrokeRect(context, CBCGRectOriginDelta(frame, 0.0, -actualRect.size.height));
 #endif
 
                         UIView *view = textAttachment.view;
@@ -326,7 +327,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
             _framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_attributedText);
         }
         
-        self.text = [_attributedText string];
+        [super setText:[_attributedText string]];
         
         [self setNeedsDisplay];
     }

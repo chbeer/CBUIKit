@@ -205,3 +205,12 @@ CGSize CBCGSizeFitAspect(CGSize size, CGSize fit)
     }
     return size;
 }
+
+
+CGPathRef CBCreateCGPathWithRect(CGRect rect)
+{
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathAddRect(path, NULL, rect);
+    return path;
+}
+
