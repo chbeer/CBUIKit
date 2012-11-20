@@ -42,10 +42,8 @@
 }
 
 - (void) dealloc {
-    _tableView = nil;
-    [_defaultTableViewCellReuseIdentifier release], _defaultTableViewCellReuseIdentifier = nil;
+    _defaultTableViewCellReuseIdentifier = nil;
 	
-    [super dealloc];
 }
 
 - (Class) tableView:(UITableView *)tableView cellClassForObject:(id)object {
@@ -142,8 +140,8 @@
             
         } else {
         
-            newCell = [[[class alloc] initWithStyle:UITableViewCellStyleDefault 
-                                    reuseIdentifier:identifier] autorelease];
+            newCell = [[class alloc] initWithStyle:UITableViewCellStyleDefault 
+                                    reuseIdentifier:identifier];
             
         }
     }
@@ -213,11 +211,10 @@
 }
 
 - (void) dealloc {
-    [_tableView release], _tableView = nil;
-    [_sections release], _sections = nil;
-    [_items release], _items = nil;
+    _tableView = nil;
+    _sections = nil;
+    _items = nil;
 	
-    [super dealloc];
 }
 
 #pragma mark Accessors
@@ -225,7 +222,6 @@
 - (void)setItems:(NSArray *)items
 {
     if (_items != items) {
-        [_items release];
         _items = [items mutableCopy];
         
         self.empty = self.items.count == 0;

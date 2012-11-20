@@ -83,7 +83,7 @@
                                                              sectionNameKeyPath:sectionNameKeyPath
                                                                       cacheName:cacheName];
 	
-	return [ds autorelease];
+	return ds;
     
 }
 
@@ -95,10 +95,9 @@
 
 - (void) dealloc {
     _fetchedResultsController.delegate = nil;
-    [_fetchedResultsController dealloc], _fetchedResultsController = nil;
-    [_ignoreForUpdateIndexPath release], _ignoreForUpdateIndexPath = nil;
+    _fetchedResultsController = nil;
+    _ignoreForUpdateIndexPath = nil;
     
-    [super dealloc];
 }
 
 - (BOOL) performFetch:(NSError**)error
@@ -300,7 +299,7 @@
 // ONLY WORKS WITH ONE SECTION!!
 - (BOOL) performFetchAndUpdateTableView:(NSError **)error
 {
-    NSArray *objectsBefore = [self.fetchedResultsController.fetchedObjects retain];
+    NSArray *objectsBefore = self.fetchedResultsController.fetchedObjects;
     
     self.loading = YES;
     
@@ -309,10 +308,10 @@
         
         NSArray *objectsAfter = self.fetchedResultsController.fetchedObjects;
         
-        NSMutableArray *insertedObjects = [[objectsAfter mutableCopy] autorelease];
+        NSMutableArray *insertedObjects = [objectsAfter mutableCopy];
         [insertedObjects removeObjectsInArray:objectsBefore];
         
-        NSMutableArray *removedObjects = [[objectsBefore mutableCopy] autorelease];
+        NSMutableArray *removedObjects = [objectsBefore mutableCopy];
         [removedObjects removeObjectsInArray:objectsAfter];
         
         NSMutableArray *insertedIndexPaths = [NSMutableArray arrayWithCapacity:insertedObjects.count];
@@ -339,7 +338,6 @@
     
     self.loading = NO;
     
-    [objectsBefore release];
     return result;
 }
 
@@ -352,8 +350,7 @@
 @synthesize objectKeyPath;
 
 - (void) dealloc {
-    [objectKeyPath release], objectKeyPath = nil;
-    [super dealloc];
+    objectKeyPath = nil;
 }
 
 #pragma mark CBUITableViewDataSource

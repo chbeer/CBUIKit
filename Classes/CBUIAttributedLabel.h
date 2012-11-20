@@ -36,7 +36,7 @@ extern NSString * const kCBUILinkAttribute;
 
 @property (nonatomic, assign) VerticalAlignment verticalAlignment;
 
-@property (nonatomic, assign) id <CBUIAttributedLabelDelegate> delegate;
+@property (nonatomic, weak) id <CBUIAttributedLabelDelegate> delegate;
 
 
 + (CGSize) sizeOfAttributedString:(NSAttributedString*)attributedText thatFits:(CGSize)size;

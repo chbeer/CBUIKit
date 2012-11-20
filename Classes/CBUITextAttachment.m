@@ -20,7 +20,7 @@ CGFloat CBUITextAttachmentRunDelegateGetWidth(void *context);
 @property (nonatomic, readwrite, copy) CBUITextAttachmentGetFloatValueCallback getDescentCallback;
 @property (nonatomic, readwrite, copy) CBUITextAttachmentGetFloatValueCallback getWidthCallback;
 
-@property (nonatomic, readwrite, retain) UIView                                *view;
+@property (nonatomic, readwrite, strong) UIView                                *view;
 @property (nonatomic, readwrite, copy)   CBUITextAttachmentDrawCallback        drawCallback;
 
 @end
@@ -88,7 +88,7 @@ CGFloat CBUITextAttachmentRunDelegateGetWidth(void *context);
     callbacks.getAscent = CBUITextAttachmentRunDelegateGetAscent;
     callbacks.getDescent = CBUITextAttachmentRunDelegateGetDescent;
     callbacks.getWidth = CBUITextAttachmentRunDelegateGetWidth;
-	return CTRunDelegateCreate(&callbacks, (void *)self);
+	return CTRunDelegateCreate(&callbacks, (__bridge void *)self);
 }
 
 @end

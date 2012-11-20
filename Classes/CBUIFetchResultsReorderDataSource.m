@@ -31,10 +31,9 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
     NSMutableArray *items = [self.fetchedResultsController.fetchedObjects mutableCopy];
-    id object = [[items objectAtIndex:fromIndexPath.row] retain];
+    id object = [items objectAtIndex:fromIndexPath.row];
     [items removeObjectAtIndex:fromIndexPath.row];
     [items insertObject:object atIndex:toIndexPath.row];
-    [object release];
     
     NSString *key = [[self.fetchedResultsController.fetchRequest.sortDescriptors objectAtIndex:0] key];
     
@@ -48,7 +47,6 @@
         number++;
     }
     
-    [items release];
     
     NSError *error = nil;
     if (![self.fetchedResultsController performFetch:&error]) {

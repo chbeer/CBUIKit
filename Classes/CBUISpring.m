@@ -101,15 +101,14 @@ static CGFloat kCBUIUnset = CGFLOAT_MAX;
     self = [super init];
     if (!self) return nil;
     
-    _spring = [inSpring retain];
+    _spring = inSpring;
     
     return self;
 }
 
 - (void)dealloc {
-    [_spring release], _spring = nil;
+    _spring = nil;
     
-    [super dealloc];
 }
 
 // Note the use of max value rather than minimum value here.
@@ -155,16 +154,15 @@ static CGFloat kCBUIUnset = CGFLOAT_MAX;
     self = [super init];
     if (!self) return nil;
     
-    _spring = [inSpring retain];
+    _spring = inSpring;
     _factor = factor;
     
     return self;
 }
 
 - (void)dealloc {
-    [_spring release], _spring = nil;
+    _spring = nil;
     
-    [super dealloc];
 }
 
 - (CGFloat)minimum
@@ -210,15 +208,14 @@ static CGFloat kCBUIUnset = CGFLOAT_MAX;
     self = [super init];
     if (!self) return nil;
     
-    _view = [view retain];
+    _view = view;
     
     return self;
 }
 
 - (void)dealloc {
-    [_view release], _view = nil;
+    _view = nil;
     
-    [super dealloc];
 }
 
 - (CGFloat) minimum
@@ -245,15 +242,14 @@ static CGFloat kCBUIUnset = CGFLOAT_MAX;
     self = [super init];
     if (!self) return nil;
     
-    _view = [view retain];
+    _view = view;
     
     return self;
 }
 
 - (void)dealloc {
-    [_view release], _view = nil;
+    _view = nil;
     
-    [super dealloc];
 }
 
 - (CGFloat) minimum

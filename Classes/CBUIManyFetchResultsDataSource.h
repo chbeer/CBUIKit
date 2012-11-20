@@ -14,8 +14,8 @@
 
 @interface CBUIManyFetchResultsDataSource : CBUITableViewDataSource <NSFetchedResultsControllerDelegate>
 
-@property (readonly, retain)  NSArray       *sections;
-@property (nonatomic, retain) NSIndexPath   *ignoreForUpdateIndexPath;
+@property (readonly, strong)  NSArray       *sections;
+@property (nonatomic, strong) NSIndexPath   *ignoreForUpdateIndexPath;
 
 @property (nonatomic, assign) BOOL          preserveSelectionOnUpdate;
 
@@ -34,7 +34,7 @@
 @interface CBUIManyFetchResultsSection : NSObject
 
 @property (nonatomic, copy)     NSString *title;
-@property (nonatomic, retain)   NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong)   NSFetchedResultsController *fetchedResultsController;
 
 - (id) objectAtRow:(NSUInteger)row;
 

@@ -24,9 +24,8 @@
 }
 
 - (void) dealloc {
-    [views release], views = nil;
+    views = nil;
     
-    [super dealloc];
 }
 
 #pragma mark Accessors

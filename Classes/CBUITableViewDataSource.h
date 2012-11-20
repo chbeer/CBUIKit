@@ -31,19 +31,19 @@
 @interface CBUITableViewDataSource : NSObject <CBUITableViewDataSource,UITableViewDataSource> {
 	UITableView *_tableView;
 	
-    id<CBUITableViewDataSourceDelegate> _delegate;
+    id<CBUITableViewDataSourceDelegate> __weak _delegate;
 }
 
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 
-@property (nonatomic, assign) id<CBUITableViewDataSourceDelegate> delegate;
+@property (nonatomic, weak) id<CBUITableViewDataSourceDelegate> delegate;
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 50000  // available for iOS > 5.0
 @property (nonatomic, copy) NSString *defaultTableViewCellReuseIdentifier; // can be used after IOS 5 for Automatic Cell Loading see WWDC '11 Session 125
 #endif
 
-@property (nonatomic, retain) IBOutlet UITableViewCell<CBUITableViewCell> *tableViewCell;
-@property (assign) Class defaultTableViewCellClass;
+@property (nonatomic, strong) IBOutlet UITableViewCell<CBUITableViewCell> *tableViewCell;
+@property (weak) Class defaultTableViewCellClass;
 
 @property (nonatomic, readonly, getter=isLoading)   BOOL            loading;
 @property (nonatomic, readonly, getter=isEmpty)     BOOL            empty;
@@ -63,8 +63,8 @@
 	NSMutableArray *_items;
 }
 
-@property (nonatomic, retain) NSMutableArray *sections;
-@property (nonatomic, retain) NSMutableArray *items;
+@property (nonatomic, strong) NSMutableArray *sections;
+@property (nonatomic, strong) NSMutableArray *items;
 
 @property (nonatomic, assign, getter = isEditable) BOOL editable;
 

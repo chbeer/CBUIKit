@@ -14,8 +14,8 @@ static char     * const CBBINDING_OBSERVER          = "__CBBINDING_OBSERVER";
 @interface CBBindingManager : NSObject {
 @private
 }
-@property (nonatomic, assign) id                   observer;
-@property (nonatomic, retain) NSMutableDictionary *bindings;
+@property (nonatomic, weak) id                   observer;
+@property (nonatomic, strong) NSMutableDictionary *bindings;
 
 - (void)cb_bind:(NSString *)binding toObject:(id)observableController withKeyPath:(NSString *)keyPath options:(NSDictionary *)options;
 - (void)cb_unbind:(NSString *)binding;
@@ -23,11 +23,11 @@ static char     * const CBBINDING_OBSERVER          = "__CBBINDING_OBSERVER";
 @end
 
 @interface CBBinding : NSObject 
-@property (nonatomic, assign)   id               observer;
-@property (nonatomic, assign)   id               observable;
+@property (nonatomic, weak)   id               observer;
+@property (nonatomic, weak)   id               observable;
 @property (nonatomic, copy)     NSString        *observedKeyPath;
 @property (nonatomic, copy)     NSString        *boundKeyPath;
-@property (nonatomic, retain)   NSDictionary    *options;
+@property (nonatomic, strong)   NSDictionary    *options;
 @end
 
 @implementation NSObject (CBBinding)
@@ -39,7 +39,6 @@ static char     * const CBBINDING_OBSERVER          = "__CBBINDING_OBSERVER";
         observer = [[CBBindingManager alloc] init];
         observer.observer = self;
         objc_setAssociatedObject(self, CBBINDING_OBSERVER, observer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        [observer release];
     }
     
     [observer cb_bind:binding toObject:observableController withKeyPath:keyPath options:options];
@@ -66,8 +65,7 @@ static char     * const CBBINDING_OBSERVER          = "__CBBINDING_OBSERVER";
         [self cb_unbind:key];
     }];
     
-    [_bindings release], _bindings = nil;
-    [super dealloc];
+    _bindings = nil;
 }
 
 - (NSMutableDictionary*) bindings
@@ -95,7 +93,6 @@ static char     * const CBBINDING_OBSERVER          = "__CBBINDING_OBSERVER";
     [self.observer addObserver:binding forKeyPath:bindingKeyPath options:NSKeyValueObservingOptionNew context:nil];
     
     [self.bindings setObject:binding forKey:bindingKeyPath];
-    [binding release];
 }
 
 - (void)cb_unbind:(NSString *)bindingKeyPath;
@@ -118,11 +115,10 @@ static char     * const CBBINDING_OBSERVER          = "__CBBINDING_OBSERVER";
     [_observer removeObserver:self forKeyPath:_boundKeyPath];
     [_observable removeObserver:self forKeyPath:_observedKeyPath];
     
-    [_observedKeyPath release], _observedKeyPath = nil;
-    [_boundKeyPath release], _boundKeyPath = nil;
-    [_options release], _options = nil;
+    _observedKeyPath = nil;
+    _boundKeyPath = nil;
+    _options = nil;
 
-    [super dealloc];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {

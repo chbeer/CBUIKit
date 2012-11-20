@@ -19,7 +19,7 @@ typedef CGFloat(^CBUITextAttachmentDrawCallback)(CGContextRef ctx, CGRect frame,
 @property (nonatomic, readonly, copy) CBUITextAttachmentGetFloatValueCallback getDescentCallback;
 @property (nonatomic, readonly, copy) CBUITextAttachmentGetFloatValueCallback getWidthCallback;
 
-@property (nonatomic, readonly, retain) UIView                                *view;
+@property (nonatomic, readonly, strong) UIView                                *view;
 @property (nonatomic, readonly, copy)   CBUITextAttachmentDrawCallback        drawCallback;
 
 - (id) initWithView:(UIView*)view;

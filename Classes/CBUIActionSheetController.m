@@ -8,6 +8,11 @@
 
 #import "CBUIActionSheetController.h"
 
+#import "objc/runtime.h"
+
+static char * const kCBUIActionSheetController = "kCBUIActionSheetController";
+
+
 @interface CBUIActionSheetControllerButton : NSObject
 @property (nonatomic, copy) CBUIActionSheetHandler handler;
 @property (nonatomic, copy) NSString *title;
@@ -75,37 +80,34 @@
         va_end(args);
     }
     
-    return [ctrl autorelease];
+    return ctrl;
 }
 + (id) actionSheetControllerWithTitle:(NSString*)title
 {
     CBUIActionSheetController *ctrl = [[self alloc] initWithTitle:title];
-    return [ctrl autorelease];
+    return ctrl;
 }
 
 - (void)dealloc {
-    [actionSheet release], actionSheet = nil;
+    actionSheet = nil;
     
-    [title release], title = nil;
-    [cancelButton release], cancelButton = nil;
-    [destructiveButton release], destructiveButton = nil;
+    title = nil;
+    cancelButton = nil;
+    destructiveButton = nil;
     
-    [buttons release], buttons = nil;
+    buttons = nil;
     
-    [super dealloc];
 }
 
 #pragma mark add buttons
 
 - (void) setCancelButtonTitle:(NSString*)inTitle handler:(CBUIActionSheetHandler)handler
 {
-    [cancelButton release];
-    cancelButton = [[CBUIActionSheetControllerButton buttonWithTitle:inTitle handler:handler] retain];
+    cancelButton = [CBUIActionSheetControllerButton buttonWithTitle:inTitle handler:handler];
 }
 - (void) setDestructiveButtonTitle:(NSString*)inTitle handler:(CBUIActionSheetHandler)handler
 {
-    [destructiveButton release];
-    destructiveButton = [[CBUIActionSheetControllerButton buttonWithTitle:inTitle handler:handler] retain];
+    destructiveButton = [CBUIActionSheetControllerButton buttonWithTitle:inTitle handler:handler];
 }
 - (void) addButtonWithTitle:(NSString*)inTitle handler:(CBUIActionSheetHandler)handler
 {
@@ -148,33 +150,31 @@
         }
 //        if (destructiveButton && cancelButton) actionSheet.cancelButtonIndex++;
     } 
+    
+    objc_setAssociatedObject(actionSheet, kCBUIActionSheetController, self, OBJC_ASSOCIATION_RETAIN);
+
     return actionSheet;
 }
 
 - (void)showFromToolbar:(UIToolbar *)view;
 {
     [[self actionSheet] showFromToolbar:view];
-    [self retain];
 }
 - (void)showFromTabBar:(UITabBar *)view;
 {
     [[self actionSheet] showFromTabBar:view];
-    [self retain];
 }
 - (void)showFromBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated;
 {
     [[self actionSheet] showFromBarButtonItem:item animated:animated];
-    [self retain];
 }
 - (void)showFromRect:(CGRect)rect inView:(UIView *)view animated:(BOOL)animated;
 {
     [[self actionSheet] showFromRect:rect inView:view animated:animated];
-    [self retain];
 }
 - (void)showInView:(UIView *)view;
 {
     [[self actionSheet] showInView:view];
-    [self retain];
 }
 
 #pragma mark UIActionSheetDelegate
@@ -200,10 +200,9 @@
         }
     }
 }
-
-- (void)actionSheet:(UIActionSheet *)inActionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    [self autorelease];
+    objc_setAssociatedObject(actionSheet, kCBUIActionSheetController, nil, OBJC_ASSOCIATION_RETAIN);
 }
 
 @end
@@ -216,11 +215,10 @@
     CBUIActionSheetControllerButton *button = [[CBUIActionSheetControllerButton alloc] init];
     button.title = title;
     button.handler = handler;
-    return [button autorelease];
+    return button;
 }
 - (void)dealloc {
-    [_title release], _title = nil;
-    [_handler release], _handler = nil;
-    [super dealloc];
+    _title = nil;
+    _handler = nil;
 }
 @end

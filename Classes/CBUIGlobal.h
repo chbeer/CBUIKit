@@ -57,3 +57,5 @@ CGRect CBCGRectModify(CGRect rect, CBCGRectModifyBlock modifyBlock);
 
 CGRect CBCGRectFitAspect(CGRect rect, CGSize bounds);
 CGSize CBCGSizeFitAspect(CGSize size, CGSize fit);
+
+CGPathRef CBCreateCGPathWithRect(CGRect rect);

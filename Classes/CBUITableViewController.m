@@ -11,8 +11,14 @@
 #import "CBUIGlobal.h"
 
 @implementation CBUITableViewController
+{
+    BOOL _keyboardIsShown;
+	UITableViewStyle _style;
+}
 
 @synthesize tableView = _tableView;
+
+@synthesize clearsSelectionOnViewWillAppear = _clearsSelectionOnViewWillAppear;
 
 - (id) initWithStyle:(UITableViewStyle)style {
     self = [super init];
@@ -23,8 +29,9 @@
 	return self;
 }
 
-- (void) loadView {
-    [super loadView];
+- (void) viewDidLoad
+{
+    [super viewDidLoad];
     
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:_style];
@@ -42,23 +49,22 @@
     }    
 }
 
-- (void) dealloc {
-    [_tableView release]; _tableView = nil;
-    
-    [super dealloc];
-}
 
 - (void) viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
-	NSIndexPath *ip = [_tableView indexPathForSelectedRow];
-	if (ip) {
-		[_tableView deselectRowAtIndexPath:ip animated:YES];
-	}
+    if (_clearsSelectionOnViewWillAppear) {
+        NSIndexPath *indexPath = [_tableView indexPathForSelectedRow];
+        if (indexPath) {
+            [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
+    }
 }
 
-- (void) setEditing:(BOOL)editing animated:(BOOL)animated {
+- (void) setEditing:(BOOL)editing animated:(BOOL)animated
+{
 	[super setEditing:editing animated:animated];
+    
 	[_tableView setEditing:editing animated:animated];
 }
 
@@ -75,42 +81,62 @@
 #pragma mark Keyboard movement
 
 - (void)keyboardWillShow:(NSNotification*)notif {
-    if (!CBIsIPad()) {
+    if (!CBIsIPad() && !_keyboardIsShown) {
+        NSDictionary *userInfo = notif.userInfo;
+        
         [UIView beginAnimations:@"keyboardWillShow" 
                         context:nil];
         
-        [UIView setAnimationCurve:[[notif.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]];
-        [UIView setAnimationDuration:[[notif.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
+        [UIView setAnimationCurve:[[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]];
+        [UIView setAnimationDuration:[[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
         
-        CGRect frame = self.view.frame;
+        CGSize size = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+		
+/*        CGRect frame = self.view.frame;
         
         if (!self.navigationController.toolbarHidden) {
             frame.size.height += self.navigationController.toolbar.bounds.size.height;
         }
         
-        _tableView.frame = frame;
+        _tableView.frame = frame;*/
+        
+        UIEdgeInsets insets = _tableView.contentInset;
+        insets.bottom += size.height;
+        _tableView.contentInset = insets;
         
         [UIView commitAnimations];
+        
+        _keyboardIsShown = YES;
     }
 }
 
 - (void)keyboardWillHide:(NSNotification*)notif {
-    if (!CBIsIPad()) {
-        [UIView beginAnimations:@"keyboardWillHide" 
+    if (!CBIsIPad() && _keyboardIsShown) {
+        NSDictionary *userInfo = notif.userInfo;
+        
+        [UIView beginAnimations:@"keyboardWillHide"
                         context:nil];
         
-        [UIView setAnimationCurve:[[notif.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]];
-        [UIView setAnimationDuration:[[notif.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
+        [UIView setAnimationCurve:[[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]];
+        [UIView setAnimationDuration:[[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
         
-        CGRect frame = self.view.frame;
+        CGSize size = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+        
+        /*CGRect frame = self.view.frame;
         
         if (!self.navigationController.toolbarHidden) {
             frame.size.height -= self.navigationController.toolbar.bounds.size.height;
         }
         
-        _tableView.frame = frame;
+        _tableView.frame = frame;*/
+        
+        UIEdgeInsets insets = _tableView.contentInset;
+        insets.bottom -= size.height;
+        _tableView.contentInset = insets;
         
         [UIView commitAnimations];
+        
+        _keyboardIsShown = NO;
     }
 }
 

@@ -17,12 +17,6 @@
     return [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
 }
 
--(void)dealloc
-{
-    self.textLabelKeyPath = nil;
-
-    [super dealloc];
-}
 
 - (void) setObject:(id)object;
 {
@@ -46,13 +40,6 @@
     return [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
 }
 
--(void)dealloc
-{
-    self.textLabelKeyPath = nil;
-    self.detailTextLabelKeyPath = nil;
-    
-    [super dealloc];
-}
 
 - (void) setObject:(id)object;
 {

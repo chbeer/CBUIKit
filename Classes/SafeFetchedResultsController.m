@@ -46,7 +46,7 @@
 	NSFetchedResultsChangeType changeType;
 }
 
-@property (nonatomic, retain) id <NSFetchedResultsSectionInfo> sectionInfo;
+@property (nonatomic, strong) id <NSFetchedResultsSectionInfo> sectionInfo;
 @property (nonatomic, assign) NSUInteger sectionIndex;
 @property (nonatomic, assign) NSFetchedResultsChangeType changeType;
 
@@ -63,10 +63,10 @@
 	NSIndexPath *updatedIndexPath;
 }
 
-@property (nonatomic, retain) id object;
-@property (nonatomic, retain) NSIndexPath *indexPath;
+@property (nonatomic, strong) id object;
+@property (nonatomic, strong) NSIndexPath *indexPath;
 @property (nonatomic, assign) NSFetchedResultsChangeType changeType;
-@property (nonatomic, retain) NSIndexPath *updatedIndexPath;
+@property (nonatomic, strong) NSIndexPath *updatedIndexPath;
 
 - (id)initWithObject:(id)object
            indexPath:(NSIndexPath *)indexPath
@@ -112,18 +112,6 @@
 	return self;
 }
 
-- (void)dealloc
-{
-	[insertedSections release];
-	[deletedSections release];
-	
-	[insertedObjects release];
-	[deletedObjects release];
-	[updatedObjects release];
-	[movedObjects release];
-	
-	[super dealloc];
-}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark Logic
@@ -158,7 +146,7 @@
 	NSMutableIndexSet *indexSet = [dictionary objectForKey:sectionNumber];
 	if (indexSet == nil)
 	{
-		indexSet = [[[NSMutableIndexSet alloc] init] autorelease];
+		indexSet = [[NSMutableIndexSet alloc] init];
 		
 		[dictionary setObject:indexSet forKey:sectionNumber];
 	}
@@ -193,8 +181,8 @@
 		// First we create index sets for the inserted and deleted sections.
 		// This will allow us to see if a section change could have created a problem.
 		
-		NSMutableIndexSet *sectionInsertSet = [[[NSMutableIndexSet alloc] init] autorelease];
-		NSMutableIndexSet *sectionDeleteSet = [[[NSMutableIndexSet alloc] init] autorelease];
+		NSMutableIndexSet *sectionInsertSet = [[NSMutableIndexSet alloc] init];
+		NSMutableIndexSet *sectionDeleteSet = [[NSMutableIndexSet alloc] init];
 		
 		for (SafeSectionChange *sectionChange in insertedSections)
 		{
@@ -393,32 +381,32 @@
 
 - (void)processObjectChanges
 {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	@autoreleasepool {
 	
 	// Check for and possibly fix the InsertSection or DeleteSection bug
 	
-	[self fixUpdateBugs];
+		[self fixUpdateBugs];
+		
+		// Process object changes
+		
+		for (SafeObjectChange *objectChange in insertedObjects)
+		{
+			[self notifyDelegateOfObjectChange:objectChange];
+		}
+		for (SafeObjectChange *objectChange in deletedObjects)
+		{
+			[self notifyDelegateOfObjectChange:objectChange];
+		}
+		for (SafeObjectChange *objectChange in updatedObjects)
+		{
+			[self notifyDelegateOfObjectChange:objectChange];
+		}
+		for (SafeObjectChange *objectChange in movedObjects)
+		{
+			[self notifyDelegateOfObjectChange:objectChange];
+		}
 	
-	// Process object changes
-	
-	for (SafeObjectChange *objectChange in insertedObjects)
-	{
-		[self notifyDelegateOfObjectChange:objectChange];
 	}
-	for (SafeObjectChange *objectChange in deletedObjects)
-	{
-		[self notifyDelegateOfObjectChange:objectChange];
-	}
-	for (SafeObjectChange *objectChange in updatedObjects)
-	{
-		[self notifyDelegateOfObjectChange:objectChange];
-	}
-	for (SafeObjectChange *objectChange in movedObjects)
-	{
-		[self notifyDelegateOfObjectChange:objectChange];
-	}
-	
-	[pool release];
 }
 
 - (void)processChanges
@@ -505,7 +493,6 @@
 	}
 	
 	[sectionChanges addObject:sectionChange];
-	[sectionChange release];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
@@ -531,7 +518,6 @@
 	}
 	
 	[objectChanges addObject:objectChange];
-	[objectChange release];
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
@@ -585,16 +571,10 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"<SafeSectionChange changeType(%@) index(%lu)>",
+	return [NSString stringWithFormat:@"<SafeSectionChange changeType(%@) index(%u)>",
 			[self changeTypeString], sectionIndex];
 }
 
-- (void)dealloc
-{
-	self.sectionInfo = nil;
-	
-	[super dealloc];
-}
 
 @end
 
@@ -641,7 +621,7 @@
 {
 	if (ip == nil) return @"nil";
 	
-	return [NSString stringWithFormat:@"[%lu,%lu]", ip.section, ip.row];
+	return [NSString stringWithFormat:@"[%u,%u]", ip.section, ip.row];
 }
 
 - (NSString *)description
@@ -652,13 +632,5 @@
 			[self stringFromIndexPath:updatedIndexPath]];
 }
 
-- (void)dealloc
-{
-	self.object = nil;
-	self.indexPath = nil;
-	self.updatedIndexPath = nil;
-	
-	[super dealloc];
-}
 
 @end

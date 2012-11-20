@@ -14,8 +14,8 @@
 @interface CBUIActivityView ()
 
 // these are mutualy exclusive. last set wins.
-@property (nonatomic, retain) UIView    *centerView;
-@property (nonatomic, retain) UILabel   *messageLabel;
+@property (nonatomic, strong) UIView    *centerView;
+@property (nonatomic, strong) UILabel   *messageLabel;
 
 - (void) rotateToDeviceOrientation:(BOOL)animated;
 @end
@@ -77,10 +77,7 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    self.centerView = nil;
-    self.messageLabel = nil;
     
-    [super dealloc];
 }
 
 #pragma mark -
@@ -114,7 +111,6 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
         messageLabel.numberOfLines = 2;
         [self addSubview:messageLabel];
         self.messageLabel = messageLabel;
-        [messageLabel release];
     }
     self.messageLabel.text = message;
 }
@@ -193,7 +189,7 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
 - (void) hidePreviousCenterView
 {
     if (self.centerView) {
-        UIView *view = [self.centerView retain];
+        UIView *view = self.centerView;
         self.centerView = nil;
         [UIView animateWithDuration:0.2 
                          animations:^{
@@ -202,7 +198,6 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
                          } 
                          completion:^(BOOL finished) {
                              [view removeFromSuperview];
-                             [view release];
                          }];
     }
 }
@@ -219,7 +214,6 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
     [spinner startAnimating];
     [self addSubview:spinner];
     self.centerView = spinner;
-    [spinner release];
     
     [self setMessage:message];
     
@@ -237,7 +231,6 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
     infoSymbol.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     [self addSubview:infoSymbol];
     self.centerView = infoSymbol;
-    [infoSymbol release];
     
     [self setMessage:message];
     
@@ -262,7 +255,6 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
     centerLabel.adjustsFontSizeToFitWidth = YES;
     [self addSubview:centerLabel];
     self.centerView = centerLabel;
-    [centerLabel release];
     
     [self setMessage:message];
     

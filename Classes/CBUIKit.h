@@ -13,10 +13,6 @@
 #import "CBUIViewController.h"
 #import "CBUITableViewController.h"
 
-#import "CBUIGridView.h"
-#import "CBUIGridViewDataSource.h"
-#import "CBUIGridViewFetchRequestDataSource.h"
-
 #import "CBUITableViewDataSource.h"
 #import "CBUITableViewCells.h"
 #import "CBUIFetchResultsDataSource.h"
@@ -40,3 +36,10 @@
 
 #import "CBUIVerticalLayoutView.h"
 #import "CBUIHorizontalLayoutView.h"
+
+#import "CBUICustomAnimationModalSegue.h"
+
+#import "CBUICollectionViewDataSource.h"
+#import "CBUIFetchedResultsCollectionViewDataSource.h"
+
+#import "CBUIRoundedCornerView.h"

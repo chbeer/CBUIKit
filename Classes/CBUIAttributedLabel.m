@@ -9,6 +9,9 @@
 #import "CBUIAttributedLabel.h"
 
 #import "CBUITextAttachment.h"
+#import "CBUIGlobal.h"
+
+#define DEBUG_OUTLINES 0
 
 
 NSString * const kCBCTHighlightedForegroundColorAttributeName = @"CBCTHighlightedForegroundColorAttributeName";
@@ -53,14 +56,11 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
 }
 
 - (void)dealloc {
-    self.attributedText = nil;
     
-    if (_links) [_links release];
     
     if (_framesetter) CFRelease(_framesetter);
-    [_attachmentViews release]; _attachmentViews = nil;
+     _attachmentViews = nil;
     
-    [super dealloc];
 }
 
 #pragma mark UILabel
@@ -96,7 +96,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                                          }];
         
         if (_framesetter) CFRelease(_framesetter);
-        _framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)_attributedText);
+        _framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_attributedText);
     }
     
     [self setNeedsDisplay];
@@ -157,6 +157,13 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
     
     CGContextSaveGState(context);
     
+    
+#if DEBUG_OUTLINES
+    CGContextSetRGBStrokeColor(context, 1.0, 0, 1.0f, 1.0f);
+    CGContextStrokeRect(context, actualRect);
+#endif
+    
+    
     CGContextSetTextMatrix(context, CGAffineTransformIdentity);
     
     // Set the usual "flipped" Core Text draw matrix
@@ -170,57 +177,80 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
     // Create the frame and draw it into the graphics context
     CTFrameRef frame = CTFramesetterCreateFrame(_framesetter, CFRangeMake(0, 0), path, NULL);
  
-    NSArray *linesInFrame = (NSArray*)CTFrameGetLines(frame);
+    NSArray *linesInFrame = (__bridge NSArray*)CTFrameGetLines(frame);
     
     for (UIView *view in _attachmentViews) {
         [view removeFromSuperview];
     }
-    [_attachmentViews release]; _attachmentViews = nil;
-    _attachmentViews = [[NSMutableArray alloc] init];
+     _attachmentViews = nil;
+    _attachmentViews = [[NSMutableArray alloc] initWithCapacity:10];
 
-    if (_links) [_links release];
     NSMutableArray *links = [[NSMutableArray alloc] init];
     
-    [linesInFrame enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        CTLineRef line = (CTLineRef)obj;
+    int lineIdx = 0;
+    for (id lineObj in linesInFrame) {
+        CTLineRef line = (__bridge CTLineRef)lineObj;
         
         CGPoint lineOrigin;
-        CTFrameGetLineOrigins(frame, CFRangeMake(idx, 1), &lineOrigin);
+        CTFrameGetLineOrigins(frame, CFRangeMake(lineIdx, 1), &lineOrigin);
+
+        CGFloat ascent, descent, leading;
+        CGFloat lineWidth = (CGFloat)CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
         
-        [(NSArray*)CTLineGetGlyphRuns(line) enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            CTRunRef run = (CTRunRef)obj;
+#if DEBUG_OUTLINES
+        CGRect lineFrame = CGRectMake(actualRect.origin.x + lineOrigin.x,
+                                      actualRect.origin.y + lineOrigin.y,
+                                      lineWidth, ascent + descent);
+        
+        // draw line bounds
+        CGContextSetRGBStrokeColor(context, 0, 0, 1.0f, 1.0f);
+        CGContextStrokeRect(context, lineFrame);
+        
+        // draw baseline
+        CGContextMoveToPoint(context, lineFrame.origin.x - 5.0f, lineFrame.origin.y);
+        CGContextAddLineToPoint(context, lineFrame.origin.x + lineFrame.size.width + 5.0f, lineFrame.origin.y);
+        CGContextStrokePath(context);
+#endif
+      
+        for (id runObj in (__bridge NSArray*)CTLineGetGlyphRuns(line)) {
+            CTRunRef run = (__bridge CTRunRef)(runObj);
             
-            NSDictionary *runAttributes = (NSDictionary*)CTRunGetAttributes(run);
+            NSDictionary *runAttributes = (__bridge NSDictionary*)CTRunGetAttributes(run);
             
             id attachment = [runAttributes objectForKey:@"NSAttachmentAttributeName"];
             if (attachment) {
                 CGFloat ascent, descent, leading;
                 CGFloat width = (CGFloat)CTRunGetTypographicBounds(run, CFRangeMake(0, 0), &ascent, &descent, &leading);
                 CGFloat offsetInLine = CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(run).location, NULL);
-                CGRect frame = CGRectMake(offsetInLine + lineOrigin.x,
-                                          self.bounds.size.height - lineOrigin.y - ascent,
+                CGRect frame = CGRectMake(actualRect.origin.x + offsetInLine + lineOrigin.x,
+                                          actualRect.origin.y + actualRect.size.height - lineOrigin.y - ascent - descent,
                                           width, ascent + descent);
                 
-                switch (self.textAlignment) {
+                
+                /*switch (self.textAlignment) {
                     case UITextAlignmentCenter:
                         frame.origin.x -= width / 2;
                         break;
                     default:
                         break;
-                }
+                }*/
                 
                 if ([attachment isKindOfClass:[CBUITextAttachment class]]) {
                     CBUITextAttachment *textAttachment = attachment;
                     if (textAttachment.drawCallback) {
                         textAttachment.drawCallback(context, frame, line, run);
                     } if (textAttachment.view) {
+                        
+#if DEBUG_OUTLINES
+                        CGContextSetRGBStrokeColor(context, 1.0, 0.0, 0.0, 1.0);
+                        CGContextStrokeRect(context, CBCGRectOriginDelta(frame, 0.0, -actualRect.size.height));
+#endif
+
                         UIView *view = textAttachment.view;
                         view.frame = frame;
                         [_attachmentViews addObject:view];
                         [self addSubview:view];
                         
-                        CGContextSetRGBStrokeColor(context, 1.0, 0.0, 0.0, 1.0);
-                        CGContextStrokeRect(context, frame);
                     }
                 }
             }
@@ -237,7 +267,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                 
                 CGFloat xOffset = CTLineGetOffsetForStringIndex(line, runRange.location, NULL);
                 runBounds.origin.x = lineOrigin.x + xOffset;
-                runBounds.origin.y = actualRect.size.height - lineOrigin.y + runBounds.size.height;
+                runBounds.origin.y = actualRect.size.height - lineOrigin.y - ascent;
                 
                 runBounds = CGRectInset(runBounds, -10, -10);
                 
@@ -248,8 +278,10 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                 
                 [links addObject:link];
             }
-        }];
-    }];
+        }
+        
+        lineIdx++;
+    }
 
     
     _links = links;
@@ -263,21 +295,20 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
 
     CGContextRestoreGState(context);
 
-//#ifdef DEBUG_LINKS
+#ifdef DEBUG_LINKS
     [_links enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         CBUIAttributedLabelLink *link = obj;
         
         CGContextSetRGBStrokeColor(context, 1.0f, 0, 0, 1.0f);
         CGContextStrokeRect(context, link.frame);
     }];
-//#endif
+#endif
 }
 
 #pragma mark - Acccessors
 
 - (void) setAttributedText:(NSAttributedString*)inText {
     if (inText != _attributedText) {
-        [_attributedText release];
         
         if ([inText isKindOfClass:[NSString class]]) {
             [self setText:(NSString*)inText];
@@ -294,8 +325,10 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                                         }];
             
             if (_framesetter) CFRelease(_framesetter);
-            _framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)_attributedText);
+            _framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_attributedText);
         }
+        
+        [super setText:[_attributedText string]];
         
         [self setNeedsDisplay];
     }
@@ -313,7 +346,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
 
 + (CGSize) sizeOfAttributedString:(NSAttributedString*)attributedText thatFits:(CGSize)size
 {
-    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attributedText);
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)attributedText);
     CGSize suggestedSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), NULL, CGSizeMake(size.width, size.height), NULL);
     CFRelease(framesetter);
     return suggestedSize;
@@ -322,14 +355,30 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
 #pragma mark - Touch Handling
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{}
-
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{}
-
+{
+    __block BOOL handled = NO;
+    
+    if (touches.count == 1) {
+        UITouch *touch = [touches anyObject];
+        
+        if ([self.delegate respondsToSelector:@selector(attributedLabel:didTapOnLink:)]) {
+            CGPoint location = [touch locationInView:self];
+            
+            [_links enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                CBUIAttributedLabelLink *link = obj;
+                if (CGRectContainsPoint(link.frame, location)) {
+                    handled = YES;
+                    *stop = YES;
+                }
+            }];
+        }
+        
+    }
+    
+    if (!handled) {
+        [super touchesBegan:touches withEvent:event];
+    }
+}
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     __block BOOL handled = NO;
@@ -345,6 +394,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                 if (CGRectContainsPoint(link.frame, location)) {
                     [self.delegate attributedLabel:self didTapOnLink:link];
                     handled = YES;
+                    *stop = YES;
                 }
             }];
         }
