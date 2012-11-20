@@ -10,7 +10,7 @@
 
 #import "objc/runtime.h"
 
-static char * const kCBUIActionSheetController = "kCBUIActionSheetController";
+static const char kCBUIActionSheetController;
 
 
 @interface CBUIActionSheetControllerButton : NSObject
@@ -151,7 +151,7 @@ static char * const kCBUIActionSheetController = "kCBUIActionSheetController";
 //        if (destructiveButton && cancelButton) actionSheet.cancelButtonIndex++;
     } 
     
-    objc_setAssociatedObject(actionSheet, kCBUIActionSheetController, self, OBJC_ASSOCIATION_RETAIN);
+    objc_setAssociatedObject(actionSheet, &kCBUIActionSheetController, self, OBJC_ASSOCIATION_RETAIN);
 
     return actionSheet;
 }
@@ -200,9 +200,9 @@ static char * const kCBUIActionSheetController = "kCBUIActionSheetController";
         }
     }
 }
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+- (void)actionSheet:(UIActionSheet *)inActionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    objc_setAssociatedObject(actionSheet, kCBUIActionSheetController, nil, OBJC_ASSOCIATION_RETAIN);
+    objc_setAssociatedObject(inActionSheet, &kCBUIActionSheetController, nil, OBJC_ASSOCIATION_RETAIN);
 }
 
 @end
