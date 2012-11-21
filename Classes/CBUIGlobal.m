@@ -179,6 +179,12 @@ CGRect CBCGRectSetHeight(CGRect rect, CGFloat h)
 CGPoint CBCGRectGetCenter(CGRect rect) {
     return CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
 }
+CGRect CBCGRectSetCenter(CGRect rect, CGPoint center)
+{
+    rect.origin.x = center.x - rect.size.width / 2;
+    rect.origin.y = center.y - rect.size.height / 2;
+    return rect;
+}
 
 CGRect CBCGRectModify(CGRect rect, CBCGRectModifyBlock modifyBlock)
 {

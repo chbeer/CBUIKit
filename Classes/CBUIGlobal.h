@@ -51,6 +51,7 @@ CGRect CBCGRectSetY(CGRect rect, CGFloat y);
 CGRect CBCGRectSetWidth(CGRect rect, CGFloat w);
 CGRect CBCGRectSetHeight(CGRect rect, CGFloat h);
 CGPoint CBCGRectGetCenter(CGRect rect);
+CGRect CBCGRectSetCenter(CGRect rect, CGPoint center);
 
 typedef CGRect(^CBCGRectModifyBlock)(CGRect rect);
 CGRect CBCGRectModify(CGRect rect, CBCGRectModifyBlock modifyBlock);
