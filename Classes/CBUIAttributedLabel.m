@@ -39,6 +39,8 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
     self = [super initWithFrame:frame];
     if (!self) return nil;
     
+    _framesetter = nil;
+    
     self.verticalAlignment = VerticalAlignmentMiddle;
     _attachmentViews = nil;
     
@@ -49,18 +51,19 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
     self = [super initWithCoder:aDecoder];
     if (!self) return nil;
     
+    _framesetter = nil;
+
     self.verticalAlignment = VerticalAlignmentMiddle;
     _attachmentViews = nil;
     
     return self;
 }
 
-- (void)dealloc {
-    
-    
+- (void)dealloc
+{
     if (_framesetter) CFRelease(_framesetter);
-     _attachmentViews = nil;
-    
+    _framesetter = nil;
+    _attachmentViews = nil;
 }
 
 #pragma mark UILabel
@@ -307,6 +310,13 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
 #pragma mark - Acccessors
 
 - (void) setAttributedText:(NSAttributedString*)inText {
+    if (inText == nil) {
+        [super setText:nil];
+        _attributedText = nil;
+        if (_framesetter) CFRelease(_framesetter);
+        return;
+    }
+    
     if (inText != _attributedText) {
         
         if ([inText isKindOfClass:[NSString class]]) {
