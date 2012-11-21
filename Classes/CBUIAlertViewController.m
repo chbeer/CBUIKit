@@ -8,6 +8,11 @@
 
 #import "CBUIAlertViewController.h"
 
+#import <objc/runtime.h>
+
+
+static const char kCBUIAlertViewController;
+
 @interface CBUIAlertViewControllerButton : NSObject
 @property (nonatomic, copy) CBUIAlertViewHandler handler;
 @property (nonatomic, copy) NSString *title;
@@ -109,7 +114,10 @@
             [alertView addButtonWithTitle:cancelButton.title];
             alertView.cancelButtonIndex = buttons.count;
         }
-    } 
+    }
+    
+    objc_setAssociatedObject(alertView, &kCBUIAlertViewController, self, OBJC_ASSOCIATION_RETAIN);
+    
     return alertView;
 }
 
@@ -134,6 +142,12 @@
         }
     }
 
+}
+
+- (void)alertView:(UIAlertView *)inAlertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    objc_setAssociatedObject(inAlertView, &
+                             kCBUIAlertViewController, nil, OBJC_ASSOCIATION_RETAIN);
 }
 
 @end
