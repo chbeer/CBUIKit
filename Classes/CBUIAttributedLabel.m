@@ -356,7 +356,10 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
 
 + (CGSize) sizeOfAttributedString:(NSAttributedString*)attributedText thatFits:(CGSize)size
 {
+    NSAssert([attributedText isKindOfClass:[NSAttributedString class]], @"parameter is no NSAttributedString: %@", [attributedText class]);
+    
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)attributedText);
+    if (!framesetter) return CGSizeZero;
     CGSize suggestedSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), NULL, CGSizeMake(size.width, size.height), NULL);
     CFRelease(framesetter);
     return suggestedSize;
