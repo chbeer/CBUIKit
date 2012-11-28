@@ -197,10 +197,10 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
         CGPoint lineOrigin;
         CTFrameGetLineOrigins(frame, CFRangeMake(lineIdx, 1), &lineOrigin);
 
+#if DEBUG_OUTLINES
         CGFloat ascent, descent, leading;
         CGFloat lineWidth = (CGFloat)CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
-        
-#if DEBUG_OUTLINES
+
         CGRect lineFrame = CGRectMake(actualRect.origin.x + lineOrigin.x,
                                       actualRect.origin.y + lineOrigin.y,
                                       lineWidth, ascent + descent);

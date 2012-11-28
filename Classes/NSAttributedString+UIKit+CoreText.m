@@ -68,6 +68,8 @@
             [result setObject:font forKey:NSFontAttributeName];
         } else if ([key isEqual:(id)kCTParagraphStyleAttributeName]) {
             NSParagraphStyle *paraStyle = [[NSParagraphStyle alloc] init];
+            
+            [result setObject:paraStyle forKey:NSParagraphStyleAttributeName];
         } else {
             NSLog(@"ii ignored: %@", key);
         }
