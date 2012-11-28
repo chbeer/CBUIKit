@@ -154,9 +154,9 @@
             CBUIFetchedResultsCollectionViewUpdate *update = obj;
             [update performUpdateOnCollectionView:self.collectionView];
         }];
-    } completion:NULL];
-    
-     _updates = nil;
+    } completion:^(BOOL finished) {
+        _updates = nil;
+    }];
 }
 
 - (void)controllerDidMakeUnsafeChanges:(NSFetchedResultsController *)controller
