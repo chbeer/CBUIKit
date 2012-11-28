@@ -197,6 +197,13 @@ CGRect CBCGRectFitAspect(CGRect rect, CGSize size)
     rect.size = CBCGSizeFitAspect(rect.size, size);
     return rect;
 }
+
+CGSize CBCGSizeDelta(CGSize size, CGFloat deltaW, CGFloat deltaH)
+{
+    size.width += deltaW;
+    size.height += deltaH;
+    return size;
+}
 CGSize CBCGSizeFitAspect(CGSize size, CGSize fit)
 {
     if (size.width <= fit.width && size.height <= fit.height) return size;
