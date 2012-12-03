@@ -314,7 +314,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
     if (inText == nil) {
         [super setText:nil];
         _attributedText = nil;
-        if (_framesetter) CFRelease(_framesetter);
+        if (_framesetter) CFRelease(_framesetter); _framesetter = nil;
         return;
     }
     
