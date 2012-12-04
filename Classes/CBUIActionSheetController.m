@@ -183,11 +183,11 @@ static const char kCBUIActionSheetController;
 {
     if (buttonIndex == inActionSheet.cancelButtonIndex) {
         if (cancelButton.handler) {
-            cancelButton.handler();
+            cancelButton.handler(inActionSheet, buttonIndex);
         }
     } else if (buttonIndex == inActionSheet.destructiveButtonIndex) {
         if (destructiveButton.handler) {
-            destructiveButton.handler();
+            destructiveButton.handler(inActionSheet, buttonIndex);
         }
     } else {
         NSInteger index = buttonIndex;
@@ -196,7 +196,7 @@ static const char kCBUIActionSheetController;
         }
         CBUIActionSheetControllerButton *button = [buttons objectAtIndex:index];
         if (button.handler) {
-            button.handler();
+            button.handler(inActionSheet, index);
         }
     }
 }

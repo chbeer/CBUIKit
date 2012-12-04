@@ -10,7 +10,7 @@
 
 @class CBUIActionSheetControllerButton;
 
-typedef void(^CBUIActionSheetHandler)();
+typedef void(^CBUIActionSheetHandler)(UIActionSheet *actionSheet, NSUInteger buttonIndex);
 
 @interface CBUIActionSheetController : NSObject <UIActionSheetDelegate> {
     
