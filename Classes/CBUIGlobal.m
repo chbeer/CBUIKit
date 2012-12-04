@@ -179,6 +179,12 @@ CGRect CBCGRectSetHeight(CGRect rect, CGFloat h)
 CGPoint CBCGRectGetCenter(CGRect rect) {
     return CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
 }
+CGRect CBCGRectSetCenter(CGRect rect, CGPoint center)
+{
+    rect.origin.x = center.x - rect.size.width / 2;
+    rect.origin.y = center.y - rect.size.height / 2;
+    return rect;
+}
 
 CGRect CBCGRectModify(CGRect rect, CBCGRectModifyBlock modifyBlock)
 {
@@ -190,6 +196,13 @@ CGRect CBCGRectFitAspect(CGRect rect, CGSize size)
     if (rect.size.width <= size.width && rect.size.height <= size.height) return rect;
     rect.size = CBCGSizeFitAspect(rect.size, size);
     return rect;
+}
+
+CGSize CBCGSizeDelta(CGSize size, CGFloat deltaW, CGFloat deltaH)
+{
+    size.width += deltaW;
+    size.height += deltaH;
+    return size;
 }
 CGSize CBCGSizeFitAspect(CGSize size, CGSize fit)
 {

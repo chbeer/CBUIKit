@@ -13,23 +13,8 @@
 
 @interface CBUIFetchedResultsCollectionViewDataSource () <NSFetchedResultsControllerDelegate>
 
-@end
-
-@interface CBUIFetchedResultsCollectionViewUpdate : NSObject
-
-@property (nonatomic, assign) NSFetchedResultsChangeType changeType;
-@property (nonatomic, assign) BOOL          section;
-@property (nonatomic, strong) NSIndexPath   *indexPath;
-@property (nonatomic, strong) NSIndexPath   *theNewIndexPath;
-@property (nonatomic, assign) NSUInteger    sectionIndex;
-
-+ (CBUIFetchedResultsCollectionViewUpdate*) updateItemAtIndexPath:(NSIndexPath *)indexPath
-                                                    forChangeType:(NSFetchedResultsChangeType)type
-                                                     newIndexPath:(NSIndexPath *)newIndexPath;
-+ (CBUIFetchedResultsCollectionViewUpdate*) updateSectionAtIndex:(NSUInteger)sectionIndex
-                                                   forChangeType:(NSFetchedResultsChangeType)type;
-
-- (void) performUpdateOnCollectionView:(UICollectionView*)collectionView;
+@property (readwrite, strong) NSFetchedResultsController    *fetchedResultsController;
+@property (nonatomic, retain) NSMutableArray                *updates;
 
 @end
 
@@ -38,9 +23,6 @@
 @class CBUIFetchedResultsCollectionViewUpdate;
 
 @implementation CBUIFetchedResultsCollectionViewDataSource
-{
-    NSMutableArray *_updates;
-}
 
 @synthesize fetchedResultsController = _fetchedResultsController;
 
@@ -172,9 +154,9 @@
             CBUIFetchedResultsCollectionViewUpdate *update = obj;
             [update performUpdateOnCollectionView:self.collectionView];
         }];
-    } completion:NULL];
-    
-     _updates = nil;
+    } completion:^(BOOL finished) {
+        _updates = nil;
+    }];
 }
 
 - (void)controllerDidMakeUnsafeChanges:(NSFetchedResultsController *)controller

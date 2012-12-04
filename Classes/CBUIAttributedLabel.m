@@ -39,6 +39,8 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
     self = [super initWithFrame:frame];
     if (!self) return nil;
     
+    _framesetter = nil;
+    
     self.verticalAlignment = VerticalAlignmentMiddle;
     _attachmentViews = nil;
     
@@ -49,18 +51,19 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
     self = [super initWithCoder:aDecoder];
     if (!self) return nil;
     
+    _framesetter = nil;
+
     self.verticalAlignment = VerticalAlignmentMiddle;
     _attachmentViews = nil;
     
     return self;
 }
 
-- (void)dealloc {
-    
-    
+- (void)dealloc
+{
     if (_framesetter) CFRelease(_framesetter);
-     _attachmentViews = nil;
-    
+    _framesetter = nil;
+    _attachmentViews = nil;
 }
 
 #pragma mark UILabel
@@ -194,10 +197,10 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
         CGPoint lineOrigin;
         CTFrameGetLineOrigins(frame, CFRangeMake(lineIdx, 1), &lineOrigin);
 
+#if DEBUG_OUTLINES
         CGFloat ascent, descent, leading;
         CGFloat lineWidth = (CGFloat)CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
-        
-#if DEBUG_OUTLINES
+
         CGRect lineFrame = CGRectMake(actualRect.origin.x + lineOrigin.x,
                                       actualRect.origin.y + lineOrigin.y,
                                       lineWidth, ascent + descent);
@@ -308,6 +311,13 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
 #pragma mark - Acccessors
 
 - (void) setAttributedText:(NSAttributedString*)inText {
+    if (inText == nil) {
+        [super setText:nil];
+        _attributedText = nil;
+        if (_framesetter) CFRelease(_framesetter);
+        return;
+    }
+    
     if (inText != _attributedText) {
         
         if ([inText isKindOfClass:[NSString class]]) {
@@ -346,7 +356,10 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
 
 + (CGSize) sizeOfAttributedString:(NSAttributedString*)attributedText thatFits:(CGSize)size
 {
+    NSAssert([attributedText isKindOfClass:[NSAttributedString class]], @"parameter is no NSAttributedString: %@", [attributedText class]);
+    
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)attributedText);
+    if (!framesetter) return CGSizeZero;
     CGSize suggestedSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), NULL, CGSizeMake(size.width, size.height), NULL);
     CFRelease(framesetter);
     return suggestedSize;

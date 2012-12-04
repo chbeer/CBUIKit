@@ -21,6 +21,7 @@
 
 #import "CBUIAttributedLabel.h"
 #import "CBUITextAttachment.h"
+#import "CBUIAttributedTableViewCell.h"
 
 #import "CBUIVerticalAlignedLabel.h"
 
