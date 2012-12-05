@@ -99,6 +99,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                                          }];
         
         if (_framesetter) CFRelease(_framesetter);
+         _framesetter = nil;
         _framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_attributedText);
     }
     
@@ -314,7 +315,8 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
     if (inText == nil) {
         [super setText:nil];
         _attributedText = nil;
-        if (_framesetter) CFRelease(_framesetter); _framesetter = nil;
+        if (_framesetter) CFRelease(_framesetter);
+        _framesetter = nil;
         return;
     }
     
