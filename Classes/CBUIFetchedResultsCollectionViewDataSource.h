@@ -9,7 +9,7 @@
 #import "CBUICollectionViewDataSource.h"
 #import <CoreData/CoreData.h>
 
-@interface CBUIFetchedResultsCollectionViewDataSource : CBUICollectionViewDataSource
+@interface CBUIFetchedResultsCollectionViewDataSource : CBUICollectionViewDataSource <NSFetchedResultsControllerDelegate>
 
 @property (readonly, strong)    NSFetchedResultsController  *fetchedResultsController;
 

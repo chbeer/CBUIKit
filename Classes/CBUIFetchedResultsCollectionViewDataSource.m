@@ -11,7 +11,7 @@
 #import "CBUIGlobal.h"
 #import "CBUIFetchResultsDataSource.h"
 
-@interface CBUIFetchedResultsCollectionViewDataSource () <NSFetchedResultsControllerDelegate>
+@interface CBUIFetchedResultsCollectionViewDataSource ()
 
 @property (readwrite, strong) NSFetchedResultsController    *fetchedResultsController;
 @property (nonatomic, retain) NSMutableArray                *updates;
@@ -23,8 +23,6 @@
 @class CBUIFetchedResultsCollectionViewUpdate;
 
 @implementation CBUIFetchedResultsCollectionViewDataSource
-
-@synthesize fetchedResultsController = _fetchedResultsController;
 
 
 - (id) initWithCollectionView:(UICollectionView*)collectionView
@@ -122,7 +120,7 @@
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
-	_updates = [[NSMutableArray alloc] init];
+	self.updates = [[NSMutableArray alloc] init];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
@@ -131,9 +129,9 @@
 	 forChangeType:(NSFetchedResultsChangeType)type
 	  newIndexPath:(NSIndexPath *)newIndexPath
 {
-    [_updates addObject:[CBUIFetchedResultsCollectionViewUpdate updateItemAtIndexPath:indexPath
-                                                                        forChangeType:type
-                                                                         newIndexPath:newIndexPath]];
+    [self.updates addObject:[CBUIFetchedResultsCollectionViewUpdate updateItemAtIndexPath:indexPath
+                                                                            forChangeType:type
+                                                                             newIndexPath:newIndexPath]];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
@@ -141,8 +139,8 @@
            atIndex:(NSUInteger)sectionIndex
      forChangeType:(NSFetchedResultsChangeType)type
 {
-    [_updates addObject:[CBUIFetchedResultsCollectionViewUpdate updateSectionAtIndex:sectionIndex
-                                                                       forChangeType:type]];
+    [self.updates addObject:[CBUIFetchedResultsCollectionViewUpdate updateSectionAtIndex:sectionIndex
+                                                                           forChangeType:type]];
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
@@ -150,12 +148,12 @@
     self.empty = _fetchedResultsController.fetchedObjects.count == 0;
     
 	[self.collectionView performBatchUpdates:^{
-        [_updates enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [self.updates enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             CBUIFetchedResultsCollectionViewUpdate *update = obj;
             [update performUpdateOnCollectionView:self.collectionView];
         }];
     } completion:^(BOOL finished) {
-        _updates = nil;
+        self.updates = nil;
     }];
 }
 
