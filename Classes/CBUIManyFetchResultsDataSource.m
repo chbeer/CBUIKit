@@ -209,11 +209,12 @@
 {
 	DLog(@"controllerDidChangeContent");
 	
-    __block BOOL empty = NO;
+    __block BOOL empty = YES;
     [_sections enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         CBUIManyFetchResultsSection *section = obj;
-        if (section.fetchedResultsController.fetchedObjects.count == 0) {
-            empty = YES;
+        if (section.fetchedResultsController.fetchedObjects.count != 0) {
+            empty = NO;
+            *stop = YES;
         }
     }];
     self.empty = empty;
