@@ -27,7 +27,7 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
 
 @synthesize centerView = _centerView, messageLabel = _messageLabel;
 
-+ (CBUIActivityView*) sharedInstance
++ (id) sharedInstance
 {
     static CBUIActivityView *sharedInstance = nil;
     if (!sharedInstance) {
