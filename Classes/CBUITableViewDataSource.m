@@ -140,7 +140,7 @@
             
         } else {
         
-            newCell = [[class alloc] initWithStyle:UITableViewCellStyleDefault 
+            newCell = [[class alloc] initWithStyle:self.defaultTableViewCellStyle
                                     reuseIdentifier:identifier];
             
         }
