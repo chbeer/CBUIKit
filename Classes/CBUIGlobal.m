@@ -176,6 +176,18 @@ CGRect CBCGRectSetHeight(CGRect rect, CGFloat h)
     rect.size.height = h;
     return rect;
 }
+
+CGRect CBCGRectInset(CGRect rect, CGFloat top, CGFloat left, CGFloat bottom, CGFloat right)
+{
+    CGFloat deltaWidth = left + right;
+    CGFloat deltaHeight = top + bottom;
+    rect.origin.x += left;
+    rect.origin.y += top;
+    rect.size.width -= deltaWidth;
+    rect.size.height -= deltaHeight;
+    return rect;
+}
+
 CGPoint CBCGRectGetCenter(CGRect rect) {
     return CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
 }
