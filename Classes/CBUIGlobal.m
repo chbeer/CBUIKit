@@ -66,7 +66,16 @@ UIBarButtonItem *CBUIBarButtonCustomItem(UIView *view) {
 #pragma mark Internationalization
 
 NSString *I18N(NSString *key, NSString *comment) {
-	return NSLocalizedString(key, comment);
+#ifdef DEBUG
+	NSString *i18n = [[NSBundle mainBundle] localizedStringForKey:key value:@"" table:nil];
+    if (!i18n || [@"" isEqual:i18n]) {
+        NSLog(@"[i18n] missing key: '%@'", key);
+        i18n = [key uppercaseString];
+    }
+    return i18n;
+#else
+    return [[NSBundle mainBundle] localizedStringForKey:key value:@"" table:nil];
+#endif
 }
 NSString *I18N1(NSString *key, id param1) {
 	return [NSString stringWithFormat:NSLocalizedString(key, @""), param1];
