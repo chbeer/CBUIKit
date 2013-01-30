@@ -207,6 +207,17 @@ CGRect CBCGRectSetCenter(CGRect rect, CGPoint center)
     return rect;
 }
 
+CGRect CBCGRectSetOrigin(CGRect rect, CGPoint origin)
+{
+    rect.origin = origin;
+    return rect;
+}
+CGRect CBCGRectSetSize(CGRect rect, CGSize size)
+{
+    rect.size = size;
+    return rect;
+}
+
 CGRect CBCGRectModify(CGRect rect, CBCGRectModifyBlock modifyBlock)
 {
     return modifyBlock(rect);
