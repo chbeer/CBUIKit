@@ -27,7 +27,7 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
 
 @synthesize centerView = _centerView, messageLabel = _messageLabel;
 
-+ (CBUIActivityView*) sharedInstance
++ (id) sharedInstance
 {
     static CBUIActivityView *sharedInstance = nil;
     if (!sharedInstance) {
@@ -62,7 +62,7 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
                                                object:nil];
     
     self.opaque = NO;
-    self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    self.backgroundColor = [self defaultBackgroundColor];
     self.alpha = 0;
     
     self.layer.cornerRadius = 10;
@@ -172,7 +172,7 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
                          self.messageLabel = nil;
                          self.centerView = nil;
                          
-                         self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+                         self.backgroundColor = [self defaultBackgroundColor];
                      }];
 }
 - (void) hide
@@ -206,7 +206,7 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
 {
     [self hidePreviousCenterView];
     
-    self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    self.backgroundColor = [self defaultBackgroundColor];
     
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     [spinner sizeToFit];
@@ -262,6 +262,14 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
     
     return self;
 }
+
+#pragma mark -
+
+- (UIColor*) defaultBackgroundColor
+{
+    return [UIColor colorWithWhite:0.0 alpha:0.5];
+}
+
 
 #pragma mark - Rotation
 

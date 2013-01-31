@@ -66,7 +66,16 @@ UIBarButtonItem *CBUIBarButtonCustomItem(UIView *view) {
 #pragma mark Internationalization
 
 NSString *I18N(NSString *key, NSString *comment) {
-	return NSLocalizedString(key, comment);
+#ifdef DEBUG
+	NSString *i18n = [[NSBundle mainBundle] localizedStringForKey:key value:@"" table:nil];
+    if (!i18n || [@"" isEqual:i18n]) {
+        NSLog(@"[i18n] missing key: '%@'", key);
+        i18n = [key uppercaseString];
+    }
+    return i18n;
+#else
+    return [[NSBundle mainBundle] localizedStringForKey:key value:@"" table:nil];
+#endif
 }
 NSString *I18N1(NSString *key, id param1) {
 	return [NSString stringWithFormat:NSLocalizedString(key, @""), param1];
@@ -181,6 +190,18 @@ CGRect CBCGRectSetHeight(CGRect rect, CGFloat h)
     rect.size.height = h;
     return rect;
 }
+
+CGRect CBCGRectInset(CGRect rect, CGFloat top, CGFloat left, CGFloat bottom, CGFloat right)
+{
+    CGFloat deltaWidth = left + right;
+    CGFloat deltaHeight = top + bottom;
+    rect.origin.x += left;
+    rect.origin.y += top;
+    rect.size.width -= deltaWidth;
+    rect.size.height -= deltaHeight;
+    return rect;
+}
+
 CGPoint CBCGRectGetCenter(CGRect rect) {
     return CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
 }
@@ -188,6 +209,17 @@ CGRect CBCGRectSetCenter(CGRect rect, CGPoint center)
 {
     rect.origin.x = center.x - rect.size.width / 2;
     rect.origin.y = center.y - rect.size.height / 2;
+    return rect;
+}
+
+CGRect CBCGRectSetOrigin(CGRect rect, CGPoint origin)
+{
+    rect.origin = origin;
+    return rect;
+}
+CGRect CBCGRectSetSize(CGRect rect, CGSize size)
+{
+    rect.size = size;
     return rect;
 }
 

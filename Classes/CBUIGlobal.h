@@ -50,10 +50,11 @@ CGRect CBCGRectSetX(CGRect rect, CGFloat x);
 CGRect CBCGRectSetY(CGRect rect, CGFloat y);
 CGRect CBCGRectSetWidth(CGRect rect, CGFloat w);
 CGRect CBCGRectSetHeight(CGRect rect, CGFloat h);
-CGRect CBCGRectSetSize(CGRect rect, CGSize size);
-
+CGRect CBCGRectInset(CGRect rect, CGFloat top, CGFloat left, CGFloat bottom, CGFloat right);
 CGPoint CBCGRectGetCenter(CGRect rect);
 CGRect CBCGRectSetCenter(CGRect rect, CGPoint center);
+CGRect CBCGRectSetOrigin(CGRect rect, CGPoint origin);
+CGRect CBCGRectSetSize(CGRect rect, CGSize size);
 
 typedef CGRect(^CBCGRectModifyBlock)(CGRect rect);
 CGRect CBCGRectModify(CGRect rect, CBCGRectModifyBlock modifyBlock);

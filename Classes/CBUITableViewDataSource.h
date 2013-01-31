@@ -43,7 +43,8 @@
 #endif
 
 @property (nonatomic, strong) IBOutlet UITableViewCell<CBUITableViewCell> *tableViewCell;
-@property (weak) Class defaultTableViewCellClass;
+@property (nonatomic, weak) Class defaultTableViewCellClass;
+@property (nonatomic, assign) UITableViewCellStyle defaultTableViewCellStyle;
 
 @property (nonatomic, readonly, getter=isLoading)   BOOL            loading;
 @property (nonatomic, readonly, getter=isEmpty)     BOOL            empty;

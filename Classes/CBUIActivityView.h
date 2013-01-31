@@ -10,7 +10,7 @@
 
 @interface CBUIActivityView : UIView
 
-+ (CBUIActivityView*) sharedInstance;
++ (id) sharedInstance;
 
 - (CBUIActivityView*) showSpinnerWithMessage:(NSString*)message;
 - (CBUIActivityView*) showInfoIcon:(UIImage*)icon withMessage:(NSString *)message;

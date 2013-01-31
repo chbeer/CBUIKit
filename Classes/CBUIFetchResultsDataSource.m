@@ -297,7 +297,7 @@
 #pragma mark -
 
 // ONLY WORKS WITH ONE SECTION!!
-- (BOOL) performFetchAndUpdateTableView:(NSError **)error
+- (BOOL) performFetchAndUpdateTableView:(NSError *__autoreleasing*)error
 {
     NSArray *objectsBefore = self.fetchedResultsController.fetchedObjects;
     
