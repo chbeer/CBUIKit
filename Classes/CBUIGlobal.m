@@ -166,6 +166,11 @@ CGRect CBCGRectSetY(CGRect rect, CGFloat y)
     rect.origin.y = y;
     return rect;
 }
+CGRect CBCGRectSetSize(CGRect rect, CGSize size)
+{
+    rect.size = size;
+    return rect;
+}
 CGRect CBCGRectSetWidth(CGRect rect, CGFloat w)
 {
     rect.size.width = w;

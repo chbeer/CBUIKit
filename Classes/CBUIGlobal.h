@@ -50,6 +50,8 @@ CGRect CBCGRectSetX(CGRect rect, CGFloat x);
 CGRect CBCGRectSetY(CGRect rect, CGFloat y);
 CGRect CBCGRectSetWidth(CGRect rect, CGFloat w);
 CGRect CBCGRectSetHeight(CGRect rect, CGFloat h);
+CGRect CBCGRectSetSize(CGRect rect, CGSize size);
+
 CGPoint CBCGRectGetCenter(CGRect rect);
 CGRect CBCGRectSetCenter(CGRect rect, CGPoint center);
 
