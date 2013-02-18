@@ -22,7 +22,7 @@
 
 - (Class) tableView:(UITableView*)tableView cellClassForObject:(id)object;
 - (NSString*) tableView:(UITableView*)tableView reuseIdentifierForCellForObject:(id)object;
-- (void) dataSource:(CBUITableViewDataSource*)dataSource didCreateCell:(UITableViewCell*) forTableView:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath;
+- (void) dataSource:(CBUITableViewDataSource*)dataSource didCreateCell:(UITableViewCell*)cell forTableView:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath;
 
 @end
 
