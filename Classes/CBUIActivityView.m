@@ -100,11 +100,11 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
                                   self.bounds.size.width - 20, 40);
         UILabel *messageLabel = [[UILabel alloc] initWithFrame:frame];
         messageLabel.font = [UIFont boldSystemFontOfSize:16];
-        messageLabel.textColor = [UIColor whiteColor];
+        messageLabel.textColor = [self defaultTextColor];
         messageLabel.backgroundColor = [UIColor clearColor];
         messageLabel.opaque = NO;
         messageLabel.textAlignment = UITextAlignmentCenter;
-        messageLabel.shadowColor = [UIColor darkGrayColor];
+        messageLabel.shadowColor = [self defaultTextShadowColor];
         messageLabel.shadowOffset = CGSizeMake(1,1);
         messageLabel.adjustsFontSizeToFitWidth = YES;
         messageLabel.lineBreakMode = UILineBreakModeWordWrap;
@@ -211,6 +211,7 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     [spinner sizeToFit];
     spinner.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+    spinner.color = [self defaultSpinnerTintColor];
     [spinner startAnimating];
     [self addSubview:spinner];
     self.centerView = spinner;
@@ -247,10 +248,10 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
     centerLabel.text = text;
     centerLabel.backgroundColor = [UIColor clearColor];
     centerLabel.opaque = NO;
-    centerLabel.textColor = [UIColor whiteColor];
+    centerLabel.textColor = [self defaultTextColor];
     centerLabel.font = [UIFont boldSystemFontOfSize:40];
     centerLabel.textAlignment = UITextAlignmentCenter;
-    centerLabel.shadowColor = [UIColor darkGrayColor];
+    centerLabel.shadowColor = [self defaultTextShadowColor];
     centerLabel.shadowOffset = CGSizeMake(1,1);
     centerLabel.adjustsFontSizeToFitWidth = YES;
     [self addSubview:centerLabel];
@@ -270,6 +271,19 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
     return [UIColor colorWithWhite:0.0 alpha:0.5];
 }
 
+- (UIColor*) defaultTextColor
+{
+    return [UIColor whiteColor];
+}
+- (UIColor*) defaultTextShadowColor
+{
+    return [UIColor darkGrayColor];
+}
+
+- (UIColor*) defaultSpinnerTintColor
+{
+    return [UIColor whiteColor];
+}
 
 #pragma mark - Rotation
 
