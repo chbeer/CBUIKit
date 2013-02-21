@@ -12,7 +12,7 @@
 
 @interface UIView (CBUIKit)
 
-- (UIView*) cbFirstSuperviewWithClass:(Class)class;
+- (UIView*) cbFirstSuperviewWithClass:(Class)clazz;
 
 - (void) cbModifyFrame:(CBCGRectModifyBlock) modifyBlock;
 - (void) cbModifyBounds:(CBCGRectModifyBlock) modifyBlock;
