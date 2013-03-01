@@ -266,18 +266,28 @@
 	
     self.empty = _fetchedResultsController.fetchedObjects.count == 0;
     
+    NSInteger totalChanges = [self.deletedSectionIndexes count] +
+    [self.insertedSectionIndexes count] +
+    [self.deletedRowIndexPaths count] +
+    [self.insertedRowIndexPaths count] +
+    [self.updatedRowIndexPaths count];
     
-	[self.tableView beginUpdates];
+    if (totalChanges > 50) {
+        [self.tableView reloadData];
+    } else {
     
-    [self.tableView deleteSections:self.deletedSectionIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
-    [self.tableView insertSections:self.insertedSectionIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
-    
-    [self.tableView deleteRowsAtIndexPaths:self.deletedRowIndexPaths withRowAnimation:UITableViewRowAnimationLeft];
-    [self.tableView insertRowsAtIndexPaths:self.insertedRowIndexPaths withRowAnimation:UITableViewRowAnimationRight];
-    [self.tableView reloadRowsAtIndexPaths:self.updatedRowIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-    
-    [self.tableView endUpdates];
-    
+        [self.tableView beginUpdates];
+        
+        [self.tableView deleteSections:self.deletedSectionIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView insertSections:self.insertedSectionIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+        [self.tableView deleteRowsAtIndexPaths:self.deletedRowIndexPaths withRowAnimation:UITableViewRowAnimationLeft];
+        [self.tableView insertRowsAtIndexPaths:self.insertedRowIndexPaths withRowAnimation:UITableViewRowAnimationRight];
+        [self.tableView reloadRowsAtIndexPaths:self.updatedRowIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+        [self.tableView endUpdates];
+    }
+
     // nil out the collections so they are ready for their next use.
     self.insertedSectionIndexes = nil;
     self.deletedSectionIndexes = nil;
