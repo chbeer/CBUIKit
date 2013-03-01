@@ -5,6 +5,11 @@
 //  Created by Christian Beer on 14.01.10.
 //  Copyright 2010 Christian Beer. All rights reserved.
 //
+//
+// Fixed some updating problems by integrating the changs, @mrrooni suggested here:
+// http://www.fruitstandsoftware.com/blog/2013/02/uitableview-and-nsfetchedresultscontroller-updates-done-right/
+//   -- Thanks, Michael!
+//
 
 #import "CBUIFetchResultsDataSource.h"
 
@@ -20,6 +25,18 @@
 @property (nonatomic, retain) NSArray *preservedSelection;
 
 @end
+
+@interface CBUIFetchResultsDataSource ()
+
+// Declare some collection properties to hold the various updates we might get from the NSFetchedResultsControllerDelegate
+@property (nonatomic, strong) NSMutableIndexSet *deletedSectionIndexes;
+@property (nonatomic, strong) NSMutableIndexSet *insertedSectionIndexes;
+@property (nonatomic, strong) NSMutableArray *deletedRowIndexPaths;
+@property (nonatomic, strong) NSMutableArray *insertedRowIndexPaths;
+@property (nonatomic, strong) NSMutableArray *updatedRowIndexPaths;
+
+@end
+
 
 #define StringFromIndexPath(indexPath) [NSString stringWithFormat:@"[%lu, %lu]", indexPath.section, indexPath.row]
 
@@ -155,8 +172,6 @@
     if (self.preserveSelectionOnUpdate) {
         self.preservedSelection = [self.tableView indexPathsForSelectedRows];
     }
-	
-	[self.tableView beginUpdates];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
@@ -175,43 +190,44 @@
 		{
 			DLog(@"Insert: %@", StringFromIndexPath(newIndexPath));
 			
-			[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
-                                  withRowAnimation:UITableViewRowAnimationFade];
+			if (![self.insertedSectionIndexes containsIndex:newIndexPath.section]) {
+                // If we've already been told that we're adding a section for this inserted row we skip it since it will handled by the section insertion.
+                
+                [self.insertedRowIndexPaths addObject:newIndexPath];
+            }
+            
 			break;
 		}
 		case NSFetchedResultsChangeDelete:
 		{
 			DLog(@"Delete: %@", StringFromIndexPath(indexPath));
 			
-			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                                  withRowAnimation:UITableViewRowAnimationFade];
+			if (![self.deletedSectionIndexes containsIndex:indexPath.section]) {
+                // If we've already been told that we're deleting a section for this deleted row we skip it since it will handled by the section deletion.
+                [self.deletedRowIndexPaths addObject:indexPath];
+            }
+            
 			break;
 		}
 		case NSFetchedResultsChangeUpdate:
 		{
-			if (newIndexPath == nil || [newIndexPath isEqual:indexPath])
-			{
-				DLog(@"Update: %@", StringFromIndexPath(indexPath));
-				
-				[self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                                      withRowAnimation:UITableViewRowAnimationNone];
-			}
-			else
-			{
-				DLog(@"Update: %@ -> %@", StringFromIndexPath(indexPath), StringFromIndexPath(newIndexPath));
-				
-                [self.tableView moveRowAtIndexPath:indexPath
-                                       toIndexPath:newIndexPath];
-			}
-			
+            DLog(@"Update: %@ -> %@", StringFromIndexPath(indexPath), StringFromIndexPath(newIndexPath));
+            
+            [self.updatedRowIndexPaths addObject:indexPath];
+            
 			break;
 		}
 		case NSFetchedResultsChangeMove:
 		{
 			DLog(@"Move: %@ -> %@", StringFromIndexPath(indexPath), StringFromIndexPath(newIndexPath));
 			
-			[self.tableView moveRowAtIndexPath:indexPath
-                                   toIndexPath:newIndexPath];
+			if (![self.insertedSectionIndexes containsIndex:newIndexPath.section]) {
+                [self.insertedRowIndexPaths addObject:newIndexPath];
+            }
+            
+            if (![self.deletedSectionIndexes containsIndex:indexPath.section]) {
+                [self.deletedRowIndexPaths addObject:indexPath];
+            }
 			
 			break;
 		}
@@ -231,16 +247,14 @@
 		{
 			DLog(@"NSFetchedResultsChangeInsertSection: %u", sectionIndex);
             
-			[self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationFade];
+			[self.insertedSectionIndexes addIndex:sectionIndex];
 			break;
 		}
 		case NSFetchedResultsChangeDelete:
 		{
 			DLog(@"NSFetchedResultsChangeDeleteSection: %u", sectionIndex);
 			
-			[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationFade];
+			[self.deletedSectionIndexes addIndex:sectionIndex];
 			break;
 		}
 	}
@@ -252,7 +266,25 @@
 	
     self.empty = _fetchedResultsController.fetchedObjects.count == 0;
     
-	[self.tableView endUpdates];
+    
+	[self.tableView beginUpdates];
+    
+    [self.tableView deleteSections:self.deletedSectionIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView insertSections:self.insertedSectionIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    [self.tableView deleteRowsAtIndexPaths:self.deletedRowIndexPaths withRowAnimation:UITableViewRowAnimationLeft];
+    [self.tableView insertRowsAtIndexPaths:self.insertedRowIndexPaths withRowAnimation:UITableViewRowAnimationRight];
+    [self.tableView reloadRowsAtIndexPaths:self.updatedRowIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    [self.tableView endUpdates];
+    
+    // nil out the collections so they are ready for their next use.
+    self.insertedSectionIndexes = nil;
+    self.deletedSectionIndexes = nil;
+    self.deletedRowIndexPaths = nil;
+    self.insertedRowIndexPaths = nil;
+    self.updatedRowIndexPaths = nil;
+    
     
     if ([self.delegate respondsToSelector:@selector(fetchResultsDataSourceDidUpdateContent:)]) {
         [(id<CBUIFetchResultsDataSourceDelegate>)self.delegate fetchResultsDataSourceDidUpdateContent:self];
@@ -339,6 +371,57 @@
     self.loading = NO;
     
     return result;
+}
+
+#pragma mark - 
+
+/**
+ * Lazily instantiate these collections.
+ */
+
+- (NSMutableIndexSet *)deletedSectionIndexes
+{
+    if (_deletedSectionIndexes == nil) {
+        _deletedSectionIndexes = [[NSMutableIndexSet alloc] init];
+    }
+    
+    return _deletedSectionIndexes;
+}
+
+- (NSMutableIndexSet *)insertedSectionIndexes
+{
+    if (_insertedSectionIndexes == nil) {
+        _insertedSectionIndexes = [[NSMutableIndexSet alloc] init];
+    }
+    
+    return _insertedSectionIndexes;
+}
+
+- (NSMutableArray *)deletedRowIndexPaths
+{
+    if (_deletedRowIndexPaths == nil) {
+        _deletedRowIndexPaths = [[NSMutableArray alloc] init];
+    }
+    
+    return _deletedRowIndexPaths;
+}
+
+- (NSMutableArray *)insertedRowIndexPaths
+{
+    if (_insertedRowIndexPaths == nil) {
+        _insertedRowIndexPaths = [[NSMutableArray alloc] init];
+    }
+    
+    return _insertedRowIndexPaths;
+}
+
+- (NSMutableArray *)updatedRowIndexPaths
+{
+    if (_updatedRowIndexPaths == nil) {
+        _updatedRowIndexPaths = [[NSMutableArray alloc] init];
+    }
+    
+    return _updatedRowIndexPaths;
 }
 
 @end
