@@ -51,6 +51,8 @@
 
 - (NSIndexPath*) indexPathForObject:(id)object;
 
+- (id<NSFetchedResultsSectionInfo>) infoForSectionAtIndex:(NSInteger)section;
+
 - (BOOL) performFetch:(NSError**)error;
 // ONLY WORKS WITH ONE SECTION!!
 - (BOOL) performFetchAndUpdateTableView:(NSError *__autoreleasing*)error;
