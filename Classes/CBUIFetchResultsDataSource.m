@@ -78,6 +78,11 @@
     self.loading = NO;
     self.empty = YES;
     
+    self.insertRowAnimation = UITableViewRowAnimationRight;
+    self.deleteRowAnimation = UITableViewRowAnimationLeft;
+    self.updateRowAnimation = UITableViewRowAnimationAutomatic;
+
+    
 	return self;
 }
 - (id) initWithTableView:(UITableView*)tableView
@@ -285,9 +290,9 @@
         [self.tableView deleteSections:self.deletedSectionIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
         [self.tableView insertSections:self.insertedSectionIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
         
-        [self.tableView deleteRowsAtIndexPaths:self.deletedRowIndexPaths withRowAnimation:UITableViewRowAnimationLeft];
-        [self.tableView insertRowsAtIndexPaths:self.insertedRowIndexPaths withRowAnimation:UITableViewRowAnimationRight];
-        [self.tableView reloadRowsAtIndexPaths:self.updatedRowIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView deleteRowsAtIndexPaths:self.deletedRowIndexPaths withRowAnimation:self.deleteRowAnimation];
+        [self.tableView insertRowsAtIndexPaths:self.insertedRowIndexPaths withRowAnimation:self.insertRowAnimation];
+        [self.tableView reloadRowsAtIndexPaths:self.updatedRowIndexPaths withRowAnimation:self.updateRowAnimation];
         
         [self.tableView endUpdates];
     }

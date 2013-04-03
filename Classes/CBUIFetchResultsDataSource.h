@@ -35,6 +35,10 @@
 
 @property (nonatomic, assign) BOOL allowsDeletion;
 
+@property (nonatomic, assign) UITableViewRowAnimation insertRowAnimation;
+@property (nonatomic, assign) UITableViewRowAnimation deleteRowAnimation;
+@property (nonatomic, assign) UITableViewRowAnimation updateRowAnimation;
+
 - (id) initWithTableView:(UITableView*)tableView
             fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context 
       sectionNameKeyPath:(NSString*)sectionNameKeyPath
