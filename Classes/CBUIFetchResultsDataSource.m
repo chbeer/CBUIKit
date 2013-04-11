@@ -287,8 +287,8 @@
     
         [self.tableView beginUpdates];
         
-        [self.tableView deleteSections:self.deletedSectionIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
-        [self.tableView insertSections:self.insertedSectionIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView deleteSections:self.deletedSectionIndexes withRowAnimation:self.deleteRowAnimation];
+        [self.tableView insertSections:self.insertedSectionIndexes withRowAnimation:self.insertRowAnimation];
         
         [self.tableView deleteRowsAtIndexPaths:self.deletedRowIndexPaths withRowAnimation:self.deleteRowAnimation];
         [self.tableView insertRowsAtIndexPaths:self.insertedRowIndexPaths withRowAnimation:self.insertRowAnimation];
