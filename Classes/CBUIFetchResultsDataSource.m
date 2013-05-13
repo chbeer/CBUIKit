@@ -169,6 +169,10 @@
                 [managedObject.managedObjectContext deleteObject:managedObject];
             }
         }
+        
+        if ([self.delegate respondsToSelector:@selector(dataSource:didDeleteObjectAtIndexPath:)]) {
+            [(id<CBUIFetchResultsDataSourceDelegate>)self.delegate dataSource:self didDeleteObjectAtIndexPath:indexPath];
+        }
     }
 }
 

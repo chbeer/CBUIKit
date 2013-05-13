@@ -22,6 +22,7 @@
 - (void) fetchResultsDataSourceDidUpdateContent:(CBUIFetchResultsDataSource*)ds;
 
 - (BOOL) dataSource:(CBUIFetchResultsDataSource*)ds shouldDeleteObjectAtIndexPath:(NSIndexPath*)indexPath;
+- (void) dataSource:(CBUIFetchResultsDataSource*)ds didDeleteObjectAtIndexPath:(NSIndexPath*)indexPath;
 
 @end
 
