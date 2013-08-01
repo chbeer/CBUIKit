@@ -126,8 +126,7 @@
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
-	DLog(@"controllerWillChangeContent");
-    
+	    
     if (self.preserveSelectionOnUpdate) {
         self.preservedSelection = [self.tableView indexPathsForSelectedRows];
     }
@@ -141,8 +140,7 @@
 	 forChangeType:(NSFetchedResultsChangeType)type
 	  newIndexPath:(NSIndexPath *)newIndexPath
 {
-	DLog(@"controller:didChangeObject::::");
-
+	
     NSInteger section = [self indexOfFetchedResultsController:controller];
     indexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:section];
     newIndexPath = [NSIndexPath indexPathForRow:newIndexPath.row inSection:section];
@@ -153,16 +151,14 @@
 	{
 		case NSFetchedResultsChangeInsert:
 		{
-			DLog(@"Insert: %@", StringFromIndexPath(newIndexPath));
-			
+						
 			[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
                                   withRowAnimation:UITableViewRowAnimationFade];
 			break;
 		}
 		case NSFetchedResultsChangeDelete:
 		{
-			DLog(@"Delete: %@", StringFromIndexPath(indexPath));
-			
+						
 			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                                   withRowAnimation:UITableViewRowAnimationFade];
 			break;
@@ -171,15 +167,13 @@
 		{
 			if (newIndexPath == nil || [newIndexPath isEqual:indexPath])
 			{
-				DLog(@"Update: %@", StringFromIndexPath(indexPath));
-				
+								
 				[self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                                       withRowAnimation:UITableViewRowAnimationNone];
 			}
 			else
 			{
-				DLog(@"Update: %@ -> %@", StringFromIndexPath(indexPath), StringFromIndexPath(newIndexPath));
-				
+								
                 [self.tableView moveRowAtIndexPath:indexPath
                                        toIndexPath:newIndexPath];
 			}
@@ -188,8 +182,7 @@
 		}
 		case NSFetchedResultsChangeMove:
 		{
-			DLog(@"Move: %@ -> %@", StringFromIndexPath(indexPath), StringFromIndexPath(newIndexPath));
-			
+						
 			[self.tableView moveRowAtIndexPath:indexPath
                                    toIndexPath:newIndexPath];
 			
@@ -207,8 +200,7 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-	DLog(@"controllerDidChangeContent");
-	
+		
     __block BOOL empty = YES;
     [_sections enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         CBUIManyFetchResultsSection *section = obj;

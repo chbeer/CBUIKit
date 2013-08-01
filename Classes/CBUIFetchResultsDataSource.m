@@ -180,8 +180,6 @@
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
-	DLog(@"controllerWillChangeContent");
-    
     if (self.preserveSelectionOnUpdate) {
         self.preservedSelection = [self.tableView indexPathsForSelectedRows];
     }
@@ -193,16 +191,14 @@
 	 forChangeType:(NSFetchedResultsChangeType)type
 	  newIndexPath:(NSIndexPath *)newIndexPath
 {
-	DLog(@"controller:didChangeObject::::");
-    
+	    
     if ([_ignoreForUpdateIndexPath isEqual:indexPath]) return;
 	
     switch(type)
 	{
 		case NSFetchedResultsChangeInsert:
 		{
-			DLog(@"Insert: %@", StringFromIndexPath(newIndexPath));
-			
+						
 			if (![self.insertedSectionIndexes containsIndex:newIndexPath.section]) {
                 // If we've already been told that we're adding a section for this inserted row we skip it since it will handled by the section insertion.
                 
@@ -213,8 +209,7 @@
 		}
 		case NSFetchedResultsChangeDelete:
 		{
-			DLog(@"Delete: %@", StringFromIndexPath(indexPath));
-			
+						
 			if (![self.deletedSectionIndexes containsIndex:indexPath.section]) {
                 // If we've already been told that we're deleting a section for this deleted row we skip it since it will handled by the section deletion.
                 [self.deletedRowIndexPaths addObject:indexPath];
@@ -224,16 +219,14 @@
 		}
 		case NSFetchedResultsChangeUpdate:
 		{
-            DLog(@"Update: %@ -> %@", StringFromIndexPath(indexPath), StringFromIndexPath(newIndexPath));
-            
+                        
             [self.updatedRowIndexPaths addObject:indexPath];
             
 			break;
 		}
 		case NSFetchedResultsChangeMove:
 		{
-			DLog(@"Move: %@ -> %@", StringFromIndexPath(indexPath), StringFromIndexPath(newIndexPath));
-			
+						
 			if (![self.insertedSectionIndexes containsIndex:newIndexPath.section]) {
                 [self.insertedRowIndexPaths addObject:newIndexPath];
             }
@@ -252,21 +245,18 @@
            atIndex:(NSUInteger)sectionIndex
      forChangeType:(NSFetchedResultsChangeType)type
 {
-	DLog(@"controller:didChangeSection:::");
-	
+		
 	switch(type)
 	{
 		case NSFetchedResultsChangeInsert:
 		{
-			DLog(@"NSFetchedResultsChangeInsertSection: %u", sectionIndex);
-            
+			            
 			[self.insertedSectionIndexes addIndex:sectionIndex];
 			break;
 		}
 		case NSFetchedResultsChangeDelete:
 		{
-			DLog(@"NSFetchedResultsChangeDeleteSection: %u", sectionIndex);
-			
+						
 			[self.deletedSectionIndexes addIndex:sectionIndex];
 			break;
 		}
@@ -275,8 +265,7 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-	DLog(@"controllerDidChangeContent");
-	
+		
     self.empty = _fetchedResultsController.fetchedObjects.count == 0;
     
     NSInteger totalChanges = [self.deletedSectionIndexes count] +
@@ -322,8 +311,7 @@
 
 - (void)controllerDidMakeUnsafeChanges:(NSFetchedResultsController *)controller
 {
-	DLog(@"controllerDidMakeUnsafeChanges");
-    
+	    
     self.empty = _fetchedResultsController.fetchedObjects.count == 0;
 	
 	[self.tableView reloadData];

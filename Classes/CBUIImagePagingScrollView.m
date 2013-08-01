@@ -165,8 +165,7 @@
 #pragma mark UIScrollViewDelegate
 
 - (void) setCurrentPage:(int)page {
-    DLog(@"page: %d (%d)", page, _currentPage);
-    
+        
     int distance = abs(page - _currentPage);
     
     if (distance == 1 && _currentPage != -1) {
@@ -238,8 +237,7 @@
 #pragma mark Notifications
 
 - (void) didReceiveMemoryWarning:(NSNotification*)notification {
-    DLog(@"Did receive memory warning");
-    [self flushCache];
+        [self flushCache];
 }
 
 #pragma mark Delegate Access

@@ -159,8 +159,6 @@
 
 - (void)controllerDidMakeUnsafeChanges:(NSFetchedResultsController *)controller
 {
-	DLog(@"controllerDidMakeUnsafeChanges");
-    
     self.empty = _fetchedResultsController.fetchedObjects.count == 0;
 	
 	[self.collectionView reloadData];

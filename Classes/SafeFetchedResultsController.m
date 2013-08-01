@@ -151,8 +151,7 @@
 		[dictionary setObject:indexSet forKey:sectionNumber];
 	}
 	
-    DLog(@"Adding index(%d) to section(%@)", indexPath.row, sectionNumber);
-	
+    	
 	[indexSet addIndex:indexPath.row];
 }
 
@@ -257,8 +256,7 @@
 		
 		for (SafeObjectChange *objectChange in updatedObjects)
 		{
-            DLog(@"Processing %@", objectChange);
-			
+            			
 			if (objectChange.updatedIndexPath == nil)
 			{
 				NSIndexPath *indexPath = objectChange.indexPath;
@@ -295,12 +293,8 @@
 				// then alter the objectChange to reflect the possibility.
 				
 
-                DLog(@"numInsertedSections: %u", numInsertedSections);
-				DLog(@"numDeletedSections: %u", numDeletedSections);
-					
-				DLog(@"numInsertedObjects: %u", numInsertedObjects);
-				DLog(@"numDeletedObjects: %u", numDeletedObjects);
-			
+                									
+											
 				numChangedSections = numInsertedSections + numDeletedSections;
 				numChangedObjects = numInsertedObjects + numDeletedObjects;
 				
@@ -412,33 +406,26 @@
 - (void)processChanges
 {
 #ifdef DEBUG
-		DLog(@"SafeFetchedResultsController: processChanges");
-		
+				
 		for (SafeSectionChange *sectionChange in insertedSections)
 		{
-			DLog(@"%@", sectionChange);
-		}
+					}
 		for (SafeSectionChange *sectionChange in deletedSections)
 		{
-			DLog(@"%@", sectionChange);
-		}
+					}
 		
 		for (SafeObjectChange *objectChange in insertedObjects)
 		{
-			DLog(@"%@", objectChange);
-		}
+					}
 		for (SafeObjectChange *objectChange in deletedObjects)
 		{
-			DLog(@"%@", objectChange);
-		}
+					}
 		for (SafeObjectChange *objectChange in updatedObjects)
 		{
-			DLog(@"%@", objectChange);
-		}
+					}
 		for (SafeObjectChange *objectChange in movedObjects)
 		{
-			DLog(@"%@", objectChange);
-		}
+					}
 #endif
 	
 	if ([self hasUnsafeChanges])
