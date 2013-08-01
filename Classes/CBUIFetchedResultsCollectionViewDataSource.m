@@ -239,6 +239,9 @@
             case NSFetchedResultsChangeDelete:
                 [collectionView deleteSections:[NSIndexSet indexSetWithIndex:self.sectionIndex]];
                 break;
+            case NSFetchedResultsChangeUpdate:
+                [collectionView reloadSections:[NSIndexSet indexSetWithIndex:self.sectionIndex]];
+                break;
         }
     }
 }
