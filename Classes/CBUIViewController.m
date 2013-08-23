@@ -28,6 +28,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWasHidden:)
                                                  name:UIKeyboardDidHideNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillChangeFrame:)
+                                                 name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 - (void) viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear:animated];
@@ -44,6 +48,9 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIKeyboardDidHideNotification
                                                   object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 
 #pragma mark Keyboard movement
@@ -57,6 +64,9 @@
 - (void)keyboardWillHide:(NSNotification*)aNotification {
 }
 - (void)keyboardWasHidden:(NSNotification*)aNotification {
+}
+
+- (void)keyboardWillChangeFrame:(NSNotification*)aNotification {
 }
 
 @end

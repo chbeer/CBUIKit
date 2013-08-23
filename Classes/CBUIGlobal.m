@@ -59,6 +59,7 @@ UIBarButtonItem *CBUIBarButtonImageItem(NSString *img, id target, SEL action) {
 }
 UIBarButtonItem *CBUIBarButtonCustomItem(UIView *view) {
 	UIBarButtonItem *itm = [[UIBarButtonItem alloc] initWithCustomView:view];
+    itm.width = view.bounds.size.width;
 	return itm;
 }
 
