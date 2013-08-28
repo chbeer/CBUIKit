@@ -13,6 +13,13 @@ BOOL CBIsIPad() {
     return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
 }
 
+BOOL CBIsIOS7()
+{
+    float version = [[UIDevice currentDevice].systemVersion floatValue];
+    return (version >= 7.0);
+}
+
+
 #pragma mark BarButtons
 
 UIBarButtonItem *CBUIBarButtonSetStyle(UIBarButtonItem *itm, UIBarButtonItemStyle style) {

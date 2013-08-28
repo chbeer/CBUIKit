@@ -12,6 +12,7 @@ extern inline double CBUIRadians (double degrees);
 
 
 BOOL CBIsIPad();
+BOOL CBIsIOS7();
 
 UIBarButtonItem *CBUIBarButtonSetTintColor(UIBarButtonItem *itm, UIColor *tintColor);
 UIBarButtonItem *CBUIBarButtonSetStyle(UIBarButtonItem *itm, UIBarButtonItemStyle style);
