@@ -93,8 +93,22 @@
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	id item = [self objectAtIndexPath:indexPath];
+
+    Class class = nil;
+    
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 50000  // available for iOS > 5.0
+    NSString *identifier = [self tableView:tableView reuseIdentifierForCellForObject:item atIndexPath:indexPath];
+    if (!identifier) {
+        identifier = [self tableView:tableView reuseIdentifierForCellForObject:item];
+    }
+    if (!identifier) {
+        identifier = self.defaultTableViewCellReuseIdentifier;
+    }
+    
+    if (!identifier) {
+#endif
 	
-    Class class = [self tableView:tableView cellClassForObject:item atIndexPath:indexPath];
+    class = [self tableView:tableView cellClassForObject:item atIndexPath:indexPath];
     if (!class) {
         class = [self tableView:tableView cellClassForObject:item];
     }    
@@ -102,23 +116,11 @@
         class = _defaultTableViewCellClass;
     }
     
-    NSString *identifier = nil;
     if (class) {
         identifier = NSStringFromClass(class);
-    } 
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 50000  // available for iOS > 5.0
-    else {
-        identifier = [self tableView:tableView reuseIdentifierForCellForObject:item atIndexPath:indexPath];
-        if (!identifier) {
-            identifier = [self tableView:tableView reuseIdentifierForCellForObject:item];
-        }    
-        if (!identifier) {
-            identifier = self.defaultTableViewCellReuseIdentifier;
-        }
+    }
         
-        if (!identifier) {
-            return nil;
-        }
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 50000  // available for iOS > 5.0
     }
 #endif
     
