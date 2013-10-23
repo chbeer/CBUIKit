@@ -274,6 +274,12 @@
     [self.insertedRowIndexPaths count] +
     [self.updatedRowIndexPaths count];
     
+    if (totalChanges == 0) {
+        // reload data although no changes.
+        [self.tableView reloadData];
+        return;
+    }
+    
     if (totalChanges > 10) {
         [self.tableView reloadData];
     } else {
