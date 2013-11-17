@@ -166,7 +166,8 @@
 
 #pragma mark CBUICollectionViewDataSource
 
-- (id) objectAtIndexPath:(NSIndexPath*)indexPath {
+- (id) objectAtIndexPath:(NSIndexPath*)indexPath
+{
     NSManagedObject *managedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	return managedObject;
 }
