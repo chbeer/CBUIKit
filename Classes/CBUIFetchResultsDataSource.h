@@ -62,6 +62,8 @@
 // ONLY WORKS WITH ONE SECTION!!
 - (BOOL) performFetchAndUpdateTableView:(NSError *__autoreleasing*)error;
 
+- (NSDictionary*) updatesDictionary;
+
 @end
 
 

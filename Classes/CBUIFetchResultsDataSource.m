@@ -290,18 +290,17 @@
         [self.tableView endUpdates];
     }
 
+    if ([self.delegate respondsToSelector:@selector(fetchResultsDataSourceDidUpdateContent:)]) {
+        [(id<CBUIFetchResultsDataSourceDelegate>)self.delegate fetchResultsDataSourceDidUpdateContent:self];
+    }
+    
     // nil out the collections so they are ready for their next use.
     self.insertedSectionIndexes = nil;
     self.deletedSectionIndexes = nil;
     self.deletedRowIndexPaths = nil;
     self.insertedRowIndexPaths = nil;
     self.updatedRowIndexPaths = nil;
-    
-    
-    if ([self.delegate respondsToSelector:@selector(fetchResultsDataSourceDidUpdateContent:)]) {
-        [(id<CBUIFetchResultsDataSourceDelegate>)self.delegate fetchResultsDataSourceDidUpdateContent:self];
-    }
-    
+
     if (self.preserveSelectionOnUpdate && self.preservedSelection) {
         [self.preservedSelection enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             [self.tableView selectRowAtIndexPath:obj animated:NO scrollPosition:UITableViewScrollPositionNone];
@@ -433,6 +432,27 @@
     }
     
     return _updatedRowIndexPaths;
+}
+
+- (NSDictionary*) updatesDictionary;
+{
+    NSMutableDictionary *result = [NSMutableDictionary dictionary];
+    if (self.deletedSectionIndexes.count > 0) {
+        [result setObject:self.deletedSectionIndexes forKey:@"DeletedSections"];
+    }
+    if (self.insertedSectionIndexes.count > 0) {
+        [result setObject:self.insertedSectionIndexes forKey:@"InsertedSections"];
+    }
+    if (self.deletedRowIndexPaths.count > 0) {
+        [result setObject:self.deletedRowIndexPaths forKey:@"DeletedRows"];
+    }
+    if (self.insertedRowIndexPaths.count > 0) {
+        [result setObject:self.insertedRowIndexPaths forKey:@"InsertedRows"];
+    }
+    if (self.updatedRowIndexPaths.count > 0) {
+        [result setObject:self.updatedRowIndexPaths forKey:@"UpdatedRows"];
+    }
+    return result;
 }
 
 @end
