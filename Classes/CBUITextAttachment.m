@@ -36,7 +36,8 @@ CGFloat CBUITextAttachmentRunDelegateGetWidth(void *context);
         return view.bounds.size.height;
     };
     self.getDescentCallback = ^{
-        return 0.0;
+        CGFloat value = 0.0;
+        return value;
     };
     self.getWidthCallback = ^{
         return view.bounds.size.width;

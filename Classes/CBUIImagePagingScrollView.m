@@ -80,7 +80,7 @@
 
 - (void) arrangePageViews {
     for (int index = -1; index <= 1; index++) {
-        int imageIndex = _currentPage + index;
+        NSInteger imageIndex = _currentPage + index;
         if (imageIndex >= 0 && imageIndex < _numberOfPages) {
             _imageViews[index + 1].frame = [self frameForImageViewAtIndex:imageIndex];
         }
@@ -93,7 +93,7 @@
     _numberOfPages = [dataSource pagingScrollViewNumberOfPages:self];
     [self arrangePageViews];
     
-    int page = _currentPage;
+    NSUInteger page = _currentPage;
     _currentPage = -1;
     
     if (page == -1 && _numberOfPages > 0) page = 0;
@@ -118,7 +118,7 @@
     }
 }
 
-- (void) setImageIndex:(int)pageIndex {
+- (void) setImageIndex:(NSUInteger)pageIndex {
     if (_currentPage == pageIndex) return;
 
     [self setContentOffset:CGPointMake(pageIndex * self.bounds.size.width, 0) 
@@ -130,23 +130,23 @@
     
     _currentPage = pageIndex;*/
 }
-- (int) imageIndex {
+- (NSInteger) imageIndex {
     return _currentPage;
 }
 
-- (int) numberOfPages {
+- (NSUInteger) numberOfPages {
     return _numberOfPages;
 }
 
-- (CGRect) frameForImageViewAtIndex:(int)index {
+- (CGRect) frameForImageViewAtIndex:(NSUInteger)index {
     CGFloat pageWidth = self.bounds.size.width;
     CGFloat pageHeight = self.bounds.size.height;
     CGRect frame = CGRectMake(pageWidth * index, 0, pageWidth, pageHeight);
     return frame;
 }
 
-- (UIImage*) imageForPageIndex:(int)index {
-    NSNumber *key = [NSNumber numberWithInt:index];
+- (UIImage*) imageForPageIndex:(NSUInteger)index {
+    NSNumber *key = [NSNumber numberWithInteger:index];
     UIImage *image = [_imageCache objectForKey:key];
     if (!image) {
         image = [dataSource pagingScrollView:self imageForPage:index];
@@ -164,9 +164,9 @@
 
 #pragma mark UIScrollViewDelegate
 
-- (void) setCurrentPage:(int)page {
+- (void) setCurrentPage:(NSUInteger)page {
         
-    int distance = abs(page - _currentPage);
+    NSUInteger distance = ABS(page - _currentPage);
     
     if (distance == 1 && _currentPage != -1) {
         if (page > _currentPage) {
@@ -198,12 +198,12 @@
         
     } else {
         for (int index = -1; index < 2; index++) {
-            int imageIndex = page + index;
-            int viewIndex = index + 1;
+            NSInteger imageIndex = page + index;
+            NSUInteger viewIndex = index + 1;
             if (imageIndex >= 0 && imageIndex < _numberOfPages) {
                 UIImage *image = [self imageForPageIndex:imageIndex];
                 
-                NSLog(@"> image for index %d : %@", viewIndex, image);
+                NSLog(@"> image for index %lu : %@", (unsigned long)viewIndex, image);
                 
                 _imageViews[viewIndex].image = image;
                 _imageViews[viewIndex].frame = [self frameForImageViewAtIndex:imageIndex];

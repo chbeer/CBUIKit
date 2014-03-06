@@ -302,14 +302,14 @@
 	if (_sections) {
 		int sidx = 0;
 		for (NSArray *a in _items) {
-			int idx = [a indexOfObject:object];
+			NSUInteger idx = [a indexOfObject:object];
 			if (idx != NSNotFound) {
 				return [NSIndexPath indexPathForRow:idx inSection:sidx];
 			}
 			sidx++;
 		}
 	} else {
-		int idx = [_items indexOfObject:object];
+		NSUInteger idx = [_items indexOfObject:object];
 		if (idx != NSNotFound) {
 			return [NSIndexPath indexPathForRow:idx inSection:0];
 		}

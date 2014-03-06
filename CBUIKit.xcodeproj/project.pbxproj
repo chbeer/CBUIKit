@@ -549,6 +549,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CBUIKit_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				OTHER_CFLAGS = (
+					"-Werror=mismatched-parameter-types",
+					"-Wall",
+				);
 				PRODUCT_NAME = CBUIKit;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(PRODUCT_NAME)";
 				SKIP_INSTALL = YES;
@@ -565,6 +569,10 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CBUIKit_Prefix.pch;
+				OTHER_CFLAGS = (
+					"-Werror=mismatched-parameter-types",
+					"-Wall",
+				);
 				PRODUCT_NAME = CBUIKit;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(PRODUCT_NAME)";
 				SKIP_INSTALL = YES;

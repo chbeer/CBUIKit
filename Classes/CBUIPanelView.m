@@ -51,11 +51,11 @@
     }
 }
 
-- (int) currentViewIndex {
+- (NSUInteger) currentViewIndex {
     return [self.subviews indexOfObject:currentView];
 }
-- (void) setCurrentViewIndex:(int)viewIndex animated:(BOOL)animated {
-    if (viewIndex < 0 || viewIndex >= self.subviews.count) return;
+- (void) setCurrentViewIndex:(NSUInteger)viewIndex animated:(BOOL)animated {
+    if (viewIndex >= self.subviews.count) return;
     
     UIView *oldView = currentView;
     UIView *newView = [self.subviews objectAtIndex:viewIndex];
@@ -75,7 +75,7 @@
         currentView = newView;
     }
 }
-- (void) setCurrentViewIndex:(int)viewIndex {
+- (void) setCurrentViewIndex:(NSUInteger)viewIndex {
     [self setCurrentViewIndex:viewIndex animated:NO];
 }
 

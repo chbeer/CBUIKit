@@ -12,9 +12,16 @@
 
 @implementation CBUIRoundedCornerView
 
+@dynamic cornerRadius;
+@dynamic borderColor;
+
 - (void)setCornerRadius:(CGFloat)cornerRadius
 {
     self.layer.cornerRadius = cornerRadius;
+}
+- (CGFloat)cornerRadius
+{
+    return self.layer.cornerRadius;
 }
 
 - (void)setBorderColor:(UIColor *)borderColor

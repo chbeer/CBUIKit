@@ -405,29 +405,6 @@
 
 - (void)processChanges
 {
-#ifdef DEBUG
-				
-		for (SafeSectionChange *sectionChange in insertedSections)
-		{
-					}
-		for (SafeSectionChange *sectionChange in deletedSections)
-		{
-					}
-		
-		for (SafeObjectChange *objectChange in insertedObjects)
-		{
-					}
-		for (SafeObjectChange *objectChange in deletedObjects)
-		{
-					}
-		for (SafeObjectChange *objectChange in updatedObjects)
-		{
-					}
-		for (SafeObjectChange *objectChange in movedObjects)
-		{
-					}
-#endif
-	
 	if ([self hasUnsafeChanges])
 	{
 		if ([safeDelegate respondsToSelector:@selector(controllerDidMakeUnsafeChanges:)])
@@ -558,8 +535,8 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"<SafeSectionChange changeType(%@) index(%u)>",
-			[self changeTypeString], sectionIndex];
+	return [NSString stringWithFormat:@"<SafeSectionChange changeType(%@) index(%lu)>",
+			[self changeTypeString], (unsigned long)sectionIndex];
 }
 
 
@@ -608,7 +585,7 @@
 {
 	if (ip == nil) return @"nil";
 	
-	return [NSString stringWithFormat:@"[%u,%u]", ip.section, ip.row];
+	return [NSString stringWithFormat:@"[%ld,%ld]", (long)ip.section, (long)ip.row];
 }
 
 - (NSString *)description

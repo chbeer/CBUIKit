@@ -118,7 +118,6 @@
     for (NSString *title in tabTitles) {
         BOOL selected = (currentTabIndex == index);
         
-        NSString *title = [tabTitles objectAtIndex:index];
         CBUITabState state = selected ? CBUITabStateActive : CBUITabStateNormal;
         
         [style drawTabInTabView:self

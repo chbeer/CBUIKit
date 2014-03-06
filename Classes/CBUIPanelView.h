@@ -17,6 +17,6 @@
 @property (nonatomic, copy) NSArray *views;
 
 
-- (void) setCurrentViewIndex:(int) currentViewIndex animated:(BOOL)animated;
+- (void) setCurrentViewIndex:(NSUInteger)currentViewIndex animated:(BOOL)animated;
 
 @end

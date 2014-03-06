@@ -13,8 +13,8 @@
 
 @protocol CBUISlideshowImagesPagingScrollViewDataSource <NSObject>
 
-- (int) slideshowPagingScrollView:(CBUIImagePagingScrollView*)scrollView imageCountForPage:(int)pageIndex;
-- (UIImage*) slideshowPagingScrollView:(CBUIImagePagingScrollView*)scrollView imageAtIndex:(int)index forPage:(int)pageIndex;
+- (NSUInteger) slideshowPagingScrollView:(CBUIImagePagingScrollView*)scrollView imageCountForPage:(NSUInteger)pageIndex;
+- (UIImage*) slideshowPagingScrollView:(CBUIImagePagingScrollView*)scrollView imageAtIndex:(NSUInteger)index forPage:(NSUInteger)pageIndex;
 
 @end
 
@@ -22,8 +22,8 @@
 
 @optional
 
-- (void) slideshowPagingScrollView:(CBUISlideshowImagesPagingScrollView *)slideshowScrollView willAnimateToIndex:(int)index;
-- (void) slideshowPagingScrollView:(CBUISlideshowImagesPagingScrollView *)slideshowScrollView didAnimateToIndex:(int)index;
+- (void) slideshowPagingScrollView:(CBUISlideshowImagesPagingScrollView *)slideshowScrollView willAnimateToIndex:(NSUInteger)index;
+- (void) slideshowPagingScrollView:(CBUISlideshowImagesPagingScrollView *)slideshowScrollView didAnimateToIndex:(NSUInteger)index;
 
 @end
 
@@ -33,14 +33,14 @@
     UIImageView *imageView;
 
     NSMutableDictionary *imagesCache;
-    int imageIndex;
+    NSUInteger imageIndex;
     
     BOOL animate;
     NSTimer *slideshowTimer;
-    int animationCounter;
+    NSUInteger animationCounter;
 }
 
-- (void) animateToImageIndex:(int)index;
+- (void) animateToImageIndex:(NSInteger)index;
 
 - (BOOL) isAnimating;
 - (IBAction) stop:(id)sender;
