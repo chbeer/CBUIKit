@@ -21,7 +21,7 @@
 
 @property (nonatomic, assign) BOOL          allowsDeletion;
 
-- (instancetype) initWithTableView:(UITableView*)tableView NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithTableView:(UITableView*)tableView;
 
 - (BOOL) performFetch:(NSError**)error;
 

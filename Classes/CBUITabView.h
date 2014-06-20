@@ -43,7 +43,7 @@ typedef NS_ENUM(NSInteger, CBUITabState) {
 @property (nonatomic, weak) id<CBUITabViewDelegate> delegate;
 @property (nonatomic, strong) id<CBUITabViewStyle> style;
 
-- (instancetype) initWithFrame:(CGRect)frame NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithFrame:(CGRect)frame;
 - (instancetype) initWithFrame:(CGRect)frame titles:(NSArray*)titles;
 
 - (void) setCurrentTabIndex:(int)aCurrentTabIndex animated:(BOOL)animated;

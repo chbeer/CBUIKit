@@ -16,7 +16,7 @@
 - (instancetype) initWithCollectionView:(UICollectionView*)collectionView
                  fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context
            sectionNameKeyPath:(NSString*)sectionNameKeyPath
-                    cacheName:(NSString*)cacheName NS_DESIGNATED_INITIALIZER;
+                    cacheName:(NSString*)cacheName;
 - (instancetype) initWithCollectionView:(UICollectionView*)collectionView
                  fetchRequest:(NSFetchRequest*)fetchRequest
          managedObjectContext:(NSManagedObjectContext*)context

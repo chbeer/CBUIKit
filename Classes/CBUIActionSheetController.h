@@ -34,7 +34,7 @@ typedef void(^CBUIActionSheetHandler)(UIActionSheet *actionSheet, NSUInteger but
 - (id) applyDestructiveButtonTitle:(NSString*)title handler:(CBUIActionSheetHandler)handler;
 - (id) applyButtonWithTitle:(NSString*)title handler:(CBUIActionSheetHandler)handler;
 
-- (instancetype) initWithTitle:(NSString*)inTitle NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithTitle:(NSString*)inTitle;
 - (instancetype) initWithTitle:(NSString*)inTitle buttonsWithHandlerAndTitle:(CBUIActionSheetHandler)firstHandler, ...;
 
 - (void) setCancelButtonTitle:(NSString*)title handler:(CBUIActionSheetHandler)handler;

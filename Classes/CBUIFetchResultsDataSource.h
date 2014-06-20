@@ -43,7 +43,7 @@
 - (instancetype) initWithTableView:(UITableView*)tableView
             fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context 
       sectionNameKeyPath:(NSString*)sectionNameKeyPath
-               cacheName:(NSString*)cacheName NS_DESIGNATED_INITIALIZER;
+               cacheName:(NSString*)cacheName;
 - (instancetype) initWithTableView:(UITableView*)tableView
             fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context 
                cacheName:(NSString*)cacheName;

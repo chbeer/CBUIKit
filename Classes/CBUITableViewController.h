@@ -18,6 +18,6 @@
 
 @property (nonatomic, assign) BOOL clearsSelectionOnViewWillAppear;
 
-- (instancetype) initWithStyle:(UITableViewStyle)style NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithStyle:(UITableViewStyle)style;
 
 @end

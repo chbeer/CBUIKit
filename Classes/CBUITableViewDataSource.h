@@ -69,7 +69,7 @@
 
 @property (nonatomic, assign, getter = isEditable) BOOL editable;
 
-- (instancetype)initWithTableView:(UITableView *)aTableView items:(NSArray*)items NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithTableView:(UITableView *)aTableView items:(NSArray*)items;
 
 - (NSIndexPath*) indexPathForObject:(id)object;
 - (void) removeObjectAtIndexPath:(NSIndexPath*)indexPath;

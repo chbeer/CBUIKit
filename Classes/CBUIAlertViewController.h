@@ -29,7 +29,7 @@ typedef void(^CBUIAlertViewHandler)(UIAlertView *alertView, NSUInteger buttonInd
 + (id) alertWithTitle:(NSString*)title message:(NSString*)message;
 + (id) alertWithMessage:(NSString*)message;
 
-- (instancetype) initWithTitle:(NSString*)inTitle message:(NSString*)inMessage NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithTitle:(NSString*)inTitle message:(NSString*)inMessage;
 - (instancetype) initWithTitle:(NSString*)inTitle message:(NSString*)inMessage buttonsWithHandlerAndTitle:(id)firstHandler, ...;
 
 - (void) setCancelButtonTitle:(NSString*)title handler:(CBUIAlertViewHandler)handler;
