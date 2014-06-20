@@ -36,7 +36,7 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
     return sharedInstance;
 }
 
-- (id)init
+- (instancetype)init
 {
     UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
     CGFloat width  = CBIsIPad() ? 180 : 160;
@@ -330,7 +330,7 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
 
     NSDictionary* info = [note userInfo];
     
-    CGRect kbRect = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    CGRect kbRect = [info[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     CGSize kbSize = kbRect.size;
     
     CGSize windowSize = keyWindow.bounds.size;

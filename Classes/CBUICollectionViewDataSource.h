@@ -40,7 +40,7 @@
 @property (nonatomic, assign)   BOOL    loading;
 
 
-- (id)initWithCollectionView:(UICollectionView*)collectionView;
+- (instancetype)initWithCollectionView:(UICollectionView*)collectionView NS_DESIGNATED_INITIALIZER;
 
 - (id) objectAtIndexPath:(NSIndexPath*)indexPath;
 

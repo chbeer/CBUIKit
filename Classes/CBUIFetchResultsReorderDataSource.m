@@ -10,7 +10,7 @@
 
 @implementation CBUIFetchResultsReorderDataSource
 
-- (id) initWithTableView:(UITableView*)tableView
+- (instancetype) initWithTableView:(UITableView*)tableView
             fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context 
       sectionNameKeyPath:(NSString*)sectionNameKeyPath
                cacheName:(NSString*)cacheName 
@@ -31,17 +31,17 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
     NSMutableArray *items = [self.fetchedResultsController.fetchedObjects mutableCopy];
-    id object = [items objectAtIndex:fromIndexPath.row];
+    id object = items[fromIndexPath.row];
     [items removeObjectAtIndex:fromIndexPath.row];
     [items insertObject:object atIndex:toIndexPath.row];
     
-    NSString *key = [[self.fetchedResultsController.fetchRequest.sortDescriptors objectAtIndex:0] key];
+    NSString *key = [(self.fetchedResultsController.fetchRequest.sortDescriptors)[0] key];
     
     int number = 1;
     for (id item in items) {
         NSNumber *oldNo = [item valueForKey:key];
         if ([oldNo intValue] != number) {
-            [item setValue:[NSNumber numberWithInt:number] forKey:key];
+            [item setValue:@(number) forKey:key];
         }
         
         number++;

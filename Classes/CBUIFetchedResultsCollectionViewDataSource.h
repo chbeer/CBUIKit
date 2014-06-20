@@ -13,11 +13,11 @@
 
 @property (readonly, strong)    NSFetchedResultsController  *fetchedResultsController;
 
-- (id) initWithCollectionView:(UICollectionView*)collectionView
+- (instancetype) initWithCollectionView:(UICollectionView*)collectionView
                  fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context
            sectionNameKeyPath:(NSString*)sectionNameKeyPath
-                    cacheName:(NSString*)cacheName;
-- (id) initWithCollectionView:(UICollectionView*)collectionView
+                    cacheName:(NSString*)cacheName NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithCollectionView:(UICollectionView*)collectionView
                  fetchRequest:(NSFetchRequest*)fetchRequest
          managedObjectContext:(NSManagedObjectContext*)context
                     cacheName:(NSString*)cacheName;

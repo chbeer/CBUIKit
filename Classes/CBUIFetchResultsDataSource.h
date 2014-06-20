@@ -40,11 +40,11 @@
 @property (nonatomic, assign) UITableViewRowAnimation deleteRowAnimation;
 @property (nonatomic, assign) UITableViewRowAnimation updateRowAnimation;
 
-- (id) initWithTableView:(UITableView*)tableView
+- (instancetype) initWithTableView:(UITableView*)tableView
             fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context 
       sectionNameKeyPath:(NSString*)sectionNameKeyPath
-               cacheName:(NSString*)cacheName;
-- (id) initWithTableView:(UITableView*)tableView
+               cacheName:(NSString*)cacheName NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithTableView:(UITableView*)tableView
             fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context 
                cacheName:(NSString*)cacheName;
 
@@ -62,7 +62,7 @@
 // ONLY WORKS WITH ONE SECTION!!
 - (BOOL) performFetchAndUpdateTableView:(NSError *__autoreleasing*)error;
 
-- (NSDictionary*) updatesDictionary;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSDictionary *updatesDictionary;
 
 @end
 

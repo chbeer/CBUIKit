@@ -10,7 +10,7 @@
 
 @implementation CBUICollectionViewDataSource
 
-- (id)initWithCollectionView:(UICollectionView*)collectionView
+- (instancetype)initWithCollectionView:(UICollectionView*)collectionView
 {
     self = [super init];
     if (!self) return nil;

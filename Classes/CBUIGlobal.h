@@ -31,6 +31,9 @@ NSString *I18N1(NSString *key, id param1);
 NSString *I18N2(NSString *key, id param1, id param2);
 
 
+
+CF_IMPLICIT_BRIDGING_ENABLED
+
 CGPathRef CreateRoundedRectPath(CGRect rect, CGFloat radius);
 
 
@@ -66,3 +69,6 @@ CGSize CBCGSizeDelta(CGSize size, CGFloat deltaW, CGFloat deltaH);
 CGSize CBCGSizeFitAspect(CGSize size, CGSize fit);
 
 CGPathRef CBCreateCGPathWithRect(CGRect rect);
+
+CF_IMPLICIT_BRIDGING_DISABLED
+

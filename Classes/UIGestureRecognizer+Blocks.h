@@ -12,6 +12,6 @@ typedef void (^CBUIKitGestureRecognizerHandler)(UIGestureRecognizer *recognizer)
 
 @interface UIGestureRecognizer (CBUIKit_Blocks)
 
-- (id)initWithGestureHandler:(CBUIKitGestureRecognizerHandler)handler;
+- (instancetype)initWithGestureHandler:(CBUIKitGestureRecognizerHandler)handler;
 
 @end

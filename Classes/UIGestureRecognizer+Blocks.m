@@ -13,7 +13,7 @@ static const char *BlockHandlerKey = "CBUIKitBlockHandlerKey";
 
 @implementation UIGestureRecognizer (CBUIKit_Blocks)
 
-- (id)initWithGestureHandler:(CBUIKitGestureRecognizerHandler)handler
+- (instancetype)initWithGestureHandler:(CBUIKitGestureRecognizerHandler)handler
 {
     self = [self initWithTarget:self action:@selector(__gestureRecognizerStateChanged:)];
     if (!self) return nil;

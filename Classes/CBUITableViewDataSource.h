@@ -50,11 +50,11 @@
 @property (nonatomic, readonly, getter=isEmpty)     BOOL            empty;
 
 
-- (id) initWithTableView: (UITableView *) aTableView;
+- (instancetype) initWithTableView: (UITableView *) aTableView;
 
 - (void) didFinishLoading;
 
-- (NSArray*) selectedObjects;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray *selectedObjects;
 
 @end
 
@@ -69,7 +69,7 @@
 
 @property (nonatomic, assign, getter = isEditable) BOOL editable;
 
-- (id)initWithTableView:(UITableView *)aTableView items:(NSArray*)items;
+- (instancetype)initWithTableView:(UITableView *)aTableView items:(NSArray*)items NS_DESIGNATED_INITIALIZER;
 
 - (NSIndexPath*) indexPathForObject:(id)object;
 - (void) removeObjectAtIndexPath:(NSIndexPath*)indexPath;

@@ -28,7 +28,7 @@
     sysctlbyname("hw.machine", name, &size, NULL, 0);
     
     // Place name into a string
-    NSString *machine = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
+    NSString *machine = @(name);
     
     // Done with this
     free(name);

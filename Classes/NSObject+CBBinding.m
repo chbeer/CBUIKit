@@ -78,7 +78,7 @@ static char     * const CBBINDING_OBSERVER          = "__CBBINDING_OBSERVER";
 
 - (void)cb_bind:(NSString *)bindingKeyPath toObject:(id)observableController withKeyPath:(NSString *)keyPath options:(NSDictionary *)options;
 {
-    if ([self.bindings objectForKey:bindingKeyPath]) {
+    if ((self.bindings)[bindingKeyPath]) {
         [self cb_unbind:bindingKeyPath];
     }
     
@@ -92,7 +92,7 @@ static char     * const CBBINDING_OBSERVER          = "__CBBINDING_OBSERVER";
     [observableController addObserver:binding forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:nil];
     [self.observer addObserver:binding forKeyPath:bindingKeyPath options:NSKeyValueObservingOptionNew context:nil];
     
-    [self.bindings setObject:binding forKey:bindingKeyPath];
+    (self.bindings)[bindingKeyPath] = binding;
 }
 
 - (void)cb_unbind:(NSString *)bindingKeyPath;
@@ -122,7 +122,7 @@ static char     * const CBBINDING_OBSERVER          = "__CBBINDING_OBSERVER";
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    id newValue = [change objectForKey:NSKeyValueChangeNewKey];
+    id newValue = change[NSKeyValueChangeNewKey];
     if ([newValue isKindOfClass:[NSNull class]]) newValue = nil;
     
     id obj = nil;

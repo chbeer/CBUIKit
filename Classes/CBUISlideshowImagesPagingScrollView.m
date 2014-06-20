@@ -57,8 +57,8 @@
     if (!imagesCache) {
         imagesCache = [[NSMutableDictionary alloc] init];
     }
-    NSNumber *key = [NSNumber numberWithInt:index];
-    UIImage *image = [imagesCache objectForKey:key];
+    NSNumber *key = @(index);
+    UIImage *image = imagesCache[key];
     if (!image) {
         if ([dataSource respondsToSelector:@selector(slideshowPagingScrollView:imageAtIndex:forPage:)]) {
             image = [(id<CBUISlideshowImagesPagingScrollViewDataSource>)dataSource slideshowPagingScrollView:self
@@ -66,7 +66,7 @@
                                                                                                      forPage:_currentPage];
         }
         if (image) {
-            [imagesCache setObject:image forKey:key];
+            imagesCache[key] = image;
         }
     }
     return image;
@@ -133,7 +133,7 @@
 }
 
 
-- (void) animateToImageIndex:(int)newImageIndex {
+- (void) animateToImageIndex:(NSInteger)newImageIndex {
     if (newImageIndex < 0 || newImageIndex >= [self imageCount]) return;
     
     if ([_internalDelegate respondsToSelector:@selector(slideshowPagingScrollView:willAnimateToIndex:)]) {
@@ -173,7 +173,7 @@
 
 #pragma mark UISlideshowDelegate
 
-- (void) setCurrentPage:(int)page {
+- (void) setCurrentPage:(NSInteger)page {
     BOOL tmpAnimate = animate;
     animate = NO;
     
@@ -200,7 +200,7 @@ static BOOL tmpScrollAnimate;
 
 #pragma mark changeImage
 
-- (void) setImageIndex:(int)pageIndex {
+- (void) setImageIndex:(NSUInteger)pageIndex {
     [super setImageIndex:pageIndex];
     
     imageIndex = 0;

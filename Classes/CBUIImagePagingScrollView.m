@@ -23,7 +23,7 @@
 
 @dynamic dataSource;
 
-- (id) initWithFrame:(CGRect)frame {
+- (instancetype) initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (!self) return nil;
     
@@ -31,7 +31,7 @@
     
     return self;
 }
-- (id) initWithCoder:(NSCoder *)aDecoder {
+- (instancetype) initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (!self) return nil;
     
@@ -79,8 +79,8 @@
 }
 
 - (void) arrangePageViews {
-    for (int index = -1; index <= 1; index++) {
-        int imageIndex = _currentPage + index;
+    for (NSInteger index = -1; index <= 1; index++) {
+        NSInteger imageIndex = _currentPage + index;
         if (imageIndex >= 0 && imageIndex < _numberOfPages) {
             _imageViews[index + 1].frame = [self frameForImageViewAtIndex:imageIndex];
         }
@@ -93,7 +93,7 @@
     _numberOfPages = [dataSource pagingScrollViewNumberOfPages:self];
     [self arrangePageViews];
     
-    int page = _currentPage;
+    NSInteger page = _currentPage;
     _currentPage = -1;
     
     if (page == -1 && _numberOfPages > 0) page = 0;
@@ -118,7 +118,7 @@
     }
 }
 
-- (void) setImageIndex:(int)pageIndex {
+- (void) setImageIndex:(NSInteger)pageIndex {
     if (_currentPage == pageIndex) return;
 
     [self setContentOffset:CGPointMake(pageIndex * self.bounds.size.width, 0) 
@@ -130,29 +130,28 @@
     
     _currentPage = pageIndex;*/
 }
-- (int) imageIndex {
+- (NSInteger) imageIndex {
     return _currentPage;
 }
 
-- (int) numberOfPages {
+- (NSInteger) numberOfPages {
     return _numberOfPages;
 }
 
-- (CGRect) frameForImageViewAtIndex:(int)index {
+- (CGRect) frameForImageViewAtIndex:(NSInteger)index {
     CGFloat pageWidth = self.bounds.size.width;
     CGFloat pageHeight = self.bounds.size.height;
     CGRect frame = CGRectMake(pageWidth * index, 0, pageWidth, pageHeight);
     return frame;
 }
 
-- (UIImage*) imageForPageIndex:(int)index {
-    NSNumber *key = [NSNumber numberWithInt:index];
-    UIImage *image = [_imageCache objectForKey:key];
+- (UIImage*) imageForPageIndex:(NSInteger)index {
+    NSNumber *key = @(index);
+    UIImage *image = _imageCache[key];
     if (!image) {
         image = [dataSource pagingScrollView:self imageForPage:index];
         if (image) {
-            [_imageCache setObject:image 
-                            forKey:key];
+            _imageCache[key] = image;
         }
     }
     
@@ -164,9 +163,9 @@
 
 #pragma mark UIScrollViewDelegate
 
-- (void) setCurrentPage:(int)page {
+- (void) setCurrentPage:(NSInteger)page {
         
-    int distance = abs(page - _currentPage);
+    NSInteger distance = abs(page - _currentPage);
     
     if (distance == 1 && _currentPage != -1) {
         if (page > _currentPage) {
@@ -197,13 +196,13 @@
         _imageViews[1].hidden = NO;
         
     } else {
-        for (int index = -1; index < 2; index++) {
-            int imageIndex = page + index;
-            int viewIndex = index + 1;
+        for (NSInteger index = -1; index < 2; index++) {
+            NSInteger imageIndex = page + index;
+            NSInteger viewIndex = index + 1;
             if (imageIndex >= 0 && imageIndex < _numberOfPages) {
                 UIImage *image = [self imageForPageIndex:imageIndex];
                 
-                NSLog(@"> image for index %d : %@", viewIndex, image);
+                NSLog(@"> image for index %ld : %@", (long)viewIndex, image);
                 
                 _imageViews[viewIndex].image = image;
                 _imageViews[viewIndex].frame = [self frameForImageViewAtIndex:imageIndex];
@@ -215,7 +214,7 @@
         }
     }
 
-    for (int i = -1; i < 2; i++) {
+    for (NSInteger i = -1; i < 2; i++) {
         _imageViews[i + 1].frame = [self frameForImageViewAtIndex:page + i];
     }
     

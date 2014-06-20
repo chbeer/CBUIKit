@@ -35,7 +35,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
 @synthesize delegate = _delegate;
 
 
-- (id)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (!self) return nil;
     
@@ -46,7 +46,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
     
     return self;
 }
-- (id)initWithCoder:(NSCoder *)aDecoder
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (!self) return nil;
@@ -83,14 +83,14 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
         
         [_attributedText enumerateAttributesInRange:NSMakeRange(0, _attributedText.length) options:0
                                          usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
-                                             UIColor *textColor = [attrs objectForKey:(id)kCTForegroundColorAttributeName];
+                                             UIColor *textColor = attrs[(id)kCTForegroundColorAttributeName];
                                              
                                              UIColor *myTargetColor = nil;
                                              
                                              if (!textColor || [currentColor isEqual:textColor]) {
                                                  myTargetColor = targetColor;
                                              } else {
-                                                 myTargetColor = [attrs objectForKey:highlighted ? kCBCTHighlightedForegroundColorAttributeName : kCBCTDefaultForegroundColorAttributeName];
+                                                 myTargetColor = attrs[highlighted ? kCBCTHighlightedForegroundColorAttributeName : kCBCTDefaultForegroundColorAttributeName];
                                              }
                                              
                                              if (myTargetColor) {
@@ -221,7 +221,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
             
             NSDictionary *runAttributes = (__bridge NSDictionary*)CTRunGetAttributes(run);
             
-            id attachment = [runAttributes objectForKey:@"NSAttachmentAttributeName"];
+            id attachment = runAttributes[@"NSAttachmentAttributeName"];
             if (attachment) {
                 CGFloat ascent, descent, leading;
                 CGFloat width = (CGFloat)CTRunGetTypographicBounds(run, CFRangeMake(0, 0), &ascent, &descent, &leading);
@@ -259,7 +259,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                 }
             }
             
-            id linkURL = [runAttributes objectForKey:kCBUILinkAttribute];
+            id linkURL = runAttributes[kCBUILinkAttribute];
             if (linkURL) {
                 CFRange cfRange = CTRunGetStringRange(run);
                 NSRange runRange = NSMakeRange(cfRange.location, cfRange.length);

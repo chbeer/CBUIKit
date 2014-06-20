@@ -24,7 +24,7 @@ static const char kCBUIActionSheetController;
 
 @synthesize actionSheetStyle;
 
-- (id) initWithTitle:(NSString*)inTitle
+- (instancetype) initWithTitle:(NSString*)inTitle
 {
     self = [super init];
     if (!self) return nil;
@@ -36,7 +36,7 @@ static const char kCBUIActionSheetController;
     return self;
 }
 
-- (id) initWithTitle:(NSString*)inTitle buttonsWithHandlerAndTitle:(CBUIActionSheetHandler)firstHandler, ...
+- (instancetype) initWithTitle:(NSString*)inTitle buttonsWithHandlerAndTitle:(CBUIActionSheetHandler)firstHandler, ...
 {
     self = [self initWithTitle:inTitle];
     if (!self) return nil;
@@ -60,7 +60,7 @@ static const char kCBUIActionSheetController;
     return self;
 }
 
-+ (id) actionSheetControllerWithTitle:(NSString*)title buttonsWithHandlerAndTitle:(CBUIActionSheetHandler)firstHandler, ...
++ (instancetype) actionSheetControllerWithTitle:(NSString*)title buttonsWithHandlerAndTitle:(CBUIActionSheetHandler)firstHandler, ...
 {
     CBUIActionSheetController *ctrl = [[self alloc] initWithTitle:title];
     
@@ -82,7 +82,7 @@ static const char kCBUIActionSheetController;
     
     return ctrl;
 }
-+ (id) actionSheetControllerWithTitle:(NSString*)title
++ (instancetype) actionSheetControllerWithTitle:(NSString*)title
 {
     CBUIActionSheetController *ctrl = [[self alloc] initWithTitle:title];
     return ctrl;
@@ -194,7 +194,7 @@ static const char kCBUIActionSheetController;
         if (inActionSheet.destructiveButtonIndex != -1) {
             index--;
         }
-        CBUIActionSheetControllerButton *button = [buttons objectAtIndex:index];
+        CBUIActionSheetControllerButton *button = buttons[index];
         if (button.handler) {
             button.handler(inActionSheet, index);
         }

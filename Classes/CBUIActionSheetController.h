@@ -27,15 +27,15 @@ typedef void(^CBUIActionSheetHandler)(UIActionSheet *actionSheet, NSUInteger but
 
 @property (nonatomic, assign) UIActionSheetStyle actionSheetStyle;
 
-+ (id) actionSheetControllerWithTitle:(NSString*)title buttonsWithHandlerAndTitle:(CBUIActionSheetHandler)firstHandler, ...;
-+ (id) actionSheetControllerWithTitle:(NSString*)title;
++ (instancetype) actionSheetControllerWithTitle:(NSString*)title buttonsWithHandlerAndTitle:(CBUIActionSheetHandler)firstHandler, ...;
++ (instancetype) actionSheetControllerWithTitle:(NSString*)title;
 
 - (id) applyCancelButtonTitle:(NSString*)title handler:(CBUIActionSheetHandler)handler;
 - (id) applyDestructiveButtonTitle:(NSString*)title handler:(CBUIActionSheetHandler)handler;
 - (id) applyButtonWithTitle:(NSString*)title handler:(CBUIActionSheetHandler)handler;
 
-- (id) initWithTitle:(NSString*)inTitle;
-- (id) initWithTitle:(NSString*)inTitle buttonsWithHandlerAndTitle:(CBUIActionSheetHandler)firstHandler, ...;
+- (instancetype) initWithTitle:(NSString*)inTitle NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithTitle:(NSString*)inTitle buttonsWithHandlerAndTitle:(CBUIActionSheetHandler)firstHandler, ...;
 
 - (void) setCancelButtonTitle:(NSString*)title handler:(CBUIActionSheetHandler)handler;
 - (void) setDestructiveButtonTitle:(NSString*)title handler:(CBUIActionSheetHandler)handler;

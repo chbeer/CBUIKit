@@ -13,13 +13,13 @@
 @protocol CBUIImagePagingScrollViewDataSource <NSObject>
 
 - (int) pagingScrollViewNumberOfPages:(CBUIImagePagingScrollView*)scrollView;
-- (UIImage*) pagingScrollView:(CBUIImagePagingScrollView*)scrollView imageForPage:(int)pageIndex;
+- (UIImage*) pagingScrollView:(CBUIImagePagingScrollView*)scrollView imageForPage:(NSInteger)pageIndex;
 
 @end
 
 @protocol CBUIImagePagingScrollViewDelegate <NSObject>
 
-- (void) pagingScrollView:(CBUIImagePagingScrollView*)scrollView didChangePageToIndex:(int)index;
+- (void) pagingScrollView:(CBUIImagePagingScrollView*)scrollView didChangePageToIndex:(NSInteger)index;
 
 @end
 
@@ -29,8 +29,8 @@
     
     UIImageView *_imageViews[3];
     
-    int _numberOfPages;
-    int _currentPage;
+    NSInteger _numberOfPages;
+    NSInteger _currentPage;
     
     NSMutableDictionary *_imageCache;
 }
@@ -39,16 +39,15 @@
 
 - (void) arrangePageViews;
 
-- (void) setPagingDelegate:(id <CBUIImagePagingScrollViewDelegate>)delegate;
-- (id<CBUIImagePagingScrollViewDelegate>) pagingDelegate;
+@property (NS_NONATOMIC_IOSONLY, strong) id<CBUIImagePagingScrollViewDelegate> pagingDelegate;
 
 - (void) reloadData;
 - (void) scrollToPageWithIndex:(NSUInteger)pageIndex;
 
-- (int) numberOfPages;
-- (int) imageIndex;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSInteger numberOfPages;
+@property (NS_NONATOMIC_IOSONLY) NSInteger imageIndex;
 
-- (UIImage*) imageForPageIndex:(int)index;
+- (UIImage*) imageForPageIndex:(NSInteger)index;
 
 // private
 
@@ -56,8 +55,7 @@
 
 - (void) flushCache;
 
-- (CGRect) frameForImageViewAtIndex:(int)index;
-- (void) setCurrentPage:(int)page;
-- (void) setImageIndex:(int)pageIndex;
+- (CGRect) frameForImageViewAtIndex:(NSInteger)index;
+- (void) setCurrentPage:(NSInteger)page;
 
 @end

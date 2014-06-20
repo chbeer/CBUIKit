@@ -13,7 +13,7 @@
 
 @synthesize state;
 
-- (id)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame {
     
     CGFloat edgeLength = MIN(frame.size.width, frame.size.height);
     frame = CGRectMake(CGRectGetMidX(frame) - edgeLength / 2, 

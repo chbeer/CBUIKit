@@ -13,7 +13,7 @@
 @synthesize insets = _insets;
 @synthesize spacing = _spacing;
 
-- (id)initWithCoder:(NSCoder *)coder {
+- (instancetype)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     if (!self) return nil;
     
@@ -24,7 +24,7 @@
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (!self) return nil;
@@ -99,16 +99,16 @@
     NSArray *components = [insetsString componentsSeparatedByString:@","];
     UIEdgeInsets insets = UIEdgeInsetsZero;
     if (components.count > 0) {
-        insets.top = [[components objectAtIndex:0] floatValue];
+        insets.top = [components[0] floatValue];
     }
     if (components.count > 1) {
-        insets.left = [[components objectAtIndex:1] floatValue];
+        insets.left = [components[1] floatValue];
     }
     if (components.count > 2) {
-        insets.bottom = [[components objectAtIndex:2] floatValue];
+        insets.bottom = [components[2] floatValue];
     }
     if (components.count > 3) {
-        insets.right = [[components objectAtIndex:3] floatValue];
+        insets.right = [components[3] floatValue];
     }
     self.insets = insets;
 }

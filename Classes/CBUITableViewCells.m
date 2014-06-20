@@ -12,7 +12,7 @@
 
 @synthesize textLabelKeyPath = _textLabelKeyPath;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     return [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
 }
@@ -35,7 +35,7 @@
 @synthesize textLabelKeyPath = _textLabelKeyPath;
 @synthesize detailTextLabelKeyPath = _detailTextLabelKeyPath;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     return [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
 }

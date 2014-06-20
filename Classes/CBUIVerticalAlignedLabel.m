@@ -14,7 +14,7 @@
 
 @synthesize verticalAlignment = _verticalAlignment;
 
-- (id)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (!self) return nil;
     
@@ -22,7 +22,7 @@
     
     return self;
 }
-- (id)initWithCoder:(NSCoder *)aDecoder
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (!self) return nil;

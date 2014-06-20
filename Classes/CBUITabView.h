@@ -10,11 +10,11 @@
 
 @class CBUITabView;
 
-typedef enum {
+typedef NS_ENUM(NSInteger, CBUITabState) {
     CBUITabStateDisabled = -1,
     CBUITabStateNormal = 0,
     CBUITabStateActive = 1,
-} CBUITabState;
+} ;
 
 @protocol CBUITabViewDelegate <NSObject>
 
@@ -43,8 +43,8 @@ typedef enum {
 @property (nonatomic, weak) id<CBUITabViewDelegate> delegate;
 @property (nonatomic, strong) id<CBUITabViewStyle> style;
 
-- (id) initWithFrame:(CGRect)frame;
-- (id) initWithFrame:(CGRect)frame titles:(NSArray*)titles;
+- (instancetype) initWithFrame:(CGRect)frame NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithFrame:(CGRect)frame titles:(NSArray*)titles;
 
 - (void) setCurrentTabIndex:(int)aCurrentTabIndex animated:(BOOL)animated;
 

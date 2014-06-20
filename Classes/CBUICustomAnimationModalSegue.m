@@ -102,7 +102,7 @@ typedef void(^CBCustomModalPresentationSegueDismissAnimationBlock)(void);
 
 @implementation CBUIPushFromRightModalSegue
 
-- (id)initWithIdentifier:(NSString *)identifier source:(UIViewController *)source destination:(UIViewController *)destination
+- (instancetype)initWithIdentifier:(NSString *)identifier source:(UIViewController *)source destination:(UIViewController *)destination
 {
     self = [super initWithIdentifier:identifier source:source destination:destination];
     if (!self) return nil;
@@ -120,7 +120,7 @@ typedef void(^CBCustomModalPresentationSegueDismissAnimationBlock)(void);
 
 @implementation CBUIPushFromLeftModalSegue
 
-- (id)initWithIdentifier:(NSString *)identifier source:(UIViewController *)source destination:(UIViewController *)destination
+- (instancetype)initWithIdentifier:(NSString *)identifier source:(UIViewController *)source destination:(UIViewController *)destination
 {
     self = [super initWithIdentifier:identifier source:source destination:destination];
     if (!self) return nil;

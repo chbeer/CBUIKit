@@ -27,7 +27,7 @@ CGFloat CBUITextAttachmentRunDelegateGetWidth(void *context);
 
 @implementation CBUITextAttachment
 
-- (id) initWithView:(UIView*)view;
+- (instancetype) initWithView:(UIView*)view;
 {
     self = [super init];
     if (!self) return nil;
@@ -36,7 +36,7 @@ CGFloat CBUITextAttachmentRunDelegateGetWidth(void *context);
         return view.bounds.size.height;
     };
     self.getDescentCallback = ^{
-        return 0.0f;
+        return (CGFloat)0.0;
     };
     self.getWidthCallback = ^{
         return view.bounds.size.width;
@@ -46,7 +46,7 @@ CGFloat CBUITextAttachmentRunDelegateGetWidth(void *context);
     return self;
 }
 
-- (id) initWithGetAscent:(CBUITextAttachmentGetFloatValueCallback)getAscentCallback
+- (instancetype) initWithGetAscent:(CBUITextAttachmentGetFloatValueCallback)getAscentCallback
               getDescent:(CBUITextAttachmentGetFloatValueCallback)getDescentCallback
                 getWidth:(CBUITextAttachmentGetFloatValueCallback)getWidthCallback
             drawCallback:(CBUITextAttachmentDrawCallback)draw;
@@ -61,7 +61,7 @@ CGFloat CBUITextAttachmentRunDelegateGetWidth(void *context);
     
     return self;
 }
-- (id) initWithAscent:(CGFloat)ascent
+- (instancetype) initWithAscent:(CGFloat)ascent
               descent:(CGFloat)descent
                 width:(CGFloat)width
          drawCallback:(CBUITextAttachmentDrawCallback)draw;

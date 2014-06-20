@@ -88,7 +88,7 @@
 
 @synthesize safeDelegate;
 
-- (id)initWithFetchRequest:(NSFetchRequest *)fetchRequest
+- (instancetype)initWithFetchRequest:(NSFetchRequest *)fetchRequest
       managedObjectContext:(NSManagedObjectContext *)context
         sectionNameKeyPath:(NSString *)sectionNameKeyPath
                  cacheName:(NSString *)name
@@ -141,14 +141,14 @@
 **/
 - (void)addIndexPath:(NSIndexPath *)indexPath toDictionary:(NSMutableDictionary *)dictionary
 {
-	NSNumber *sectionNumber = [NSNumber numberWithUnsignedInteger:indexPath.section];
+	NSNumber *sectionNumber = @(indexPath.section);
 	
-	NSMutableIndexSet *indexSet = [dictionary objectForKey:sectionNumber];
+	NSMutableIndexSet *indexSet = dictionary[sectionNumber];
 	if (indexSet == nil)
 	{
 		indexSet = [[NSMutableIndexSet alloc] init];
 		
-		[dictionary setObject:indexSet forKey:sectionNumber];
+		dictionary[sectionNumber] = indexSet;
 	}
 	
     	
@@ -270,20 +270,20 @@
 				
 				// Determine if affected by object changes
 				
-				NSNumber *sectionNumber = [NSNumber numberWithUnsignedInteger:indexPath.section];
+				NSNumber *sectionNumber = @(indexPath.section);
 				
 				range = NSMakeRange(0 /*location*/, indexPath.row + 1 /*length*/);
 				
 				numInsertedObjects = 0;
 				numDeletedObjects = 0;
 				
-				NSIndexSet *insertsInSameSection = [objectInsertDict objectForKey:sectionNumber];
+				NSIndexSet *insertsInSameSection = objectInsertDict[sectionNumber];
 				if (insertsInSameSection)
 				{
 					numInsertedObjects = [insertsInSameSection countOfIndexesInRange:range];
 				}
 				
-				NSIndexSet *deletesInSameSection = [objectDeleteDict objectForKey:sectionNumber];
+				NSIndexSet *deletesInSameSection = objectDeleteDict[sectionNumber];
 				if (deletesInSameSection)
 				{
 					numDeletedObjects = [deletesInSameSection countOfIndexesInRange:range];
@@ -558,8 +558,8 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"<SafeSectionChange changeType(%@) index(%u)>",
-			[self changeTypeString], sectionIndex];
+	return [NSString stringWithFormat:@"<SafeSectionChange changeType(%@) index(%lu)>",
+			[self changeTypeString], (unsigned long)sectionIndex];
 }
 
 
@@ -608,7 +608,7 @@
 {
 	if (ip == nil) return @"nil";
 	
-	return [NSString stringWithFormat:@"[%u,%u]", ip.section, ip.row];
+	return [NSString stringWithFormat:@"[%ld,%ld]", (long)ip.section, (long)ip.row];
 }
 
 - (NSString *)description

@@ -34,7 +34,7 @@
 @synthesize loading = _loading;
 @synthesize empty   = _empty;
 
-- (id) initWithTableView:(UITableView *) aTableView  {
+- (instancetype) initWithTableView:(UITableView *) aTableView  {
     if (self = [self init]) {
         [self setTableView: aTableView];
     }
@@ -188,7 +188,7 @@
 
 @synthesize editable = _editable;
 
-- (id)initWithTableView:(UITableView *)aTableView
+- (instancetype)initWithTableView:(UITableView *)aTableView
 {
     self = [super initWithTableView:aTableView];
     if (!self) return nil;
@@ -199,7 +199,7 @@
     return self;
 }
 
-- (id)initWithTableView:(UITableView *)aTableView items:(NSArray*)items
+- (instancetype)initWithTableView:(UITableView *)aTableView items:(NSArray*)items
 {
     self = [super initWithTableView:aTableView];
     if (!self) return nil;
@@ -234,7 +234,7 @@
 {
     NSIndexPath *path = nil;
     if (_sections) {
-        NSMutableArray *section = [_items objectAtIndex:sectionIndex];
+        NSMutableArray *section = _items[sectionIndex];
         [section addObject:object];
         path = [NSIndexPath indexPathForRow:section.count - 1 
                                   inSection:sectionIndex];
@@ -250,7 +250,7 @@
 #else
         UITableViewRowAnimation anim = UITableViewRowAnimationFade;
 #endif
-        [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:path] 
+        [_tableView insertRowsAtIndexPaths:@[path] 
                           withRowAnimation:anim];
     }
      
@@ -260,7 +260,7 @@
 {
     NSIndexPath *path = nil;
     if (_sections) {
-        NSMutableArray *section = [_items objectAtIndex:sectionIndex];
+        NSMutableArray *section = _items[sectionIndex];
         NSUInteger rowIndex = [section indexOfObject:object];
         if (rowIndex == NSNotFound) return;
         
@@ -281,7 +281,7 @@
 #else
         UITableViewRowAnimation anim = UITableViewRowAnimationFade;
 #endif
-        [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path] 
+        [_tableView deleteRowsAtIndexPaths:@[path] 
                           withRowAnimation:anim];
     }
     
@@ -292,24 +292,24 @@
 
 - (id) objectAtIndexPath:(NSIndexPath*)indexPath {
 	if (_sections) {
-		return [[_items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+		return _items[indexPath.section][indexPath.row];
 	} else {
         if (indexPath.row >= _items.count) return nil;
-		return [_items objectAtIndex:indexPath.row];
+		return _items[indexPath.row];
 	}
 }
 - (NSIndexPath*) indexPathForObject:(id)object {
 	if (_sections) {
 		int sidx = 0;
 		for (NSArray *a in _items) {
-			int idx = [a indexOfObject:object];
+			NSUInteger idx = [a indexOfObject:object];
 			if (idx != NSNotFound) {
 				return [NSIndexPath indexPathForRow:idx inSection:sidx];
 			}
 			sidx++;
 		}
 	} else {
-		int idx = [_items indexOfObject:object];
+		NSUInteger idx = [_items indexOfObject:object];
 		if (idx != NSNotFound) {
 			return [NSIndexPath indexPathForRow:idx inSection:0];
 		}
@@ -318,7 +318,7 @@
 }
 - (void) removeObjectAtIndexPath:(NSIndexPath*)indexPath {
 	if (_sections) {
-		NSMutableArray *s = [_items objectAtIndex:indexPath.section];
+		NSMutableArray *s = _items[indexPath.section];
 		[s removeObjectAtIndex:indexPath.row];
 		if (s.count == 0) {
 			[_items removeObjectAtIndex:indexPath.section];
@@ -326,12 +326,12 @@
 			[_tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section]
 					  withRowAnimation:UITableViewRowAnimationFade];
 		} else {
-			[_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+			[_tableView deleteRowsAtIndexPaths:@[indexPath]
 							  withRowAnimation:UITableViewRowAnimationFade];
 		}
 	} else {
 		[_items removeObjectAtIndex:indexPath.row];
-		[_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+		[_tableView deleteRowsAtIndexPaths:@[indexPath]
 						  withRowAnimation:UITableViewRowAnimationFade];
 	}
     
@@ -345,12 +345,12 @@
 }
 
 - (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	return _sections ? [_sections objectAtIndex:section] : nil;
+	return _sections ? _sections[section] : nil;
 }
 
 - (NSInteger) tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section {
 	if (_sections) {
-		return [[_items objectAtIndex:section] count];
+		return [_items[section] count];
 	} else {
 		return _items.count;
 	}

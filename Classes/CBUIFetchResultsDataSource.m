@@ -50,7 +50,7 @@
 
 @synthesize allowsDeletion            = _allowsDeletion;
 
-- (id) initWithTableView:(UITableView*)tableView
+- (instancetype) initWithTableView:(UITableView*)tableView
             fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context 
       sectionNameKeyPath:(NSString*)sectionNameKeyPath
                cacheName:(NSString*)cacheName 
@@ -85,7 +85,7 @@
     
 	return self;
 }
-- (id) initWithTableView:(UITableView*)tableView
+- (instancetype) initWithTableView:(UITableView*)tableView
             fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context 
                cacheName:(NSString*)cacheName 
 {
@@ -141,16 +141,16 @@
 }
 - (id<NSFetchedResultsSectionInfo>) infoForSectionAtIndex:(NSInteger)section
 {
-    return [[_fetchedResultsController sections] objectAtIndex:section];
+    return [_fetchedResultsController sections][section];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+	id <NSFetchedResultsSectionInfo> sectionInfo = [_fetchedResultsController sections][section];
     return [sectionInfo numberOfObjects];
 }
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    id<NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+    id<NSFetchedResultsSectionInfo> sectionInfo = [_fetchedResultsController sections][section];
     return [sectionInfo name];
 }
 
@@ -438,19 +438,19 @@
 {
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
     if (self.deletedSectionIndexes.count > 0) {
-        [result setObject:self.deletedSectionIndexes forKey:@"DeletedSections"];
+        result[@"DeletedSections"] = self.deletedSectionIndexes;
     }
     if (self.insertedSectionIndexes.count > 0) {
-        [result setObject:self.insertedSectionIndexes forKey:@"InsertedSections"];
+        result[@"InsertedSections"] = self.insertedSectionIndexes;
     }
     if (self.deletedRowIndexPaths.count > 0) {
-        [result setObject:self.deletedRowIndexPaths forKey:@"DeletedRows"];
+        result[@"DeletedRows"] = self.deletedRowIndexPaths;
     }
     if (self.insertedRowIndexPaths.count > 0) {
-        [result setObject:self.insertedRowIndexPaths forKey:@"InsertedRows"];
+        result[@"InsertedRows"] = self.insertedRowIndexPaths;
     }
     if (self.updatedRowIndexPaths.count > 0) {
-        [result setObject:self.updatedRowIndexPaths forKey:@"UpdatedRows"];
+        result[@"UpdatedRows"] = self.updatedRowIndexPaths;
     }
     return result;
 }

@@ -15,7 +15,7 @@
 
 - (void) awakeFromNib {
     if (self.subviews.count > 0) {
-        currentView = [self.subviews objectAtIndex:0];
+        currentView = (self.subviews)[0];
         
         for (UIView *view in self.subviews) {
             view.alpha = (view == currentView) ? 1.0 : 0.0;
@@ -43,7 +43,7 @@
     
     if (![self.subviews containsObject:currentView]) {
         if (self.subviews > 0) {
-            currentView = [self.subviews objectAtIndex:0];
+            currentView = (self.subviews)[0];
             currentView.alpha = 1.0;
         } else {
             currentView = nil;
@@ -51,14 +51,14 @@
     }
 }
 
-- (int) currentViewIndex {
+- (NSUInteger) currentViewIndex {
     return [self.subviews indexOfObject:currentView];
 }
 - (void) setCurrentViewIndex:(int)viewIndex animated:(BOOL)animated {
     if (viewIndex < 0 || viewIndex >= self.subviews.count) return;
     
     UIView *oldView = currentView;
-    UIView *newView = [self.subviews objectAtIndex:viewIndex];
+    UIView *newView = (self.subviews)[viewIndex];
     
     if (oldView != newView) {
         if (animated) {

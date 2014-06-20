@@ -20,7 +20,7 @@
 
 @synthesize clearsSelectionOnViewWillAppear = _clearsSelectionOnViewWillAppear;
 
-- (id) initWithStyle:(UITableViewStyle)style {
+- (instancetype) initWithStyle:(UITableViewStyle)style {
     self = [super init];
 	if (!self) return nil;
     
@@ -87,10 +87,10 @@
         [UIView beginAnimations:@"keyboardWillShow" 
                         context:nil];
         
-        [UIView setAnimationCurve:[[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]];
-        [UIView setAnimationDuration:[[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
+        [UIView setAnimationCurve:[userInfo[UIKeyboardAnimationCurveUserInfoKey] intValue]];
+        [UIView setAnimationDuration:[userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
         
-        CGSize size = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+        CGSize size = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
 		
 /*        CGRect frame = self.view.frame;
         
@@ -117,10 +117,10 @@
         [UIView beginAnimations:@"keyboardWillHide"
                         context:nil];
         
-        [UIView setAnimationCurve:[[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]];
-        [UIView setAnimationDuration:[[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
+        [UIView setAnimationCurve:[userInfo[UIKeyboardAnimationCurveUserInfoKey] intValue]];
+        [UIView setAnimationDuration:[userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
         
-        CGSize size = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+        CGSize size = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
         
         /*CGRect frame = self.view.frame;
         

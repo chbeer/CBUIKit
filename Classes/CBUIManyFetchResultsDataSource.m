@@ -31,7 +31,7 @@
 
 @synthesize allowsDeletion              = _allowsDeletion;
 
-- (id) initWithTableView:(UITableView*)tableView
+- (instancetype) initWithTableView:(UITableView*)tableView
 {
 	self = [super initWithTableView:tableView];
     if (!self) return nil;
@@ -89,13 +89,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIdx {
-    CBUIManyFetchResultsSection *section = [self.sections objectAtIndex:sectionIdx];
-	id <NSFetchedResultsSectionInfo> sectionInfo = [[section.fetchedResultsController sections] objectAtIndex:0];
+    CBUIManyFetchResultsSection *section = (self.sections)[sectionIdx];
+	id <NSFetchedResultsSectionInfo> sectionInfo = [section.fetchedResultsController sections][0];
     return [sectionInfo numberOfObjects];
 }
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)sectionIdx {
-    CBUIManyFetchResultsSection *section = [self.sections objectAtIndex:sectionIdx];
+    CBUIManyFetchResultsSection *section = (self.sections)[sectionIdx];
     return [section title];
 }
 
@@ -152,14 +152,14 @@
 		case NSFetchedResultsChangeInsert:
 		{
 						
-			[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
+			[self.tableView insertRowsAtIndexPaths:@[newIndexPath]
                                   withRowAnimation:UITableViewRowAnimationFade];
 			break;
 		}
 		case NSFetchedResultsChangeDelete:
 		{
 						
-			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+			[self.tableView deleteRowsAtIndexPaths:@[indexPath]
                                   withRowAnimation:UITableViewRowAnimationFade];
 			break;
 		}
@@ -168,7 +168,7 @@
 			if (newIndexPath == nil || [newIndexPath isEqual:indexPath])
 			{
 								
-				[self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+				[self.tableView reloadRowsAtIndexPaths:@[indexPath]
                                       withRowAnimation:UITableViewRowAnimationNone];
 			}
 			else
@@ -223,7 +223,7 @@
 #pragma mark CBUITableViewDataSource
 
 - (id) objectAtIndexPath:(NSIndexPath*)indexPath {
-    CBUIManyFetchResultsSection *section = [self.sections objectAtIndex:indexPath.section];
+    CBUIManyFetchResultsSection *section = (self.sections)[indexPath.section];
 	return [section objectAtRow:indexPath.row];
 }
 

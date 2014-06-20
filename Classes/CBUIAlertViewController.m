@@ -24,7 +24,7 @@ static const char kCBUIAlertViewController;
 
 @synthesize alertViewStyle;
 
-- (id) initWithTitle:(NSString*)inTitle message:(NSString*)inMessage
+- (instancetype) initWithTitle:(NSString*)inTitle message:(NSString*)inMessage
 {
     self = [super init];
     if (!self) return nil;
@@ -36,7 +36,7 @@ static const char kCBUIAlertViewController;
     
     return self;
 }
-- (id) initWithTitle:(NSString*)inTitle message:(NSString*)inMessage buttonsWithHandlerAndTitle:(id)firstHandler, ...
+- (instancetype) initWithTitle:(NSString*)inTitle message:(NSString*)inMessage buttonsWithHandlerAndTitle:(id)firstHandler, ...
 {
     self = [self initWithTitle:inTitle message:inMessage];
     if (!self) return nil;
@@ -136,7 +136,7 @@ static const char kCBUIAlertViewController;
             cancelButton.handler(inAlertView, buttonIndex);
         }
     } else {
-        CBUIAlertViewControllerButton *button = [buttons objectAtIndex:buttonIndex];
+        CBUIAlertViewControllerButton *button = buttons[buttonIndex];
         if (button.handler) {
             button.handler(inAlertView, buttonIndex);
         }

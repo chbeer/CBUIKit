@@ -22,17 +22,17 @@ typedef CGFloat(^CBUITextAttachmentDrawCallback)(CGContextRef ctx, CGRect frame,
 @property (nonatomic, readonly, strong) UIView                                *view;
 @property (nonatomic, readonly, copy)   CBUITextAttachmentDrawCallback        drawCallback;
 
-- (id) initWithView:(UIView*)view;
+- (instancetype) initWithView:(UIView*)view NS_DESIGNATED_INITIALIZER;
 
-- (id) initWithGetAscent:(CBUITextAttachmentGetFloatValueCallback)getAscentCallback
+- (instancetype) initWithGetAscent:(CBUITextAttachmentGetFloatValueCallback)getAscentCallback
               getDescent:(CBUITextAttachmentGetFloatValueCallback)getDescentCallback
                 getWidth:(CBUITextAttachmentGetFloatValueCallback)getWidthCallback
-            drawCallback:(CBUITextAttachmentDrawCallback)draw;
-- (id) initWithAscent:(CGFloat)ascent
+            drawCallback:(CBUITextAttachmentDrawCallback)draw NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithAscent:(CGFloat)ascent
               descent:(CGFloat)descent
                 width:(CGFloat)width
          drawCallback:(CBUITextAttachmentDrawCallback)draw;
 
-- (CTRunDelegateRef) createCTRunDelegate;
+@property (NS_NONATOMIC_IOSONLY, readonly) CTRunDelegateRef createCTRunDelegate;
 
 @end

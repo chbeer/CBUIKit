@@ -25,7 +25,7 @@
     [self addGestureRecognizer:tapGestureRecognizer];
 }
 
-- (id)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (!self) return nil;
 
@@ -33,7 +33,7 @@
     
     return self;
 }
-- (id) initWithCoder:(NSCoder *)aDecoder {
+- (instancetype) initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (!self) return nil;
     
@@ -42,7 +42,7 @@
     return self;
 }
 
-- (id) initWithFrame:(CGRect)frame titles:(NSArray*)titles {
+- (instancetype) initWithFrame:(CGRect)frame titles:(NSArray*)titles {
     self = [self initWithFrame:frame];
     if (!self) return nil;
     
@@ -118,7 +118,7 @@
     for (NSString *title in tabTitles) {
         BOOL selected = (currentTabIndex == index);
         
-        NSString *title = [tabTitles objectAtIndex:index];
+        NSString *title = tabTitles[index];
         CBUITabState state = selected ? CBUITabStateActive : CBUITabStateNormal;
         
         [style drawTabInTabView:self

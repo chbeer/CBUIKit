@@ -25,10 +25,10 @@
 @implementation CBUIFetchedResultsCollectionViewDataSource
 
 
-- (id) initWithCollectionView:(UICollectionView*)collectionView
-            fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context
-      sectionNameKeyPath:(NSString*)sectionNameKeyPath
-               cacheName:(NSString*)cacheName
+- (instancetype) initWithCollectionView:(UICollectionView*)collectionView
+                           fetchRequest:(NSFetchRequest*)fetchRequest managedObjectContext:(NSManagedObjectContext*)context
+                     sectionNameKeyPath:(NSString*)sectionNameKeyPath
+                              cacheName:(NSString*)cacheName
 {
 	self = [super initWithCollectionView:collectionView];
     if (!self) return nil;
@@ -44,10 +44,10 @@
     
 	return self;
 }
-- (id) initWithCollectionView:(UICollectionView*)collectionView
-                 fetchRequest:(NSFetchRequest*)fetchRequest
-         managedObjectContext:(NSManagedObjectContext*)context
-                    cacheName:(NSString*)cacheName
+- (instancetype) initWithCollectionView:(UICollectionView*)collectionView
+                           fetchRequest:(NSFetchRequest*)fetchRequest
+                   managedObjectContext:(NSManagedObjectContext*)context
+                              cacheName:(NSString*)cacheName
 {
     return [self initWithCollectionView:collectionView
                            fetchRequest:fetchRequest
@@ -112,7 +112,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-	id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+	id <NSFetchedResultsSectionInfo> sectionInfo = [_fetchedResultsController sections][section];
     return [sectionInfo numberOfObjects];
 }
 
@@ -210,14 +210,14 @@
     if (!self.section) {
         switch(self.changeType) {
             case NSFetchedResultsChangeInsert:
-                [collectionView insertItemsAtIndexPaths:[NSArray arrayWithObject:self.theNewIndexPath]];
+                [collectionView insertItemsAtIndexPaths:@[self.theNewIndexPath]];
                 break;
             case NSFetchedResultsChangeDelete:
-                [collectionView deleteItemsAtIndexPaths:[NSArray arrayWithObject:self.indexPath]];
+                [collectionView deleteItemsAtIndexPaths:@[self.indexPath]];
                 break;
             case NSFetchedResultsChangeUpdate:
                 if (self.theNewIndexPath == nil || [self.theNewIndexPath isEqual:self.indexPath]) {
-                    [collectionView reloadItemsAtIndexPaths:[NSArray arrayWithObject:self.indexPath]];
+                    [collectionView reloadItemsAtIndexPaths:@[self.indexPath]];
                 } else {
                     [collectionView moveItemAtIndexPath:self.indexPath
                                             toIndexPath:self.theNewIndexPath];

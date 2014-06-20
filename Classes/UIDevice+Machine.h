@@ -11,6 +11,6 @@
 
 @interface UIDevice (Machine)
 
-- (NSString *)cbuiMachine;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *cbuiMachine;
 
 @end
