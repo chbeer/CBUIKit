@@ -113,6 +113,7 @@
 		AA54982914C4168200219135 /* CBUITableViewCells.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUITableViewCells.m; sourceTree = "<group>"; };
 		AA63DEE215AC0DE500D43CC0 /* CBUIManyFetchResultsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIManyFetchResultsDataSource.h; sourceTree = "<group>"; };
 		AA63DEE315AC0DE500D43CC0 /* CBUIManyFetchResultsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIManyFetchResultsDataSource.m; sourceTree = "<group>"; };
+		AA6C127019B1EC9900F40C56 /* CBUIKit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = CBUIKit.podspec; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* CBUIKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIKit_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AA7944651487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIFetchResultsReorderDataSource.h; sourceTree = "<group>"; };
 		AA7944661487FD56004F05E2 /* CBUIFetchResultsReorderDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIFetchResultsReorderDataSource.m; sourceTree = "<group>"; };
@@ -191,6 +192,7 @@
 		0867D691FE84028FC02AAC07 /* CBUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				AA6C127019B1EC9900F40C56 /* CBUIKit.podspec */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
