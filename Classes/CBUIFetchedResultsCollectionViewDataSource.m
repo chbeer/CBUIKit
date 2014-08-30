@@ -169,6 +169,15 @@
 - (id) objectAtIndexPath:(NSIndexPath*)indexPath
 {
     NSManagedObject *managedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+#ifndef CBUI_NoPrefaultNSManagedObject
+    // un-fault object eventually. Returns nil if not able to unfault... prevents crashes
+    // like: https://rink.hockeyapp.net/manage/apps/18828/app_versions/9/crash_reasons/18413870
+    NSError *error;
+    managedObject = [managedObject.managedObjectContext existingObjectWithID:managedObject.objectID
+                                                                       error:&error];
+#endif
+    
 	return managedObject;
 }
 
