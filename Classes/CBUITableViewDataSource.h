@@ -29,12 +29,12 @@
 
 
 @interface CBUITableViewDataSource : NSObject <CBUITableViewDataSource,UITableViewDataSource> {
-	UITableView *_tableView;
+	UITableView __weak *_tableView;
 	
     id<CBUITableViewDataSourceDelegate> __weak _delegate;
 }
 
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 
 @property (nonatomic, weak) id<CBUITableViewDataSourceDelegate> delegate;
 
