@@ -183,6 +183,8 @@
     if (self.preserveSelectionOnUpdate) {
         self.preservedSelection = [self.tableView indexPathsForSelectedRows];
     }
+    
+    [self.tableView beginUpdates];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
@@ -268,28 +270,16 @@
 		
     self.empty = _fetchedResultsController.fetchedObjects.count == 0;
     
-    NSInteger totalChanges = [self.deletedSectionIndexes count] +
-    [self.insertedSectionIndexes count] +
-    [self.deletedRowIndexPaths count] +
-    [self.insertedRowIndexPaths count] +
-    [self.updatedRowIndexPaths count];
+    [self.tableView deleteSections:self.deletedSectionIndexes withRowAnimation:self.deleteRowAnimation];
+    [self.tableView insertSections:self.insertedSectionIndexes withRowAnimation:self.insertRowAnimation];
     
-    if (totalChanges > 10) {
-        [self.tableView reloadData];
-    } else if (totalChanges > 0) {
+    [self.tableView deleteRowsAtIndexPaths:self.deletedRowIndexPaths withRowAnimation:self.deleteRowAnimation];
+    [self.tableView insertRowsAtIndexPaths:self.insertedRowIndexPaths withRowAnimation:self.insertRowAnimation];
+    [self.tableView reloadRowsAtIndexPaths:self.updatedRowIndexPaths withRowAnimation:self.updateRowAnimation];
     
-        [self.tableView beginUpdates];
-        
-        [self.tableView deleteSections:self.deletedSectionIndexes withRowAnimation:self.deleteRowAnimation];
-        [self.tableView insertSections:self.insertedSectionIndexes withRowAnimation:self.insertRowAnimation];
-        
-        [self.tableView deleteRowsAtIndexPaths:self.deletedRowIndexPaths withRowAnimation:self.deleteRowAnimation];
-        [self.tableView insertRowsAtIndexPaths:self.insertedRowIndexPaths withRowAnimation:self.insertRowAnimation];
-        [self.tableView reloadRowsAtIndexPaths:self.updatedRowIndexPaths withRowAnimation:self.updateRowAnimation];
-        
-        [self.tableView endUpdates];
-    }
+    [self.tableView endUpdates];
 
+    
     if ([self.delegate respondsToSelector:@selector(fetchResultsDataSourceDidUpdateContent:)]) {
         [(id<CBUIFetchResultsDataSourceDelegate>)self.delegate fetchResultsDataSourceDidUpdateContent:self];
     }
