@@ -31,6 +31,11 @@ UIBarButtonItem *CBUIBarButtonSetTintColor(UIBarButtonItem *itm, UIColor *tintCo
     itm.tintColor = tintColor;
     return itm;
 }
+UIBarButtonItem *CBUIBarButtonSetAccessibilityIdentifier(UIBarButtonItem *itm, NSString *accessibilityIdentifier)
+{
+    itm.accessibilityIdentifier = accessibilityIdentifier;
+    return itm;
+}
 
 
 UIBarButtonItem *CBUIBarFlexibleSpace() {

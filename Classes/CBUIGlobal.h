@@ -16,6 +16,7 @@ BOOL CBIsIOS7();
 
 UIBarButtonItem *CBUIBarButtonSetTintColor(UIBarButtonItem *itm, UIColor *tintColor);
 UIBarButtonItem *CBUIBarButtonSetStyle(UIBarButtonItem *itm, UIBarButtonItemStyle style);
+UIBarButtonItem *CBUIBarButtonSetAccessibilityIdentifier(UIBarButtonItem *itm, NSString *accessibilityIdentifier);
 UIBarButtonItem *CBUIBarFlexibleSpace();
 UIBarButtonItem *CBUIBarButtonFixedSpace(CGFloat width);
 UIBarButtonItem *CBUIBarButtonSystemItem(UIBarButtonSystemItem type, id target, SEL action);
