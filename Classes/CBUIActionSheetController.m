@@ -179,7 +179,7 @@ static const char kCBUIActionSheetController;
 
 #pragma mark UIActionSheetDelegate
      
-- (void)actionSheet:(UIActionSheet *)inActionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)actionSheet:(UIActionSheet *)inActionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == inActionSheet.cancelButtonIndex) {
         if (cancelButton.handler) {
@@ -199,9 +199,7 @@ static const char kCBUIActionSheetController;
             button.handler(inActionSheet, index);
         }
     }
-}
-- (void)actionSheet:(UIActionSheet *)inActionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
+
     objc_setAssociatedObject(inActionSheet, &kCBUIActionSheetController, nil, OBJC_ASSOCIATION_RETAIN);
 }
 

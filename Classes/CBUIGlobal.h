@@ -66,7 +66,8 @@ CGRect CBCGRectModify(CGRect rect, CBCGRectModifyBlock modifyBlock);
 CGRect CBCGRectFitAspect(CGRect rect, CGSize bounds);
 
 CGSize CBCGSizeDelta(CGSize size, CGFloat deltaW, CGFloat deltaH);
-CGSize CBCGSizeFitAspect(CGSize size, CGSize fit);
+CGSize CBCGSizeFitAspect(CGSize aspectRatio, CGSize boundingSize);
+CGSize CBCGSizeFillAspect(CGSize aspectRatio, CGSize minimumSize);
 
 CGPathRef CBCreateCGPathWithRect(CGRect rect);
 

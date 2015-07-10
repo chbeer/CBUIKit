@@ -244,21 +244,29 @@ CGSize CBCGSizeDelta(CGSize size, CGFloat deltaW, CGFloat deltaH)
     size.height += deltaH;
     return size;
 }
-CGSize CBCGSizeFitAspect(CGSize size, CGSize fit)
-{
-    if (size.width <= fit.width && size.height <= fit.height) return size;
-    CGFloat ar = size.width / size.height;
-    CGFloat newAR = fit.width / fit.height;
-    if (ar > newAR) {
-        size.width = fit.width;
-        size.height = fit.width / ar;
-    } else {
-        size.height = fit.height;
-        size.width = fit.height * ar;
-    }
-    return size;
-}
 
+CGSize CBCGSizeFitAspect(CGSize aspectRatio, CGSize boundingSize)
+{
+    if (aspectRatio.width <= boundingSize.width && aspectRatio.height <= boundingSize.height) return aspectRatio;
+    
+    float mW = boundingSize.width / aspectRatio.width;
+    float mH = boundingSize.height / aspectRatio.height;
+    if( mH < mW )
+        boundingSize.width = boundingSize.height / aspectRatio.height * aspectRatio.width;
+    else if( mW < mH )
+        boundingSize.height = boundingSize.width / aspectRatio.width * aspectRatio.height;
+    return boundingSize;
+}
+CGSize CBCGSizeFillAspect(CGSize aspectRatio, CGSize minimumSize)
+{
+    float mW = minimumSize.width / aspectRatio.width;
+    float mH = minimumSize.height / aspectRatio.height;
+    if( mH > mW )
+        minimumSize.width = minimumSize.height / aspectRatio.height * aspectRatio.width;
+    else if( mW > mH )
+        minimumSize.height = minimumSize.width / aspectRatio.width * aspectRatio.height;
+    return minimumSize;
+}
 
 CGPathRef CBCreateCGPathWithRect(CGRect rect)
 {

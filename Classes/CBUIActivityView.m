@@ -85,10 +85,10 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
 - (void) setMessage:(NSString *)message
 {
     if (message == nil && self.messageLabel != nil) {
-        [UIView animateWithDuration:0.2 
+        [UIView animateWithDuration:0.2
                          animations:^{
                              self.messageLabel.alpha = 0.0;
-                         } 
+                         }
                          completion:^(BOOL finished) {
                              [self.messageLabel removeFromSuperview];
                          }];
@@ -96,7 +96,7 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
     }
     
     if (!self.messageLabel) {
-        CGRect frame = CGRectMake(10, self.bounds.size.height - 50, 
+        CGRect frame = CGRectMake(10, self.bounds.size.height - 50,
                                   self.bounds.size.width - 20, 40);
         UILabel *messageLabel = [[UILabel alloc] initWithFrame:frame];
         messageLabel.font = [UIFont boldSystemFontOfSize:16];
@@ -135,6 +135,8 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hide)
                                                object:nil];
     
+    self.center = [[[UIApplication sharedApplication] keyWindow] center];
+    
     if (![self superview]) {
         self.layer.transform = ApplyInterfaceRotationToCATransform3D(CATransform3DMakeScale(0.3, 0.3, 1.0));
         
@@ -145,12 +147,12 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
                      animations:^{
                          self.alpha = 1.0;
                          self.layer.transform = ApplyInterfaceRotationToCATransform3D(CATransform3DMakeScale(1.2, 1.2, 1.0));
-                     } 
+                     }
                      completion:^(BOOL finished) {
-                         [UIView animateWithDuration:0.1 
+                         [UIView animateWithDuration:0.1
                                           animations:^{
                                               self.layer.transform = ApplyInterfaceRotationToCATransform3D(CATransform3DMakeScale(1.0, 1.0, 1.0));
-                                          } 
+                                          }
                                           completion:^(BOOL finished) {
                                           }];
                      }];
@@ -158,12 +160,12 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
 
 - (void) hide:(BOOL)animated
 {
-    [UIView animateWithDuration:0.3 delay:0.0 
-                        options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationCurveEaseIn 
+    [UIView animateWithDuration:0.3 delay:0.0
+                        options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationCurveEaseIn
                      animations:^{
                          self.alpha = 0.0;
                          self.layer.transform = ApplyInterfaceRotationToCATransform3D(CATransform3DMakeScale(0.1, 0.1, 1.0));
-                     } 
+                     }
                      completion:^(BOOL finished) {
                          [self removeFromSuperview];
                          
@@ -191,11 +193,11 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
     if (self.centerView) {
         UIView *view = self.centerView;
         self.centerView = nil;
-        [UIView animateWithDuration:0.2 
+        [UIView animateWithDuration:0.2
                          animations:^{
                              view.alpha = 0.0;
                              view.layer.transform = ApplyInterfaceRotationToCATransform3D(CATransform3DMakeScale(0.01, 0.01, 1.0));
-                         } 
+                         }
                          completion:^(BOOL finished) {
                              [view removeFromSuperview];
                          }];
@@ -296,7 +298,7 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
             case UIInterfaceOrientationPortraitUpsideDown:
                 self.layer.transform = CATransform3DMakeRotation(M_PI,0,0,1);
                 break;
-
+                
             case UIInterfaceOrientationLandscapeRight:
                 self.layer.transform = CATransform3DMakeRotation(M_PI_2,0,0,1);
                 break;
@@ -327,7 +329,7 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
 - (void) keyboardDidShowNotification:(NSNotification*)note
 {
     UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-
+    
     NSDictionary* info = [note userInfo];
     
     CGRect kbRect = [info[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
@@ -355,7 +357,7 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
     [UIView animateWithDuration:0.1 animations:^{
         self.frame = frame;
     }];
-
+    
 }
 - (void) keyboardWillHideNotification:(NSNotification*)note
 {
@@ -380,22 +382,22 @@ CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform);
 
 CATransform3D ApplyInterfaceRotationToCATransform3D(CATransform3D transform)
 {
-    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-    switch (orientation) {
-        case UIInterfaceOrientationPortraitUpsideDown:
-            return CATransform3DRotate(transform, M_PI, 0, 0, 1);
-            break;
-            
-        case UIInterfaceOrientationLandscapeRight:
-            return CATransform3DRotate(transform, M_PI_2, 0, 0, 1);
-            break;
-            
-        case UIInterfaceOrientationLandscapeLeft:
-            return CATransform3DRotate(transform, -M_PI_2, 0, 0, 1);
-            break;
-        default:
-            // don't do anything, intentionally
-            break;
-    }
+    //    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+    //    switch (orientation) {
+    //        case UIInterfaceOrientationPortraitUpsideDown:
+    //            return CATransform3DIdentity;//CATransform3DRotate(transform, M_PI, 0, 0, 1);
+    //            break;
+    //
+    //        case UIInterfaceOrientationLandscapeRight:
+    //            return CATransform3DIdentity;// CATransform3DRotate(transform, M_PI_2, 0, 0, 1);
+    //            break;
+    //
+    //        case UIInterfaceOrientationLandscapeLeft:
+    //            return CATransform3DIdentity; //CATransform3DRotate(transform, -M_PI_2, 0, 0, 1);
+    //            break;
+    //        default:
+    //            // don't do anything, intentionally
+    //            break;
+    //    }
     return transform;
 }
