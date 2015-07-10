@@ -119,7 +119,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
         
 /*        CGPoint origin = bounds.origin;
         switch (self.textAlignment) {
-            case UITextAlignmentCenter:
+            case NSTextAlignmentCenter:
                 origin.x = ceilf((self.bounds.size.width - size.width) / 2);
                 break;
             case UITextAlignmentRight:
@@ -232,7 +232,7 @@ NSString * const kCBUILinkAttribute = @"CBUILinkAttribute";
                 
                 
                 /*switch (self.textAlignment) {
-                    case UITextAlignmentCenter:
+                    case NSTextAlignmentCenter:
                         frame.origin.x -= width / 2;
                         break;
                     default:

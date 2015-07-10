@@ -53,7 +53,7 @@
     return [(id<CBUISlideshowImagesPagingScrollViewDataSource>)dataSource slideshowPagingScrollView:self 
                                                                                   imageCountForPage:_currentPage];
 }
-- (UIImage*) imageForIndex:(int)index {
+- (UIImage*) imageForIndex:(NSInteger)index {
     if (!imagesCache) {
         imagesCache = [[NSMutableDictionary alloc] init];
     }
@@ -200,7 +200,7 @@ static BOOL tmpScrollAnimate;
 
 #pragma mark changeImage
 
-- (void) setImageIndex:(NSUInteger)pageIndex {
+- (void) setImageIndex:(NSInteger)pageIndex {
     [super setImageIndex:pageIndex];
     
     imageIndex = 0;

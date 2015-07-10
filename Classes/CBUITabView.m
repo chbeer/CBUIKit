@@ -110,15 +110,11 @@
     
     CGFloat tabWidth = [self tabWidth];
     
-    CGRect tabRect = CGRectMake(0.0, 0.0, 
-                                tabWidth, 
-                                self.bounds.size.height);
+    __block CGRect tabRect = CGRectMake(0.0, 0.0, tabWidth, self.bounds.size.height);
     
-    int index = 0;
-    for (NSString *title in tabTitles) {
+    [tabTitles enumerateObjectsUsingBlock:^(id  __nonnull title, NSUInteger index, BOOL * __nonnull stop) {
         BOOL selected = (currentTabIndex == index);
         
-        NSString *title = tabTitles[index];
         CBUITabState state = selected ? CBUITabStateActive : CBUITabStateNormal;
         
         [style drawTabInTabView:self
@@ -128,9 +124,7 @@
                           state:state];
         
         tabRect.origin.x += tabWidth;
-        
-        index++;
-    }
+    }];
 }
 
 

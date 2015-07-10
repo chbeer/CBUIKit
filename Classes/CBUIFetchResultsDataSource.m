@@ -262,6 +262,11 @@
 			[self.deletedSectionIndexes addIndex:sectionIndex];
 			break;
 		}
+            
+        case NSFetchedResultsChangeMove:
+        case NSFetchedResultsChangeUpdate:
+            // do nothing
+            break;
 	}
 }
 

@@ -405,29 +405,6 @@
 
 - (void)processChanges
 {
-#ifdef DEBUG
-				
-		for (SafeSectionChange *sectionChange in insertedSections)
-		{
-					}
-		for (SafeSectionChange *sectionChange in deletedSections)
-		{
-					}
-		
-		for (SafeObjectChange *objectChange in insertedObjects)
-		{
-					}
-		for (SafeObjectChange *objectChange in deletedObjects)
-		{
-					}
-		for (SafeObjectChange *objectChange in updatedObjects)
-		{
-					}
-		for (SafeObjectChange *objectChange in movedObjects)
-		{
-					}
-#endif
-	
 	if ([self hasUnsafeChanges])
 	{
 		if ([safeDelegate respondsToSelector:@selector(controllerDidMakeUnsafeChanges:)])
@@ -477,6 +454,10 @@
 	{
 		case NSFetchedResultsChangeInsert : sectionChanges = insertedSections; break;
 		case NSFetchedResultsChangeDelete : sectionChanges = deletedSections;  break;
+        case NSFetchedResultsChangeMove:
+        case NSFetchedResultsChangeUpdate:
+            // do nothing
+            break;
 	}
 	
 	[sectionChanges addObject:sectionChange];
@@ -551,6 +532,11 @@
 	{
 		case NSFetchedResultsChangeInsert : return @"Insert";
 		case NSFetchedResultsChangeDelete : return @"Delete";
+
+        case NSFetchedResultsChangeMove:
+        case NSFetchedResultsChangeUpdate:
+            // do nothing
+            break;
 	}
 	
 	return nil;

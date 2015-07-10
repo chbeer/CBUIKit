@@ -165,7 +165,7 @@
 
 - (void) setCurrentPage:(NSInteger)page {
         
-    NSInteger distance = abs(page - _currentPage);
+    NSInteger distance = labs(page - _currentPage);
     
     if (distance == 1 && _currentPage != -1) {
         if (page > _currentPage) {

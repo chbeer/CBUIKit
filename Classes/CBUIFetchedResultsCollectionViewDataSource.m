@@ -250,6 +250,10 @@
             case NSFetchedResultsChangeUpdate:
                 [collectionView reloadSections:[NSIndexSet indexSetWithIndex:self.sectionIndex]];
                 break;
+
+            case NSFetchedResultsChangeMove:
+                // do nothing
+                break;
         }
     }
 }
