@@ -243,6 +243,27 @@ CGRect CBCGRectFitAspect(CGRect rect, CGSize size)
     return rect;
 }
 
+void CBCGRectSplit(CGRect source, CGRect resultRects[], size_t size, BOOL vertical)
+{
+    CGFloat amount = vertical ? source.size.height / size : source.size.width / size;
+    CGFloat current = vertical ? source.origin.y / size : source.origin.x;
+    for (NSInteger index = 0; index < size; index++) {
+        CGRect rect = resultRects[index];
+        if (vertical) {
+            rect.origin.x = source.origin.x;
+            rect.origin.y = current;
+            rect.size.width = CGRectGetWidth(source);
+            rect.size.height = amount;
+        } else {
+            rect.origin.x = current;
+            rect.origin.y = source.origin.y;
+            rect.size.width = amount;
+            rect.size.height = CGRectGetHeight(source);
+        }
+        current += amount;
+    }
+}
+
 CGSize CBCGSizeDelta(CGSize size, CGFloat deltaW, CGFloat deltaH)
 {
     size.width += deltaW;

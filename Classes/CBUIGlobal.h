@@ -60,6 +60,7 @@ CGPoint CBCGRectGetCenter(CGRect rect);
 CGRect CBCGRectSetCenter(CGRect rect, CGPoint center);
 CGRect CBCGRectSetOrigin(CGRect rect, CGPoint origin);
 CGRect CBCGRectSetSize(CGRect rect, CGSize size);
+void CBCGRectSplit(CGRect rect, CGRect resultRects[], size_t size, BOOL vertical);
 
 typedef CGRect(^CBCGRectModifyBlock)(CGRect rect);
 CGRect CBCGRectModify(CGRect rect, CBCGRectModifyBlock modifyBlock);
