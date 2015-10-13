@@ -38,6 +38,8 @@
 
 - (void)layoutSubviews
 {
+    [super layoutSubviews];
+    
     __block CGFloat heightSum = 0.0;
 
     CGFloat contentWidth = self.bounds.size.width - self.insets.left - self.insets.right;
