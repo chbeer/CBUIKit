@@ -57,7 +57,7 @@ UIBarButtonItem *CBUIBarButtonSystemItem(UIBarButtonSystemItem type, id target, 
 }
 UIBarButtonItem *CBUIBarButtonTextItem(NSString *title, id target, SEL action) {
 	UIBarButtonItem *itm = [[UIBarButtonItem alloc] initWithTitle:title
-															style:UIBarButtonItemStyleBordered
+															style:UIBarButtonItemStylePlain
 														   target:target
 														   action:action];
 	return itm;

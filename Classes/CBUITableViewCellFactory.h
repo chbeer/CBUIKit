@@ -5,7 +5,7 @@
 //  Copyright 2011 Christian Beer. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 
 @interface CBUITableViewCellFactory : NSObject {

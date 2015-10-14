@@ -94,10 +94,10 @@
     
     [textColor set];
     UIFont *titleFont = [UIFont boldSystemFontOfSize:12];
-    CGSize titleSize = [title sizeWithFont:titleFont];
+    CGSize titleSize = [title sizeWithAttributes:@{NSFontAttributeName:titleFont}];
     CGPoint titlePoint = CGPointMake(CGRectGetMidX(rect) - (titleSize.width / 2), 
                                      CGRectGetMidY(rect) - (titleSize.height / 2));
-    [title drawAtPoint:titlePoint withFont:titleFont];
+    [title drawAtPoint:titlePoint withAttributes:@{NSFontAttributeName:titleFont}];
 }
 
 - (CGFloat) tabWidth {

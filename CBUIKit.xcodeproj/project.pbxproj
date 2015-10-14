@@ -157,6 +157,8 @@
 		AAEF3A121BCF05520000509E /* CBUIVerticalLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8B7AB6146A638B009940AE /* CBUIVerticalLayoutView.m */; settings = {ASSET_TAGS = (); }; };
 		AAEF3A131BCF05520000509E /* CBUICustomAnimationModalSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC398001619652D003C53EF /* CBUICustomAnimationModalSegue.m */; settings = {ASSET_TAGS = (); }; };
 		AAEF3A141BCF05520000509E /* CBUIRoundedCornerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAF07A51622985B00E00684 /* CBUIRoundedCornerView.m */; settings = {ASSET_TAGS = (); }; };
+		AAEF3A391BCF11FC0000509E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAEF3A381BCF11FC0000509E /* UIKit.framework */; };
+		AAEF3A3B1BCF12010000509E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAEF3A3A1BCF12010000509E /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -241,6 +243,8 @@
 		AAEF38FF1BCF01B80000509E /* CBUIKIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CBUIKIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAEF39011BCF01B80000509E /* CBUIKIt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBUIKIt.h; sourceTree = "<group>"; };
 		AAEF39031BCF01B80000509E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAEF3A381BCF11FC0000509E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AAEF3A3A1BCF12010000509E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libCBUIKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCBUIKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -249,6 +253,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAEF3A3B1BCF12010000509E /* CoreGraphics.framework in Frameworks */,
+				AAEF3A391BCF11FC0000509E /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +296,8 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAEF3A3A1BCF12010000509E /* CoreGraphics.framework */,
+				AAEF3A381BCF11FC0000509E /* UIKit.framework */,
 				AAC398031619657A003C53EF /* QuartzCore.framework */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 				AA19FDF712FAED4B000306DB /* CoreData.framework */,
@@ -626,7 +634,7 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0700;
 				TargetAttributes = {
 					AAEF38FE1BCF01B80000509E = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -794,6 +802,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_VERSION = "";

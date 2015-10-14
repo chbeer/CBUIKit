@@ -23,6 +23,6 @@
     #define ALog(...) NSLog(@"%s(%x) %@", __PRETTY_FUNCTION__, self, [NSString stringWithFormat:__VA_ARGS__])
 #endif
 
-    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
     #import <UIKit/UIKit.h>
 #endif

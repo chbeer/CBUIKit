@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Christian Beer. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import <CoreText/CoreText.h>
 
 
