@@ -9,8 +9,12 @@
 
 @class CBUIAlertViewControllerButton;
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 typedef void(^CBUIAlertViewHandler)(UIAlertView *alertView, NSUInteger buttonIndex);
+#pragma clang diagnostic pop
 
+NS_CLASS_DEPRECATED_IOS(2_0, 8_3, "CBUIAlertViewController is deprecated. Use UIAlertController instead")
 @interface CBUIAlertViewController : NSObject <UIAlertViewDelegate> {
     
     UIAlertView                         *alertView;

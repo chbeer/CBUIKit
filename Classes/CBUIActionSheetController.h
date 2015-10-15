@@ -10,8 +10,12 @@
 
 @class CBUIActionSheetControllerButton;
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 typedef void(^CBUIActionSheetHandler)(UIActionSheet *actionSheet, NSUInteger buttonIndex);
+#pragma clang diagnostic pop
 
+NS_CLASS_DEPRECATED_IOS(2_0, 8_3, "CBUIActionSheetController is deprecated. Use UIAlertController instead")
 @interface CBUIActionSheetController : NSObject <UIActionSheetDelegate> {
     
     UIActionSheet                       *actionSheet;
