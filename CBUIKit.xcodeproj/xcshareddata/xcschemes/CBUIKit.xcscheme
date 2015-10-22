@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AAEF38FE1BCF01B80000509E"
-               BuildableName = "CBUIKIt.framework"
-               BlueprintName = "CBUIKIt"
+               BuildableName = "CBUIKit.framework"
+               BlueprintName = "CBUIKit"
                ReferencedContainer = "container:CBUIKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AAEF38FE1BCF01B80000509E"
-            BuildableName = "CBUIKIt.framework"
-            BlueprintName = "CBUIKIt"
+            BuildableName = "CBUIKit.framework"
+            BlueprintName = "CBUIKit"
             ReferencedContainer = "container:CBUIKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,8 +64,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AAEF38FE1BCF01B80000509E"
-            BuildableName = "CBUIKIt.framework"
-            BlueprintName = "CBUIKIt"
+            BuildableName = "CBUIKit.framework"
+            BlueprintName = "CBUIKit"
             ReferencedContainer = "container:CBUIKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

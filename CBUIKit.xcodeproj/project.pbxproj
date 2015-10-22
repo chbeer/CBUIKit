@@ -83,7 +83,6 @@
 		AAE77FFE13CAF0E5006D65BE /* UIGestureRecognizer+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE77FE613CAEDE8006D65BE /* UIGestureRecognizer+Blocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAED5FBC13C4511B005DD099 /* CBUIActionSheetController.h in Headers */ = {isa = PBXBuildFile; fileRef = AAED5FBA13C4511B005DD099 /* CBUIActionSheetController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAED5FBD13C4511B005DD099 /* CBUIActionSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAED5FBB13C4511B005DD099 /* CBUIActionSheetController.m */; };
-		AAEF39021BCF01B80000509E /* CBUIKIt.h in Headers */ = {isa = PBXBuildFile; fileRef = AAEF39011BCF01B80000509E /* CBUIKIt.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAEF39CC1BCF05350000509E /* UIView+CBUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE7413E14757AC400E71161 /* UIView+CBUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAEF39CD1BCF05350000509E /* CBUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB2EF7213B8776A004A1C64 /* CBUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAEF39CE1BCF05350000509E /* CBUIGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = AA19FDBE12FAECAF000306DB /* CBUIGlobal.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -240,8 +239,7 @@
 		AAE77FE713CAEDE8006D65BE /* UIGestureRecognizer+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+Blocks.m"; sourceTree = "<group>"; };
 		AAED5FBA13C4511B005DD099 /* CBUIActionSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUIActionSheetController.h; sourceTree = "<group>"; };
 		AAED5FBB13C4511B005DD099 /* CBUIActionSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUIActionSheetController.m; sourceTree = "<group>"; };
-		AAEF38FF1BCF01B80000509E /* CBUIKIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CBUIKIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AAEF39011BCF01B80000509E /* CBUIKIt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBUIKIt.h; sourceTree = "<group>"; };
+		AAEF38FF1BCF01B80000509E /* CBUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CBUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAEF39031BCF01B80000509E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAEF3A381BCF11FC0000509E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AAEF3A3A1BCF12010000509E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -275,7 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				D2AAC07E0554694100DB518D /* libCBUIKit.a */,
-				AAEF38FF1BCF01B80000509E /* CBUIKIt.framework */,
+				AAEF38FF1BCF01B80000509E /* CBUIKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -492,7 +490,6 @@
 		AAEF39001BCF01B80000509E /* CBUIKIt */ = {
 			isa = PBXGroup;
 			children = (
-				AAEF39011BCF01B80000509E /* CBUIKIt.h */,
 				AAEF39031BCF01B80000509E /* Info.plist */,
 			);
 			path = CBUIKIt;
@@ -508,7 +505,6 @@
 				AAEF39EE1BCF05350000509E /* CBUIVerticalLayoutView.h in Headers */,
 				AAEF39D21BCF05350000509E /* CBUITableViewDataSource.h in Headers */,
 				AAEF39CD1BCF05350000509E /* CBUIKit.h in Headers */,
-				AAEF39021BCF01B80000509E /* CBUIKIt.h in Headers */,
 				AAEF39E71BCF05350000509E /* CBUIAlertViewController.h in Headers */,
 				AAEF39D81BCF05350000509E /* CBUIAttributedTableViewCell.h in Headers */,
 				AAEF39ED1BCF05350000509E /* CBUIHorizontalLayoutView.h in Headers */,
@@ -593,9 +589,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		AAEF38FE1BCF01B80000509E /* CBUIKIt */ = {
+		AAEF38FE1BCF01B80000509E /* CBUIKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AAEF39041BCF01B80000509E /* Build configuration list for PBXNativeTarget "CBUIKIt" */;
+			buildConfigurationList = AAEF39041BCF01B80000509E /* Build configuration list for PBXNativeTarget "CBUIKit" */;
 			buildPhases = (
 				AAEF38FA1BCF01B80000509E /* Sources */,
 				AAEF38FB1BCF01B80000509E /* Frameworks */,
@@ -606,9 +602,9 @@
 			);
 			dependencies = (
 			);
-			name = CBUIKIt;
+			name = CBUIKit;
 			productName = CBUIKIt;
-			productReference = AAEF38FF1BCF01B80000509E /* CBUIKIt.framework */;
+			productReference = AAEF38FF1BCF01B80000509E /* CBUIKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D2AAC07D0554694100DB518D /* libCBUIKit */ = {
@@ -657,7 +653,7 @@
 			projectRoot = "";
 			targets = (
 				D2AAC07D0554694100DB518D /* libCBUIKit */,
-				AAEF38FE1BCF01B80000509E /* CBUIKIt */,
+				AAEF38FE1BCF01B80000509E /* CBUIKit */,
 			);
 		};
 /* End PBXProject section */
@@ -875,7 +871,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.chbeer.ios.CBUIKIt;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CBUIKit;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -922,7 +918,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = de.chbeer.ios.CBUIKIt;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CBUIKit;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -952,7 +948,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AAEF39041BCF01B80000509E /* Build configuration list for PBXNativeTarget "CBUIKIt" */ = {
+		AAEF39041BCF01B80000509E /* Build configuration list for PBXNativeTarget "CBUIKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AAEF39051BCF01B80000509E /* Debug */,

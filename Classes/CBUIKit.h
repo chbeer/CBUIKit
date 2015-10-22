@@ -6,6 +6,17 @@
 //  Copyright 2011 Christian Beer. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+
+//! Project version number for CBUIKit.
+FOUNDATION_EXPORT double CBUIKitVersionNumber;
+
+//! Project version string for CBUIKit.
+FOUNDATION_EXPORT const unsigned char CBUIKitVersionString[];
+
+// In this header, you should import all the public headers of your framework using statements like #import <CBUIKIt/PublicHeader.h>
+
+
 #import "CBUIGlobal.h"
 
 #import "UIView+CBUIKit.h"
