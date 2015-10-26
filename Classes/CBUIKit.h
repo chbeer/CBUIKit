@@ -55,3 +55,15 @@ FOUNDATION_EXPORT const unsigned char CBUIKitVersionString[];
 #import "CBUIFetchedResultsCollectionViewDataSource.h"
 
 #import "CBUIRoundedCornerView.h"
+
+
+#import "CBUIDisclosureTriangle.h"
+#import "CBUIImagePagingScrollView.h"
+#import "CBUIPanelView.h"
+#import "CBUISlideshowImagesPagingScrollView.h"
+#import "CBUISpring.h"
+#import "CBUISpringLayoutView.h"
+#import "CBUITableViewCellFactory.h"
+#import "CBUITabView.h"
+#import "NSAttributedString+UIKit+CoreText.h"
+#import "UIDevice+Machine.h"
