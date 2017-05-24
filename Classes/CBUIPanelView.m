@@ -14,6 +14,7 @@
 @dynamic views;
 
 - (void) awakeFromNib {
+    [super awakeFromNib];
     if (self.subviews.count > 0) {
         currentView = (self.subviews)[0];
         
